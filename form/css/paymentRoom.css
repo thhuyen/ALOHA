@@ -1,0 +1,238 @@
+:root {
+    --backgroundColor: #F9B456;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* font face */
+@font-face {
+    font-family: UTM-Aptima;
+    src: url(../../assets/fonts/font-text/UTM\ Aptima.ttf);
+}
+@font-face {
+    font-family: utm-bell;
+    src: url(../../assets/fonts/font-text/UTM\ Bell.ttf);
+}
+@font-face {
+    font-family: nexa;
+    src: url(../../assets/fonts/font-text/SVN-Nexa\ Light.ttf);
+}
+@font-face {
+    font-family: uvn-bale;
+    src: url(../../assets/fonts/font-text/UVNBaLe.TTF);
+}
+.modal-payment.open {
+    display: flex;
+}
+.modal-payment {
+    display: none;
+    /* display: flex; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    font-family: nexa;
+}
+
+.modal-payment-container {
+    width: 600px;
+    overflow-y: auto;
+    max-height: 90vh;
+    margin: 0px 20px;
+    min-height: 200px;
+    background: rgb(241, 239, 239);
+    border-radius: 20px;
+    /* animation: dropdown ease 0.7s; */
+}
+.modal-header.payment{
+    position: relative;
+    background-color: var(--backgroundColor);
+    border-radius: 20px 20px 50px 0 !important;
+    overflow: hidden;
+    padding: 8px !important;
+}
+.modal-header span {
+    align-self: center;
+    padding-left: 20px;
+    font-size: 23px;
+    font-family: uvn-bale;
+    font-weight: 600;
+}
+.icon-close-modal {
+    font-size: 25px;
+    text-align: center;
+    width: 25px;
+    height: 26px;
+    margin-top: 2px;
+    margin-right: 10px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+.icon-close-modal:hover {
+    background-color: #ccc;
+}
+#cash-img,
+#bank-img,
+#momo-img {
+    width: 20px;
+    height: 20px;
+}
+.detail-payment-body {
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    text-align: left;
+}
+.email-payment {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.total-payment {
+    display: flex;
+    color: #F9B456;
+    font-family: UTM-Aptima;
+    justify-content: right;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 30px 10px 30px;
+    padding-top: 5px;
+    border-top: 1px solid #000;
+}
+.detail-type-amount {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.type-room-payment {
+    flex: 1;
+}
+.amount-room-payment {
+    flex: 1;
+}
+.title {
+    font-weight: 600;
+    font-size: 15px;
+}
+.input-method-item {
+    -webkit-appearance: none;
+}
+.method-container {
+    display: inline-block;
+    margin-left: 40px;
+    cursor: pointer;
+}
+.method-item {
+    display: flex;
+}
+.label-method-item {
+    display: flex;
+    width: 400px;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #dbcbb4;
+    padding: 10px 30px 10px 10px;
+    cursor: pointer;
+    box-shadow: 3px 3px #ccc;
+}
+@media (max-width: 470px) {
+    .detail-payment-body  {
+        margin: 0;
+        font-size: 12px;
+    }
+    .title {
+        font-size: 14px;
+    }
+    .email-payment {
+        font-size: 12px;
+    }
+    .total-payment {
+        font-size: 12px;
+    }
+    .method-container {
+        margin-left: 0;
+    }
+    .label-method-item {
+        font-size: 14px;
+        width: 260px;
+    }
+    .icon-check {
+        font-size: 15px;
+        margin-right: 10px !important;
+    }
+    #cash-img,
+    #bank-img,
+    #momo-img {
+        width: 30px;
+        height: 30px;
+    }
+}
+.icon-check {
+    font-size: 20px;
+    color: var(--backgroundColor);
+    margin-right: 10px;
+    opacity: 0;
+}
+.icon-payment {
+    margin-right: 10px;
+}
+.method-item p {
+    margin-bottom: 0
+}
+.input-method-item:checked + .label-method-item {
+    border: 4px solid var(--backgroundColor);
+}
+.input-method-item:checked + .label-method-item > .icon-check {
+    opacity: 1;
+}
+.group-button {
+    float: right;
+}
+
+.button-finish {
+    color:  var(--backgroundColor);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    background-color: #fff;
+    padding: 10px 15px;
+    border: 2px solid var(--backgroundColor);
+    outline: none !important;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+ 
+.button-finish:hover {
+    background-color: var(--backgroundColor);
+    color: #fff;
+    transition: all 0.5s ease-out;
+}
+.button-back {
+    color: rgb(178, 176, 176);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    background-color: #fff;
+    padding: 10px 15px;
+    border: 2px solid rgb(178, 176, 176);
+    outline: none !important;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.button-back:hover {
+    background-color: rgb(178, 176, 176);
+    color: #fff;
+    transition: all 0.5s ease-out;
+}

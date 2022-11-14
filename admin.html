@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALOHA Admin</title>
+    <link rel="icon" href="./assets/img/logo/logo.png" type="image/x-icon" />
+
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="./assets/CSS/base-admin.css">
+    <link rel="stylesheet" href="./assets/CSS/admin.css">
+
+
+    <!--Link Icon Awesome-->
+    <script src="https://kit.fontawesome.com/c89546c2fd.js" crossorigin="anonymous"></script>
+
+    
+</head>
+
+<body>
+    <div class="side-bar">
+        <h2>admin</h2>
+        <ul class="nav-sidebar">
+            <a  href="#">
+                <li>
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>TỔNG QUAN</span>
+                </li>
+            </a>
+            <a href="admin-room.html">
+                <li>
+                    <i class="fa-solid fa-hotel"></i>
+                    <span>PHÒNG</span>
+                </li>
+            </a>
+
+            <a  href="admin-service.html">
+                <li>
+                    <i class="fa-solid fa-bell-concierge"></i>
+                    <span>DỊCH VỤ</span>
+                </li>
+            </a>
+
+            <a href="admin-event.html">
+                <li>
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>SỰ KIỆN</span>
+                </li>
+            </a>
+        </ul>
+    </div>
+
+
+    <section>
+        <!-- NOTICE-BELL -->
+        
+                <div class="notice">
+                    <div class="dropdown">
+                        <button onclick="myFunction()" >
+                            <i class="dropbtn fa-solid fa-bell"></i>
+                        </button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a>
+                                <div class="notify-info">
+                                    <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
+                                    <span class="notify-time">10 minutes ago</span>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="notify-info">
+                                    <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
+                                    <span class="notify-time">10 minutes ago</span>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="notify-info">
+                                    <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
+                                    <span class="notify-time">10 minutes ago</span>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="notify-info">
+                                    <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
+                                    <span class="notify-time">10 minutes ago</span>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="notify-info">
+                                    <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
+                                    <span class="notify-time">10 minutes ago</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        
+                    <!-- SCRIPT bell-->
+            <script>
+                /* When the user clicks on the button, 
+                toggle between hiding and showing the dropdown content */
+                function myFunction() {
+                  document.getElementById("myDropdown").classList.toggle("show");
+                }
+                
+                // Close the dropdown if the user clicks outside of it
+                window.onclick = function(event) {
+                  if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                      var openDropdown = dropdowns[i];
+                      if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                      }
+                    }
+                  }
+                }
+                </script>
+        
+        
+                <div class="heading">
+                    <h1>TỔNG QUAN</h1>
+                </div>
+        
+        <!-- TABLE ROOM -->
+                <div class="table">
+                    <table class="total-table">
+                        <tr>
+                            <td rowspan="3" style = "min-width: 500px">
+                                <div class="content">
+                                    <h1 class="amount">100</h1>
+                                    <p class="title-sub-content">Đặt phòng</p>
+                                </div>
+                                
+                            </td>
+                            <td height="80">
+                                <div class="room">
+                                    <p class="type-room">Phòng đơn</p>
+                                    <p class="number-room">12</p>
+                                </div>
+                            </td>
+        
+                        </tr>
+                        <tr>
+                            <td height="80">
+                                <div class="room">
+                                    <p class="type-room">Phòng đôi</p>
+                                    <p class="number-room">25</p>
+                                </div>
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td height="80">
+                                <div class="room">
+                                    <p class="type-room">Phòng bốn</p>
+                                    <p class="number-room">63</p>
+                                </div>
+                            </td>
+                           
+                        </tr>
+                    </table>
+                </div>
+        <!-- TABLE SERVICE -->
+                <div class="table">
+        
+                    <table class="total-table">
+                        <tr>
+                            <td rowspan="3" style = "min-width: 500px">
+                                <div class="content">
+                                    <h1 class="amount">100</h1>
+                                    <p class="title-sub-content">Đặt sự kiện</p>
+                                </div>
+                                
+                            </td>
+                            <td height="80">
+                                <div class="room">
+                                    <p class="type-room">Sinh nhật - Kỷ niệm</p>
+                                    <p class="number-room">12</p>
+                                </div>
+                            </td>
+        
+                        </tr>
+                        <tr>
+                           
+                            <td height="80">
+                                <div class="room">
+                                    <p class="type-room">Tiệc cưới</p>
+                                    <p class="number-room">02</p>
+                                </div>
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td height="80">
+                                <div class="room">
+                                    <p class="type-room">Hội họp - Hội nghị</p>
+                                    <p class="number-room">63</p>
+                                </div>
+                            </td>                           
+                        </tr>
+                    </table>
+                </div>
+    </section>
+</body>
+</html>

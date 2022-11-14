@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTD-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ALOHA</title>
+    <link rel="icon" href="./assets/img/logo/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./assets/CSS/base.css">
+    <link rel="stylesheet" href="./assets/CSS/home.css">
+    <!-- <link rel="stylesheet" href="/assets/CSS/search.css"> -->
+    <link rel="stylesheet" href="./assets/CSS/responsiveHome.css">
+    <link rel="stylesheet" href="./assets/CSS/responsiveNav.css">
+    <link rel="stylesheet" href="./form/css/registerRoom.css">
+    <link rel="stylesheet" href="./form/css/paymentRoom.css">
+    <link rel="stylesheet" href="./form/css/advertisement.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="header">
+        <a href="#" id="logo">
+            <img src="./assets/img/logo/logo.png" alt="" id="img-logo">
+        </a>
+        <span id="open-nav-icon">&#9776;
+        </span>
+        <ul id="nav">
+            <li id="nav-item-home" class="nav-item"><a href="#">TRANG CHỦ</a></li>
+            <li id="nav-item-room" class="nav-item"><a href="room.html">PHÒNG</a></li>
+            <li id ="nav-item-service" class="nav-item">
+                <a href="service.html" class="nav-item-link">DỊCH VỤ
+                    <i class="icon-down fa-solid fa-caret-down"></i>
+                </a>
+                
+                <ul id ="sub-nav-service" class="subnav">
+                    <a href="service.html#content"><li>Café</li></a>
+                    <a href="service.html#content"><li>Karaoke</li></a>                       
+                    <a href="service.html#content"><li>Sân golf</li></a>
+                    <a href="service.html#content"><li>Quầy bar</li></a>
+                    <a href="service.html#content""><li>Thú cưng</li></a>
+                    <a href="service.html#content""><li>Giặt ủi đồ</li></a>
+                    <a href="service.html#content""><li>Phòng spa</li></a>
+                    <a href="service.html#content""><li>Phòng gym</li></a>
+                    <a href="service.html#content""><li>Phục vụ 24/24</li></a>
+                </ul>
+            </li>
+            <li id ="nav-item-event" class="nav-item">
+                <a href="event.html" class="nav-item-link">SỰ KIỆN
+                    <i class="icon-down fa-solid fa-caret-down"></i>
+                </a>
+                <ul id = "sub-nav-event" class="subnav">
+                    <a href="event.html#birthday"><li>Kỉ niệm</li></a>
+                    <a href="event.html#birthday"><li>Sinh nhật</li></a>
+                    <a href="event.html#meeting"><li>Hội họp</li></a>
+                    <a href="event.html#meeting"><li>Hội nghị</li></a>
+                    <a href="event.html#birthday"><li>Tiệc prom</li></a>                       
+                    <a href="event.html#wedding"><li>Đám cưới</li></a>
+                </ul>
+            </li>
+            <li id="nav-item-review" class="nav-item"><a href="#review">ĐÁNH GIÁ</a></li>
+            <li id="nav-item-contact" class="nav-item"><a href="#footer">LIÊN HỆ</a></li>
+            <span id="close-nav-icon" onclick="closeNav()">&times;</span>
+        </ul>
+    </div>
+    <div id="overlay"></div>
+
+
+    <!--Image slide -->
+    <div id="slider">
+        <div class="slider-container">
+            <video autoplay loop muted plays-inline class="video-background">
+                <source src="./assets/video/HOME.mp4" type="video/mp4">
+            </video>
+            <!-- book calendar -->
+            <section class="search">
+                <div class="container">
+                    <div action="" class="form grid">
+                        <div class="input-group">
+                            <label for="check-in" class="input-label">Ngày đặt</label>
+                            <input type="date" class="input" id="check-in"/>
+                        </div>
+                        <div class="input-group">
+                            <label for="check-out" class="input-label">Ngày trả</label>
+                            <input type="date" class="input" id="check-out" onchange="compareDate()"/>
+                        </div>
+                        <div class="input-group">
+                            <label for="adults" class="input-label">Người lớn</label>
+                            <input id="adults" type="number" class="input" name="adults" min="0" max="4" placeholder="Nhập số lượng"/>
+                        </div>
+                        <div class="input-group">
+                            <label for="kids" class="input-label">Trẻ em</label>
+                            <input id = "kids" type="number" class="input" name="kids" min="0" max="4" placeholder="Nhập số lượng"/>
+                        </div>
+                    </div>
+                    <button class="btn-search" onclick="OpenForm()">Đặt ngay</button>
+                </div>
+            </section>
+        </div>
+       
+    </div>
+
+    <!-- content -->
+    <div id="content">
+        <div class="intro">
+            <div class="intro-content">
+                <h2>ALOHA</h2> 
+                <p>Nơi lưu giữ những khoảnh khắc tuyệt vời trong những kỳ nghỉ của bạn. Chúng tôi rất hân hạnh khi mang đến những trải nghiệm tuyệt vời nhất mỗi khi tìm đến đây. Khi tới ALOHA, mọi ưu phiền sẽ được loại bỏ, bạn sẽ được hòa mình vào bầu không khí của biển cả, đón những cơn gió biển tràn đầy sức sống. Bên cạnh đó là những dịch vụ, tiện ích tuyệt vời mà chúng tôi đang chờ bạn khám phá.</p>
+                <p id="slogan">ALOHA - muộn phiền bay xa</p>
+            </div>
+            <div class="intro-background">
+                <img src="./assets/img/home/intro2.jpg" alt="Ảnh giới thiệu phòng" class="img-intro">
+            </div>
+        </div>
+
+        <div id="main-content">
+            <!-- content room -->
+
+            <div id="room" class="content-body room">
+                <div class="group-img-content">
+                    <img src="./assets/img/home/room-home (2).jpg" alt="" class="img-room">
+                </div>    
+                <div class="infor-body">
+                    <div class="group-icon-star">
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                    </div>
+                    <h2 >PHÒNG</h2>
+                    <p>ALOHA luôn mang đến trải nghiệm tuyệt vời đối với giấc ngủ. Chúng tôi đảm bảo ALOHA sẽ là nơi lý tưởng để khách hàng có thể nghỉ ngơi thoải mái nhất trong những kỳ nghỉ của bạn. ALOHA luôn trang bị đầy đủ các thiết bị và vật dụng hiện đại, tân tiến nhất cho phòng ốc, đảm bảo tuyệt đối về sự tiện nghi. Đồng thời các phòng của chúng tôi luôn có nhiều lựa chọn để phù hợp với sở thích và nhu cầu của bạn. Đặc biệt các phòng đều có những chiếc cửa sổ để khách hàng có thể ngắm trọn vẹn cảnh đẹp của nơi đây.</p>
+                    <button type="button" onclick="location.href='room.html';" class="showmore-btn" >Xem thêm</button>
+                </div>
+            </div>
+
+            <!-- content service -->
+            <div id="ser" class="content-body service">
+                <div class="infor-body body-service">
+                    <div class="group-icon-star">
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                    </div>
+                    <h2>DỊCH VỤ</h2>
+                    <p>ALOHA luôn đặt sự thoải mái và tiện lợi khách hàng lên trên hết. Chính vì vậy chúng tôi luôn hỗ trợ hết mình để khách hàng một cách tốt nhất, để đến với ALOHA, trong bạn sẽ đọng lại những kỉ niệm đáng nhớ. Các dịch vụ của ALOHA đầy đủ tiện nghi không kém gì ngôi nhà của bạn, khiến bạn không còn cảm thấy xa lạ về nơi nghỉ mới. Nếu như bạn muốn trải nghiệm những chuyến du thuyền sang trọng, hay đơn giản hơn chỉ là các bé thú cưng để bầu bạn, ALOHA sẽ là sự lựa chọn hàng đầu mang đến trải nghiệm tuyệt vời mới.</p>
+                    <button type="button" onclick="location.href='service.html';" class="showmore-btn ser" >Xem thêm</button>
+                </div>
+                <div class="img-content-service">
+                    <img src="./assets/img/home/home-service.jpg" alt="" class="img-service">
+                </div>    
+            </div>
+
+            <!-- content event -->
+            <div id="event" class="content-body event">
+                <div class="group-img-content">
+                    <img src="./assets/img/home/event1.jpg" alt="" class="img-event">         
+                </div>    
+                <div class="infor-body">
+                    <div class="group-icon-star">
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                    </div>
+                    <h2>SỰ KIỆN</h2>
+                    <p>ALOHA cung cấp một loạt các không gian sự kiện để đánh dấu những cột mốc đáng nhớ cho cuộc đời bạn. Một bữa tiệc xa hoa, hội thảo kinh doanh chính thức, một buổi hội nghị trang trọng, một buổi tiệc cocktail thân mật hay tiệc cưới. Có rất nhiều phong cách và xu hướng: Phương Tây quý pháp, Cổ đại bí ẩn, Trung đại độc đáo, Truyền thống Việt Nam, Trung Quốc cổ trang, Hàn Quốc nhẹ nhàng,... Tất cả đều được quản lý chuyên nghiệp bởi đội ngũ chuyên gia giàu kinh nghiệm và tận tâm của chúng tôi, cam kết mang lại đầy ấn tượng và chuyên nghiệp cho sự kiện của bạn. </p>
+                    <button type="button" onclick="location.href='event.html';" class="showmore-btn" >Xem thêm</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="review">
+            <div class="review-container">
+                <section class="pt-5 pb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <h3 class="mb-3 title-review">Cảm nhận về ALOHA</h3>
+                            </div>
+                            <div class="col-6 text-right">
+                                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                                    <i class="fa fa-arrow-left"></i>
+                                </a>
+                                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                                    <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="col-12">
+                                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="">
+                                    <div id="carousel-inner-review" class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <div class="row">
+                
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card">
+                                                        <div class="color-behind"></div>
+                                                        <img class="img-fluid" alt="100%x280" src="https://nld.mediacdn.vn/291774122806476800/2021/11/7/hoa-hau-tieu-vy-21-16362488390641936908568.jpg">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Tiểu Vy</h4>
+                                                            <p class="card-text">Chu đáo, set up phòng tốt, sạch sẽ, thoáng mát và đủ trang thiết bị nội thất. Đồ ăn vừa miệng, món ăn đa dạng và bắt mắt.</p>
+                
+                                                        </div>
+                
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card">
+                                                        <img class="img-fluid" alt="100%x280" src="https://ss-images.saostar.vn/2020/03/01/7079543/page.jpg">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Quỳnh Lương</h4>
+                                                            <p class="card-text">Phòng đẹp với khung cảnh sân vườn, hồ bơi riêng và view toàn cảnh ra biển ấn tượng. Đặc biệt nhất là quầy bar về đêm.</p>
+                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card">
+                                                        <img class="img-fluid" alt="100%x280" src="https://nld.mediacdn.vn/2018/7/8/hat-6-15310139568281582745769.jpg">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Hà Anh Tuấn</h4>
+                                                            <p class="card-text">ALOHA luôn giữ vững phong độ của mình. Tôi rất thích các món ăn ở đây, ăn sáng buffet rất ngon với nhiều món ăn phong phú.</p>
+                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="row">
+                
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card">
+                                                        <img class="img-fluid" alt="100%x280" src="https://static2.yan.vn/YanNews/2167221/201908/10-bi-mat-bat-ngo-ve-my-nhan-baifern-pimchanok-5d393d8c.jpg">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Baifern Pimchanok </h4>
+                                                            <p class="card-text">Thoughtful, clean, airy and fully furnished room. Delicious food, diverse and eye-catching dishes.</p>
+                
+                                                        </div>
+                
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card">
+                                                        <img class="img-fluid" alt="100%x280" src="https://evan.vn/public/news-img-content-public/tieuthanh/images/1a(27).jpg">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Yaya Urassaya</h4>
+                                                            <p class="card-text">The hotel is convenient for walking to the beach. Facilities, the price is very reasonable , clean rooms, basic meeting facilities.</p>
+                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card">
+                                                        <img class="img-fluid" alt="100%x280" src="https://photo-cms-anninhthudo.zadn.vn/w600/Uploaded/2022/lcjlcanwm/2020_12_15/mai-davika-8-625-5212.jpg">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Mai Davika</h4>
+                                                            <p class="card-text">Central location, nice, clean, fully equipped room, feels like I'm at home. Extremely attentive and attentive staff.</p>
+                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="row">
+                
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card">
+                                                        <img class="img-fluid" alt="100%x280" src="https://64.media.tumblr.com/5657125fa045d5fc4e2a09f9c9c9e090/3ce744540e944f94-f9/s1280x1920/f248371be764afdca32cd1d39bb1f447f695f85f.jpg">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Talay Sanguandikul</h4>
+                                                            <p class="card-text">From the reception to the manager, all are too professional, the rooms are extremely clean and make me and my friends very satisfied.</p>
+                
+                                                        </div>
+                
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card">
+                                                        <img class="img-fluid" alt="100%x280" src="https://i.pinimg.com/736x/96/d9/9b/96d99b7d1ebe5df84351e788d2ecee11.jpg">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Vachirawit Chivaaree</h4>
+                                                            <p class="card-text">This is one of those hotels with great location, affordable price and best staff behavior.</p>
+                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card">
+                                                        <img class="img-fluid" alt="100%x280" src="https://static2.yan.vn/YanNews/202102/202102020407311232-ba3aa65e-2344-444f-ac41-a70756d0693e.jpeg">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">Nadech Kugimiya</h4>
+                                                            <p class="card-text">Great location, has everything I need. Clean room, delicious and cheap food. The sea and nature are very beautiful.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map -->
+    <div id="location">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15700.192431763902!2d107.0903782!3d10.3380353!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2fe4a1e2d861bd36!2sAloha%20hotel!5e0!3m2!1svi!2s!4v1659149196377!5m2!1svi!2s" width="80%" height="500" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- footer -->
+    <div id="footer">
+        <div class="footer-container">
+            <span id="admin" data-toggle="modal" data-target="#modal-login">Kênh quản lý</span>
+            <div class="footer-content">
+                <div class="social-contact">
+                    <div class="follow-us">
+                        <h2>ALOHA HOTEL</h2>
+                        <div class="follow-us-social">
+                            <p>Follow us:</p> 
+                            <a href="#"><i class="icon-follow-us fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="icon-follow-us fa-brands fa-youtube"></i></a>
+                            <a href="#"><i class="icon-follow-us fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="icon-follow-us fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="infor-contact">   
+                    <li>
+                        <i class="icon-infor-contact1 fa-solid fa-location-dot"></i>
+                        <span><a href="#location">12 La Văn Cầu, Phường Thắng Tam, Thành phố Vũng Tàu, Bà Rịa - Vũng Tàu</a></span>
+                        
+                    </li>    
+                    <li>
+                        <i class="icon-infor-contact fa-solid fa-phone"></i>
+                        <span><a href="tel: 0969769445">096 976 94 45</a></span>
+                        
+                    </li>
+                    <li>
+                        <i class="icon-infor-contact fa-solid fa-envelope"></i>
+                        <span><a href="mailto:">alohavungtau@gmail.com</a></span>
+                    </li>
+                </ul>     
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: none !important;">
+              <h5 class="modal-title">Đăng nhập để vào trang quản lý</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-content" style="text-align: center;">
+                    <p style="margin-top: 10px;">Kênh này chỉ dùng cho nhân viên khách sạn</p>
+                    <p style ="margin-bottom: 10px;">Mật khẩu đăng nhập</p>
+                    <input type="text" placeholder="Nhập code 6 số" style="border: 1px solid var(--subnav-hover); border-radius: 10px; padding: 5px 10px">
+                </div>
+            </div>
+            <div class="modal-footer" style="border:none">
+                <button type="button" class="btn btn-primary" style="background-color: var(--subnav-hover); outline: none; border: none; padding: 10px 20px;">Đăng nhập</button>
+              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- icon kéo lên đầu trang -->
+    <div id="scroll-head">
+        <i class="ti-angle-up"></i>
+    </div>
+
+    <!-- form đặt phòng -->
+    <div class="modal-register">
+        <div class="modal-register-container">
+            <div class="modal-header register">
+                <span>ĐĂNG KÝ PHÒNG</span>
+                <div class=""close-modal>
+                    <i id = "icon-close-register" class="icon-close-modal fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            
+            <div class="modal-body">
+                <p class="title">1. Thông tin khách hàng</p>
+                <div class="infor-client">
+                    <form action="" class = "form-group">
+                        <label>Họ tên:</label>
+                        <input type="text" id="fullname-register" name="fullname"  placeholder="Nhập họ tên" class="input-form client">
+                    </form>
+    
+                    <form action="" class = "form-group">
+                        <label>Số điện thoại:</label>
+                        <input type="text" id="phone-register" name="phone" placeholder="Nhập số điện thoại" class="input-form client">
+                    </form>
+                    
+                    <form action="" class = "form-group">
+                        <label>Email:</label>
+                        <input type="text" id="email-register" name="email" placeholder="Nhập email" class="input-form client">
+                    </form>
+                </div>
+    
+                <div class="infor-room">
+                    <p class="title">2. Thông tin phòng</p>
+                    <form action="" class = "form-group">
+                        <label for="checkin">Ngày đặt:</label>
+                        <input id="checkin-day-register" type="text" name="checkin" class="input-form" placeholder="dd/mm/yyyy">
+                    </form>
+    
+                    <form action="" class = "form-group">
+                        <label for="checkout">Ngày trả:</label>
+                        <input id="checkout-day-register" type="text" name="checkout" class="input-form" placeholder="dd/mm/yyyy">
+                    </form>
+    
+                    <form action="" class = "form-group">
+                        <label>Loại phòng:</label>
+                        <select id ="type-room-register" class="input-form">
+                            <option></option>
+                        </select>
+
+                    </form>
+
+    
+                    <form action="" class = "form-group">
+                        <label>Số lượng phòng:</label>
+                        <input type="number" id="number-room-register" name="number-room" placeholder="Nhập số lượng" class="input-form" value = 1  min="1" max="5">
+                    </form>
+    
+                    <form action="" class = "form-group">
+                        <label>Số khách/phòng:</label>
+                        <input type="text" id="people" name="people-room" disabled class="input-form">
+                    </form>
+
+                    <form action="" class = "form-group">
+                        <label>Giá tiền/phòng:</label>
+                        <input type="text" id="price-room" name="price-room" disabled class="input-form">
+                    </form>
+                </div>
+    
+                <button class="button-next-form" onclick="openFormPayment()">Tiếp theo</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- form thanh toán -->
+    <div class="modal-payment">
+
+        <div class="modal-payment-container">
+            <div class="modal-header payment">
+                <span>THANH TOÁN</span>
+                <div class=""close-modal>
+                    <i id = "icon-close-payment" class="icon-close-modal fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            
+            <div class="modal-body">
+                <div class="detail-payment">
+                    <p class="title">3. Chi tiết hóa đơn</p>
+                    <div class="detail-payment-body">
+
+                        <div class="detail-payment-client">
+                            <p class="fullname-payment">Họ tên: Nguyễn Văn A</p>
+                            <p class="phone-payment">SĐT: 9374639123</p>
+                            <p class="type-room-payment">Loại phòng: Phòng bốn</p>
+                        </div>
+                        
+                        <div class="detail-payment-room">
+                            <p class="checkin-payment">Ngày đặt: 12-09-2022</p>
+                            <p class="checkout-payment">Ngày trả: 13-09-2022</p>
+                            <p class="amount-room-payment">Số lượng: 4</p>
+                        </div>
+                    </div> 
+                    <p class="email-payment">Email: 20520207@gm.uit.edu.vn</p>
+                    <p class="total-payment">Tổng cộng: 4000000</p>
+
+                </div>
+
+                <div class="method-payment">
+                    <p class="title title-method"> 4. Phương thức thanh toán</p>
+                    <div class="method-container">
+                        <div class="method-item">
+                            <input type="radio" name="payment" id = "cash" class="input-method-item">
+                            <label for="cash" class="label-method-item">
+                                <i class="icon-check fa-solid fa-circle-check"></i>
+                                <img src="./assets/img/cash-icon.png" alt="" id ="cash-img" class="icon-payment">
+                                <p>Tiền mặt</p>
+                            </label>
+
+                        </div>
+                        <div class="method-item">
+                            <input type="radio" name="payment" id = "momo" class="input-method-item">
+                            <label for="momo" class="label-method-item">
+                                <i class="icon-check fa-solid fa-circle-check"></i>
+                                <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="MoMo_Logo" id="momo-img" class="icon-payment">
+                                <p>Momo</p>
+                            </label>
+                        </div>
+                        <div class="method-item" class="label-method-item">
+                            <input type="radio" name="payment" id = "bank" class="input-method-item">
+                            <label for="bank" class="label-method-item">
+                                <i class="icon-check fa-solid fa-circle-check"></i>
+                                <img src="https://cdn-icons-png.flaticon.com/512/3029/3029373.png" alt="" class="icon-payment" id="bank-img">
+                                <p>Chuyển khoản</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="group-button">
+                    <button class="btn-payment button-back">Quay lại</button>
+                    <button class="btn-payment button-finish">Hoàn tất</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- form quảng cáo -->
+    <div class="advertisement">
+        <div class="advertisement-container">
+            <div id="carouselExampleCaptions" class="carousel" data-ride="carousel" data-interval="2000">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
+              </ol>
+              <div class="carousel-inner">
+                <a href="room.html" class="carousel-item active one"></a>
+                <a href="room.html" class="carousel-item two"></a>
+                <a href="room.html" class="carousel-item three"></a>
+                <a href="room.html" class="carousel-item four"></a>
+                <a href="service.html" class="carousel-item five"></a>
+                <a href="event.html" class="carousel-item six"></a>
+                <div class="close-adver"><i class="icon-close-adver ti-close" onclick="closeAdver()"></i></div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+    <!-- script for navbar tablet and mobile -->
+    <script src="./assets/javascript/navbar.js"></script>
+   
+    <!-- hiện đơn đặt phòng -->
+    <script src="./assets/javascript/formBooking.js"></script>
+
+    <!-- set animation khi cuộn trang -->
+    <script>      
+        var introContent = document.querySelector(".intro-content"); // bth
+        var introImgs = document.querySelector(".intro-background");
+        var bodyRoom = document.getElementById("room");
+        var scrollIcon = document.getElementById("scroll-head");
+        // var titleReview = document.querySelector(".title-review");
+        // var reviewButtons = document.querySelector(".text-right");
+        // var cards = document.querySelectorAll(".card");
+
+        window.onscroll = function() {
+            // var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;        
+            // console.log(scrollTop);
+            
+            myScroll(introContent, 400, `fromLeftUp 0.7s forwards`);
+            myScroll(introImgs, 400, `fromLeftDown  0.7s forwards`);
+            myScroll(bodyRoom, 1100, `appearFade 0.4s forwards`);
+            if (document.body.scrollTop > 1861 || document.documentElement.scrollTop > 1861)
+            {
+                scrollIcon.style.opacity= "1";
+            } else {
+                scrollIcon.style.opacity= "0";
+            }
+            scrollIcon.onclick = function() {
+                scrollTo(0,0);
+            }
+
+        };
+        
+        function myScroll(element, scrollTop, animation) {
+            if (document.body.scrollTop > scrollTop || document.documentElement.scrollTop > scrollTop) {
+
+                element.style.animation = animation;
+          } 
+        }
+  
+       
+    </script>
+
+    <!-- hiện quảng cáo -->
+    <!-- <script>
+    setTimeout(function() {
+            document.querySelector(".advertisement").classList.add("open-ad");
+        },3000);
+        setTimeout(function() {
+            document.querySelector(".advertisement").classList.remove("open-ad");
+            // document.body.removeChild(audio);
+        },24000);
+
+        function closeAdver() {
+            document.querySelector(".advertisement").classList.remove("open-ad");
+        }
+    </script> -->
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>

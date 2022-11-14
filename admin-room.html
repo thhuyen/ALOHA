@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALOHA Admin</title>
+    <link rel="icon" href="./assets/img/logo/logo.png" type="image/x-icon" />
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="./assets/CSS/base-admin.css">
+    <link rel="stylesheet" href="./assets/CSS/admin-room.css">
+    <link rel="stylesheet" href="./assets/CSS/admin.css">
+
+
+    <!--Link Icon Awesome-->
+    <script src="https://kit.fontawesome.com/c89546c2fd.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <!-- SIDE BAR -->
+    <div class="side-bar">
+        <h2>admin</h2>
+        <ul class="nav-sidebar">
+            <a  href="admin.html">
+                <li>
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>TỔNG QUAN</span>
+                </li>
+            </a>
+            <a href="#">
+                <li>
+                    <i class="fa-solid fa-hotel"></i>
+                    <span>PHÒNG</span>
+                </li>
+            </a>
+            <a  href="admin-service.html">
+                <li>
+                    <i class="fa-solid fa-bell-concierge"></i>
+                    <span>DỊCH VỤ</span>
+                </li>
+            </a>
+            
+            <a href="admin-event.html">
+                <li>
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>SỰ KIỆN</span>
+                </li>
+            </a>
+        </ul>
+    </div>
+
+
+    <section>
+
+        <div class="notice">
+
+            <div class="dropdown">
+
+                <div class="tabs">
+                    <!-- header -->
+                    <div class="tab-item active">
+                        Thêm phòng
+                      </div>
+                      <div class="tab-item">
+                        Xóa phòng
+                      </div>
+                      <div class="tab-item">
+                        Chỉnh sửa
+                      </div>
+                      <!-- <div class="tab-item">
+                        Thay doi
+                      </div> -->
+                
+                      <div class="line"></div>
+                </div>
+            
+                    <!-- NOTICE-BELL -->
+                <button onclick="myFunction()" >
+                    <i class="dropbtn fa-solid fa-bell"></i>
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a>
+                        <div class="notify-info">
+                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
+                            <span class="notify-time">10 minutes ago</span>
+                        </div>
+                    </a>
+                    <a>
+                        <div class="notify-info">
+                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
+                            <span class="notify-time">10 minutes ago</span>
+                        </div>
+                    </a>
+                    <a>
+                        <div class="notify-info">
+                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
+                            <span class="notify-time">10 minutes ago</span>
+                        </div>
+                    </a>
+                    <a>
+                        <div class="notify-info">
+                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
+                            <span class="notify-time">10 minutes ago</span>
+                        </div>
+                    </a>
+                    <a>
+                        <div class="notify-info">
+                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
+                            <span class="notify-time">10 minutes ago</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+<!-- HEADING -->
+        <div class="heading">
+            <h1>PHÒNG</h1>
+        </div>
+<!-- FORM -->
+        <div class="tab-content">
+            <!-- THÊM PHÒNG -->
+            <div class="tab-pane add active">
+                <div class='container add'>
+                    <form id="form-add">
+                        <div class="room-container">
+                            <div class='room-infor'>
+                                <label for='room-name'>Tên phòng</label>
+                                <input id='room-name' placeholder="Nhập tên phòng" type='text' name="room-name" id="">
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+                        
+                        <div class="room-container">
+                            <div class='room-infor'>
+                                <label for='room-price'>Giá phòng</label>
+                                <input id='room-price' placeholder="VND" type='text' name="room-price" id=""></input>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+        
+                        <div id="photo" class="room-container">
+                            <div class='room-photo'>
+                                <label for='file'>Thêm hình ảnh</label>
+                                <input type="file" id="file" name="file" accept=".png, .jpg" />
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+                        <img id="result"></img>
+    
+                        <div class="room-container des">
+                            <div class='room-infor'>
+                                <label for='room-des'>Mô tả phòng</label>
+                                <textarea id='room-des' placeholder="Nhập mô tả" type='radio' name="room-des" id="" style="height: 38px;"></textarea>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+                       
+                        <div class="room-container">
+                            <div class='room-infor'>
+                                <label for='room-size'>Kích thước</label>
+                                <input id='room-size' placeholder="m^3" type='text' name="room-size" id=""></input>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+                          
+                        <button id="btn-save" class="btn">Lưu</button>
+                    </form>
+                    </div>                  
+            </div>
+
+            </div>
+            <!-- XÓA PHÒNG -->
+            <div class="tab-pane">
+                <div class="container ">
+                    <div class="container-table">
+                        <table  class="delete-table table-infor"  width="900" height="200">
+                            
+                            <tr>
+                                <td class="head-table">LOẠI PHÒNG</td>
+                                <td class="head-table">GIÁ PHÒNG</td>
+                                <td class="head-table"></td> 
+                            </tr>
+    
+                            <tr>
+                                <td>Phòng đơn</td>
+                                <td>1.400.000/phòng/đêm</td>
+                                <td>
+                                    <button class="del-btn btn-table">Xóa</button>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <td>Phòng đôi</td>
+                                <td></td>
+                                <td>                                
+                                    <button class="del-btn btn-table">Xóa</button>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <td>Phòng bốn</td>
+                                <td>1</td>
+                                <td>
+                                    <button class="del-btn btn-table">Xóa</button>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                        <button id="btn-delete" class="btn">Lưu</button>
+
+                    </div>
+                </div>         
+            </div>
+
+            <!-- CHỈNH SỬA -->
+            <div class="tab-pane" >
+                <div class='container'>
+                    <table id="update-tab" class="update-table table-infor"  width="900" height="200">
+                        <tr>
+                            <td class="head-table">LOẠI PHÒNG</td>
+                            <td class="head-table">  </td>
+                        </tr>
+
+                        <tr>
+                            <td>Phòng đơn</td>
+                            <td>
+                                <button class="upd-btn btn-table" onclick="openUpdate()">Thay đổi</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Phòng đôi</td>
+                            <td>                                
+                                <button class="upd-btn btn-table" onclick="openUpdate()">Thay đổi</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Phòng bốn</td>
+                            <td>
+                                <button class="upd-btn btn-table" onclick="openUpdate()">Thay đổi</button>                
+                            </td>
+                        </tr>                      
+                    </table>                    
+
+                </div>
+
+            </div>
+            <!-- form chỉnh sửa -->
+            <div>
+                <div class='container add form'>
+                    <form id="form-update-room" class='set'>
+        
+                        <div class="room-container">
+                            <div class='room-infor'>
+                                <label for='room-name-update'>Tên phòng</label>
+                                <input id='room-name-update' placeholder="Nhập tên phòng" type='text' name="room-name" id="">
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+                        
+                        <div class="room-container">
+                            <div class='room-infor'>
+                                <label for='room-price-update'>Giá phòng</label>
+                                <input id='room-price-update' placeholder="VND" type='text' name="room-price" id=""></input>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+        
+                        <div id="photo" class="room-container">
+                            <div class='room-photo'>
+                                <label for='file-update'>Thêm hình ảnh</label>
+                                <input type="file" id="file-update" name="file-update" multiple="multiple" accept="image/jpeg, image/png, imgae/jpg" />
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+                        <img id="result-update"></img>
+    
+                        <div class="room-container des">
+                            <div class='room-infor'>
+                                <label for='room-des-update'>Mô tả phòng</label>
+                                <textarea id='room-des-update' placeholder="Nhập mô tả" type='radio' name="room-des" id="" style="height: 38px;"></textarea>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+                       
+                        <div class="room-container">
+                            <div class='room-infor'>
+                                <label for='room-size-update'>Kích thước</label>
+                                <input id='room-size-update' placeholder="m^3" type='text' name="room-size" id=""></input>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+                          
+                        <button id="btn-save-update" class="btn btn-save-form">Lưu</button>
+                    </form>
+                    <button class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
+                </div>                  
+            </div>
+        </div> 
+
+        
+    
+    <!-- <script>
+        
+        var rIndex, table = document.getElementById("table");
+        
+        // check the empty input
+        function checkEmptyInput()
+        {
+            var isEmpty = false,
+                fname = document.getElementById("fname").value,
+                lname = document.getElementById("lname").value,
+                age = document.getElementById("age").value;
+                aname = document.getElementById("aname").value;
+
+        
+            if(fname === ""){
+                alert("First Name Connot Be Empty");
+                isEmpty = true;
+            }
+            else if(lname === ""){
+                alert("Last Name Connot Be Empty");
+                isEmpty = true;
+            }
+            else if(aname === ""){
+                alert("Last Name Connot Be Empty");
+                isEmpty = true;
+            }
+            else if(age === ""){
+                alert("Age Connot Be Empty");
+                isEmpty = true;
+            }
+            return isEmpty;
+        }
+        
+        // add Row
+        function addHtmlTableRow()
+        {
+            // get the table by id
+            // create a new row and cells
+            // get value from input text
+            // set the values into row cell's
+            if(!checkEmptyInput()){
+            var newRow = table.insertRow(table.length),
+                cell1 = newRow.insertCell(0),
+                cell2 = newRow.insertCell(1),
+                cell3 = newRow.insertCell(2),
+                cell4 = newRow.insertCell(3),
+                fname = document.getElementById("fname").value,
+                lname = document.getElementById("lname").value,
+                age = document.getElementById("age").value;
+                aname =  document.getElementById("aname").value;
+        
+            cell1.innerHTML = fname;
+            cell2.innerHTML = lname;
+            cell3.innerHTML = age;
+            cell4.innerHTML = aname;
+            // call the function to set the event to the new row
+            selectedRowToInput();
+        }
+        }
+        
+        // display selected row data into input text
+        function selectedRowToInput()
+        {
+            
+            for(var i = 1; i < table.rows.length; i++)
+            {
+                table.rows[i].onclick = function()
+                {
+                  // get the seected row index
+                  rIndex = this.rowIndex;
+                  document.getElementById("fname").value = this.cells[0].innerHTML;
+                  document.getElementById("lname").value = this.cells[1].innerHTML;
+                  document.getElementById("age").value = this.cells[2].innerHTML;
+                  document.getElementById("aname").value = this.cells[3].innerHTML;
+                };
+            }
+        }
+        selectedRowToInput();
+        
+        function editHtmlTbleSelectedRow()
+        {
+            var fname = document.getElementById("fname").value,
+                lname = document.getElementById("lname").value,
+                age = document.getElementById("age").value;
+                aname = document.getElementById("aname").value;
+           if(!checkEmptyInput()){
+            table.rows[rIndex].cells[0].innerHTML = fname;
+            table.rows[rIndex].cells[1].innerHTML = lname;
+            table.rows[rIndex].cells[2].innerHTML = age;
+            table.rows[rIndex].cells[3].innerHTML = aname;
+          }
+        }
+        
+        function removeSelectedRow()
+        {
+            table.deleteRow(rIndex);
+            // clear input text
+            document.getElementById("fname").value = "";
+            document.getElementById("lname").value = "";
+            document.getElementById("age").value = "";
+            document.getElementById("aname").value = "";
+        }
+    </script> -->
+
+    </section>
+
+    <!-- SCRIPT bell -->
+    <script src="./assets/javascript/notificationBell.js"></script>
+
+    <!-- script tab slider -->
+    <script src="./assets/javascript/tab-slider.js"></script>
+
+    <!-- script mô tả phòng -->
+    <!-- <script>
+        const tx = document.getElementsByTagName("textarea");
+    for (let i = 2; i < tx.length-1; i++) {
+    tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+    tx[i].addEventListener("input", OnInput, false);
+    }
+
+    function OnInput() {
+    this.style.height = "40px";
+    this.style.height = (this.scrollHeight) + "px";
+    }
+    </script> -->
+
+    <!-- SCRIPT upload photo-->
+    <script src="./assets/javascript/upload-photo.js"></script>
+    <!-- Kiểm tra điều kiện nhập đầy đủ thông tin -->
+    <script src="./assets/javascript/formValidation.js"></script>
+    <script>
+        Validator({
+            form: '#form-add',
+            formGroupSelector: '.room-container',
+            errorSelector: '.invalid-message',
+            rules: [
+                Validator.isRequired('#room-name', 'Vui lòng nhập tên phòng'),
+                Validator.minLength('#room-name', 5), 
+                Validator.isRequired('#room-price', 'Vui lòng nhập đơn giá phòng'),
+                Validator.isNumber('#room-price'),
+                Validator.isRequired('#file', 'Vui lòng chọn hình ảnh'),
+                Validator.isRequired('#room-des', 'Vui lòng nhập mô tả phòng'),
+                Validator.minLength('#room-des', 20), 
+                Validator.isRequired('#room-size', 'Vui lòng nhập kích thước phòng'),
+                Validator.isNumber('#room-size'),
+            ],
+            onSubmit: function(data) {
+
+            }
+        });
+
+        Validator({
+            form: '#form-update-room',
+            formGroupSelector: '.room-container',
+            errorSelector: '.invalid-message',
+            rules: [
+                Validator.isRequired('#room-name-update', 'Vui lòng nhập tên phòng'),
+                Validator.minLength('#room-name-update', 5), 
+                Validator.isRequired('#room-price-update', 'Vui lòng nhập đơn giá phòng'),
+                Validator.isNumber('#room-price-update'),
+                Validator.isRequired('#file-update', 'Vui lòng chọn hình ảnh'),
+                Validator.isRequired('#room-des-update', 'Vui lòng nhập mô tả phòng'),
+                Validator.minLength('#room-des-update', 20), 
+                Validator.isRequired('#room-size-update', 'Vui lòng nhập kích thước phòng'),
+                Validator.isNumber('#room-size-update'),
+            ],
+            onSubmit: function(data) {
+
+            }
+        });
+    </script>
+</body>
+</html>

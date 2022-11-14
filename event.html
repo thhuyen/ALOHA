@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTD-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ALOHA</title>
+    <link rel="icon" href="./assets/img/logo/logo.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="./assets/CSS/base.css">
+    <link rel="stylesheet" href="./assets/CSS/home.css">
+    <link rel="stylesheet" href="./assets/CSS/event.css">
+    <link rel="stylesheet" href="./assets/CSS/responsiveHome.css">
+    <link rel="stylesheet" href="./assets/CSS/responsiveEvent.css">
+    <link rel="stylesheet" href="./assets/CSS/responsiveNav.css">
+    <link rel="stylesheet" href="./form/css/registerEvent.css">
+    <link rel="stylesheet" href="./form/css/paymentRoom.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="header">
+        <a href="home.html" id="logo">
+            <img src="./assets/img/logo/logo.png" alt="" id="img-logo">
+        </a>
+        <span id="open-nav-icon">&#9776;
+        </span>
+        <ul id="nav">
+            <li class="nav-item"><a href="home.html">TRANG CHỦ</a></li>
+            <li class="nav-item"><a href="room.html">PHÒNG</a></li>
+            <li id ="nav-item-service" class="nav-item">
+                <a href="service.html" class="nav-item-link">DỊCH VỤ
+                    <i class="icon-down fa-solid fa-caret-down"></i>
+                </a>
+                
+                <ul id ="sub-nav-service" class="subnav">
+                    <a href="service.html#content"><li>Café</li></a>
+                    <a href="service.html#content"><li>Karaoke</li></a>                       
+                    <a href="service.html#content"><li>Sân golf</li></a>
+                    <a href="service.html#content"><li>Quầy bar</li></a>
+                    <a href="service.html#content""><li>Thú cưng</li></a>
+                    <a href="service.html#content""><li>Giặt ủi đồ</li></a>
+                    <a href="service.html#content""><li>Phòng spa</li></a>
+                    <a href="service.html#content""><li>Phòng gym</li></a>
+                    <a href="service.html#content""><li>Phục vụ 24/24</li></a>
+                </ul>
+            </li>
+            <li id ="nav-item-event" class="nav-item">
+                <a href="#" class="nav-item-link">SỰ KIỆN
+                    <i class="icon-down fa-solid fa-caret-down"></i>
+                </a>
+                <ul id = "sub-nav-event" class="subnav">
+                    <a href="#birthday"><li>Kỉ niệm</li></a>
+                    <a href="#birthday"><li>Sinh nhật</li></a>
+                    <a href="#meeting"><li>Hội họp</li></a>
+                    <a href="#meeting"><li>Hội nghị</li></a>
+                    <a href="#wedding"><li>Tiệc prom</li></a>                       
+                    <a href="#wedding"><li>Đám cưới</li></a>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="home.html#review">ĐÁNH GIÁ</a></li>
+            <li class="nav-item"><a href="#footer">LIÊN HỆ</a></li>
+            <span id="close-nav-icon" onclick="closeNav()">&times;</span>
+        </ul>
+    </div>
+
+    <div id="overlay"></div>
+    
+    <div id="slider">
+        <img src="./assets/img/event/event.jpg" alt="" class="img-slider">
+        <div class="content">
+            <h2>SỰ KIỆN</h2>
+        </div>
+    </div>
+
+    <div id="content">
+        <table class="intro-event">
+            <tr>
+                <td><li>Sinh nhật</li></td>
+                <td><li>Prom</li></td>
+            </tr>
+            <tr>
+                <td><li>Kỷ niệm</li></td>
+                <td><li>Đám cưới</li></td>
+            </tr>
+            <tr>
+                <td><li>Hội họp</li></td>
+                <td><li>Hội nghị</li></td>
+
+            </tr>
+        </table>
+
+        <div id="main-content">
+            <!-- content birthday -->
+            <div id="birthday" class="content-body room">
+                <div class="group-img-content">
+                    <div class="frame-video">
+                        <video controls class="video-event birthday">
+                            <source src="./assets/video/birthday.mov" type="video/mp4">
+                        </video>
+                    </div>
+
+                </div>    
+                <div class="infor-body">
+                    <div class="group-icon-star">
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                    </div>
+                    <h2 >SINH NHẬT - KỶ NIỆM</h2>
+                    <p>Bạn đang muốn tổ chức một bữa tiệc theo truyền thống của Việt Nam, kỷ niệm ngày cưới hay sinh nhật? Hãy để các đầu bếp tại ALOHA tạo ra một thực đơn tuyệt vời cho những buổi tiệc của bạn. Đến với ALOHA chỉ có thể tìm đến những điều vui vẻ hạnh phúc mà thôi, hãy để chúng tôi giúp bạn trở thành người tỏa sáng nhất trong buổi tiệc của bạn. Luôn lắng nghe mọi ý tưởng của khách hàng, ALOHA sẽ hóa phép mọi ước mơ thành hiện thực, khiến bạn sẽ là nhân vật chính ngày hôm đó.</p>
+                    <button type="button" onclick="location.href='#';" class="showmore-btn btn-booknow" >Đặt ngay</button>
+                </div>
+            </div>           
+
+            <div id="wedding" class="content-body service">
+                <div class="infor-body body-wedding">
+                    <div class="group-icon-star">
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                    </div>
+                    <h2>TIỆC CƯỚI - PROM </h2>
+                    <p>Sống trọn vẹn đám cưới / tiệc prom trong mơ của bạn tại ALOHA - khung cảnh hoàn hảo, trang trí đẹp mắt, không khí ấm áp. Cho dù đó là một bữa tiệc trang trọng xa hoa, hay một buổi họp mặt thân mật, tiệc chiêu đãi và tuần trăng mật, từ việc lên kế hoạch cho đến thực thi, đội ngũ của chúng tôi sẽ sắp xếp từng chi tiết cho buổi tiệc của bạn theo phong cách thanh lịch và sang trọng nhất. ALOHA tin chắc rằng sẽ đem buổi tiệc của bạn trở thành buổi tiệc tuyệt vời nhất đối với mỗi người.</p>
+                    <button type="button" onclick="location.href='#';" class="showmore-btn btn-booknow" >Đặt ngay</button>
+                </div>
+                <div class="group-img-content wedding">
+                    <div class="frame-video">
+                        <video controls class="video-event wedding">
+                            <source src="./assets/video/wedding.mov" type="video/mp4">
+                        </video>
+                    </div>
+                    
+                </div>  
+
+            </div>
+           
+            
+            <!-- content meeting -->
+            <div id="meeting" class="content-body event">
+                <div class="group-img-content">
+                    <div class="frame-video">
+                        <video controls class="video-event meeting">
+                            <source src="./assets/video/meeting.mov" type="video/mp4">
+                        </video>
+                    </div>
+                </div>    
+                <div class="infor-body">
+                    <div class="group-icon-star">
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                        <i class="icon-start fa-solid fa-star"></i>
+                    </div>
+                    <h2>HỘI HỌP - HỘI NGHỊ</h2>
+                    <p>Các phòng họp có sức chứa lên đến 700 người. Mỗi phòng họp đã được xem xét lại từ mọi góc độ, cung cấp thêm không gian mà khách hàng có thể trang trí lại để thích ứng với các thời điểm khác nhau trong ngày, cho các phiên làm việc, thảo luận và giải lao. Sức chứa lớn phù hợp với mọi hội nghị lớn và nhỏ, không gian thoải mái thay đổi theo ý muốn của bạn để có thể đạt hiệu quả tốt nhất trong công việc. Hãy để ALOHA đem đến những điều thuận lợi trong mỗi bản hợp đồng mà bạn ký kết tại đấy.</p>
+                    <button type="button" onclick="location.href='#';" class="showmore-btn btn-booknow" >Đặt ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footer">
+        <div class="footer-container">
+            <span id="admin" data-toggle="modal" data-target="#modal-login">Kênh quản lý</span>
+            <div class="footer-content">
+                <div class="social-contact">
+                    <div class="follow-us">
+                        <h2>ALOHA HOTEL</h2>
+                        <div class="follow-us-social">
+                            <p>Follow us:</p> 
+                            <a href="#"><i class="icon-follow-us fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="icon-follow-us fa-brands fa-youtube"></i></a>
+                            <a href="#"><i class="icon-follow-us fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="icon-follow-us fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="infor-contact">   
+                    <li>
+                        <i class="icon-infor-contact1 fa-solid fa-location-dot"></i>
+                        <span><a href="#location">12 La Văn Cầu, Phường Thắng Tam, Thành phố Vũng Tàu, Bà Rịa - Vũng Tàu</a></span>
+                        
+                    </li>    
+                    <li>
+                        <i class="icon-infor-contact fa-solid fa-phone"></i>
+                        <span><a href="tel: 0969769445">096 976 94 45</a></span>
+                        
+                    </li>
+                    <li>
+                        <i class="icon-infor-contact fa-solid fa-envelope"></i>
+                        <span><a href="mailto:">alohavungtau@gmail.com</a></span>
+                    </li>
+                </ul>     
+            </div>
+        </div>
+    </div>
+
+    <div id="scroll-head">
+        <i class="ti-angle-up"></i>
+    </div>
+
+    <div class="modal-register">
+        <div class="modal-register-container">
+            <div class="modal-header">
+                <span>ĐĂNG KÝ SỰ KIỆN</span>
+                <div class=""close-modal>
+                    <i id = "icon-close-register" class="icon-close-modal fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            
+            <div class="modal-body">
+                <p class="title">1. Thông tin khách hàng</p>
+                <div class="infor-client">
+                    <form action="" class = "form-group">
+                        <label>Họ tên:</label>
+                        <input type="text" id="fullname-register" name="fullname"  placeholder="Nhập họ tên" class="input-form client">
+                    </form>
+    
+                    <form action="" class = "form-group">
+                        <label>Số điện thoại:</label>
+                        <input type="text" id="phone-register" name="phone" placeholder="Nhập số điện thoại" class="input-form client">
+                    </form>
+                    
+                    <form action="" class = "form-group">
+                        <label>Email:</label>
+                        <input type="text" id="email-register" name="email" placeholder="Nhập email" class="input-form client">
+                    </form>
+                </div>
+    
+                <div class="infor-room">
+                    <p class="title">2. Thông tin sự kiện</p>
+                    <form action="" class = "form-group">
+                        <label for="checkin">Ngày đặt:</label>
+                        <input id="checkin-day-register" type="text" name="checkin" class="input-form" placeholder="dd/mm/yyyy">
+                    </form>
+    
+                    <form action="" class = "form-group">
+                        <label for="checkout">Ngày trả:</label>
+                        <input id="checkout-day-register" type="text" name="checkout" class="input-form" placeholder="dd/mm/yyyy">
+                    </form>
+    
+                    <form action="" class = "form-group">
+                        <label>Loại sự kiện:</label>
+                        <select id ="type-event-register" class="input-form">
+                            <option>Prom</option>
+                            <option>Sinh nhật</option>
+                            <option>Kỷ niệm</option>
+                            <option>Hội họp</option>
+                            <option>Hội nghị</option>
+                            <option>Đám cưới</option>
+                        </select>
+
+                    </form>
+
+                    <form action="" class = "form-group">
+                        <label>Số khách/sự kiện:</label>
+                        <input type="text" id="people-event" name="people" class="input-form">
+                    </form>
+                    <form action="" class = "form-group">
+                        <label>Đơn giá/ngày:</label>
+                        <input type="text" id="price-register" name="price-register" disabled class="input-form">
+                    </form>
+                </div>
+    
+                <button class="button-next-form" onclick="openFormPayment()">Tiếp theo</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-payment">
+
+        <div class="modal-payment-container">
+            <div class="modal-header">
+                <span>THANH TOÁN</span>
+                <div class=""close-modal>
+                    <i id = "icon-close-payment" class="icon-close-modal fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            
+            <div class="modal-body">
+                <div class="detail-payment">
+                    <p class="title">3. Chi tiết hóa đơn</p>
+                    <div class="detail-payment-body">
+
+                        <div class="detail-payment-client">
+                            <p class="fullname-payment">Họ tên: Nguyễn Văn A</p>
+                            <p class="phone-payment">SĐT: 9374639123</p>
+                            <p class="type-event-payment">Loại sự kiện: Hội họp</p>
+                        </div>
+                        
+                        <div class="detail-payment-room">
+                            <p class="checkin-payment">Ngày đặt: 12-09-2022</p>
+                            <p class="checkout-payment">Ngày trả: 13-09-2022</p>
+                            <p class="people-event-payment">Số lượng khách</p>
+                        </div>
+                    </div> 
+                    <p class="email-payment">Email: 20520207@gm.uit.edu.vn</p>
+                    <p class="total-payment">Tổng cộng: 4000000</p>
+                </div>
+
+                <div class="method-payment">
+                    <p class="title title-method"> 4. Phương thức thanh toán</p>
+                    <div class="method-container">
+                        <div class="method-item">
+                            <input type="radio" name="payment" id = "cash" class="input-method-item">
+                            <label for="cash" class="label-method-item">
+                                <i class="icon-check fa-solid fa-circle-check"></i>
+                                <img src="./assets/img/cash-icon.png" alt="" id ="cash-img" class="icon-payment">
+                                <p>Tiền mặt</p>
+                            </label>
+
+                        </div>
+                        <div class="method-item">
+                            <input type="radio" name="payment" id = "momo" class="input-method-item">
+                            <label for="momo" class="label-method-item">
+                                <i class="icon-check fa-solid fa-circle-check"></i>
+                                <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="MoMo_Logo" id="momo-img" class="icon-payment">
+                                <p>Momo</p>
+                            </label>
+                        </div>
+                        <div class="method-item" class="label-method-item">
+                            <input type="radio" name="payment" id = "bank" class="input-method-item">
+                            <label for="bank" class="label-method-item">
+                                <i class="icon-check fa-solid fa-circle-check"></i>
+                                <img src="https://cdn-icons-png.flaticon.com/512/3029/3029373.png" alt="" class="icon-payment" id="bank-img">
+                                <p>Chuyển khoản</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="group-button">
+                    <button class="btn-payment button-back">Quay lại</button>
+                    <button class="btn-payment button-finish">Hoàn tất</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var scrollIcon = document.getElementById("scroll-head");
+        window.onscroll = function() {
+            if (document.documentElement.scrollTop > 1300)
+            {
+                scrollIcon.style.opacity= "1";
+            } else {
+                scrollIcon.style.opacity= "0";
+            }
+            scrollIcon.onclick = function() {
+                scrollTo(0,0);
+            }
+        };
+    </script>
+    <script src="./assets/javascript/navbar.js"></script>
+    <script src="./assets/javascript/formEvent.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>

@@ -1,0 +1,38 @@
+:root {
+    --black-color: #191514;
+    --white-color: #fff;    
+    --grey-color: #ccc;    
+    --title-color: rgb(8, 0, 77);
+    --height-header: 70px;
+    --background-color: #f8f8f8;
+    --color-blue: #7499a2;
+    --color-pink: #e29c89;
+    --subnav-hover: #F9B456;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;    
+}
+
+html {
+    /* scroll-behavior: smooth; */
+    font-family: Helvetica, Arial, sans-serif;
+}
+/* font face */
+@font-face {
+    font-family: UTM-Aptima;
+    src: url(../fonts/font-text/UTM\ Aptima.ttf);
+}
+@font-face {
+    font-family: utm-bell;
+    src: url(../fonts/font-text/UTM\ Bell.ttf);
+}
+@font-face {
+    font-family: nexa;
+    src: url(../fonts/font-text/SVN-Nexa\ Light.ttf);
+}
+@font-face {
+    font-family: uvn-bale;
+    src: url(../fonts/font-text/UVNBaLe.TTF);
+}
