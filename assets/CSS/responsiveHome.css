@@ -176,7 +176,7 @@
 /* mobile */
 @media (max-width: 740px) { 
     .search {
-        bottom: -200px;
+        bottom: -50px;
     }
     #content .intro p {
         font-size: 14px;
@@ -218,6 +218,7 @@
     .search .container {
         display: block;
         width: 70vw;
+        text-align: center;
     }
     .input-group{
         padding-left: 0;
