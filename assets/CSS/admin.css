@@ -118,7 +118,17 @@ ul li .btn {
     position: relative;
     display: inline-block;
 }
-
+.dropdown #count-news {
+    position: absolute;
+    top: 0;
+    right: 18px;;
+    background-color: red;
+    color: white;
+    width: fit-content;
+    padding: 5px 8px;
+    font-size: 0.5rem;
+    border-radius: 50%;
+}
 .dropdown-content {
     display: none;
     position: absolute;
