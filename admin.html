@@ -52,15 +52,21 @@
         </ul>
     </div>
 
-
     <section>
         <!-- NOTICE-BELL -->
         
                 <div class="notice">
                     <div class="dropdown">
+                        <?php
+                            include './assets/PHP/connectdb.php';
+                            $get_news = mysqli_query($conn, "SELECT * FROM notification WHERE Status = 0");
+                            $count_news = $get_news->num_rows;
+                        ?>
                         <button onclick="myFunction()" >
-                            <i class="dropbtn fa-solid fa-bell"></i>
-                        </button>
+                            <i class="dropbtn fa-solid fa-bell">
+                                <div id="count-news"><?php echo $count_news; ?></div>
+                            </i>                            
+                        </button>     
                         <div id="myDropdown" class="dropdown-content">
                             <a>
                                 <div class="notify-info">

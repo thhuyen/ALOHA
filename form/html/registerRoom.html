@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ALOHA</title>
-    <link rel="icon" href="/assets/img/logo/logo - Copy.png" />
+    <link rel="icon" href="../../assets/img/logo/logo - Copy.png" />
     <link rel="stylesheet" href="../../assets/CSS/base.css">
     <link rel="stylesheet" href="../css/registerRoom.css">
     <link rel="stylesheet" href="../../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
@@ -17,7 +17,7 @@
 <body>
     <div class="modal-register">
         <div class="modal-register-container">
-            <div class="modal-header">
+            <div class="modal-header register">
                 <span>ĐĂNG KÝ PHÒNG</span>
                 <div class=""close-modal>
                     <i id = "icon-close-register" class="icon-close-modal fa-solid fa-xmark"></i>
@@ -25,59 +25,60 @@
             </div>
             
             <div class="modal-body">
-                <p class="title">1. Thông tin khách hàng</p>
-                <div class="infor-client">
-                    <form action="" class = "form-group">
-                        <label>Họ tên:</label>
-                        <input type="text" id="fullname-register" name="fullname"  placeholder="Nhập họ tên" class="input-form client">
-                    </form>
-    
-                    <form action="" class = "form-group">
-                        <label>Số điện thoại:</label>
-                        <input type="text" id="phone-register" name="phone" placeholder="Nhập số điện thoại" class="input-form client">
-                    </form>
+                <form action="" class = "form-group">
+                    <div class="infor-client">
+                        <p class="title">1. Thông tin khách hàng</p>
+                        <div class="infor-item">
+                            <label>Họ tên:</label>
+                            <input type="text" id="fullname-register" name="fullname"  placeholder="Nhập họ tên" class="input-form client">
+                            <br>
+                        </div>
+                        <div class="infor-item">
+                            <label>Số điện thoại:</label>
+                            <input type="text" id="phone-register" name="phone" placeholder="Nhập số điện thoại" class="input-form client">
+                            <br>
+                        </div>
+                        <div class="infor-item">
+                            <label>Email:</label>
+                            <input type="text" id="email-register" name="email" placeholder="Nhập email" class="input-form client">
+                        </div>
+                    </div>
                     
-                    <form action="" class = "form-group">
-                        <label>Email:</label>
-                        <input type="text" id="email-register" name="email" placeholder="Nhập email" class="input-form client">
-                    </form>
-                </div>
-    
-                <div class="infor-room">
-                    <p class="title">2. Thông tin phòng</p>
-                    <form action="" class = "form-group">
-                        <label for="checkin">Ngày đặt:</label>
-                        <input id="checkin-day-register" type="text" name="checkin" class="input-form" placeholder="dd/mm/yyyy">
-                    </form>
-    
-                    <form action="" class = "form-group">
-                        <label for="checkout">Ngày trả:</label>
-                        <input id="checkout-day-register" type="text" name="checkout" class="input-form" placeholder="dd/mm/yyyy">
-                    </form>
-    
-                    <form action="" class = "form-group">
-                        <label>Loại phòng:</label>
-                        <select id ="type-room-register" class="input-form">
-                            <option></option>
-                        </select>
-
-                    </form>
-
-    
-                    <form action="" class = "form-group">
-                        <label>Số lượng phòng:</label>
-                        <input type="number" id="number-room-register" name="number-room" placeholder="Nhập số lượng" class="input-form" value = 1  min="1" max="5">
-                    </form>
-    
-                    <form action="" class = "form-group">
-                        <label>Số khách/phòng:</label>
-                        <input type="text" id="people" name="people" disabled class="input-form">
-                    </form>
-                    <form action="" class = "form-group">
-                        <label>Giá tiền/phòng:</label>
-                        <input type="text" id="price" name="price" disabled class="input-form">
-                    </form>
-                </div>
+                    <div class="infor-room">
+                        <p class="title">2. Thông tin phòng</p>
+                        <div class="infor-item">
+                            <label for="checkin">Ngày đặt:</label>
+                            <input id="checkin-day-register" type="text" name="checkin" class="input-form" placeholder="dd/mm/yyyy">
+                            <br>
+                        </div>
+                        <div class="infor-item">
+                            <label for="checkout">Ngày trả:</label>
+                            <input id="checkout-day-register" type="text" name="checkout" class="input-form" placeholder="dd/mm/yyyy">
+                            <br>                                 
+                        </div>
+                        <div class="infor-item">
+                            <label>Loại phòng:</label>
+                            <select id ="type-room-register" class="input-form">
+                                <option></option>
+                            </select>
+                            <br>
+                        </div>
+                        <div class="infor-item">
+                            <label>Số lượng phòng:</label>
+                            <input type="number" id="number-room-register" name="number-room" placeholder="Nhập số lượng" class="input-form" value = 1  min="1" max="5">
+                            <br>
+                        </div>
+                        <div class="infor-item">
+                            <label>Số khách/phòng:</label>
+                            <input type="text" id="people" name="people" disabled class="input-form">
+                            <br>
+                        </div>
+                        <div class="infor-item">
+                            <label>Giá tiền/phòng:</label>
+                            <input type="text" id="price" name="price" disabled class="input-form">
+                        </div>
+                    </div>
+                </form>
     
                 <button class="button-next-form" onclick="openFormPayment()">Tiếp theo</button>
             </div>
