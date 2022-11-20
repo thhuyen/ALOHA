@@ -176,7 +176,7 @@
 /* mobile */
 @media (max-width: 740px) { 
     .search {
-        bottom: -200px;
+        bottom: -50px;
     }
     #content .intro p {
         font-size: 14px;
@@ -218,6 +218,7 @@
     .search .container {
         display: block;
         width: 70vw;
+        text-align: center;
     }
     .input-group{
         padding-left: 0;
@@ -226,9 +227,6 @@
     .input-label{
         display: block;
         font-size: 15px;
-    }
-    .search .container {
-        text-align: center;
     }
     .btn-search{
         width: 100%;
@@ -246,6 +244,8 @@
     .grid{
         grid-template-columns: auto;
     }
-
+    .search {
+        bottom: -200px;
+    }
 
 } 

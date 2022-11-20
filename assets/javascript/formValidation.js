@@ -127,3 +127,11 @@ Validator.isNumber = function(selector) {
         }
     };
 }
+Validator.isSelected = function (selector, message) {
+    return {
+        selector: selector,
+        test: function(value) {
+            return value > 0 ? undefined: `Vui lòng chọn ${message} tại đây`; 
+        }
+    };
+}
