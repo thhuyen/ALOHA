@@ -14,32 +14,47 @@
 </head>
 <body>
       <!-- SIDE BAR -->
-      <div class="side-bar">
+      <div class="side-bar d-flex flex-column flex-shrink-0">
         <h2>admin</h2>
-        <ul class="nav-sidebar">
-            <a  href="admin.html">
-                <li>
-                    <i class="fa-solid fa-id-card"></i>
-                    <span>TỔNG QUAN</span>
-                </li>
-            </a>
-            <a href="admin-room.html">
-                <li>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="text-decoration-none">
+                    <i class="fa-solid fa-house-user"></i>
+                    TỔNG QUAN
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="admin-customer.html" class="nav-link">
+                    <i class="fa-solid fa-circle-user"></i>
+                    KHÁCH HÀNG
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="admin-roomtype.html" class="nav-link">
                     <i class="fa-solid fa-hotel"></i>
-                    <span>PHÒNG</span>
-                </li>
-            </a>
-            <a  href="admin-service.html">
-                <li>
+                    LOẠI PHÒNG
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="admin-room.html" class="nav-link">
+                    <i class="fa-solid fa-people-roof"></i>
+                    PHÒNG
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="admin-service.html" class="nav-link">
                     <i class="fa-solid fa-bell-concierge"></i>
-                    <span>DỊCH VỤ</span>
-                </li>
-            </a>
-            <a href="#">
-                <li>
+                    DỊCH VỤ
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="admin-event.html" class="nav-link">
                     <i class="fa-solid fa-calendar-days"></i>
-                    <span>SỰ KIỆN</span>
-                </li>
+                    SỰ KIỆN
+                </a>
+            </li>
+            
             </a>
         </ul>
     </div>
@@ -52,11 +67,11 @@
                     <div class="tab-item active">
                         Thêm sự kiện
                       </div>
-                      <div class="tab-item">
+                      <!-- <div class="tab-item">
                         Xóa sự kiện
-                      </div>
+                      </div> -->
                       <div class="tab-item">
-                        Chỉnh sửa
+                        Quản lý sự kiện
                       </div>
                
                       <div class="line"></div>
@@ -113,33 +128,32 @@
                     <form id="form-add">
                         <div class="room-container">
                             <div class='room-infor'>
-                                <label for='room-name'>Tên sự kiện</label>
+                                <label for='room-name'>Tên sự kiện *</label>
                                 <input id='room-name' placeholder="Nhập tên sự kiện" type='text' name="room-name" id="">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
-                        
+
                         <div class="room-container">
                             <div class='room-infor'>
-                                <label for='room-price'>Giá sự kiện</label>
+                                <label for='room-time'>Khoảng thời gian *</label>
+                                <input id='room-time' type='number' name="room-time" min="1" max="24"></input>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+
+                        <div class="room-container">
+                            <div class='room-infor'>
+                                <label for='room-price'>Đơn giá *</label>
                                 <input id='room-price' placeholder="VND" type='text' name="room-price" id=""></input>
                             </div>
                             <span class="invalid-message"></span>
                         </div>
-        
-                        <div id="photo" class="room-container">
-                            <div class='room-photo'>
-                                <label for='file'>Ảnh sự kiện</label>
-                                <input type="file" id="file" name="file" accept=".png, .jpg" />
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-                        <img id="result"></img>
     
                         <div class="room-container des">
                             <div class='room-infor'>
-                                <label for='room-des'>Mô tả sự kiện</label>
-                                <textarea id='room-des' placeholder="Nhập mô tả" type='radio' name="room-des" id="" style="height: 38px;"></textarea>
+                                <label for='room-des'>Ghi chú</label>
+                                <textarea id='room-des' placeholder="Nhập ghi chú" type='radio' name="room-des" id="" style="height: 38px;"></textarea>
                             </div>
                             <span class="invalid-message"></span>
                         </div>                          
@@ -149,7 +163,7 @@
             </div>
 
             </div>
-            <!-- XÓA DỊCH VỤ -->
+            <!-- XÓA DỊCH VỤ 
             <div class="tab-pane">
                 <div class="container ">
                     <div class="container-table">
@@ -214,56 +228,83 @@
 
                     </div>
                 </div>         
-            </div>
+            </div>-->
 
             <!-- CHỈNH SỬA -->
             <div class="tab-pane" >
                 <div class='container'>
                     <table id="update-tab" class="update-table table-infor" width="900" height="300">
                         <tr>
-                            <td class="head-table">LOẠI DỊCH VỤ</td>
+                            <td class="head-table">LOẠI SỰ KIỆN</td>
+                            <td class="head-table">KHOẢNG THỜI GIAN</td>
+                            <td class="head-table">ĐƠN GIÁ</td>
+                            <td class="head-table">GHI CHÚ</td>
                             <td class="head-table">  </td>
                         </tr>
 
                         <tr>
                             <td>Prom</td>
+                            <td>1</td>
+                            <td>Prom</td>
+                            <td>........</td>
                             <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Thay đổi</button>
+                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>
+                                <button class="del-btn btn-table">Xóa</button>
                             </td>
                         </tr>
 
                         <tr>
                             <td>Kỷ niệm</td>
+                            <td>2</td>
+                            <td>Prom</td>
+                            <td>.........</td>
                             <td>                                
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Thay đổi</button>
+                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>
+                                <button class="del-btn btn-table">Xóa</button>
                             </td>
                         </tr>
 
                         <tr>
                             <td>Sinh nhật</td>
+                            <td>3</td>
+                            <td>Prom</td>
+                            <td>........</td>
                             <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Thay đổi</button>                
+                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
+                                <button class="del-btn btn-table">Xóa</button>
                             </td>
                         </tr> 
             
                         <tr>
                             <td>Hội họp</td>
+                            <td>4</td>
+                            <td>Prom</td>
+                            <td>.............</td>
                             <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Thay đổi</button>                
+                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
+                                <button class="del-btn btn-table">Xóa</button>
                             </td>
                         </tr> 
                         
                         <tr>
                             <td>Hội nghị</td>
+                            <td>5</td>
+                            <td>Prom</td>
+                            <td>............</td>
                             <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Thay đổi</button>                
+                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
+                                <button class="del-btn btn-table">Xóa</button>
                             </td>
                         </tr> 
 
                         <tr>
                             <td>Đám cưới</td>
+                            <td>6</td>
+                            <td>Prom</td>
+                            <td>...........</td>
                             <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Thay đổi</button>                
+                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
+                                <button class="del-btn btn-table">Xóa</button>
                             </td>
                         </tr> 
                     </table>                    
