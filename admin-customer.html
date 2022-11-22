@@ -119,7 +119,7 @@
 
 <!-- HEADING -->
         <div class="heading">
-            <h1>DỊCH VỤ</h1>
+            <h1>KHÁCH HÀNG</h1>
         </div>
 <!-- FORM -->
         <div class="tab-content">
@@ -159,27 +159,24 @@
                             <span class="invalid-message"></span>
                         </div>
 
-                        <div class="guest-infor">
-                            
-                        </div>
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-time'>Số lần đặt *</label>
-                                <input id='guest-time' type='number' name="guest-time" min="1" max="1000"></input>
+                        <div class="two-container">
+                            <div class="left-container">
+                                <div class='guest-infor'>
+                                    <label for='guest-time'>Số lần đặt *</label>
+                                    <input id='guest-time' type='number' name="guest-time" min="1" max="1000"></input>
+                                </div>
+                                <span class="invalid-message"></span>                           
                             </div>
-                            <span class="invalid-message"></span>
-                            
-                        </div>
-
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-type'>Phân loại *</label>
-                                <select name="guest-type" id="guest-type">
-                                    <option value="non-vip">Không thân thiết</option>
-                                    <option value="vip">Thân thiết</option>
-                                </select>
-                            </div>
-                            <span class="invalid-message"></span>
+    
+                            <div class="right-container">
+                                <div class='guest-infor'>
+                                    <label for='guest-type'>Phân loại *</label>
+                                    <select name="guest-type" id="guest-type">
+                                        <option value="non-vip">Không thân thiết</option>
+                                        <option value="vip">Thân thiết</option>
+                                    </select>
+                                </div>
+                            </div>   
                         </div>
         
                         
@@ -320,36 +317,56 @@
         
                         <div class="room-container">
                             <div class='room-infor'>
-                                <label for='room-name-update'>Tên dịch vụ</label>
-                                <input id='room-name-update' placeholder="Nhập tên dịch vụ" type='text' name="room-name" id="">
+                                <label for='guest-code'>Mã khách hàng *</label>
+                                <input id='guest-code'  type='text' name="guest-code" id="">
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+
+                        <div class="room-container">
+                            <div class='room-infor'>
+                                <label for='guest-name'>Họ tên *</label>
+                                <input id='guest-name'  type='text' name="guest-name" id="">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
                         
                         <div class="room-container">
                             <div class='room-infor'>
-                                <label for='room-price-update'>Giá dịch vụ</label>
-                                <input id='room-price-update' placeholder="VND" type='text' name="room-price" id=""></input>
+                                <label for='guest-phone'>Số điện thoại *</label>
+                                <input id='guest-phone'  type='text' name="guest-phone" id="">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
-        
-                        <div id="photo" class="room-container">
-                            <div class='room-photo'>
-                                <label for='file-update'>Hình ảnh dịch vụ</label>
-                                <input type="file" id="file-update" name="file-update" multiple="multiple" accept="image/jpeg, image/png, imgae/jpg" />
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-                        <img id="result-update"></img>
-    
-                        <div class="room-container des">
+
+                        <div class="room-container">
                             <div class='room-infor'>
-                                <label for='room-des-update'>Mô tả dịch vụ</label>
-                                <textarea id='room-des-update' placeholder="Nhập mô tả" type='radio' name="room-des" id="" style="height: 38px;"></textarea>
+                                <label for='guest-mail'>Email *</label>
+                                <input id='guest-mail'  type='text' name="guest-mail" id="">
                             </div>
                             <span class="invalid-message"></span>
-                        </div>                     
+                        </div>
+
+                        <div class="two-container">
+                            <div class="left-container">
+                                <div class='guest-infor'>
+                                    <label for='guest-time'>Số lần đặt *</label>
+                                    <input id='guest-time' type='number' name="guest-time" min="1" max="1000"></input>
+                                </div>
+                                <span class="invalid-message"></span>                           
+                            </div>
+    
+                            <div class="right-container">
+                                <div class='guest-infor'>
+                                    <label for='guest-type'>Phân loại *</label>
+                                    <select name="guest-type" id="guest-type">
+                                        <option value="non-vip">Không thân thiết</option>
+                                        <option value="vip">Thân thiết</option>
+                                    </select>
+                                </div>
+                            </div>   
+                        </div>
+                                         
                               
                         <button id="btn-save-update" class="btn btn-save-form">Lưu</button>
                     </form>

@@ -318,3 +318,36 @@ section {
 .invalid {
   border: 2px solid red !important;
 }
+
+/*----------customer----------*/
+.container .two-container{
+  display: grid;
+  grid-template-areas: "left right";
+  max-width: 900px;
+  padding-bottom: 20px;
+}
+
+.container .two-container .left-container {
+    width: 500px;
+}
+.container .two-container .left-container label{
+  padding-right: 185px;
+}
+
+.container .two-container .right-container{
+  display: grid;
+    grid-template-areas: "." ".";
+    width: 500px;
+}
+.container .two-container .right-container .guest-infor{
+  margin: auto 0 ;
+  padding-top: 3px;
+}
+.container .two-container .right-container label{
+  padding-right: 50px;
+}
+.container .two-container .right-container .guest-infor select{
+  padding: 10px;
+  border: 1px solid #b4b4b4;
+  border-radius: 5px;
+}
