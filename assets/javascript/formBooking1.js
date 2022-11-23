@@ -18,7 +18,7 @@
     var emailPayment = document.querySelector('.email-payment');
     var checkinPayment = document.querySelector('.checkin-payment');
     var checkoutPayment = document.querySelector('.checkout-payment');
-    var typeRoomPayment = document.querySelector('.type-room-payment');
+    var typeRoomPayment = document.getElementById('type-room-payment');
     var amountOfRoomPayment = document.querySelector('.amount-room-payment');
 
     var groupBtnBookNow = document.querySelectorAll('.btn-booknow');

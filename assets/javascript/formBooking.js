@@ -401,6 +401,7 @@
             checkoutPayment.innerHTML = 'Ngày trả: ' + checkoutRegister.value;
             typeRoomPayment.innerHTML = 'Loại phòng: ' + typeRoomRegister.value;
             amountOfRoomPayment.innerHTML = 'Số lượng: ' + amountOfRoomRegister.value;
+
         }
     }
    

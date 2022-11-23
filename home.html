@@ -20,6 +20,9 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -438,7 +441,7 @@
                         </div>
                         <div class="infor-item">
                             <label>Loại phòng:</label>
-                            <select id ="type-room-register" class="input-form">
+                            <select id ="type-room-register" class="input-form" name="type-room-register">
                                 <option></option>
                             </select>
                             <br>
@@ -478,20 +481,29 @@
                         <div class="detail-payment-body">
     
                             <div class="detail-payment-client">
-                                <p class="fullname-payment">Họ tên: Nguyễn Văn A</p>
-                                <p class="phone-payment">SĐT: 9374639123</p>
-                                <p class="type-room-payment">Loại phòng: Phòng bốn</p>
+                                <p class="fullname-payment"></p>
+                                <p class="phone-payment"></p>
+                                <p class="type-room-payment"></p>
                             </div>
                             
                             <div class="detail-payment-room">
-                                <p class="checkin-payment">Ngày đặt: 12-09-2022</p>
-                                <p class="checkout-payment">Ngày trả: 13-09-2022</p>
-                                <p class="amount-room-payment">Số lượng: 4</p>
+                                <p class="checkin-payment"></p>
+                                <p class="checkout-payment"></p>
+                                <p class="amount-room-payment"></p>
                             </div>
                         </div> 
-                        <p class="email-payment">Email: 20520207@gm.uit.edu.vn</p>
-                        <p class="total-payment">Tổng cộng: 4000000</p>
-    
+                        
+                        <p class="email-payment"></p>
+                        <p class="total-payment">
+                           <?php
+                           if (isset($_COOKIE["TotalRoom1"])) {
+                            echo $_COOKIE["TotalRoom1"];
+                        }
+                        else {
+                            echo 123;
+                        }
+                           ?>
+                        </p>
                     </div>
     
                     <div class="method-payment">
@@ -571,8 +583,12 @@
     <script src="./assets/javascript/navbar.js"></script>
    
     <!-- hiện đơn đặt phòng -->
-    <script src="./assets/javascript/formBooking.js"></script>
+    <script src="./assets/javascript/formBooking.js">
+       
+        
+    </script>
 
+    <!-- lấy giá trị loại phòng để set giá  -->
     <!-- set animation khi cuộn trang -->
     <script>      
         var introContent = document.querySelector(".intro-content"); // bth
@@ -625,7 +641,7 @@
         function closeAdver() {
             document.querySelector(".advertisement").classList.remove("open-ad");
         }
-    </script> -->
+    </scrip> -->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

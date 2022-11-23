@@ -112,44 +112,28 @@
                 <div class="notice">
                     <div class="dropdown">
                         <?php
-                        include './assets/PHP/connectdb.php';
-                        $get_news = mysqli_query($conn, "SELECT * FROM notification WHERE Status = 0");
-                        $count_news = $get_news->num_rows;
+                            include './assets/PHP/connectdb.php';
+                            $get_news = mysqli_query($conn, "SELECT * FROM notification WHERE Status = 0");
+                            $get_names = mysqli_query($conn, "SELECT * FROM customer c, notification n WHERE  c.IdCustomer = n.IdCustomer");
+                            $count_news = $get_news->num_rows;
                         ?>
                         <button onclick="myFunction()" >
                             <i class="dropbtn fa-solid fa-bell"><div id="count-news"><?php echo $count_news; ?></div></i>
                         </button>
                         <div id="myDropdown" class="dropdown-content">
-                            <a>
-                                <div class="notify-info">
-                                    <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                                    <span class="notify-time">10 minutes ago</span>
-                                </div>
-                            </a>
-                            <a>
-                                <div class="notify-info">
-                                    <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                                    <span class="notify-time">10 minutes ago</span>
-                                </div>
-                            </a>
-                            <a>
-                                <div class="notify-info">
-                                    <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                                    <span class="notify-time">10 minutes ago</span>
-                                </div>
-                            </a>
-                            <a>
-                                <div class="notify-info">
-                                    <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                                    <span class="notify-time">10 minutes ago</span>
-                                </div>
-                            </a>
-                            <a>
-                                <div class="notify-info">
-                                    <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                                    <span class="notify-time">10 minutes ago</span>
-                                </div>
-                            </a>
+                            <?php
+                                while($show_news = $get_news->fetch_assoc()) {
+                                    echo 
+                                    '<a>
+                                        <div class="notify-info">
+                                            <p>'.$get_names->fetch_assoc()["CustomerName"].' đã đặt</p>
+                                            <span class="notify-time">10 minutes ago</span>
+                                        </div>
+                                    </a>';
+                                }
+                                
+                            ?>                            
+                            
                         </div>
                     </a>
                 </div>
