@@ -217,6 +217,7 @@ section {
   justify-content: center;
 }
 
+
 .tab-pane .container-table {
   position: relative;
   width: -moz-fit-content;
@@ -273,6 +274,9 @@ section {
   background: #FF1616;
 }
 
+.print-btn {
+  background: #FF1616;
+} 
 
 .notice-content {
   text-align: center;
@@ -293,6 +297,10 @@ section {
 
 /* --------chỉnh sửa phòng ------------*/
 .upd-btn {
+  background: var(--green-color);
+}
+
+.detail-btn {
   background: var(--green-color);
 }
 
@@ -350,4 +358,26 @@ section {
   padding: 10px;
   border: 1px solid #b4b4b4;
   border-radius: 5px;
+}
+
+
+/*---------------hóa đơn phòng-----------------*/
+.container .two-container .left-container .bill-infor {
+  width: 500px;
+  padding-bottom: 40px;
+}
+
+.container .two-container .left-container .bill-infor label {
+  padding-right: 50px;
+}
+
+.container .two-container .left-container .bill-infor input {
+  width: 150px;
+}
+
+.container .two-container .right-container .bill-infor label {
+  padding-right: 65px;
+}
+.container .two-container .right-container .bill-infor input {
+  width: 150px;
 }

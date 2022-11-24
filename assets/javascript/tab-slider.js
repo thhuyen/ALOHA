@@ -62,12 +62,18 @@ tabs.forEach((tab, index) => {
   var outputUpdate = document.querySelector("#result-update");
 
 
+  var updateTab1 = document.getElementById("update-tab1");
+  var updateRoomForm1 = document.getElementById("form-update-room1");
  
   function openUpdate() {
     btnExitForm.style.display = "block";
     updateRoomForm.style.display="block";
     updateTab.classList.add('close');
+
+    updateTab1.classList.add('close');
+    updateRoomForm1.style.display="block";
   }
+
 
   function exitUpdate() {
     btnExitForm.style.display = "none";
@@ -75,4 +81,7 @@ tabs.forEach((tab, index) => {
     updateTab.classList.remove('close');
     clearData(RoomInputs);
     clearData(RoomTextAreas);
+
+    updateTab1.classList.remove('close');
+    updateRoomForm1.style.display="none";
   }
