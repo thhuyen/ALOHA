@@ -1,4 +1,6 @@
-
+<?php
+    $name = "abc";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -494,16 +496,7 @@
                         </div> 
                         
                         <p class="email-payment"></p>
-                        <p class="total-payment">
-                           <?php
-                           if (isset($_COOKIE["TotalRoom1"])) {
-                            echo $_COOKIE["TotalRoom1"];
-                        }
-                        else {
-                            echo 123;
-                        }
-                           ?>
-                        </p>
+                        <p class="total-payment"></p>
                     </div>
     
                     <div class="method-payment">
@@ -540,8 +533,54 @@
                     <div class="group-button">
                         <button type ="button" class="btn-payment button-back">Quay lại</button>
                         <button type="submit" name="submit_room" class="btn-payment button-finish">Hoàn tất</button>
-    
                     </div>
+                    <!-- hiện đơn đặt phòng -->
+                    <script src="./assets/javascript/formBooking.js">                    
+                    </script>
+                    
+                    <script type="module">
+                        $(".button-next-form").click(function(){
+                            var type_room_selected = $('#type-room-register').find(":selected").text();
+                        });
+                        
+                        var a = "<?= php_funct(); ?>";
+                        // // var arr = [1,"a",3];
+                        // // var b = a;
+                        // var bArr = a.split(',');
+                        // $.each(bArr, function(index, value){
+                        //     alert(index+ ':' + value);
+                        // })
+                        // a = '"{' + a +'}"';
+                        console.log(a)
+                        
+                        
+                    </script>
+                    <?php
+                    function php_funct() {
+                        include './assets/PHP/connectdb.php';
+                        $arr = array();
+                        $typerom_rows =  $conn->query("select * from roomtype");
+                        
+                        while($get_data_roomtype = $typerom_rows->fetch_assoc()) {
+                        // array_push($arr,$get_data_roomtype["RoomTypeName"]);
+                        array_push($arr, (object)[
+                            'name' => $get_data_roomtype["RoomTypeName"],
+                            'price' => $get_data_roomtype["RoomTypePrice"],
+                            ]);
+                        }
+                        // output để lưu xuống mảng đối tượng
+                        $output = array_map(function ($object) {
+                            return $object->name . ': '. $object->price; 
+                           }, $arr);
+                           
+                        print_r ($output); // là return mảng
+                        
+            
+                    }
+                    ?>
+                    
+                
+                    
                 </div>
             </div>
     
@@ -582,11 +621,7 @@
     <!-- script for navbar tablet and mobile -->
     <script src="./assets/javascript/navbar.js"></script>
    
-    <!-- hiện đơn đặt phòng -->
-    <script src="./assets/javascript/formBooking.js">
-       
-        
-    </script>
+    
 
     <!-- lấy giá trị loại phòng để set giá  -->
     <!-- set animation khi cuộn trang -->

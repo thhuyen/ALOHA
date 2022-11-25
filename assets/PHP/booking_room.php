@@ -31,31 +31,33 @@
                                                 VALUES (0,'$row1',null,null,0)");
 
             // Set dữ liệu cho form thanh toán (tổng cộng - set mức giá get từ database RoomType) 
-            $room_type_register = $_POST['type-room-register'];
-            $quantity_room = $_POST['number-room'];
-            $get_data_roomtype = (mysqli_query($conn, "SELECT * FROM roomtype where '".$room_type_register."' = RoomTypeName "))->fetch_assoc();
-            $room_type_name = $get_data_roomtype["RoomTypeName"];  
-            $room_type_price = $get_data_roomtype["RoomTypePrice"];   
+            // $room_type_register = $_POST['type-room-register'];
+            // $quantity_room = $_POST['number-room'];
+            // $get_data_roomtype = (mysqli_query($conn, "SELECT * FROM roomtype where '".$room_type_register."' = RoomTypeName "))->fetch_assoc();
+            // $room_type_name = $get_data_roomtype["RoomTypeName"];  
+            // $room_type_price = $get_data_roomtype["RoomTypePrice"];   
        
-            $total = 0;         
-            if (strcmp($room_type_name,$room_type_register) == 0) {
-                $total = $room_type_price * $quantity_room;
-            }    
-            
+            // $total = 0;         
+            // if (strcmp($room_type_name,$room_type_register) == 0) {
+            //     $total = $room_type_price * $quantity_room;
+            // }    
         };
 
-    // header("Location: ../../home.html");    
+    // header("Location: ../../home.html");  
+print_r($_POST['x']);
+    
 ?>
 <?php
-setcookie("TotalRoom1","$total");
-// if (isset($_COOKIE['TotalRoom'])) {
-//     unset($_COOKIE['TotalRoom']); 
-//     setcookie('TotalRoom', null, -1, '/'); 
-//     return true;
-// } else {
-//     return false;
-// }
-
+function removeCookie($cookie, $cookie_name) {
+    if (isset($cookie)) {
+        unset($cookie); 
+        setcookie($cookie_name, null, -1, '/'); 
+        return true;
+    } else {
+        return false;
+    }
+}
+removeCookie($_COOKIE['TotalRoom'], 'TotalRoom');
 ?>
 
 

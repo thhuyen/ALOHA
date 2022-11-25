@@ -403,6 +403,7 @@
             amountOfRoomPayment.innerHTML = 'Số lượng: ' + amountOfRoomRegister.value;
 
         }
+        
     }
    
     btnBack.onclick = function() {
