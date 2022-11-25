@@ -539,24 +539,39 @@
                     </script>
                     
                     <script type="module">
+                        var DataTypeRoom = JSON.parse('<?= load_data_typerom(); ?>'); // kdl: object 
+                        var type_room_selected = $('#type-room-register').find(":selected").text();
+
+                        function setPrice(obj) {
+                            let type_room_selected = $('#type-room-register').find(":selected").text();
+                            for (let i = 0; i < obj.length; i++) {
+                                if((obj[i].name).localeCompare(type_room_selected) == 0) {
+                                    return obj[i].price;
+                                    // break;
+                                }
+
+                            }
+                        }
+                        $('.btn-search').click(function() {
+                            // console.log($('#price').value);
+                            $('#price').val(setPrice(DataTypeRoom));
+                            // console.log(a);
+                        })          
+                        $('#type-room-register').change(function() {
+                            $('#price').val(setPrice(DataTypeRoom));
+                            
+                        })
+                        
                         $(".button-next-form").click(function(){
-                            var type_room_selected = $('#type-room-register').find(":selected").text();
+                            $('.total-payment').text("Tổng cộng: " + setPrice(DataTypeRoom) * parseInt($('#number-room-register').val()) + " VND");
                         });
                         
-                        var a = "<?= php_funct(); ?>";
-                        // // var arr = [1,"a",3];
-                        // // var b = a;
-                        // var bArr = a.split(',');
-                        // $.each(bArr, function(index, value){
-                        //     alert(index+ ':' + value);
-                        // })
-                        // a = '"{' + a +'}"';
-                        console.log(a)
+                        
                         
                         
                     </script>
                     <?php
-                    function php_funct() {
+                    function load_data_typerom() {
                         include './assets/PHP/connectdb.php';
                         $arr = array();
                         $typerom_rows =  $conn->query("select * from roomtype");
@@ -568,12 +583,8 @@
                             'price' => $get_data_roomtype["RoomTypePrice"],
                             ]);
                         }
-                        // output để lưu xuống mảng đối tượng
-                        $output = array_map(function ($object) {
-                            return $object->name . ': '. $object->price; 
-                           }, $arr);
-                           
-                        print_r ($output); // là return mảng
+                        
+                        return (json_encode($arr,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
                         
             
                     }
