@@ -278,6 +278,10 @@ section {
   background: #FF1616;
 } 
 
+.mail-btn {
+  background: #B2B2B2;
+}
+
 .notice-content {
   text-align: center;
 }
