@@ -254,7 +254,7 @@
                             <td>0909281715</td>
                             <td>
                                 abc@abc.com
-                                <button class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
+                                <button id="mail-btn" class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
                             </td>
                             <td>......</td>
                             <td>......</td>
@@ -286,7 +286,7 @@
                             <td>0909281715</td>
                             <td>
                                 abc@abc.com
-                                <button class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
+                                <button id="mail-btn" class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
                             </td>
                             <td>......</td>
                             <td>......</td>
@@ -318,7 +318,7 @@
                             <td>0909281715</td>
                             <td>
                                 abc@abc.com
-                                <button class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
+                                <button id="mail-btn" class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
                             </td>
                             <td>......</td>
                             <td>......</td>
@@ -404,15 +404,47 @@
                                     </select>
                                 </div>
                             </div>   
-                        </div>
-                                         
-                              
-                        <button id="btn-save-update" class="btn btn-save-form">Lưu</button>
+                        </div>    <button id="btn-save-update" class="btn btn-save-form">Lưu</button>
                     </form>
                     <button class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
                 </div>                  
             </div>
         </div> 
+
+
+        <div class="popup-send-mail">
+            <div class="mail-content form">
+                <h2>Soạn Email</h2>
+                <form action="" id="form-email">
+
+                    <div class="mail-container">
+                        <div class='mail-infor'>
+                            <label for='receiver'>Người nhận</label>
+                            <input id='receiver'  type='text' name="receiver" id="">
+                        </div>
+                        <span class="invalid-message"></span>
+                    </div>
+
+                    <div class="mail-container">
+                        <div class='mail-infor'>
+                            <label for='subject'>Chủ đề</label>
+                            <input id='subject'  type='text' name="subject" id="">
+                        </div>
+                        <span class="invalid-message"></span>
+                    </div>
+
+                    <div class="mail-container">
+                        <div class='mail-infor'>
+                            <textarea id='mail-des' class="form-control" type='radio' name="mail-des" id=""></textarea>
+                        </div>
+                        <span class="invalid-message"></span>
+                    </div>
+
+                    <button id="btn-send-update" class="btn btn-save-form">Lưu</button>
+                </form>
+                <button class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
+            </div>
+        </div>
     </section>
 
      <!-- SCRIPT bell -->
@@ -464,6 +496,12 @@
 
             }
         });
+
+
+        document.getElementById("mail-btn").addEventListener("click", function(){
+            document.querySelector(".popup-send-mail").style.display = "flex";
+        })
+
     </script>
 
 </body>
