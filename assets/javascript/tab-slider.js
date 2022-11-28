@@ -21,8 +21,8 @@ const line = $(".tabs .line");
       InvalidMessage.forEach(function(message) {
         message.innerHTML ="";
       })
-      output.setAttribute('src', "");
-      outputUpdate.setAttribute('src', "");
+      // output.setAttribute('src', "");
+      // outputUpdate.setAttribute('src', "");
     });
   }
 
@@ -54,26 +54,9 @@ tabs.forEach((tab, index) => {
 });
 
 
-  // var updateTable = document.querySelector(".update-table");
   var updateRoomForm = document.getElementById("form-update-room");
   var updateTab = document.getElementById("update-tab");
   var btnExitForm = document.querySelector(".btn-exit-form");
-  var output = document.querySelector("#result");
-  var outputUpdate = document.querySelector("#result-update");
-
-
-  var updateTab1 = document.getElementById("update-tab1");
-  var updateRoomForm1 = document.getElementById("form-update-room1");
- 
-  function openUpdate() {
-    btnExitForm.style.display = "block";
-    updateRoomForm.style.display="block";
-    updateTab.classList.add('close');
-
-    updateTab1.classList.add('close');
-    updateRoomForm1.style.display="block";
-  }
-
 
   function exitUpdate() {
     btnExitForm.style.display = "none";
@@ -82,6 +65,4 @@ tabs.forEach((tab, index) => {
     clearData(RoomInputs);
     clearData(RoomTextAreas);
 
-    updateTab1.classList.remove('close');
-    updateRoomForm1.style.display="none";
   }

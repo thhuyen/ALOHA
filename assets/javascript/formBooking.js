@@ -182,7 +182,7 @@
             }
         }
     }
-
+// này ko liên quan, cái liên quan là file kia
 
     // Set điều kiện nhập cho từng input thuộc 1. Thông tin khách hàng
     var elementsInput = document.querySelectorAll('.input-form.client');

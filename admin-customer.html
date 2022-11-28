@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/CSS/base-admin.css">
-    <link rel="stylesheet" href="./assets/CSS/admin-room.css">
     <link rel="stylesheet" href="./assets/CSS/admin.css">
-    <link rel="stylesheet" href="./assets/CSS/admin-customer.css">
+    <link rel="stylesheet" href="./assets/CSS/admin-room.css">
+    
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
 
     <title>ALOHA Admin</title>
     <link rel="icon" href="./assets/img/logo/logo.png" type="image/x-icon" />
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
       <!-- SIDE BAR -->
@@ -19,13 +22,13 @@
         <h2>admin</h2>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <a href="#" class="text-decoration-none">
+                <a href="admin.html" class="text-decoration-none">
                     <i class="fa-solid fa-house-user"></i>
                     TỔNG QUAN
                 </a>
             </li>
             <li class="nav-item">
-                <a href="admin-customer.html" class="nav-link">
+                <a href="#" class="nav-link">
                     <i class="fa-solid fa-circle-user"></i>
                     KHÁCH HÀNG
                 </a>
@@ -79,40 +82,28 @@
                 </div>
             
                     <!-- NOTICE-BELL -->
+                <?php
+                    include './assets/PHP/connectdb.php';
+                    $get_news = mysqli_query($conn, "SELECT * FROM notification WHERE Status = 0 LIMIT 5");
+                    $get_names = mysqli_query($conn, "SELECT * FROM customer c, notification n WHERE  c.IdCustomer = n.IdCustomer");
+                    $count_news = $get_news->num_rows;
+                ?>
                 <button onclick="myFunction()" >
-                    <i class="dropbtn fa-solid fa-bell"></i>
+                    <i class="dropbtn fa-solid fa-bell"><div id="count-news"><?php echo $count_news; ?></div></i>
                 </button>
                 <div id="myDropdown" class="dropdown-content">
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
+                    <?php
+                        while($show_news = $get_news->fetch_assoc()) {
+                            echo 
+                            '<a>
+                                <div class="notify-info" style="cursor: pointer;">
+                                    <p style="margin: 0;">'.$get_names->fetch_assoc()["CustomerName"].' đã đặt</p>
+                                    <span class="notify-time">10 minutes ago</span>
+                                </div>
+                            </a>';
+                        }
+                    ?>                            
+                    <a href="" style="padding: 5px 0; background: #fff;"><div style="text-align: center;">Xem tất cả</div></a>                    
                 </div>
             </div>
         </div>
@@ -126,15 +117,7 @@
             <!-- THÊM KHÁCH HÀNG-->
             <div class="tab-pane add active">
                 <div class='container add'>
-                    <form id="form-add">
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-code'>Mã khách hàng *</label>
-                                <input id='guest-code'  type='text' name="guest-code" id="">
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-
+                    <form id="form-add">     
                         <div class="room-container">
                             <div class='room-infor'>
                                 <label for='guest-name'>Họ tên *</label>
@@ -178,8 +161,7 @@
                                 </div>
                             </div>   
                         </div>
-        
-                        
+                               
                         <button id="btn-save" class="btn">Lưu</button>
                     </form>
                     </div>                  
@@ -191,7 +173,7 @@
             <!-- CHỈNH SỬA -->
             <div class="tab-pane" >
                 <div class='container'>
-                    <table id="update-tab" class="update-table table-infor" width="900" height="400">
+                    <table id="update-tab" class="update-table table-infor" width="1000" height="400" style="font-size: 0.9rem;"> 
                         <tr>
                             <td class="head-table">Mã KH</td>
                             <td class="head-table">Họ tên</td>
@@ -199,112 +181,38 @@
                             <td class="head-table">Email</td>
                             <td class="head-table">Số lần đặt</td>
                             <td class="head-table">Phân loại</td>
-                            <td class="head-table">  </td>
+                            <td class="head-table">Tác vụ</td>
                         </tr>
 
-                        <tr>
-                            <td>KH001</td>
-                            <td>Nguyễn Văn An</td>
-                            <td>0909281715</td>
-                            <td>abc@abc.com</td>
-                            <td>2</td>
-                            <td>Không thân thiết</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Spa & Fitness</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>                                
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Golf</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-            
-                        <tr>
-                            <td>Du thuyền</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-                        
-                        <tr>
-                            <td>Bar & Karaoke</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-
-                        <tr>
-                            <td>Beach coffe</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-
-                        <tr>
-                            <td>Phục vụ 24/24</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-
-                        <tr>
-                            <td>Thú cưng</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
+                        <?php
+                        include './assets/PHP/connectdb.php';
+                        $get_data_client = mysqli_query($conn, "SELECT * FROM customer");
+                        while($client_rows = $get_data_client->fetch_assoc())
+                         {
+                        ?>
+                            <tr>
+                                <td><?php echo $client_rows['IdCustomer'];?></td>
+                                <td><?php echo $client_rows['CustomerName'];?></td>
+                                <td><?php echo $client_rows['CustomerPhone'];?></td>
+                                <td><?php echo $client_rows['CustomerEmail'];?></td>
+                                <td><?php echo $client_rows['AmountOfBooking'];?></td>
+                                <td>
+                                    <?php 
+                                     if($client_rows['CustomerType'] == 0) {
+                                        echo "Không thân thiết";
+                                     }
+                                     else {
+                                        echo "Thân thiết";
+                                     }
+                                    ?>
+                                </td>
+                                <td>
+                                    <button class="upd-btn btn-table" onclick="openUpdate(this)">Sửa</button>
+                                </td>
+                            </tr>
+                        <?php
+                         }
+                        ?>   
                     </table>                    
 
                 </div>
@@ -313,28 +221,28 @@
             <!-- form chỉnh sửa -->
             <div>
                 <div class='container add form'  style ="margin-top: 20px">
-                    <form id="form-update-room">
-        
+                    <form id="form-update-room" method="POST" action="./assets/PHP/update-customer.php">
                         <div class="room-container">
                             <div class='room-infor'>
                                 <label for='guest-code'>Mã khách hàng *</label>
-                                <input id='guest-code'  type='text' name="guest-code" id="">
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-name'>Họ tên *</label>
-                                <input id='guest-name'  type='text' name="guest-name" id="">
+                                <input id='guest-code-upd' type='text' readonly="readonly" name="guest-code-upd" style="background: rgba(239, 239, 239, 0.3);">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
                         
                         <div class="room-container">
                             <div class='room-infor'>
+                                <label for='guest-name'>Họ tên *</label>
+                                <input id='guest-name-upd'  type='text' name="guest-name-upd">
+                                
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+                                            
+                        <div class="room-container">
+                            <div class='room-infor'>
                                 <label for='guest-phone'>Số điện thoại *</label>
-                                <input id='guest-phone'  type='text' name="guest-phone" id="">
+                                <input id='guest-phone-upd' type='text' readonly="readonly" name="guest-phone-upd" style="background: rgba(239, 239, 239, 0.3);">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
@@ -342,7 +250,7 @@
                         <div class="room-container">
                             <div class='room-infor'>
                                 <label for='guest-mail'>Email *</label>
-                                <input id='guest-mail'  type='text' name="guest-mail" id="">
+                                <input id='guest-mail-upd'  type='text' name="guest-mail-upd">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
@@ -351,7 +259,7 @@
                             <div class="left-container">
                                 <div class='guest-infor'>
                                     <label for='guest-time'>Số lần đặt *</label>
-                                    <input id='guest-time' type='number' name="guest-time" min="1" max="1000"></input>
+                                    <input id='guest-time-upd' type='number' name="guest-time-upd" min="1" max="1000"></input>
                                 </div>
                                 <span class="invalid-message"></span>                           
                             </div>
@@ -359,22 +267,50 @@
                             <div class="right-container">
                                 <div class='guest-infor'>
                                     <label for='guest-type'>Phân loại *</label>
-                                    <select name="guest-type" id="guest-type">
+                                    <select name="guest-type-upd" id="guest-type-upd">
                                         <option value="non-vip">Không thân thiết</option>
                                         <option value="vip">Thân thiết</option>
                                     </select>
                                 </div>
                             </div>   
-                        </div>
-                                         
-                              
-                        <button id="btn-save-update" class="btn btn-save-form">Lưu</button>
+                        </div>                                                                       
+                        <button type="submit" name="update-customer" id="btn-save-update" class="btn btn-save-form">Lưu</button>
                     </form>
-                    <button class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
+                    <button type = "button" class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
                 </div>                  
             </div>
         </div> 
     </section>
+
+    <!-- Set data khi bấm button sửa -->
+    <script>
+    function openUpdate(button) {
+        btnExitForm.style.display = "block";
+        updateRoomForm.style.display="block";
+        updateTab.classList.add('close');
+
+        function find_pos(row, x) {
+            var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
+            var updateTableRows = document.querySelector(".update-table").rows; 
+            for (let i = 0; i< updateTableRows.length; i++) {
+                if ( updateTableRows[i] === x.parentElement.parentElement ) {
+                    document.getElementById('guest-code-upd').value = updateTableCells[0].innerText;
+                    document.getElementById('guest-name-upd').value = updateTableCells[1].innerText;
+                    document.getElementById('guest-phone-upd').value = updateTableCells[2].innerText;
+                    document.getElementById('guest-mail-upd').value = updateTableCells[3].innerText;
+                    document.getElementById('guest-time-upd').value = updateTableCells[4].innerText;
+                    if ((updateTableCells[5].innerText.trim().localeCompare("Không thân thiết")) == 0) {
+                        document.getElementById('guest-type-upd').value = "non-vip";
+                    } else { document.getElementById('guest-type-upd').value = "vip"; }
+                    break;
+                }
+            }
+        } 
+        find_pos((button.parentElement).parentElement.rowIndex, button);
+    } 
+    </script>
+
+
 
      <!-- SCRIPT bell -->
      <script src="./assets/javascript/notificationBell.js"></script>
@@ -383,13 +319,13 @@
      <script src="./assets/javascript/tab-slider.js"></script>
 
      <!-- SCRIPT upload photo-->
-    <script src="./assets/javascript/upload-photo.js"></script>
+    <!-- <script src="./assets/javascript/upload-photo.js"></script> -->
 
     <script src="https://kit.fontawesome.com/c89546c2fd.js" crossorigin="anonymous"></script>
 
     <!-- Kiểm tra điều kiện nhập đầy đủ thông tin -->
     <script src="./assets/javascript/formValidation.js"></script>
-    <script>
+    <!-- <script>
         Validator({
             form: '#form-add',
             formGroupSelector: '.room-container',
@@ -425,7 +361,7 @@
 
             }
         });
-    </script>
+    </script> -->
 
 </body>
 </html>

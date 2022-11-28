@@ -182,6 +182,7 @@
             </div>
         </div>
 
+        <!-- review -->
         <div id="review">
             <div class="review-container">
                 <section class="pt-5 pb-5">
@@ -366,6 +367,8 @@
         </div>
     </div>
 
+    
+    <!-- form đăng nhập -->
     <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -379,27 +382,24 @@
                 <div class="modal-body-content" style="text-align: center;">
                     <p style="margin-top: 10px;">Kênh này chỉ dùng cho nhân viên khách sạn</p>
                     <p style ="margin-bottom: 10px;">Mật khẩu đăng nhập</p>
-                    <input type="text" placeholder="Nhập code 6 số" style="border: 1px solid var(--subnav-hover); border-radius: 10px; padding: 5px 10px">
+                    <input id="password" type="text" placeholder="Nhập code 6 số" style="border: 1px solid var(--subnav-hover); border-radius: 10px; padding: 5px 10px">
                 </div>
             </div>
             <div class="modal-footer" style="border:none">
-                <button type="button" class="btn btn-primary" style="background-color: var(--subnav-hover); outline: none; border: none; padding: 10px 20px;">Đăng nhập</button>
+                <button id="btn-openadmin" style="background-color: var(--subnav-hover); outline: none; border: none; padding: 10px 20px;">Đăng nhập</button>
               <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
             </div>
           </div>
         </div>
-      </div>
+    </div>
 
+    
     <!-- icon kéo lên đầu trang -->
     <div id="scroll-head">
         <i class="ti-angle-up"></i>
     </div>
 
     <!-- form đặt phòng -->
-    
-    
-    
-    
     <form class = "form-group" action="./assets/PHP/booking_room.php" method="post">
         <div class="modal-register">
             <div class="modal-register-container">
@@ -566,9 +566,6 @@
                             $('.total-payment').text("Tổng cộng: " + setPrice(DataTypeRoom) * parseInt($('#number-room-register').val()) + " VND");
                         });
                         
-                        
-                        
-                        
                     </script>
                     <?php
                     function load_data_typerom() {
@@ -588,18 +585,12 @@
                         
             
                     }
-                    ?>
-                    
-                
-                    
+                    ?>                  
                 </div>
             </div>
     
         </div>
     </form>
-
-
-    <!-- form thanh toán -->
 
     <!-- form quảng cáo -->
     <div class="advertisement">
@@ -626,15 +617,9 @@
         </div>
     </div>
 
-    
-    
-
     <!-- script for navbar tablet and mobile -->
     <script src="./assets/javascript/navbar.js"></script>
    
-    
-
-    <!-- lấy giá trị loại phòng để set giá  -->
     <!-- set animation khi cuộn trang -->
     <script>      
         var introContent = document.querySelector(".intro-content"); // bth
@@ -689,6 +674,26 @@
         }
     </scrip> -->
 
+    <!-- cài điều kiện để vào trang admin -->
+    <?php
+        function get_password() {
+            include './assets/PHP/connectdb.php';
+            $password =  $conn->query("select * from user")->fetch_assoc()["password"];
+            return (json_encode($password,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
+        }
+    ?>
+    <script lang="javascript">
+        $('#btn-openadmin').click(function() {
+            var pass = JSON.parse('<?= get_password(); ?>');
+            if (($('#password').val()).localeCompare(pass) == 0) {
+                window.location='admin.html';
+            }
+            else {
+                alert('Sai mật khẩu!');
+            }
+        })
+    </script>
+    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -353,147 +353,189 @@
         <i class="ti-angle-up"></i>
     </div>
 
-    <div class="modal-register">
-        <div class="modal-register-container">
-            <div class="modal-header register">
-                <span>ĐĂNG KÝ PHÒNG</span>
-                <div class=""close-modal>
-                    <i id = "icon-close-register" class="icon-close-modal fa-solid fa-xmark"></i>
-                </div>
-            </div>
-            
-            <div class="modal-body">
-                <p class="title">1. Thông tin khách hàng</p>
-                <div class="infor-client">
-                    <form action="" class = "form-group">
-                        <label>Họ tên:</label>
-                        <input type="text" id="fullname-register" name="fullname"  placeholder="Nhập họ tên" class="input-form client">
-                    </form>
-    
-                    <form action="" class = "form-group">
-                        <label>Số điện thoại:</label>
-                        <input type="text" id="phone-register" name="phone" placeholder="Nhập số điện thoại" class="input-form client">
-                    </form>
-                    
-                    <form action="" class = "form-group">
-                        <label>Email:</label>
-                        <input type="text" id="email-register" name="email" placeholder="Nhập email" class="input-form client">
-                    </form>
-                </div>
-    
-                <div class="infor-room">
-                    <p class="title">2. Thông tin phòng</p>
-                    <form action="" class = "form-group">
-                        <label for="checkin">Ngày đặt:</label>
-                        <input id="checkin-day-register" type="text" name="checkin" class="input-form" placeholder="dd/mm/yyyy">
-                    </form>
-    
-                    <form action="" class = "form-group">
-                        <label for="checkout">Ngày trả:</label>
-                        <input id="checkout-day-register" type="text" name="checkout" class="input-form" placeholder="dd/mm/yyyy">
-                    </form>
-    
-                    <form action="" class = "form-group">
-                        <label>Loại phòng:</label>
-                        <select id ="type-room-register" class="input-form">
-                            <option></option>
-                        </select>
-
-                    </form>
-
-    
-                    <form action="" class = "form-group">
-                        <label>Số lượng phòng:</label>
-                        <input type="number" id="number-room-register" name="number-room" placeholder="Nhập số lượng" class="input-form" value = 1  min="1" max="5">
-                    </form>
-    
-                    <form action="" class = "form-group">
-                        <label>Số khách/phòng:</label>
-                        <input type="text" id="people" name="people-room" disabled class="input-form">
-                    </form>
-
-                    <form action="" class = "form-group">
-                        <label>Giá tiền/phòng:</label>
-                        <input type="text" id="price-room" name="price-room" disabled class="input-form">
-                    </form>
-                </div>
-    
-                <button class="button-next-form" onclick="openFormPayment()">Tiếp theo</button>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="modal-payment">
-        <div class="modal-payment-container">
-            <div class="modal-header register">
-                <span>THANH TOÁN</span>
-                <div class=""close-modal>
-                    <i id = "icon-close-payment" class="icon-close-modal fa-solid fa-xmark"></i>
-                </div>
-            </div>
-            
-            <div class="modal-body">
-                <div class="detail-payment">
-                    <p class="title">3. Chi tiết hóa đơn</p>
-                    <div class="detail-payment-body">
-
-                        <div class="detail-payment-client">
-                            <p class="fullname-payment">Họ tên: Nguyễn Văn A</p>
-                            <p class="phone-payment">SĐT: 9374639123</p>
-                            <p class="type-room-payment">Loại phòng: Phòng bốn</p>
-                        </div>
-                        
-                        <div class="detail-payment-room">
-                            <p class="checkin-payment">Ngày đặt: 12-09-2022</p>
-                            <p class="checkout-payment">Ngày trả: 13-09-2022</p>
-                            <p class="amount-room-payment">Số lượng: 4</p>
-                        </div>
-                    </div> 
-                    <p class="email-payment">Email: 20520207@gm.uit.edu.vn</p>
-                    <p class="total-payment">Tổng cộng: 4000000</p>
-
-                </div>
-
-                <div class="method-payment">
-                    <p class="title title-method"> 4. Phương thức thanh toán</p>
-                    <div class="method-container">
-                        <div class="method-item">
-                            <input type="radio" name="payment" id = "cash" class="input-method-item">
-                            <label for="cash" class="label-method-item">
-                                <i class="icon-check fa-solid fa-circle-check"></i>
-                                <img src="https://cdn-icons.flaticon.com/png/512/1052/premium/1052866.png?token=exp=1660440745~hmac=5caac0c9b9f311e2bacd73733782f659" alt="" id ="cash-img" class="icon-payment">
-                                <p>Tiền mặt</p>
-                            </label>
-
-                        </div>
-                        <div class="method-item">
-                            <input type="radio" name="payment" id = "momo" class="input-method-item">
-                            <label for="momo" class="label-method-item">
-                                <i class="icon-check fa-solid fa-circle-check"></i>
-                                <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="MoMo_Logo" id="momo-img" class="icon-payment">
-                                <p>Momo</p>
-                            </label>
-                        </div>
-                        <div class="method-item" class="label-method-item">
-                            <input type="radio" name="payment" id = "bank" class="input-method-item">
-                            <label for="bank" class="label-method-item">
-                                <i class="icon-check fa-solid fa-circle-check"></i>
-                                <img src="https://cdn-icons-png.flaticon.com/512/3029/3029373.png" alt="" class="icon-payment" id="bank-img">
-                                <p>Chuyển khoản</p>
-                            </label>
-                        </div>
+    <form class = "form-group" action="./assets/PHP/booking_room.php" method="post">
+        <div class="modal-register">
+            <div class="modal-register-container">
+                <div class="modal-header register">
+                    <span>ĐĂNG KÝ PHÒNG</span>
+                    <div class="close-modal">
+                        <i id = "icon-close-register" class="icon-close-modal fa-solid fa-xmark"></i>
                     </div>
                 </div>
+            
+                <div class="modal-body">
+                    <div class="infor-client">
+                        <p class="title">1. Thông tin khách hàng</p>
+                        <div class="infor-item">
+                            <label>Họ tên:</label>
+                            <input type="text" id="fullname-register" name="fullname"  placeholder="Nhập họ tên" class="input-form client">
+                            <br>
+                        </div>
+                        <div class="infor-item">
+                            <label>Số điện thoại:</label>
+                            <input type="text" id="phone-register" name="phone" placeholder="Nhập số điện thoại" class="input-form client">
+                            <br>
+                        </div>
+                        <div class="infor-item">
+                            <label>Email:</label>
+                            <input type="text" id="email-register" name="email" placeholder="Nhập email" class="input-form client">
+                        </div>
+                    </div>
+                    <div class="infor-room">
+                        <p class="title">2. Thông tin phòng</p>
+                        <div class="infor-item">
+                            <label for="checkin">Ngày đặt:</label> 
+                            <input id="checkin-day-register" type="text" name="checkin" class="input-form" placeholder="dd/mm/yyyy">
+                            <br>
+                        </div>
+                        <div class="infor-item">
+                            <label for="checkout">Ngày trả:</label>
+                            <input id="checkout-day-register" type="text" name="checkout" class="input-form" placeholder="dd/mm/yyyy">
+                            <br>                                 
+                        </div>
+                        <div class="infor-item">
+                            <label>Loại phòng:</label>
+                            <select id ="type-room-register" class="input-form" name="type-room-register">
+                                <option></option>
+                            </select>
+                            <br>
+                        </div>
+                        <div class="infor-item">
+                            <label>Số lượng phòng:</label>
+                            <input type="number" id="number-room-register" name="number-room" placeholder="Nhập số lượng" class="input-form" value = 1  min="1" max="5">
+                            <br>
+                        </div>
+                        
+                        <div class="infor-item">
+                            <label>Giá tiền/phòng:</label>
+                            <input type="text" id="price" name="price" disabled class="input-form">
+                        </div>
+                    </div>
                     
-                <div class="group-button">
-                    <button class="btn-payment button-back">Quay lại</button>
-                    <button class="btn-payment button-finish">Hoàn tất</button>
+                    <button type ="button" class="button-next-form"onclick="openFormPayment()">Tiếp theo</button>
+                </div>
+            </div>           
+        </div>
+        <div class="modal-payment">   
+            <div class="modal-payment-container">
+                <div class="modal-header payment">
+                    <span>THANH TOÁN</span>
+                    <div class="close-modal">
+                        <i id = "icon-close-payment" class="icon-close-modal fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+    
+                <div class="modal-body">
+                    <div class="detail-payment">
+                        <p class="title">3. Chi tiết hóa đơn</p>
+                        <div class="detail-payment-body">
+    
+                            <div class="detail-payment-client">
+                                <p class="fullname-payment"></p>
+                                <p class="phone-payment"></p>
+                                <p class="type-room-payment"></p>
+                            </div>
+                            
+                            <div class="detail-payment-room">
+                                <p class="checkin-payment"></p>
+                                <p class="checkout-payment"></p>
+                                <p class="amount-room-payment"></p>
+                            </div>
+                        </div> 
+                        
+                        <p class="email-payment"></p>
+                        <p class="total-payment"></p>
+                    </div>
+    
+                    <div class="method-payment">
+                        <p class="title title-method"> 4. Phương thức thanh toán</p>
+                        <div class="method-container">
+                            <div class="method-item">
+                                <input type="radio" name="payment" id = "cash" class="input-method-item">
+                                <label for="cash" class="label-method-item">
+                                    <i class="icon-check fa-solid fa-circle-check"></i>
+                                    <img src="./assets/img/cash-icon.png" alt="" id ="cash-img" class="icon-payment">
+                                    <p>Tiền mặt</p>
+                                </label>
+    
+                            </div>
+                            <div class="method-item">
+                                <input type="radio" name="payment" id = "momo" class="input-method-item">
+                                <label for="momo" class="label-method-item">
+                                    <i class="icon-check fa-solid fa-circle-check"></i>
+                                    <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="MoMo_Logo" id="momo-img" class="icon-payment">
+                                    <p>Momo</p>
+                                </label>
+                            </div>
+                            <div class="method-item" class="label-method-item">
+                                <input type="radio" name="payment" id = "bank" class="input-method-item">
+                                <label for="bank" class="label-method-item">
+                                    <i class="icon-check fa-solid fa-circle-check"></i>
+                                    <img src="https://cdn-icons-png.flaticon.com/512/3029/3029373.png" alt="" class="icon-payment" id="bank-img">
+                                    <p>Chuyển khoản</p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="group-button">
+                        <button type ="button" class="btn-payment button-back">Quay lại</button>
+                        <button type="submit" name="submit_room" class="btn-payment button-finish">Hoàn tất</button>
+                    </div>
+                    <!-- hiện đơn đặt phòng -->
+                    <script src="./assets/javascript/formBooking1.js">                   
+                    </script>
+                    
+                    <script type="module">
+                        var DataTypeRoom = JSON.parse('<?= load_data_typerom(); ?>'); // kdl: object 
+                        var type_room_selected = $('#type-room-register').find(":selected").text();
 
+                        function setPrice(obj) {
+                            let type_room_selected = $('#type-room-register').find(":selected").text();
+                            for (let i = 0; i < obj.length; i++) {
+                                if((obj[i].name).localeCompare(type_room_selected) == 0) {
+                                    return obj[i].price;
+                                    // break;
+                                }
+
+                            }
+                        }
+                        $('.btn-booknow').click(function() {
+                            $('#price').val(setPrice(DataTypeRoom));
+                        })          
+                     
+                        $(".button-next-form").click(function(){
+                            $('.total-payment').text("Tổng cộng: " + setPrice(DataTypeRoom) * parseInt($('#number-room-register').val()) + " VND");
+                        });
+                        
+                    </script>
+                    <?php
+                    function load_data_typerom() {
+                        include './assets/PHP/connectdb.php';
+                        $arr = array();
+                        $typerom_rows =  $conn->query("select * from roomtype");
+                        
+                        while($get_data_roomtype = $typerom_rows->fetch_assoc()) {
+                        // array_push($arr,$get_data_roomtype["RoomTypeName"]);
+                        array_push($arr, (object)[
+                            'name' => $get_data_roomtype["RoomTypeName"],
+                            'price' => $get_data_roomtype["RoomTypePrice"],
+                            ]);
+                        }
+                        
+                        return (json_encode($arr,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
+                        
+            
+                    }
+                    ?>
+                    
+                
+                    
                 </div>
             </div>
+    
         </div>
-    </div>
+    </form>
 
     <script>
         var scrollIcon = document.getElementById("scroll-head");
@@ -510,7 +552,7 @@
         };
     </script>
     <script src="./assets/javascript/navbar.js"></script>
-    <script src="./assets/javascript/formBooking1.js"></script>
+    <!-- <script src="./assets/javascript/formBooking1.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
