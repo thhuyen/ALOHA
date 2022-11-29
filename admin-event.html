@@ -323,27 +323,6 @@
                 Validator.isRequired('#room-des', 'Vui lòng nhập mô tả sự kiện'),
                 Validator.minLength('#room-des', 20), 
             ],
-            onSubmit: function(data) {
-
-            }
-        });
-
-        Validator({
-            form: '#form-update-room',
-            formGroupSelector: '.room-container',
-            errorSelector: '.invalid-message',
-            rules: [
-                Validator.isRequired('#room-name-update', 'Vui lòng nhập tên sự kiện'),
-                Validator.minLength('#room-name-update', 5), 
-                Validator.isRequired('#room-price-update', 'Vui lòng nhập đơn giá sự kiện'),
-                Validator.isNumber('#room-price-update'),
-                Validator.isRequired('#file-update', 'Vui lòng chọn hình ảnh'),
-                Validator.isRequired('#room-des-update', 'Vui lòng nhập mô tả sự kiện'),
-                Validator.minLength('#room-des-update', 20), ,
-            ],
-            onSubmit: function(data) {
-
-            }
         });
     </script>
 

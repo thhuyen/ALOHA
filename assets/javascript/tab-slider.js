@@ -62,7 +62,7 @@ tabs.forEach((tab, index) => {
     btnExitForm.style.display = "none";
     updateRoomForm.style.display="none";
     updateTab.classList.remove('close');
-    clearData(RoomInputs);
-    clearData(RoomTextAreas);
+    // clearData(RoomInputs);
+    // clearData(RoomTextAreas);
 
   }

@@ -231,7 +231,7 @@
             <div class="tab-pane">
                 <div class="container ">
                     <div class="container-table">
-                        <table id="update-tab" class="table-infor" width="900" height="200" style="font-size: 0.9rem;">
+                        <table id="update-tab" class="table-infor update-table" width="1000" height="auto" style="font-size: 0.9rem;">
                             <tr>
                                 <td class="head-table">SỐ PHÒNG</td>
                                 <td class="head-table">LOẠI PHÒNG</td>
@@ -296,14 +296,14 @@
             </div>
             <!-- form chỉnh sửa -->
             <div>
-                <div class='container add form'>
-                    <form id="form-update-room" class='set'>
+                <div class='container add form' style="margin-top: 0;">
+                    <form id="form-update-room" class='set' method="post" action="./assets/PHP/update_room.php">
 
                         <div class="room-container">
                             <label for='room-name-update' class="form-label">Tên phòng *</label>
                             <div class='room-infor'>
                                 <input id='room-name-update' class="form-control" placeholder="Nhập tên phòng"
-                                    type='text' name="room-name" id="">
+                                    type='text' name="room-name-update">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
@@ -311,11 +311,10 @@
                         <div class="room-container">
                             <label for='room-type-update' class="form-label">Loại phòng *</label>
                             <div class='room-infor'>
-                                <select class="form-select" id="room-type-update">
-                                    <option value="0" selected>Chọn...</option>
-                                    <option value="1">Phòng đơn</option>
-                                    <option value="2">Phòng đôi</option>
-                                    <option value="3">Phòng tư</option>
+                                <select class="form-select" id="room-type-update" name="room-type-update">
+                                    <option value="single">Phòng đơn</option>
+                                    <option value="double">Phòng đôi</option>
+                                    <option value="big">Phòng bốn</option>
                                 </select>
                             </div>
                             <span class="invalid-message"></span>
@@ -325,31 +324,28 @@
                             <label for='file' class="form-label">Tình trạng *</label> <br>
                             <div class="form-check form-check-inline room-status">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="1" checked="checked">
-                                    <label class="form-check-label" for="inlineRadio1">Còn trống</label>
+                                    <input class="form-check-input" value="vacant" type="radio" name="radio-status" id="vacant" checked="checked">
+                                    <label class="form-check-label" for="vacant">Còn trống</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="2">
-                                    <label class="form-check-label" for="inlineRadio2">Đã đặt</label>
+                                    <input class="form-check-input" vacant="used" type="radio" name="radio-status" id="used">
+                                    <label class="form-check-label" for="used">Đang sử dụng</label>
                                 </div>
                                 <span class="invalid-message"></span>
                             </div>
                         </div>
 
                         <div class="room-container">
-                            <label for='room-note' class="form-label">Ghi chú</label>
+                            <label for='room-note-update' class="form-label">Ghi chú</label>
                             <div class='room-infor'>
-                                <textarea id='room-note' placeholder="Nhập ghi chú" type='radio' name="room-note"
-                                    style="height: 38px;"></textarea>
+                                <input id='room-note-update' placeholder="Nhập ghi chú" type='text' name="room-note-update">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
 
-                        <button type="button" id="btn-save-update" class="btn btn-save-form">Lưu</button>
-                        <button class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
+                        <button type="submit" id="btn-save-update" name="btn-save-update" class="btn btn-save-form">Lưu</button>
                     </form>
+                    <button type="button" class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
 
                 </div>
             </div>
@@ -357,6 +353,47 @@
         </div>
 
     </section>
+
+    <!-- Set data khi bấm button sửa -->
+    <script>
+    function openUpdate(button) {
+        btnExitForm.style.display = "block";
+        updateRoomForm.style.display="block";
+        updateTab.classList.add('close');
+
+        function CompareType(input, type) {
+            if (type.localeCompare("Phòng đơn") == 0) {
+                input.value = 'single';
+            }
+            else if (type.localeCompare("Phòng đôi") == 0) {
+                input.value = 'double';
+            }
+            else {
+                input.value = 'big';
+            }
+        }
+        function find_pos(row, x) {
+            var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
+            var updateTableRows = document.querySelector(".update-table").rows; 
+            for (let i = 0; i< updateTableRows.length; i++) {
+                if (updateTableRows[i] === x.parentElement.parentElement ) {
+                    document.getElementById('room-name-update').value = updateTableCells[0].innerText;
+                    CompareType(document.getElementById('room-type-update'), updateTableCells[1].innerText.trim());
+                    if (updateTableCells[2].innerText.trim().localeCompare("Trống")==0) {
+                        document.querySelector('.room-status #vacant').checked = true;
+                    }
+                    else {
+                        document.querySelector('.room-status #used').checked = true;
+                    }
+                    document.getElementById('room-note-update').value = updateTableCells[3].innerText;
+                    break;
+                }
+            }
+        } 
+        find_pos((button.parentElement).parentElement.rowIndex, button);
+    } 
+    </script>
+
     <!-- SCRIPT bell -->
     <script src="./assets/javascript/notificationBell.js"></script>
 
@@ -375,23 +412,7 @@
                 Validator.minLength('#room-name', 5),
                 Validator.isSelected('#room-type', 'loại phòng'),
             ],
-            onSubmit: function (data) {
-
-            }
-        });
-
-        Validator({
-            form: '#form-update-room',
-            formGroupSelector: '.room-container',
-            errorSelector: '.invalid-message',
-            rules: [
-                Validator.isRequired('#room-name-update', 'Vui lòng nhập tên phòng'),
-                Validator.minLength('#room-name-update', 5),
-                Validator.isSelected('#room-type-update', 'loại phòng'),
-            ],
-            onSubmit: function (data) {
-
-            }
+          
         });
     </script>
 </body>

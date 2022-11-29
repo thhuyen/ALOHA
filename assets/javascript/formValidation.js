@@ -127,11 +127,28 @@ Validator.isNumber = function(selector) {
         }
     };
 }
+Validator.isPhoneNumber = function(selector) {
+    return {
+        selector: selector,
+        test: function(value) {
+            return value.length == 10 && !isNaN(value) == true ? undefined : `Số điện thoại bao gồm 10 số`;
+        }
+    };
+}
 Validator.isSelected = function (selector, message) {
     return {
         selector: selector,
         test: function(value) {
             return value > 0 ? undefined: `Vui lòng chọn ${message} tại đây`; 
+        }
+    };
+}
+Validator.isEmail = function(selector) {
+    return {
+        selector: selector,
+        test: function(value) {
+            var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            return regex.test(value) ? undefined : 'Vui lòng nhập email hợp lệ';
         }
     };
 }

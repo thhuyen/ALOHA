@@ -121,37 +121,37 @@
                         <div class="room-container">
                             <div class='room-infor'>
                                 <label for='guest-name'>Họ tên *</label>
-                                <input id='guest-name'  type='text' name="guest-name" id="">
+                                <input id='guest-name'  type='text' name="guest-name">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
-                        
                         <div class="room-container">
                             <div class='room-infor'>
                                 <label for='guest-phone'>Số điện thoại *</label>
-                                <input id='guest-phone'  type='text' name="guest-phone" id="">
+                                <input id='guest-phone'  type='text' name="guest-phone">
                             </div>
                             <span class="invalid-message"></span>
-                        </div>
+                        </div>                      
+                       
 
                         <div class="room-container">
                             <div class='room-infor'>
                                 <label for='guest-mail'>Email *</label>
-                                <input id='guest-mail'  type='text' name="guest-mail" id="">
+                                <input id='guest-mail' type='text' name="guest-mail">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
 
                         <div class="two-container">
-                            <div class="left-container">
+                            <div class="left-container room-container">
                                 <div class='guest-infor'>
                                     <label for='guest-time'>Số lần đặt *</label>
-                                    <input id='guest-time' type='number' name="guest-time" min="1" max="1000"></input>
+                                    <input id='guest-time' type='number' name="guest-time" min="1" max="1000">
                                 </div>
                                 <span class="invalid-message"></span>                           
                             </div>
     
-                            <div class="right-container">
+                            <div class="right-container room-container">
                                 <div class='guest-infor'>
                                     <label for='guest-type'>Phân loại *</label>
                                     <select name="guest-type" id="guest-type">
@@ -325,43 +325,22 @@
 
     <!-- Kiểm tra điều kiện nhập đầy đủ thông tin -->
     <script src="./assets/javascript/formValidation.js"></script>
-    <!-- <script>
+    <script>
         Validator({
             form: '#form-add',
             formGroupSelector: '.room-container',
             errorSelector: '.invalid-message',
             rules: [
-                Validator.isRequired('#room-name', 'Vui lòng nhập tên dịch vụ'),
-                Validator.minLength('#room-name', 5), 
-                Validator.isRequired('#room-price', 'Vui lòng nhập đơn giá dịch vụ'),
-                Validator.isNumber('#room-price'),
-                Validator.isRequired('#file', 'Vui lòng chọn hình ảnh'),
-                Validator.isRequired('#room-des', 'Vui lòng nhập mô tả dịch vụ'),
-                Validator.minLength('#room-des', 20), 
+                Validator.isRequired('#guest-name', 'Vui lòng nhập tên khách hàng'),
+                Validator.minLength('#guest-name', 5), 
+                Validator.isRequired('#guest-phone', 'Vui lòng nhập số điện thoại'),
+                Validator.isPhoneNumber('#guest-phone', ''),
+                Validator.isRequired('#guest-mail', 'Vui lòng nhập email'),
+                Validator.isEmail('#guest-mail', ''),
+                Validator.isRequired('#guest-time', 'Vui lòng nhập số lần đặt'),
             ],
-            onSubmit: function(data) {
-
-            }
         });
-
-        Validator({
-            form: '#form-update-room',
-            formGroupSelector: '.room-container',
-            errorSelector: '.invalid-message',
-            rules: [
-                Validator.isRequired('#room-name-update', 'Vui lòng nhập tên dịch vụ'),
-                Validator.minLength('#room-name-update', 5), 
-                Validator.isRequired('#room-price-update', 'Vui lòng nhập đơn giá dịch vụ'),
-                Validator.isNumber('#room-price-update'),
-                Validator.isRequired('#file-update', 'Vui lòng chọn hình ảnh'),
-                Validator.isRequired('#room-des-update', 'Vui lòng nhập mô tả dịch vụ'),
-                Validator.minLength('#room-des-update', 20), ,
-            ],
-            onSubmit: function(data) {
-
-            }
-        });
-    </script> -->
+    </script>
 
 </body>
 </html>
