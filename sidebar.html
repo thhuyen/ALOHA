@@ -1,0 +1,80 @@
+<?php error_reporting(0) ?>
+<div class="side-bar">
+    <h2>admin</h2>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="admin.html" class="text-decoration-none">
+                <i class="fa-solid fa-house-user"></i>
+                TỔNG QUAN
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="admin-customer.html" class="nav-link">
+                <i class="fa-solid fa-circle-user"></i>
+                KHÁCH HÀNG
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-hotel"></i>
+                LOẠI PHÒNG
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="admin-room.html" class="nav-link">
+                <i class="fa-solid fa-people-roof"></i>
+                PHÒNG
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="admin-service.html" class="nav-link">
+                <i class="fa-solid fa-bell-concierge"></i>
+                DỊCH VỤ
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="admin-event.html" class="nav-link">
+                <i class="fa-solid fa-calendar-days"></i>
+                SỰ KIỆN
+            </a>
+        </li>
+        <li class="nav-item">
+            <button class="btn align-items-center rounded collapsed btn-quanly" data-bs-toggle="collapse"
+                data-bs-target="#management-collapse" aria-expanded="false">
+                <i class="fa-solid fa-folder-open" style="margin-right: 7px;"></i>
+                QUẢN LÝ
+                <i class="fa-solid fa-chevron-down" style="margin-left: 7px;"></i>
+            </button>
+            <div class="collapse" id="management-collapse">
+                <ul class="btn-toggle-nav list-unstyled pb-1">
+                    <li>
+                        <a href="">Phòng</a>
+                    </li>
+                    <li>
+                        <a href="">Sự kiện</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <button class="btn btn-toggle align-items-center rounded collapsed btn-quanly" data-bs-toggle="collapse"
+                data-bs-target="#invoice-collapse" aria-expanded="false">
+                <i class="fa-solid fa-file-invoice-dollar" style="margin-right: 7px;"></i>
+                HÓA ĐƠN
+                <i class="fa-solid fa-chevron-down" style="margin-left: 7px;"></i>
+            </button>
+            <div class="collapse" id="invoice-collapse">
+                <ul class="btn-toggle-nav list-unstyled pb-1">
+                    <li>
+                        <a href="">Phòng</a>
+                    </li>
+                    <li>
+                        <a href="">Sự kiện</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        </a>
+    </ul>
+</div>

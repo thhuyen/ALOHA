@@ -28,86 +28,10 @@
 
 <body>
     <!-- SIDE BAR -->
-    <div class="side-bar">
-        <h2>admin</h2>
-        <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a href="admin.html" class="text-decoration-none">
-                    <i class="fa-solid fa-house-user"></i>
-                    TỔNG QUAN
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="admin-customer.html" class="nav-link">
-                    <i class="fa-solid fa-circle-user"></i>
-                    KHÁCH HÀNG
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-hotel"></i>
-                    LOẠI PHÒNG
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="admin-room.html" class="nav-link">
-                    <i class="fa-solid fa-people-roof"></i>
-                    PHÒNG
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="admin-service.html" class="nav-link">
-                    <i class="fa-solid fa-bell-concierge"></i>
-                    DỊCH VỤ
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="admin-event.html" class="nav-link">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    SỰ KIỆN
-                </a>
-            </li>
-            <li class="nav-item">
-                <button class="btn align-items-center rounded collapsed btn-quanly" data-bs-toggle="collapse"
-                    data-bs-target="#management-collapse" aria-expanded="false">
-                    <i class="fa-solid fa-folder-open" style="margin-right: 7px;"></i>
-                    QUẢN LÝ
-                    <i class="fa-solid fa-chevron-down" style="margin-left: 7px;"></i>
-                </button>
-                <div class="collapse" id="management-collapse">
-                    <ul class="btn-toggle-nav list-unstyled pb-1">
-                        <li>
-                            <a href="">Phòng</a>
-                        </li>
-                        <li>
-                            <a href="">Sự kiện</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <button class="btn btn-toggle align-items-center rounded collapsed btn-quanly" data-bs-toggle="collapse"
-                    data-bs-target="#invoice-collapse" aria-expanded="false">
-                    <i class="fa-solid fa-file-invoice-dollar" style="margin-right: 7px;"></i>
-                    HÓA ĐƠN
-                    <i class="fa-solid fa-chevron-down" style="margin-left: 7px;"></i>
-                </button>
-                <div class="collapse" id="invoice-collapse">
-                    <ul class="btn-toggle-nav list-unstyled pb-1">
-                        <li>
-                            <a href="">Phòng</a>
-                        </li>
-                        <li>
-                            <a href="">Sự kiện</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            </a>
-        </ul>
-    </div>
-
+    <?php 
+        require_once "./sidebar.html";
+        include_once "./side-bar.html";
+    ?>
 
     <section>
 
@@ -264,9 +188,9 @@
                             <td class="head-table">Đơn vị tính</td>
                             <td class="head-table">Đơn giá</td>
                             <td class="head-table">Tác vụ</td>
-                        </tr>                       
-                       
-                                <!-- <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>
+                        </tr>
+
+                        <!-- <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>
                                 <button type="button" class="del-btn btn-table" data-bs-toggle="modal"
                                     data-bs-target="#delete-room">Xóa</button>
                             -->
@@ -276,22 +200,35 @@
                         while($client_rows = $get_data_roomtype->fetch_assoc())
                             {
                         ?>
-                            <tr>
-                                <td><?php echo $client_rows['RoomTypeName'];?></td>
-                                <td><?php echo $client_rows['MaxRoomQuantity'];?></td>
-                                <td><?php echo $client_rows['RoomTypeSize'];?></td>
-                                <td><?php echo $client_rows['RoomDescription'];?></td>
-                                <td><?php echo $client_rows['RoomTypePrice'];?></td>
-                                <td><?php echo $client_rows['Unit'];?></td>
-                                <td>
-                                    <button class="upd-btn btn-table" onclick="openUpdate(this)" style="margin: 5px;">Sửa</button>
-                                    <button type="button" class="del-btn btn-table" data-bs-toggle="modal"
+                        <tr>
+                            <td>
+                                <?php echo $client_rows['RoomTypeName'];?>
+                            </td>
+                            <td>
+                                <?php echo $client_rows['MaxRoomQuantity'];?>
+                            </td>
+                            <td>
+                                <?php echo $client_rows['RoomTypeSize'];?>
+                            </td>
+                            <td>
+                                <?php echo $client_rows['RoomDescription'];?>
+                            </td>
+                            <td>
+                                <?php echo $client_rows['RoomTypePrice'];?>
+                            </td>
+                            <td>
+                                <?php echo $client_rows['Unit'];?>
+                            </td>
+                            <td>
+                                <button class="upd-btn btn-table" onclick="openUpdate(this)"
+                                    style="margin: 5px;">Sửa</button>
+                                <button type="button" class="del-btn btn-table" data-bs-toggle="modal"
                                     data-bs-target="#delete-room" style="margin-bottom: 5px;">Xóa</button>
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         <?php
                             }
-                        ?>   
+                        ?>
 
                     </table>
                     <!-- <button id="btn-delete" class="btn">Lưu</button> -->
@@ -405,14 +342,14 @@
     <script>
         function openUpdate(button) {
             btnExitForm.style.display = "block";
-            updateRoomForm.style.display="block";
+            updateRoomForm.style.display = "block";
             updateTab.classList.add('close');
-    
+
             function find_pos(row, x) {
                 var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
-                var updateTableRows = document.querySelector(".update-table").rows; 
-                for (let i = 0; i< updateTableRows.length; i++) {
-                    if ( updateTableRows[i] === x.parentElement.parentElement ) {
+                var updateTableRows = document.querySelector(".update-table").rows;
+                for (let i = 0; i < updateTableRows.length; i++) {
+                    if (updateTableRows[i] === x.parentElement.parentElement) {
                         document.getElementById('guest-code-upd').value = updateTableCells[0].innerText;
                         document.getElementById('guest-name-upd').value = updateTableCells[1].innerText;
                         document.getElementById('guest-phone-upd').value = updateTableCells[2].innerText;
@@ -424,10 +361,10 @@
                         break;
                     }
                 }
-            } 
+            }
             find_pos((button.parentElement).parentElement.rowIndex, button);
         } 
-        </script>
+    </script>
 
     <!-- SCRIPT bell -->
     <script src="./assets/javascript/notificationBell.js"></script>
