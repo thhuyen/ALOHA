@@ -65,10 +65,10 @@
     var getYear, getMonth, getDay, dateForm;
     function getDate(text) {
         if(text != '') {
-            getYear = text.slice(0,4);
+            getYear = text.slice(2,4);
             getMonth = text.slice(5,7);
             getDay = text.slice(8,11);
-            dateForm = getDay + '/' + getMonth + '/' + getYear;
+            dateForm = getDay + '-' + getMonth + '-' + getYear;
             return dateForm;
         }
         return text;

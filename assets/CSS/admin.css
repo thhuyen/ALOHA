@@ -1,6 +1,5 @@
 section {
     margin-left: 200px;
-
 }
 
 /* --------SIDE BAR---------- */
@@ -145,30 +144,6 @@ ul li .btn {
     margin-right: 25px;
 }
 
-.dropdown-content .notify-info {
-    padding-bottom: 10px;
-    align-items: center;
-    border-bottom: 1px solid #b4b4b4;
-    display: block;
-
-}
-
-.dropdown-content.notify-info p span {
-    padding: 10px;
-    color: #8886fc;
-}
-
-.dropdown-content .notify-info .notify-time {
-    color: #b3b3a8;
-    font-size: 12px;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px 0 12px;
-    text-decoration: none;
-    display: block;
-}
 
 .dropdown a:hover {
     background-color: #ddd;

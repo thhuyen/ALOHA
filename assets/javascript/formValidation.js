@@ -65,10 +65,46 @@ function Validator(options) {
         // Lắp qua từng rules và validate
         options.rules.forEach(function(rule) {
             var inputElement = formElement.querySelector(rule.selector);
-            valiDate(inputElement, rule);
-           
+            var isValid = valiDate(inputElement, rule);
+            if (!isValid) {
+                isFormValid = false;
+            }
         });
 
+        if (isFormValid) {
+            // TH submit với js
+            if (typeof options.onSubmit === 'function') {
+                var enableInputs = formElement.querySelectorAll('[name]');
+                var formValues = Array.from(enableInputs).reduce(function(values, input) {
+                    switch(input.type) {
+                        case 'radio':
+                            values[input.name] = formElement.querySelector('input[name="'+ input.name +'"]:checked').value;
+                            break;
+                        case 'checkbox':
+                            if (!input.matches(':checked')) {
+                                values[input.name] = '';
+                                return values;
+                            }
+                            if (!Array.isArray(values[input.name])) {
+                                values[input.name] = [];
+                            }
+                            values[input.name].push(input.value);
+                            break;
+                        case 'file':
+                            values[input.name] = input.files;
+                            break;
+                        default: 
+                            values[input.name] = input.value;
+                    }
+                    return values;
+                }, {});
+                options.onSubmit(formValues);
+            } 
+            // TH submit với hành vi mặc định của HTML
+            else {
+                formElement.submit();
+            }
+        }
     }    
 
 
@@ -139,7 +175,7 @@ Validator.isSelected = function (selector, message) {
     return {
         selector: selector,
         test: function(value) {
-            return value > 0 ? undefined: `Vui lòng chọn ${message} tại đây`; 
+            return value != 0 ? undefined: `Vui lòng chọn ${message} tại đây`; 
         }
     };
 }
@@ -149,6 +185,19 @@ Validator.isEmail = function(selector) {
         test: function(value) {
             var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             return regex.test(value) ? undefined : 'Vui lòng nhập email hợp lệ';
+        }
+    };
+}
+Validator.isExisted = function(selector, arrName) {
+    return {
+        selector: selector,
+        test: function(value) {
+            for (let i = 0; i < arrName[i]; i++) {
+                if ((arrName[i] === value)) {
+                    return `Phòng ${value} đã tồn tại`;
+                }
+            }
+            return undefined;
         }
     };
 }

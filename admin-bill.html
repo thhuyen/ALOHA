@@ -1,3 +1,16 @@
+<?php
+    include './assets/PHP/connectdb.php';
+    $id;
+    if(isset($_GET['IdInvoice'])) {
+        $id = $_GET['IdInvoice'];
+        mysqli_query($conn, "DELETE FROM `invoice_room` WHERE IdInvoiceRoom = '".$id."'");      
+    }
+    if (isset($_GET['InvoiceDate']) && isset($_GET['id'])) {
+        $date = $_GET['InvoiceDate'];
+        $id = $_GET['id'];
+        mysqli_query($conn, "UPDATE `invoice_room` SET `InvoiceRoomDate` = '".$date."' WHERE IdInvoiceRoom = '".$id."'");      
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +20,6 @@
     <link rel="stylesheet" href="./assets/CSS/base-admin.css">
     <link rel="stylesheet" href="./assets/CSS/admin-room.css">
     <link rel="stylesheet" href="./assets/CSS/admin.css">
-    <link rel="stylesheet" href="./assets/CSS/admin-customer.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
 
     <title>ALOHA Admin</title>
@@ -79,41 +91,11 @@
                 </div>
             
                     <!-- NOTICE-BELL -->
-                <button onclick="myFunction()" >
-                    <i class="dropbtn fa-solid fa-bell"></i>
-                </button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                </div>
+                <?php
+                    include './assets/PHP/connectdb.php';
+                    include './assets/PHP/notification.php';
+                    include_once "./notification.html";                    
+                ?>
             </div>
         </div>
 
@@ -125,82 +107,52 @@
         <div class="tab-content">
             <!-- PHÒNG-->
             <div class="tab-pane add active">
-                <div class='container'>
-                    <table id="update-tab" class="update-table table-infor" width="900" height="400">
+                <div class='container' style="width: 1336px;">
+                    <table id="update-tab" class="update-table table-infor" width="1000" height="auto">
                         <tr>
-                            <td class="head-table">Số hóa đơn phòng</td>
+                            <td class="head-table">Số hóa đơn</td>
                             <td class="head-table">Mã khách hàng</td>
                             <td class="head-table">Ngày lập hóa đơn</td>
                             <td class="head-table">Tổng tiền</td>
-                            <td class="head-table">  </td>
+                            <td class="head-table">Tác vụ</td>
+                            <td class="head-table">Hủy</td>
                         </tr>
 
-                        <tr>
-                            <td>HDP001</td>
-                            <td>KH001</td>
-                            <td>.........</td>
-                            <td>..........</td>
-                            <td>
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>
-                                <button class="print-btn btn-table">In</button>
-                            </td>
-                        </tr>
+                        <?php
+                            include './assets/PHP/connectdb.php';
+                            $get_data_bill = mysqli_query($conn, "SELECT * FROM invoice_room");
+                            while($bill_rows = $get_data_bill->fetch_assoc())
+                                {
+                            ?>
+                            <tr>
+                                <td><?php echo $bill_rows['IdInvoiceRoom'];?></td>
+                                <td><?php echo $bill_rows['IdCustomer'];?></td>
+                                <td>
+                                    <?php 
+                                        if($bill_rows['InvoiceRoomDate'] === null)
+                                        {
+                                    ?>
+                                    <input type="date" name="date-bill" id="date-bill" onchange="SetDateInvoice(this)">
+                                    <?php }
+                                    else {
+                                    ?>
+                                    <input type="date" name="date-bill" id="date-bill-value" value="<?php echo $bill_rows['InvoiceRoomDate'] ?>" onchange="SetDateInvoice(this)">
 
-                        <tr>
-                            <td>Spa & Fitness</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>                                
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>
-                                <button class="print-btn btn-table">In</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Golf</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>                
-                                <button class="print-btn btn-table">In</button>
-                            </td>
+                                    <?php } ?>
+                                </td>
+                                <td><?php echo $bill_rows['InvoiceRoomTotal'];?></td>
+                                <td>
+                                    <button class="detail-btn btn-table">Chi tiết</button>                
+                                    <button class="print-btn btn-table">In</button>
+                                </td>
+                                <td>
+                                    <select name="cancel-room" class="cancel-room" onchange="isCancel(this)">
+                                        <option value="no-cancel">Không</option>
+                                        <option value="yes-cancel">Có</option>
+                                    </select>
+                                </td>
                         </tr> 
-            
-                        <tr>
-                            <td>Du thuyền</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>                
-                                <button class="print-btn btn-table">In</button>
-                            </td>
-                        </tr> 
-                        
-                        <tr>
-                            <td>Bar & Karaoke</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>                
-                                <button class="print-btn btn-table">In</button>
-                            </td>
-                        </tr> 
-
-                        <tr>
-                            <td>Beach coffe</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>                
-                                <button class="print-btn btn-table">In</button>
-                            </td>
-                        </tr> 
-
+                        <?php } ?>
                         
                     </table>                    
 
@@ -210,7 +162,7 @@
             <!-- SỰ KIỆN -->
             <div class="tab-pane" >
                 <div class='container'>
-                    <table id="update-tab1" class="update-table table-infor" width="900" height="400">
+                    <table id="update-tab1" class="update-table table-infor" width="1000" height="auto">
                         <tr>
                             <td class="head-table">Số hóa đơn sự kiện</td>
                             <td class="head-table">Mã khách hàng</td>
@@ -375,19 +327,54 @@
                 </div>  
  
             </div>
-
- 
         </div> 
     </section>
 
-     <!-- SCRIPT bell -->
-     <script src="./assets/javascript/notificationBell.js"></script>
+    <!-- update trạng thái hủy -->
+    <script>
+        function find_pos(row, x) {
+            var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
+            var updateTableRows = document.querySelector(".update-table").rows; 
+            for (let i = 0; i< updateTableRows.length; i++) {
+                if (updateTableRows[i] === x.parentElement.parentElement) {
+                    let url = "http://localhost:8080/aloha/admin-bill.html";            
+                    window.location.href= url + "?IdInvoice=" + updateTableCells[0].innerHTML;
+                    document.querySelector(".update-table").deleteRow(row);
+                    break;
+                }
+            }
+        }
+        function isCancel(select) {
+            if(select.value === 'yes-cancel') {
+                find_pos((select.parentElement).parentElement.rowIndex, select);
+            }
+        }
+    </script>
+    
+    <!-- update ngày hóa đơn -->
+    <script>
+        $id = 0;
+        function find_pos(row, x) {
+        var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
+        var updateTableRows = document.querySelector(".update-table").rows; 
+        for (let i = 0; i< updateTableRows.length; i++) {
+            if (updateTableRows[i] === x.parentElement.parentElement) {
+                $id = updateTableCells[0].innerHTML;
+                break;
+            }
+        }
+        }
+        function SetDateInvoice(input) {    
+            find_pos((input.parentElement).parentElement.rowIndex, input); 
+            let url = "http://localhost:8080/aloha/admin-bill.html";            
+            window.location.href= url + "?InvoiceDate=" + input.value.slice(2,11) + "&id=" + $id;
+        }
+    </script>
+    <!-- SCRIPT bell -->
+    <script src="./assets/javascript/notificationBell.js"></script>
 
-     <!-- script tab slider -->
-     <script src="./assets/javascript/tab-slider.js"></script>
-
-     <!-- SCRIPT upload photo-->
-    <script src="./assets/javascript/upload-photo.js"></script>
+    <!-- script tab slider -->
+    <script src="./assets/javascript/tab-slider.js"></script>
 
     <script src="https://kit.fontawesome.com/c89546c2fd.js" crossorigin="anonymous"></script>
 

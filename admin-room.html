@@ -8,7 +8,6 @@
     <title>ALOHA Admin</title>
     <link rel="icon" href="./assets/img/logo/logo.png" type="image/x-icon" />
 
-
     <!-- Link CSS -->
     <link rel="stylesheet" href="./assets/CSS/base-admin.css">
     <link rel="stylesheet" href="./assets/CSS/admin.css">
@@ -24,6 +23,8 @@
     <!--Link Icon Awesome-->
     <script src="https://kit.fontawesome.com/c89546c2fd.js" crossorigin="anonymous"></script>
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
@@ -115,10 +116,10 @@
 
                 <div class="tabs">
                     <!-- header -->
-                    <div class="tab-item active">
+                    <div class="tab-item add active">
                         Thêm phòng
                     </div>
-                    <div class="tab-item">
+                    <div class="tab-item manage">
                         Quản lý phòng
                     </div>
 
@@ -126,41 +127,11 @@
                 </div>
 
                 <!-- NOTICE-BELL -->
-                <button onclick="myFunction()">
-                    <i class="dropbtn fa-solid fa-bell"></i>
-                </button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                </div>
+                <?php
+                    include './assets/PHP/connectdb.php';
+                    include './assets/PHP/notification.php';
+                    include_once "./notification.html";                    
+                ?>
             </div>
         </div>
 
@@ -173,46 +144,50 @@
             <!-- THÊM PHÒNG -->
             <div class="tab-pane add active">
                 <div class='container add'>
-                    <form id="form-add">
+                    <form id="form-add" action="./assets/PHP/insert_room.php" method="POST"> 
                         <div class="room-container">
                             <label for='room-name' class="form-label">Tên phòng *</label>
                             <div class='room-infor'>
-                                <input id='room-name' class="form-control" placeholder="Nhập tên phòng" type='text'
-                                    name="room-name" id="">
+                                <input id='room-name' class="form-control" placeholder="Nhập tên phòng" type='text' name="room-name">
                             </div>
-                            <span class="invalid-message"></span>
+                            <span class="invalid-message" id="message-roomname"></span>
                         </div>
 
                         <div class="room-container">
                             <label for='room-type' class="form-label">Loại phòng *</label>
                             <div class='room-infor'>
-                                <select class="form-select" id="room-type">
-                                    <option value="0" selected>Chọn...</option>
-                                    <option value="1">Phòng đơn</option>
-                                    <option value="2">Phòng đôi</option>
-                                    <option value="3">Phòng tư</option>
+                                <select class="form-select" id="room-type" name="room-type">
+                                    <option value="0">Chọn loại phòng...</option>
+                                    <?php
+                                        include './assets/PHP/connectdb.php';
+                                        $get_data_room = mysqli_query($conn, "SELECT * FROM roomtype");
+                                        while($room_rows = $get_data_room->fetch_assoc())
+                                            {
+                                        ?>
+                                            <option><?php echo $room_rows['RoomTypeName']  ?></option>                         
+                                        <?php
+                                            }
+                                        ?> 
                                 </select>
                             </div>
                             <span class="invalid-message"></span>
-                        </div>
+                        </div>                        
 
                         <div class="room-container">
                             <label for='file' class="form-label">Tình trạng *</label> <br>
                             <div class="form-check form-check-inline room-status">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="1" checked="checked">
-                                    <label class="form-check-label" for="inlineRadio1">Còn trống</label>
+                                    <input class="form-check-input" type="radio" name="radio-status-add" checked="checked" id="vacant-add" value="0">
+                                    <label class="form-check-label" for="vacant-add">Còn trống</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="2">
-                                    <label class="form-check-label" for="inlineRadio2">Đã đặt</label>
+                                    <input class="form-check-input" type="radio" name="radio-status-add" id="used-add" value="1">
+                                    <label class="form-check-label" for="used-add">Đang sử dụng</label>
                                 </div>
                                 <span class="invalid-message"></span>
                             </div>
-                        </div>
-
+                        </div>                                              
+                        
                         <div class="room-container">
                             <label for='room-note' class="form-label">Ghi chú</label>
                             <div class='room-infor'>
@@ -220,12 +195,22 @@
                             </div>
                             <span class="invalid-message"></span>
                         </div>
-
-                        <button id="btn-save" class="btn">Lưu</button>
+                        <button type="submit" id="btn-save" class="btn" name="btn-add-room">Thêm</button>
                     </form>
                 </div>
             </div>
-
+            <?php
+                function get_roomname() {
+                    include './assets/PHP/connectdb.php';
+                    $arr = array();
+                    $room_rows =  $conn->query("select * from room");
+                    while($get_data_room = $room_rows->fetch_assoc()) {
+                        array_push($arr, $get_data_room["RoomName"]);
+                    }
+                    return (json_encode($arr,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
+                }
+            ?>
+            
 
             <!-- QUẢN LÝ PHÒNG -->
             <div class="tab-pane">
@@ -240,27 +225,27 @@
                                 <td class="head-table">TÁC VỤ</td>
                             </tr>
                             <?php
-                        include './assets/PHP/connectdb.php';
-                        $get_data_roomtype = mysqli_query($conn, "SELECT * FROM room");
-                        while($client_rows = $get_data_roomtype->fetch_assoc())
-                            {
-                        ?>
+                            include './assets/PHP/connectdb.php';
+                            $get_data_room = mysqli_query($conn, "SELECT * FROM room");
+                            while($room_rows = $get_data_room->fetch_assoc())
+                                {
+                            ?>
                             <tr>
-                                <td><?php echo $client_rows['RoomName'];?></td>
-                                <td><?php echo $client_rows['RoomTypeName'];?></td>
+                                <td><?php echo $room_rows['RoomName'];?></td>
+                                <td><?php echo $room_rows['RoomTypeName'];?></td>
                                 <td><?php 
-                                        if($client_rows['Status'] == 0)
+                                        if($room_rows['Status'] == 0)
                                         {
                                             echo 'Trống';
                                         } else { echo 'Đang sử dụng';}
                                         
                                     ?>
                                 </td>
-                                <td><?php echo $client_rows['RoomNote'];?></td>
+                                <td><?php echo $room_rows['RoomNote'];?></td>
                                 <td>
                                     <button class="upd-btn btn-table" onclick="openUpdate(this)" style="margin: 5px;">Sửa</button>
                                     <button type="button" class="del-btn btn-table" data-bs-toggle="modal"
-                                    data-bs-target="#delete-room" style="margin-bottom: 5px;">Xóa</button>
+                                    data-bs-target="#delete-room" style="margin-bottom: 5px;" onclick="openModalDelete(this)">Xóa</button>
                                 </td>
                             </tr>
                         <?php
@@ -274,26 +259,52 @@
             </div>
 
             <!-- form xóa -->
-            <div class="modal fade" id="delete-room" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Xóa phòng</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body notice-content">
-                            <p>Bạn muốn xóa <span class="room-name-notice">PHÒNG 101</span></p>
-                            <p><i class="fa-solid fa-circle-exclamation icon-exclamation"></i></p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay
-                                lại</button>
-                            <button type="button" class="btn btn-danger">Xóa</button>
+            <form action="./assets/PHP/delete_room.php" method="POST">
+                <div class="modal fade" id="delete-room" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Xóa phòng</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body notice-content">
+                                <p>Bạn muốn xóa <span class="room-name-notice">PHÒNG 101</span></p>
+                                <p><i class="fa-solid fa-circle-exclamation icon-exclamation"></i></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay
+                                    lại</button>
+                                <button type="submit" name ="btn-del" class="btn btn-danger" onclick="DeleteRoom(this)">Xóa</button>
+                                <!-- Bắt sự kiện khi bấm button Xóa phòng -->                                
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
+            <script>
+                var roomname = '';
+                function openModalDelete(button) {
+                    function find_pos(row, x) {
+                        var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
+                        var updateTableRows = document.querySelector(".update-table").rows; 
+                        for (let i = 0; i< updateTableRows.length; i++) {
+                            if (updateTableRows[i] === x.parentElement.parentElement ) {
+                                return updateTableCells[0].innerText;
+                                break;
+                            }
+                        }
+                        return false;
+                    } 
+                    roomname = find_pos((button.parentElement).parentElement.rowIndex, button);
+                    return roomname;
+                }
+                function DeleteRoom(button) {
+                    document.cookie = "roomname" + "=" + roomname; 
+                }   
+            </script>
+
             <!-- form chỉnh sửa -->
             <div>
                 <div class='container add form' style="margin-top: 0;">
@@ -312,9 +323,16 @@
                             <label for='room-type-update' class="form-label">Loại phòng *</label>
                             <div class='room-infor'>
                                 <select class="form-select" id="room-type-update" name="room-type-update">
-                                    <option value="single">Phòng đơn</option>
-                                    <option value="double">Phòng đôi</option>
-                                    <option value="big">Phòng bốn</option>
+                                    <?php
+                                        include './assets/PHP/connectdb.php';
+                                        $get_data_room = mysqli_query($conn, "SELECT * FROM roomtype");
+                                        while($room_rows = $get_data_room->fetch_assoc())
+                                            {
+                                        ?>
+                                            <option><?php echo $room_rows['RoomTypeName']  ?></option>                         
+                                    <?php
+                                        }
+                                    ?> 
                                 </select>
                             </div>
                             <span class="invalid-message"></span>
@@ -324,14 +342,14 @@
                             <label for='file' class="form-label">Tình trạng *</label> <br>
                             <div class="form-check form-check-inline room-status">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" value="vacant" type="radio" name="radio-status" id="vacant" checked="checked">
+                                    <input class="form-check-input" type="radio" name="radio-status" id="vacant" checked="checked">
                                     <label class="form-check-label" for="vacant">Còn trống</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" vacant="used" type="radio" name="radio-status" id="used">
+                                    <input class="form-check-input" type="radio" name="radio-status" id="used">
                                     <label class="form-check-label" for="used">Đang sử dụng</label>
                                 </div>
-                                <span class="invalid-message"></span>
+                                <span class="invalid-message"></span> 
                             </div>
                         </div>
 
@@ -344,14 +362,13 @@
                         </div>
 
                         <button type="submit" id="btn-save-update" name="btn-save-update" class="btn btn-save-form">Lưu</button>
+                        <button type="button" class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
                     </form>
-                    <button type="button" class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
 
                 </div>
             </div>
         </div>
         </div>
-
     </section>
 
     <!-- Set data khi bấm button sửa -->
@@ -361,24 +378,13 @@
         updateRoomForm.style.display="block";
         updateTab.classList.add('close');
 
-        function CompareType(input, type) {
-            if (type.localeCompare("Phòng đơn") == 0) {
-                input.value = 'single';
-            }
-            else if (type.localeCompare("Phòng đôi") == 0) {
-                input.value = 'double';
-            }
-            else {
-                input.value = 'big';
-            }
-        }
         function find_pos(row, x) {
             var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
             var updateTableRows = document.querySelector(".update-table").rows; 
             for (let i = 0; i< updateTableRows.length; i++) {
                 if (updateTableRows[i] === x.parentElement.parentElement ) {
                     document.getElementById('room-name-update').value = updateTableCells[0].innerText;
-                    CompareType(document.getElementById('room-type-update'), updateTableCells[1].innerText.trim());
+                    document.getElementById('room-type-update').value = updateTableCells[1].innerText.trim();
                     if (updateTableCells[2].innerText.trim().localeCompare("Trống")==0) {
                         document.querySelector('.room-status #vacant').checked = true;
                     }
@@ -394,6 +400,18 @@
     } 
     </script>
 
+    <!-- Lưu value của input radio tình trạng khi bấm button lưu -->
+    <script>
+        
+        document.getElementById('btn-save-update').addEventListener('click', function() {
+            if (document.querySelector('.room-status #vacant').checked == true) {
+                document.querySelector('.room-status #vacant').value = '0';
+            } else {
+                document.querySelector('.room-status #used').value = '1';
+            }
+        });
+    </script>
+
     <!-- SCRIPT bell -->
     <script src="./assets/javascript/notificationBell.js"></script>
 
@@ -402,17 +420,20 @@
 
     <!-- Kiểm tra điều kiện nhập đầy đủ thông tin -->
     <script src="./assets/javascript/formValidation.js"></script>
+    
     <script>
+        var arrName = JSON.parse('<?= get_roomname(); ?>');
+        
         Validator({
             form: '#form-add',
             formGroupSelector: '.room-container',
             errorSelector: '.invalid-message',
             rules: [
                 Validator.isRequired('#room-name', 'Vui lòng nhập tên phòng'),
-                Validator.minLength('#room-name', 5),
+                Validator.isExisted('#room-name', arrName),
+                Validator.minLength('#room-name', 3),
                 Validator.isSelected('#room-type', 'loại phòng'),
             ],
-          
         });
     </script>
 </body>

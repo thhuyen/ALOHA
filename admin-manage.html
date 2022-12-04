@@ -1,3 +1,12 @@
+<?php
+    include './assets/PHP/connectdb.php';
+    if(isset($_GET['IdInvoiceRoomDetail']) && isset($_GET['RoomName'])) {
+        $id = $_GET['IdInvoiceRoomDetail'];
+        $roomname = $_GET['RoomName'];
+        mysqli_query($conn, "UPDATE room SET status = 1 WHERE RoomName = '".$roomname."'");
+        mysqli_query($conn, "UPDATE invoice_room_detail i SET RoomName = '".$roomname."' WHERE '".$id."' = i.IdInvoiceRoomDetail");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +16,12 @@
     <link rel="stylesheet" href="./assets/CSS/base-admin.css">
     <link rel="stylesheet" href="./assets/CSS/admin-room.css">
     <link rel="stylesheet" href="./assets/CSS/admin.css">
-    <link rel="stylesheet" href="./assets/CSS/admin-customer.css">
+    <link rel="stylesheet" href="./assets/CSS/admin-manage.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
 
     <title>ALOHA Admin</title>
     <link rel="icon" href="./assets/img/logo/logo.png" type="image/x-icon" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
       <!-- SIDE BAR -->
@@ -65,17 +75,8 @@
             <div class="dropdown">
                 <div class="tabs">
                     <!-- header -->
-                    <div class="tab-item active">
-                        Phòng
-                      </div>
-                      <!-- <div class="tab-item">
-                        Xóa dịch vụ
-                      </div> -->
-                      <div class="tab-item">
-                        Sự kiện
-                      </div>
-               
-                      <div class="line"></div>
+                    <div class="tab-item active">Phòng</div>
+                    <div class="line"></div>
                 </div>
             
                     <!-- NOTICE-BELL -->
@@ -122,339 +123,142 @@
             <h1>QUẢN LÝ</h1>
         </div>
 <!-- FORM -->
-        <div class="tab-content">
-            <!-- THÊM KHÁCH HÀNG-->
-            <div class="tab-pane add active">
-                <div class='container add'>
-                    <table id="update-tab" class="update-table table-infor" width="900" height="400">
-                        <tr>
-                            <td class="head-table">Tên khách hàng</td>
-                            <td class="head-table">Số điện thoại</td>
-                            <td class="head-table">Email</td>
-                            <td class="head-table">Ngày đặt</td>
-                            <td class="head-table">Ngày ở</td>
-                            <td class="head-table">Ngày trả</td>
-                            <td class="head-table">Đơn giá</td>
-                            <td class="head-table">Chọn phòng</td>
-                            <td class="head-table">Hủy</td>
-                        </tr>
+    <div class="tab-content">
+        <div class="tab-pane add active">
+            <div class='container' style="width:1330px;">
+                <table id="update-tab" class="update-table table-infor" width="1300" height="auto">
+                    <tr>
+                        <!-- <td class="head-table">STT</td> -->
+                        <td class="head-table">Tên khách hàng</td>
+                        <td class="head-table">Số điện thoại</td>
+                        <td class="head-table">Email</td>
+                        <td class="head-table">Ngày đặt</td>
+                        <td class="head-table">Ngày ở</td>
+                        <td class="head-table">Ngày trả</td>
+                        <td class="head-table">Đơn giá</td>
+                        <td class="head-table">Loại phòng</td>
+                        <td class="head-table">Số phòng</td>
 
-                        <tr>
-                            <td>Nguyễn Văn An</td>
-                            <td>0909281715</td>
-                            <td>
-                                abc@abc.com
-                                <button class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
-                            </td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>
-                                <select name="manage-room" id="manage-room">
-                                    <option value="room1">101</option>
-                                    <option value="room2">102</option>
-                                    <option value="room3">103</option>
-                                    <option value="room4">104</option>
-                                    <option value="room5">105</option>
-                                    <option value="room6">106</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select name="cancel-room" id="cancel-room">
-                                    <option value="yes-cancel">Có</option>
-                                    <option value="no-cancel">Không</option>
-                                </select>
-                            </td>
-                        </tr>
+                    </tr>
 
-                        <tr>
-                            <td>Nguyễn Văn An</td>
-                            <td>0909281715</td>
-                            <td>
-                                abc@abc.com
-                                <button class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
-                            </td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>
-                                <select name="manage-room" id="manage-room">
-                                    <option value="room1">101</option>
-                                    <option value="room2">102</option>
-                                    <option value="room3">103</option>
-                                    <option value="room4">104</option>
-                                    <option value="room5">105</option>
-                                    <option value="room6">106</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select name="cancel-room" id="cancel-room">
-                                    <option value="yes-cancel">Có</option>
-                                    <option value="no-cancel">Không</option>
-                                </select>
-                            </td>
-                        </tr>
+                    <?php
+                        include './assets/PHP/connectdb.php';
+                        $get_data_reservation = mysqli_query($conn, "SELECT * FROM invoice_room_detail id, customer c, invoice_room i
+                                                WHERE i.IdCustomer = c.IdCustomer AND id.IdInvoiceRoom = i.IdInvoiceRoom");
+                        
+                        while($reservation_rows = $get_data_reservation->fetch_assoc())
+                            {
+                    ?>
+                    <tr id = '<?php echo $reservation_rows['IdInvoiceRoomDetail'] ?>'>
+                        <!-- <td><?php echo $reservation_rows['IdInvoiceRoomDetail'];?></td> -->
+                        <td><?php echo $reservation_rows['CustomerName'];?></td>
+                        <td><?php echo $reservation_rows['CustomerPhone'];?></td>
+                        <td>
+                            <p style="display: block;">
+                                <?php echo $reservation_rows['CustomerEmail'];?>
+                            </p>
+                            <button class="mail-btn btn-table">Gửi mail</button>
+                        </td>
+                        <td><?php echo $reservation_rows['ReservationDate'];?></td>
+                        <td><?php echo $reservation_rows['CheckinDate'];?></td>
+                        <td><?php echo $reservation_rows['CheckoutDate'];?></td>
+                        <td><?php echo $reservation_rows['RoomPrice'];?></td>
+                        <td><?php echo $reservation_rows['RoomTypeName'];?></td>
+                        <td>
+                            <?php
+                                if ($reservation_rows['RoomName'] > 0) {
+                                    echo $reservation_rows['RoomName'];
+                                }
+                                else {
+                            ?>
+                                <select name="list-room-vacant" class="list-room-vacant" onchange="ChooseRoom(this)">
+                                    <option value="0">Chọn phòng...</option> 
+                                    <?php
+                                    include './assets/PHP/connectdb.php';
+                                    $get_data_room = mysqli_query($conn, "SELECT * FROM room WHERE status = 0
+                                                                    AND '".$reservation_rows['RoomTypeName']."' = room.RoomTypeName");
+                                    while ($room_rows = $get_data_room->fetch_assoc()) {
+                                    ?>
+                                        <option><?php echo $room_rows['RoomName']?></option>
+                                    <?php
+                                        }
+                                    ?> 
+                                </select>  
+                            <?php
+                                }
+                            ?>
+                        </td>
+                </tr> 
+                <?php
+                    }
+                ?>      
+                </table>   
+            </div>                  
+        </div>
+    </div>    
+        
+    <!-- form email -->
+    <div class="popup-send-mail">
+        <div class="mail-content form">
+            <h2>Soạn Email</h2>
+            <form action="" id="form-email">
 
-                        <tr>
-                            <td>Nguyễn Văn An</td>
-                            <td>0909281715</td>
-                            <td>
-                                abc@abc.com
-                                <button class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
-                            </td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>
-                                <select name="manage-room" id="manage-room">
-                                    <option value="room1">101</option>
-                                    <option value="room2">102</option>
-                                    <option value="room3">103</option>
-                                    <option value="room4">104</option>
-                                    <option value="room5">105</option>
-                                    <option value="room6">106</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select name="cancel-room" id="cancel-room">
-                                    <option value="yes-cancel">Có</option>
-                                    <option value="no-cancel">Không</option>
-                                </select>
-                            </td>
-                        </tr> 
-            
-                         
-                    </table>   
-                    </div>                  
-            </div>
-
-            </div>
-            
-
-            <!-- CHỈNH SỬA -->
-            <div class="tab-pane" >
-                <div class='container'>
-                    <table id="update-tab" class="update-table table-infor" width="900" height="400">
-                        <tr>
-                            <td class="head-table">Tên khách hàng</td>
-                            <td class="head-table">Số điện thoại</td>
-                            <td class="head-table">Email</td>
-                            <td class="head-table">Ngày đặt</td>
-                            <td class="head-table">Ngày diễn ra</td>
-                            <td class="head-table">Đơn giá</td>
-                            <td class="head-table">Loại sự kiện</td>
-                            <td class="head-table">Hủy</td>
-                        </tr>
-
-                        <tr>
-                            <td>Nguyễn Văn An</td>
-                            <td>0909281715</td>
-                            <td>
-                                abc@abc.com
-                                <button id="mail-btn" class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
-                            </td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>
-                                <select name="manage-event" id="manage-event">
-                                    <option value="cafe">Café</option>
-                                    <option value="kara">Karaoke</option>
-                                    <option value="golf">Sân golf</option>
-                                    <option value="bar">Quầy bar</option>
-                                    <option value="pet">Thú cưng</option>
-                                    <option value="laundry">Giặt ủi đồ</option>
-                                    <option value="spa">Phòng spa</option>
-                                    <option value="gym">Phòng gym</option>
-                                    <option value="24/24">Phục vụ 24/24</option>
-
-                                </select>
-                            </td>
-                            <td>
-                                <select name="cancel-event" id="cancel-event">
-                                    <option value="yes-cancel">Có</option>
-                                    <option value="no-cancel">Không</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Nguyễn Văn An</td>
-                            <td>0909281715</td>
-                            <td>
-                                abc@abc.com
-                                <button id="mail-btn" class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
-                            </td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>
-                                <select name="manage-event" id="manage-event">
-                                    <option value="cafe">Café</option>
-                                    <option value="kara">Karaoke</option>
-                                    <option value="golf">Sân golf</option>
-                                    <option value="bar">Quầy bar</option>
-                                    <option value="pet">Thú cưng</option>
-                                    <option value="laundry">Giặt ủi đồ</option>
-                                    <option value="spa">Phòng spa</option>
-                                    <option value="gym">Phòng gym</option>
-                                    <option value="24/24">Phục vụ 24/24</option>
-
-                                </select>
-                            </td>
-                            <td>
-                                <select name="cancel-event" id="cancel-event">
-                                    <option value="yes-cancel">Có</option>
-                                    <option value="no-cancel">Không</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Nguyễn Văn An</td>
-                            <td>0909281715</td>
-                            <td>
-                                abc@abc.com
-                                <button id="mail-btn" class="mail-btn btn-table" onclick="sendEmail()">Gửi mail</button>
-                            </td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>......</td>
-                            <td>
-                                <select name="manage-event" id="manage-event">
-                                    <option value="cafe">Café</option>
-                                    <option value="kara">Karaoke</option>
-                                    <option value="golf">Sân golf</option>
-                                    <option value="bar">Quầy bar</option>
-                                    <option value="pet">Thú cưng</option>
-                                    <option value="laundry">Giặt ủi đồ</option>
-                                    <option value="spa">Phòng spa</option>
-                                    <option value="gym">Phòng gym</option>
-                                    <option value="24/24">Phục vụ 24/24</option>
-
-                                </select>
-                            </td>
-                            <td>
-                                <select name="cancel-event" id="cancel-event">
-                                    <option value="yes-cancel">Có</option>
-                                    <option value="no-cancel">Không</option>
-                                </select>
-                            </td>
-                        </tr> 
-                    </table>                    
-
+                <div class="mail-container">
+                    <div class='mail-infor'>
+                        <label for='receiver'>Người nhận</label>
+                        <input id='receiver'  type='text' name="receiver" id="">
+                    </div>
+                    <span class="invalid-message"></span>
                 </div>
 
-            </div>
-            <!-- form chỉnh sửa -->
-            <div>
-                <div class='container add form'  style ="margin-top: 20px">
-                    <form id="form-update-room">
-        
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-code'>Mã khách hàng *</label>
-                                <input id='guest-code'  type='text' name="guest-code" id="">
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-name'>Họ tên *</label>
-                                <input id='guest-name'  type='text' name="guest-name" id="">
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-                        
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-phone'>Số điện thoại *</label>
-                                <input id='guest-phone'  type='text' name="guest-phone" id="">
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-mail'>Email *</label>
-                                <input id='guest-mail'  type='text' name="guest-mail" id="">
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-
-                        <div class="two-container">
-                            <div class="left-container">
-                                <div class='guest-infor'>
-                                    <label for='guest-time'>Số lần đặt *</label>
-                                    <input id='guest-time' type='number' name="guest-time" min="1" max="1000"></input>
-                                </div>
-                                <span class="invalid-message"></span>                           
-                            </div>
-    
-                            <div class="right-container">
-                                <div class='guest-infor'>
-                                    <label for='guest-type'>Phân loại *</label>
-                                    <select name="guest-type" id="guest-type">
-                                        <option value="non-vip">Không thân thiết</option>
-                                        <option value="vip">Thân thiết</option>
-                                    </select>
-                                </div>
-                            </div>   
-                        </div>    <button id="btn-save-update" class="btn btn-save-form">Lưu</button>
-                    </form>
-                    <button class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
-                </div>                  
-            </div>
-        </div> 
-
-
-        <div class="popup-send-mail">
-            <div class="mail-content form">
-                <h2>Soạn Email</h2>
-                <form action="" id="form-email">
-
-                    <div class="mail-container">
-                        <div class='mail-infor'>
-                            <label for='receiver'>Người nhận</label>
-                            <input id='receiver'  type='text' name="receiver" id="">
-                        </div>
-                        <span class="invalid-message"></span>
+                <div class="mail-container">
+                    <div class='mail-infor'>
+                        <label for='subject'>Chủ đề</label>
+                        <input id='subject'  type='text' name="subject" id="">
                     </div>
+                    <span class="invalid-message"></span>
+                </div>
 
-                    <div class="mail-container">
-                        <div class='mail-infor'>
-                            <label for='subject'>Chủ đề</label>
-                            <input id='subject'  type='text' name="subject" id="">
-                        </div>
-                        <span class="invalid-message"></span>
+                <div class="mail-container">
+                    <div class='mail-infor'>
+                        <textarea id='mail-des' class="form-control" type='radio' name="mail-des" id=""></textarea>
                     </div>
+                    <span class="invalid-message"></span>
+                </div>
 
-                    <div class="mail-container">
-                        <div class='mail-infor'>
-                            <textarea id='mail-des' class="form-control" type='radio' name="mail-des" id=""></textarea>
-                        </div>
-                        <span class="invalid-message"></span>
-                    </div>
-
-                    <button id="btn-send-update" class="btn btn-save-form">Lưu</button>
-                </form>
-                <button class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
-            </div>
+                <button id="btn-send-update" class="btn btn-save-form">Lưu</button>
+            </form>
+            <button class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
         </div>
+    </div>
     </section>
 
-     <!-- SCRIPT bell -->
-     <script src="./assets/javascript/notificationBell.js"></script>
+    <!-- update phòng cho khách -->
+    <script>
+        function ChooseRoom(select) {
+            var id;
+            function find_pos(row, x) {
+                var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
+                var updateTableRows = document.querySelector(".update-table").rows; 
+                for (let i = 0; i< updateTableRows.length; i++) {
+                    if (updateTableRows[i] === x.parentElement.parentElement) {
+                        id = updateTableRows[i].id;
+                        break;
+                    }
+                }
+            } 
+            find_pos((select.parentElement).parentElement.rowIndex, select);
 
-     <!-- script tab slider -->
-     <script src="./assets/javascript/tab-slider.js"></script>
+            let url = "http://localhost:8080/aloha/admin-manage.html";            
+            window.location.href= url + "?IdInvoiceRoomDetail=" + id + "&RoomName=" + select.value;
+        } 
+    </script>
 
-     <!-- SCRIPT upload photo-->
-    <script src="./assets/javascript/upload-photo.js"></script>
+    <!-- SCRIPT bell -->
+    <script src="./assets/javascript/notificationBell.js"></script>
+
+    <!-- script tab slider -->
+    <script src="./assets/javascript/tab-slider.js"></script>
 
     <script src="https://kit.fontawesome.com/c89546c2fd.js" crossorigin="anonymous"></script>
 
@@ -498,9 +302,9 @@
         });
 
 
-        document.getElementById("mail-btn").addEventListener("click", function(){
-            document.querySelector(".popup-send-mail").style.display = "flex";
-        })
+        // document.getElementById("mail-btn").addEventListener("click", function(){
+        //     document.querySelector(".popup-send-mail").style.display = "flex";
+        // })
 
     </script>
 

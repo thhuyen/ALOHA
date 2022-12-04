@@ -52,41 +52,11 @@
                 </div>
 
                 <!-- NOTICE-BELL -->
-                <button onclick="myFunction()">
-                    <i class="dropbtn fa-solid fa-bell"></i>
-                </button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                </div>
+                <?php
+                    include './assets/PHP/connectdb.php';
+                    include './assets/PHP/notification.php';
+                    include_once "./notification.html";                    
+                ?>
             </div>
         </div>
 

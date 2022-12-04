@@ -107,7 +107,6 @@ section {
 .container.add {
   margin-top: 50px;
   display: flex;
-  width: -moz-fit-content;
   width: fit-content;
   margin-left: 100px;
   /* justify-content: center; */
@@ -220,7 +219,6 @@ section {
 
 .tab-pane .container-table {
   position: relative;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -234,6 +232,7 @@ section {
 }
 
 .tab-pane .container .table-infor .head-table {
+  /* text-transform: capitalize; */
   font-weight: 700;
   height: 50px;
 }
@@ -259,6 +258,7 @@ section {
   border: transparent;
   color: white;
   cursor: pointer;
+  margin: 5px;
 }
 
 .tab-pane .container .table-infor .btn-table:hover {

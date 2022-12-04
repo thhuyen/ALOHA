@@ -22,52 +22,11 @@
 </head>
 <body>
 
-  <div id="header">
-    <a href="home.html" id="logo">
-        <img src="./assets/img/logo/logo.png" alt="" id="img-logo">
-    </a>
-    <span id="open-nav-icon">&#9776;
-    </span>
-    <ul id="nav">
-        <li class="nav-item"><a href="home.html">TRANG CHỦ</a></li>
-        <li class="nav-item"><a href="#">PHÒNG</a></li>
-        <li id ="nav-item-service" class="nav-item">
-            <a href="service.html" class="nav-item-link">DỊCH VỤ
-                <i class="icon-down fa-solid fa-caret-down"></i>
-            </a>
-            
-            <ul id ="sub-nav-service" class="subnav">
-                <a href="service.html#content"><li>Café</li></a>
-                <a href="service.html#content"><li>Karaoke</li></a>                       
-                <a href="service.html#content"><li>Sân golf</li></a>
-                <a href="service.html#content"><li>Quầy bar</li></a>
-                <a href="service.html#content""><li>Thú cưng</li></a>
-                <a href="service.html#content""><li>Giặt ủi đồ</li></a>
-                <a href="service.html#content""><li>Phòng spa</li></a>
-                <a href="service.html#content""><li>Phòng gym</li></a>
-                <a href="service.html#content""><li>Phục vụ 24/24</li></a>
-            </ul>
-        </li>
-        <li id ="nav-item-event" class="nav-item">
-            <a href="event.html" class="nav-item-link">SỰ KIỆN
-                <i class="icon-down fa-solid fa-caret-down"></i>
-            </a>
-            <ul id = "sub-nav-event" class="subnav">
-                <a href="event.html#birthday"><li>Kỉ niệm</li></a>
-                <a href="event.html#birthday"><li>Sinh nhật</li></a>
-                <a href="event.html#meeting"><li>Hội họp</li></a>
-                <a href="event.html#meeting"><li>Hội nghị</li></a>
-                <a href="event.html#wedding"><li>Tiệc prom</li></a>                       
-                <a href="event.html#wedding"><li>Đám cưới</li></a>
-            </ul>
-        </li>
-        <li class="nav-item"><a href="home.html">ĐÁNH GIÁ</a></li>
-        <li class="nav-item"><a href="home.html#footer">LIÊN HỆ</a></li>
-        <span id="close-nav-icon" onclick="closeNav()">&times;</span>
-    </ul>
-</div>
+    <?php
+    include './header.html';
+    ?>
 
-<div id="overlay"></div>
+    <div id="overlay"></div>
 
     <div id="slider">
         <div class="slider-container">

@@ -78,41 +78,11 @@
                 </div>
             
                     <!-- NOTICE-BELL -->
-                <button onclick="myFunction()" >
-                    <i class="dropbtn fa-solid fa-bell"></i>
-                </button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                </div>
+                <?php
+                    include './assets/PHP/connectdb.php';
+                    include './assets/PHP/notification.php';
+                    include_once "./notification.html";                    
+                ?>
             </div>
         </div>
 
@@ -170,191 +140,41 @@
                     </form>
                     </div>                  
             </div>
-
-            </div>
-            <!-- XÓA DỊCH VỤ 
-            <div class="tab-pane">
-                <div class="container ">
-                    <div class="container-table">
-                        <table  class="delete-table table-infor" width="900" height="400">
-                            
-                            <tr>
-                                <td class="head-table">LOẠI DỊCH VỤ</td>
-                                <td class="head-table">ĐƠN GIÁ</td>
-                                <td class="head-table">GHI CHÚ</td>
-                                <td class="head-table"></td> 
-                            </tr>
-    
-                            <tr>
-                                <td>Giặt ủi</td>
-                                <td>300.000</td>
-                                <td>300.000</td>
-                                <td>
-                                    <button class="del-btn btn-table">Xóa</button>
-                                </td>
-                            </tr>
-    
-                            <tr>
-                                <td>Spa & Fitness</td>
-                                <td>600.000</td>
-                                <td>300.000</td>
-                                <td>                                
-                                    <button class="del-btn btn-table">Xóa</button>
-                                </td>
-                            </tr>
-    
-                            <tr>
-                                <td>Golf</td>
-                                <td>2.000.000</td>
-                                <td>300.000</td>
-                                <td>
-                                    <button class="del-btn btn-table">Xóa</button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Du thuyền</td>
-                                <td>1.000.000</td>
-                                <td>300.000</td>
-                                <td>
-                                    <button class="del-btn btn-table">Xóa</button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Bar & Karaoke</td>
-                                <td>600.000</td>
-                                <td>300.000</td>
-                                <td>
-                                    <button class="del-btn btn-table">Xóa</button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Beach coffe</td>
-                                <td>600.000</td>
-                                <td>300.000</td>
-                                <td>
-                                    <button class="del-btn btn-table">Xóa</button>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td>Phục vụ 24/24</td>
-                                <td>600.000</td>
-                                <td>300.000</td>
-                                <td>
-                                    <button class="del-btn btn-table">Xóa</button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Thú cưng</td>
-                                <td>1.400.000</td>
-                                <td>300.000</td>
-                                <td>
-                                    <button class="del-btn btn-table">Xóa</button>
-                                </td>
-                            </tr>
-                            
-                        </table>
-                        <button id="btn-delete" class="btn">Lưu</button>
-
-                    </div>
-                </div>         
-            </div>-->
-
+        </div>
+        
             <!-- CHỈNH SỬA -->
             <div class="tab-pane" >
                 <div class='container'>
-                    <table id="update-tab" class="update-table table-infor" width="900" height="400">
+                    <table id="update-tab" class="update-table table-infor" width="1000" height="auto">
                         <tr>
                             <td class="head-table">LOẠI DỊCH VỤ</td>
                             <td class="head-table">ĐƠN GIÁ</td>
+                            <td class="head-table">ĐƠN VỊ TÍNH</td>
                             <td class="head-table">GHI CHÚ</td>
-                            <td class="head-table">  </td>
+                            <td class="head-table">TÁC VỤ</td>
                         </tr>
 
-                        <tr>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr>
+                        <?php
+                        include './assets/PHP/connectdb.php';
+                        $get_data_service = mysqli_query($conn, "SELECT * FROM service");
+                        while($service_rows = $get_data_service->fetch_assoc())
+                         {
+                        ?>
+                            <tr>
+                                <td><?php echo $service_rows['ServiceName'];?></td>
+                                <td><?php echo $service_rows['ServicePrice'];?></td>
+                                <td><?php echo $service_rows['Unit'];?></td>
+                                <td><?php echo $service_rows['ServiceNote'];?></td>
+                                <td>
+                                    <button class="upd-btn btn-table" onclick="openUpdate(this)">Sửa</button>
+                                    <button class="del-btn btn-table">Xóa</button>
+                                </td>
+                            </tr>
+                        <?php
+                         }
+                        ?>   
 
-                        <tr>
-                            <td>Spa & Fitness</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>                                
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Golf</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-            
-                        <tr>
-                            <td>Du thuyền</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-                        
-                        <tr>
-                            <td>Bar & Karaoke</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-
-                        <tr>
-                            <td>Beach coffe</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-
-                        <tr>
-                            <td>Phục vụ 24/24</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-
-                        <tr>
-                            <td>Thú cưng</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
+                       
                     </table>                    
 
                 </div>
@@ -405,6 +225,15 @@
             </div>
         </div> 
     </section>
+
+    <script>
+        function openUpdate(button) {
+            btnExitForm.style.display = "block";
+            updateRoomForm.style.display="block";
+            updateTab.classList.add('close');
+
+        } 
+        </script>
 
      <!-- SCRIPT bell -->
      <script src="./assets/javascript/notificationBell.js"></script>

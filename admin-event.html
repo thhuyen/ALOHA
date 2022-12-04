@@ -78,45 +78,11 @@
                 </div>
             
                     <!-- NOTICE-BELL -->
-                <button onclick="myFunction()" >
-                    <i class="dropbtn fa-solid fa-bell"></i>
-                </button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a href="" style="padding: 5px 0; background: #fff;"><div style="text-align: center;">Xem tất cả</div></a>
-                    
-                    
-                   
-                </div>
+                <?php
+                    include './assets/PHP/connectdb.php';
+                    include './assets/PHP/notification.php';
+                    include_once "./notification.html";                    
+                ?>
             </div>
         </div>
 
@@ -171,7 +137,7 @@
             <!-- CHỈNH SỬA -->
             <div class="tab-pane" >
                 <div class='container'>
-                    <table id="update-tab" class="update-table table-infor" width="900" height="300">
+                    <table id="update-tab" class="update-table table-infor" width="1000" height="auto">
                         <tr>
                             <td class="head-table">LOẠI SỰ KIỆN</td>
                             <td class="head-table">KHOẢNG THỜI GIAN</td>
@@ -180,71 +146,25 @@
                             <td class="head-table">  </td>
                         </tr>
 
-                        <tr>
-                            <td>Prom</td>
-                            <td>1</td>
-                            <td>Prom</td>
-                            <td>........</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Kỷ niệm</td>
-                            <td>2</td>
-                            <td>Prom</td>
-                            <td>.........</td>
-                            <td>                                
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Sinh nhật</td>
-                            <td>3</td>
-                            <td>Prom</td>
-                            <td>........</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-            
-                        <tr>
-                            <td>Hội họp</td>
-                            <td>4</td>
-                            <td>Prom</td>
-                            <td>.............</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-                        
-                        <tr>
-                            <td>Hội nghị</td>
-                            <td>5</td>
-                            <td>Prom</td>
-                            <td>............</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
-
-                        <tr>
-                            <td>Đám cưới</td>
-                            <td>6</td>
-                            <td>Prom</td>
-                            <td>...........</td>
-                            <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>                
-                                <button class="del-btn btn-table">Xóa</button>
-                            </td>
-                        </tr> 
+                        <?php
+                        include './assets/PHP/connectdb.php';
+                        $get_data_event = mysqli_query($conn, "SELECT * FROM event");
+                        while($event_rows = $get_data_event->fetch_assoc())
+                         {
+                        ?>
+                            <tr>
+                                <td><?php echo $event_rows['EventName'];?></td>
+                                <td><?php echo $event_rows['IntervalTime'];?></td>
+                                <td><?php echo $event_rows['EventPrice'];?></td>
+                                <td><?php echo $event_rows['EventNote'];?></td>
+                                <td>
+                                    <button class="upd-btn btn-table" onclick="openUpdate(this)">Sửa</button>
+                                    <button class="del-btn btn-table">Xóa</button>
+                                </td>
+                            </tr>
+                        <?php
+                         }
+                        ?>   
                     </table>                    
 
                 </div>
