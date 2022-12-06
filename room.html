@@ -344,12 +344,12 @@
                         <p class="title">2. Thông tin phòng</p>
                         <div class="infor-item">
                             <label for="checkin">Ngày đặt:</label> 
-                            <input id="checkin-day-register" type="text" name="checkin" class="input-form" placeholder="dd/mm/yyyy">
+                            <input id="checkin-day-register" type="date" name="checkin" class="input-form">
                             <br>
                         </div>
                         <div class="infor-item">
                             <label for="checkout">Ngày trả:</label>
-                            <input id="checkout-day-register" type="text" name="checkout" class="input-form" placeholder="dd/mm/yyyy">
+                            <input id="checkout-day-register" type="date" name="checkout" class="input-form">
                             <br>                                 
                         </div>
                         <div class="infor-item">
@@ -442,7 +442,7 @@
                         <button type="submit" name="submit_room" class="btn-payment button-finish">Hoàn tất</button>
                     </div>
                     <!-- hiện đơn đặt phòng -->
-                    <script src="./assets/javascript/formBooking1.js">                   
+                    <script src="./assets/javascript/formReservation1.js">                   
                     </script>
                     
                     <script type="module">
@@ -463,8 +463,20 @@
                             $('#price').val(setPrice(DataTypeRoom));
                         })          
                      
+                        var countDay;
+                        function calculateDate() { 
+                            const startDate  = $('#checkin-day-register').val();
+                            const endDate    = $('#checkout-day-register').val();
+
+                            const diffInMs   = new Date(endDate) - new Date(startDate)
+                            const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+                            countDay = Math.floor(diffInDays);
+                            return countDay;
+                        }
+
                         $(".button-next-form").click(function(){
-                            $('.total-payment').text("Tổng cộng: " + setPrice(DataTypeRoom) * parseInt($('#number-room-register').val()) + " VND");
+                            var countday = calculateDate();
+                            $('.total-payment').text("Tổng cộng: " + setPrice(DataTypeRoom) * parseInt($('#number-room-register').val()) * countday + " VND");
                         });
                         
                     </script>

@@ -133,8 +133,8 @@ ul li .btn {
     display: none;
     position: absolute;
     top: 80px;
-    background-color: #f1f1f1;
-    max-width: 500px;
+    background-color: #fff;
+    width: 380px;
     max-height: 500px;
     overflow: none;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -144,9 +144,11 @@ ul li .btn {
     margin-right: 25px;
 }
 
-
-.dropdown a:hover {
-    background-color: #ddd;
+.dropdown .dropdown-elements:hover {
+    background: #ddd !important;
+}
+.dropdown .dropdown-elements:active {
+    color: blue;
 }
 
 .show {

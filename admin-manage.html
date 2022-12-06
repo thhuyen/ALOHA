@@ -6,6 +6,10 @@
         mysqli_query($conn, "UPDATE room SET status = 1 WHERE RoomName = '".$roomname."'");
         mysqli_query($conn, "UPDATE invoice_room_detail i SET RoomName = '".$roomname."' WHERE '".$id."' = i.IdInvoiceRoomDetail");
     }
+    if (isset($_GET['IdNoti'])) {
+        $IdNoti = $_GET['IdNoti'];
+        mysqli_query($conn, "UPDATE notification SET status = 1 WHERE $IdNoti = Id");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,41 +84,11 @@
                 </div>
             
                     <!-- NOTICE-BELL -->
-                <button onclick="myFunction()" >
-                    <i class="dropbtn fa-solid fa-bell"></i>
-                </button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                    <a>
-                        <div class="notify-info">
-                            <p>Nguyen Van A <span>đã đặt 1 phòng đơn</span></p>
-                            <span class="notify-time">10 minutes ago</span>
-                        </div>
-                    </a>
-                </div>
+                <?php
+                    include './assets/PHP/connectdb.php';
+                    include './assets/PHP/notification.php';
+                    include_once "./notification.html";                    
+                ?>
             </div>
         </div>
 
@@ -126,7 +100,7 @@
     <div class="tab-content">
         <div class="tab-pane add active">
             <div class='container' style="width:1330px;">
-                <table id="update-tab" class="update-table table-infor" width="1300" height="auto">
+                <table id="update-tab" class="update-table table-infor" width="1250" height="auto">
                     <tr>
                         <!-- <td class="head-table">STT</td> -->
                         <td class="head-table">Tên khách hàng</td>
@@ -144,13 +118,12 @@
                     <?php
                         include './assets/PHP/connectdb.php';
                         $get_data_reservation = mysqli_query($conn, "SELECT * FROM invoice_room_detail id, customer c, invoice_room i
-                                                WHERE i.IdCustomer = c.IdCustomer AND id.IdInvoiceRoom = i.IdInvoiceRoom");
+                                                WHERE i.IdCustomer = c.IdCustomer AND id.IdInvoiceRoom = i.IdInvoiceRoom ORDER BY i.IdInvoiceRoom DESC");
                         
                         while($reservation_rows = $get_data_reservation->fetch_assoc())
                             {
                     ?>
                     <tr id = '<?php echo $reservation_rows['IdInvoiceRoomDetail'] ?>'>
-                        <!-- <td><?php echo $reservation_rows['IdInvoiceRoomDetail'];?></td> -->
                         <td><?php echo $reservation_rows['CustomerName'];?></td>
                         <td><?php echo $reservation_rows['CustomerPhone'];?></td>
                         <td>

@@ -30,20 +30,28 @@
     var amountOfRoomPayment = document.querySelector('.amount-room-payment');
     
 
-    // set ngày đặt mặc định cho ngày đặt 
+    // set điều kiện cho ngày đặt, ngày trả ở home
     const DATE = new Date();
-	let date = new Date(DATE.setHours(0, 0, 0, 0));
-    let dayReal = (date.getDate()).toString();
-    let monthReal = '0' + ((date.getMonth() + 1).toString());
-    let yearReal = date.getFullYear().toString();
-    let currentDate = `${yearReal}-${monthReal}-${dayReal}`;
-    checkinHome.value = currentDate;
+
+    var countDay;
+    function calculateDate(date, currentElement) { 
+        let [dd, mm, yyyy] = currentElement.value.split('/');
+        let newDate = new Date([mm, dd, yyyy].join('-'));
+           
+        const startDate  = date;
+        const endDate    = newDate;
+
+        const diffInMs   = new Date(endDate) - new Date(startDate)
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+        
+        countDay = Math.floor(diffInDays);
+    }
 
     checkinHome.onblur = function() {
         calculateDate(DATE, checkinHome);
         if (countDay > 28 || countDay < 0) {
             alert('Ngày đặt không được vượt quá ngày hiện tại 4 tuần hoặc sớm hơn ngày hiện tại!');
-            checkinHome.value = currentDate;
+           checkinHome.value = '';
         }
     }
 
@@ -53,25 +61,18 @@
         var EndDate = checkoutHome.value;
         var start = new Date(StartDate);
     
-        if (start.getTime() >= new Date(EndDate).getTime()) {
-              alert("Ngày trả phòng phải lớn hơn ngày đặt phòng!");
-              $("#check-out").val(new Date(start.setDate(start.getDate() + 1)).toISOString().split('T')[0]);
-              return false;
+        if (checkinHome.value === '') {
+            alert("Phải nhập ngày đặt trước!");
+            checkoutHome.value = '';
         }
-        return true;
-    }
-
-    //hàm hiển thị dd mm yyyy 
-    var getYear, getMonth, getDay, dateForm;
-    function getDate(text) {
-        if(text != '') {
-            getYear = text.slice(2,4);
-            getMonth = text.slice(5,7);
-            getDay = text.slice(8,11);
-            dateForm = getDay + '-' + getMonth + '-' + getYear;
-            return dateForm;
+        else {
+            if (start.getTime() >= new Date(EndDate).getTime()) {
+                  alert("Ngày trả phòng phải lớn hơn ngày đặt phòng!");
+                  $("#check-out").val(new Date(start.setDate(start.getDate() + 1)).toISOString().split('T')[0]);
+                  return false;
+            }
+            return true;
         }
-        return text;
     }
 
     // các xử lí với người lớn và trẻ em input 
@@ -87,7 +88,6 @@
     checkAmountPeople(adults);
     checkAmountPeople(kids);
 
-    var dateCheckinRegister;
     // hàm xử lí khi click button đặt ngay
     function OpenForm() {
         var numberAdult = +adults.value;
@@ -107,10 +107,8 @@
             return;
         }
         formRegister.classList.add('open');
-        let [dd, mm, yyyy] = getDate(checkinHome.value).toString().split('/');
-        dateCheckinRegister = new Date([mm, dd, yyyy].join('-'));
-        checkinRegister.value = getDate(checkinHome.value)
-        checkoutRegister.value = getDate(checkoutHome.value);
+        checkinRegister.value = checkinHome.value;
+        checkoutRegister.value = checkoutHome.value;
         peopleTotal.value = total;
 
         if (total == 3) {
@@ -147,9 +145,9 @@
         formPayment.classList.remove('open');
     }
 
-    var errorName; // biến check để thông qua form
-    var errorPhone; // biến check để thông qua form
-    var errorMail; // biến check để thông qua form
+    var errorName = true; // biến check để thông qua form
+    var errorPhone = true; // biến check để thông qua form
+    var errorMail = true; // biến check để thông qua form
     var errorDate = {
         'checkin': true,
         'checkout': true
@@ -163,7 +161,7 @@
 
     // style khi hết lỗi
     function normalStyle(currentElement) {
-        currentElement.style.border = '1px solid black';
+        currentElement.style.border = '1px solid #F9B456';
         currentElement.style.color = 'black';
     }
 
@@ -182,7 +180,6 @@
             }
         }
     }
-// này ko liên quan, cái liên quan là file kia
 
     // Set điều kiện nhập cho từng input thuộc 1. Thông tin khách hàng
     var elementsInput = document.querySelectorAll('.input-form.client');
@@ -253,119 +250,6 @@
         }     
     }); 
 
-    // hàm kiểm tra điều kiện date trong form đăng ký có đúng định dạng ko
-    const isDate = (date) => {
-        return (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
-    }
-   
-
-    // style khi blur với input ngày đặt, ngày trả
-    var countDay, count;
-    function blurStyle(currentElement, text, date, errorCheck) {
-        if(currentElement.value == '') {
-            currentElement.value = 'Không được bỏ trống ' + text;
-            errorStyle(currentElement);
-        }
-
-        // kiểm tra định dạng date time
-        let value = currentElement.value;
-        let [dd, mm, yyyy] = value.split('/');
-        let dateFormatValue = [mm, dd, yyyy].join('/');
-        
-        if (!value.includes('bỏ trống')) {
-            if (!isDate(dateFormatValue) || currentElement.value.includes('-') || currentElement.value.length < 8) {
-                count = 1;
-                alert('Thứ tự nhập phải theo định dạng ngày/tháng/năm và hợp lệ!');
-                errorStyle(currentElement);
-                switch (currentElement.id) {
-                    case 'checkin-day-register': errorCheck.checkin = false;
-                        break;
-                    default: errorCheck.checkout = false;
-                }
-            }
-            else {
-                count = 0; // biến count xuất hiện để ko bị trùng lắp alert 
-            }
-        }        
-
-         // gán biến dateCheckingRegister để lát nữa gọi hàm truyền tham số vô
-         if (currentElement.id == 'checkin-day-register') {
-            dateCheckinRegister = new Date([mm, dd, yyyy].join('-'));
-        }  
-        
-    } 
-
-    // hàm tính toán ngày tháng năm để set điều kiện
-    function calculateDate(date, currentElement) { 
-        let [dd, mm, yyyy] = currentElement.value.split('/');
-        let newDate = new Date([mm, dd, yyyy].join('-'));
-           
-        const startDate  = date;
-        const endDate    = newDate;
-
-        const diffInMs   = new Date(endDate) - new Date(startDate)
-        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-        
-        countDay = Math.floor(diffInDays);
-    }
-
-    // các xử lí với check in đơn đăng ký phòng
-    function checkinDateInput(currentElement) {
-        currentElement.onblur = function() {
-
-            calculateDate(DATE, currentElement);
-            blurStyle(currentElement, 'ngày đặt', date, errorDate);
-            if (count == 0) {
-                if (countDay > 28 || countDay < 0) {
-                    alert('Ngày đặt không được vượt quá ngày hiện tại 4 tuần hoặc sớm hơn ngày hiện tại!');
-                    errorStyle(currentElement);
-                    errorDate.checkin = false;
-                }
-                else {
-                    errorDate.checkin = true;
-                }
-            }      
-        } 
-    }   
-    clickStyle(checkinRegister, 'bỏ trống');
-    checkinDateInput(checkinRegister);
-    inPutStyle(checkinRegister);
-
-    // các xử lí với check out đơn đăng ký phòng
-    function checkoutInput(currentElement) {
-        currentElement.onblur = function() {
-            calculateDate(dateCheckinRegister, currentElement); 
-            if (checkinRegister.value == '' || checkinRegister.value.includes('bỏ')) {
-                alert('Vui lòng nhập ngày đặt trước ngày trả!');
-                currentElement.value = '';
-            }
-            else {
-                blurStyle(currentElement, 'ngày trả', dateCheckinRegister, errorDate);
-                
-                // kiểm tra ngày trả có lớn hơn ngày đặt hay không
-                if (count == 0) {
-                    if (countDay < 0) {
-                        alert('Ngày trả không được bé hơn ngày đặt');
-                        errorDate.checkout = false;
-                        errorStyle(currentElement);                    
-                    } 
-                    else if (countDay == 0) {
-						alert('Ngày trả không được bằng ngày đặt');
-                        errorDate.checkout = false;
-						errorStyle(currentElement); 
-					}
-                    else {
-                        errorDate.checkout = true;
-                    }
-                }
-            }
-        }
-    }
-        clickStyle(checkoutRegister, 'bỏ trống');
-        checkoutInput(checkoutRegister);
-        inPutStyle(checkoutRegister);
-
-
     // các xử lí với input số lượng phòng
     amountOfRoomRegister.onblur = function() {
         if (+amountOfRoomRegister.value > 5) {
@@ -379,18 +263,82 @@
     }; 
     inPutStyle(amountOfRoomRegister);
 
-    function openFormPayment() {
-        if (checkinRegister.value.includes('bỏ trống')) {
+    // các xử lí với ngày đặt trong form đặt phòng
+    checkinRegister.addEventListener('blur', function() {
+        if (checkinRegister.value == '') {
+            alert('Vui lòng nhập ngày đặt!')
             errorDate.checkin = false;
+            errorStyle(checkinRegister);
         }
-        if (checkoutRegister.value.includes('bỏ trống')) {
+        else {
+            calculateDate(DATE, checkinRegister);
+            if (countDay > 28 || countDay < 0) {
+                alert('Ngày đặt không được vượt quá ngày hiện tại 4 tuần hoặc sớm hơn ngày hiện tại!');
+                errorStyle(checkinRegister);
+                checkinRegister.value = '';
+                errorDate.checkin = false;
+            }
+            else {
+                errorDate.checkin = true;
+            }
+        }
+    });
+    checkinRegister.addEventListener('click', function() {
+        normalStyle(checkinRegister);
+    });
+    checkinRegister.addEventListener('change', function() {
+        let StartDate = checkinRegister.value;
+        let EndDate = checkoutRegister.value;
+        let start = new Date(StartDate);
+
+        if (start.getTime() >= new Date(EndDate).getTime()) {
+            alert("Ngày đặt phòng phải trước ngày trả phòng!");
+            checkoutRegister.value ='';
+            errorDate.checkout = false;
+            errorStyle(checkoutRegister);
+        }
+
+    });
+
+    // các xử lí với ngày đặt trong form đặt phòng
+    checkoutRegister.addEventListener('blur', function() {
+        let StartDate = checkinRegister.value;
+        let EndDate = checkoutRegister.value;
+        let start = new Date(StartDate);
+
+        if (checkinRegister.value === '') {
+            alert("Vui lòng nhập ngày đặt trước!");
+            checkoutRegister.value = '';
             errorDate.checkout = false;
         }
+        else if (checkoutRegister.value === '') {
+            alert('Vui lòng nhập ngày trả!');
+            errorDate.checkout = false;
+            errorStyle(checkoutRegister);
+        }
+        
+        else if (start.getTime() >= new Date(EndDate).getTime()) {
+            alert("Ngày trả phòng phải lớn hơn ngày đặt phòng!");
+            errorDate.checkout = false;
+            errorStyle(checkoutRegister);
+        }
+        else {
+            errorDate.checkout = true;
+        }
+        
+    });
+    checkoutRegister.addEventListener('click', function() {
+        normalStyle(checkoutRegister);
+    })
+    // mở form thanh toán
+    function openFormPayment() {
         if (!errorName || !errorPhone || !errorMail || !errorDate.checkin || !errorDate.checkout) {
             alert('Thông tin đăng ký chưa đầy đủ hoặc chưa hợp lệ!');
-            return;
         }
-        if (errorName && errorPhone && errorMail && errorDate.checkin && errorDate.checkout)
+        else if (fullnameRegister.value === '' || phoneRegister.value === '' ||  emailRegister.value === '' || checkinRegister.value === '' || checkoutRegister.value === '') {
+            alert('Thông tin đăng ký chưa đầy đủ!');
+        }
+        else if (errorName && errorPhone && errorMail && errorDate.checkin && errorDate.checkout)
         {
             formPayment.classList.add('open');
             formRegister.classList.remove('open');
@@ -401,7 +349,6 @@
             checkoutPayment.innerHTML = 'Ngày trả: ' + checkoutRegister.value;
             typeRoomPayment.innerHTML = 'Loại phòng: ' + typeRoomRegister.value;
             amountOfRoomPayment.innerHTML = 'Số lượng: ' + amountOfRoomRegister.value;
-
         }
         
     }

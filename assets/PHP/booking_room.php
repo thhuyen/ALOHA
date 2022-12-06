@@ -12,7 +12,7 @@
     $checkout_date = $_POST['checkout'];
     $number = $_POST['number-room'];
     $customer_rows = mysqli_query($conn, "SELECT * FROM CUSTOMER WHERE CustomerPhone = '".$phone."'"); 
-
+    
     if (isset($_POST['submit_room'])){
 
         // lưu dữ liệu xuống table Customer           
@@ -51,7 +51,7 @@
         for ($i = 0; $i < $quantity_room; $i++) {
             $temp_name = (string)$temp;
             mysqli_query($conn,"INSERT INTO `invoice_room_detail`(`IdInvoiceRoomDetail`,`IdInvoiceRoom`, `RoomName`, `RoomTypeName`, `RoomPrice`, `ReservationDate`, `CheckinDate`, `CheckoutDate`) 
-                                                    VALUES ('0','$last_idinvoiceroom','$temp_name','$room_type','$roomtype_price','$date', STR_TO_DATE('$checkin_date','%d-%m-%y'),STR_TO_DATE('$checkout_date','%d-%m-%y') )");
+                                                    VALUES ('0','$last_idinvoiceroom','$temp_name','$room_type','$roomtype_price','$date', '$checkin_date','$checkout_date')");
             $temp = $temp + 1;
         }
         

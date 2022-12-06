@@ -5,10 +5,13 @@
         $id = $_GET['IdInvoice'];
         mysqli_query($conn, "DELETE FROM `invoice_room` WHERE IdInvoiceRoom = '".$id."'");      
     }
+?>
+<?php
+    include './assets/PHP/connectdb.php';
     if (isset($_GET['InvoiceDate']) && isset($_GET['id'])) {
         $date = $_GET['InvoiceDate'];
-        $id = $_GET['id'];
-        mysqli_query($conn, "UPDATE `invoice_room` SET `InvoiceRoomDate` = '".$date."' WHERE IdInvoiceRoom = '".$id."'");      
+        $id1 = $_GET['id'];
+        mysqli_query($conn, "UPDATE `invoice_room` SET `InvoiceRoomDate` = '".$date."' WHERE IdInvoiceRoom = '".$id1."'");      
     }
 ?>
 <!DOCTYPE html>
@@ -77,17 +80,8 @@
             <div class="dropdown">
                 <div class="tabs">
                     <!-- header -->
-                    <div class="tab-item active">
-                        Phòng
-                      </div>
-                      <!-- <div class="tab-item">
-                        Xóa dịch vụ
-                      </div> -->
-                      <div class="tab-item">
-                        Sự kiện
-                      </div>
-               
-                      <div class="line"></div>
+                    <div class="tab-item active">Phòng</div>
+                    <div class="line"></div>
                 </div>
             
                     <!-- NOTICE-BELL -->
@@ -108,10 +102,12 @@
             <!-- PHÒNG-->
             <div class="tab-pane add active">
                 <div class='container' style="width: 1336px;">
-                    <table id="update-tab" class="update-table table-infor" width="1000" height="auto">
+                    <table id="update-tab" class="update-table table-infor" width="1000" max-height="1300">
                         <tr>
                             <td class="head-table">Số hóa đơn</td>
                             <td class="head-table">Mã khách hàng</td>
+                            <td class="head-table">Tên khách hàng</td>
+                            <td class="head-table">Số điện thoại</td>
                             <td class="head-table">Ngày lập hóa đơn</td>
                             <td class="head-table">Tổng tiền</td>
                             <td class="head-table">Tác vụ</td>
@@ -120,13 +116,16 @@
 
                         <?php
                             include './assets/PHP/connectdb.php';
-                            $get_data_bill = mysqli_query($conn, "SELECT * FROM invoice_room");
+                            $get_data_bill = mysqli_query($conn, "SELECT * FROM invoice_room i, customer c 
+                                                        WHERE i.IdCustomer = c.IdCustomer ORDER BY IdInvoiceRoom DESC");
                             while($bill_rows = $get_data_bill->fetch_assoc())
                                 {
                             ?>
                             <tr>
                                 <td><?php echo $bill_rows['IdInvoiceRoom'];?></td>
                                 <td><?php echo $bill_rows['IdCustomer'];?></td>
+                                <td><?php echo $bill_rows['CustomerName'];?></td>
+                                <td><?php echo $bill_rows['CustomerPhone'];?></td>
                                 <td>
                                     <?php 
                                         if($bill_rows['InvoiceRoomDate'] === null)
@@ -142,7 +141,7 @@
                                 </td>
                                 <td><?php echo $bill_rows['InvoiceRoomTotal'];?></td>
                                 <td>
-                                    <button class="detail-btn btn-table">Chi tiết</button>                
+                                    <button class="detail-btn btn-table" onclick="openDetail(this)">Chi tiết</button>                
                                     <button class="print-btn btn-table">In</button>
                                 </td>
                                 <td>
@@ -159,88 +158,6 @@
                 </div>                  
             </div>
 
-            <!-- SỰ KIỆN -->
-            <div class="tab-pane" >
-                <div class='container'>
-                    <table id="update-tab1" class="update-table table-infor" width="1000" height="auto">
-                        <tr>
-                            <td class="head-table">Số hóa đơn sự kiện</td>
-                            <td class="head-table">Mã khách hàng</td>
-                            <td class="head-table">Ngày lập hóa đơn</td>
-                            <td class="head-table">Tổng tiền</td>
-                            <td class="head-table">  </td>
-                        </tr>
-
-                        <tr>
-                            <td>HDP001</td>
-                            <td>KH001</td>
-                            <td>.........</td>
-                            <td>..........</td>
-                            <td>
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>
-                                <button class="print-btn btn-table">In</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Spa & Fitness</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>                                
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>
-                                <button class="print-btn btn-table">In</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Golf</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>                
-                                <button class="print-btn btn-table">In</button>
-                            </td>
-                        </tr> 
-            
-                        <tr>
-                            <td>Du thuyền</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>                
-                                <button class="print-btn btn-table">In</button>
-                            </td>
-                        </tr> 
-                        
-                        <tr>
-                            <td>Bar & Karaoke</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>                
-                                <button class="print-btn btn-table">In</button>
-                            </td>
-                        </tr> 
-
-                        <tr>
-                            <td>Beach coffe</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>Giặt ủi</td>
-                            <td>
-                                <button class="detail-btn btn-table" onclick="openUpdate()">Chi tiết</button>                
-                                <button class="print-btn btn-table">In</button>
-                            </td>
-                        </tr> 
-                    </table>                    
-
-                </div>
-
-            </div>
             <!-- form chỉnh sửa -->
             <div>
                 <div class='container add form'  style ="margin-top: 20px">
@@ -332,19 +249,20 @@
 
     <!-- update trạng thái hủy -->
     <script>
-        function find_pos(row, x) {
-            var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
-            var updateTableRows = document.querySelector(".update-table").rows; 
-            for (let i = 0; i< updateTableRows.length; i++) {
-                if (updateTableRows[i] === x.parentElement.parentElement) {
-                    let url = "http://localhost:8080/aloha/admin-bill.html";            
-                    window.location.href= url + "?IdInvoice=" + updateTableCells[0].innerHTML;
-                    document.querySelector(".update-table").deleteRow(row);
-                    break;
+        function isCancel(select) {
+            function find_pos(row, x) {
+                var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
+                var updateTableRows = document.querySelector(".update-table").rows; 
+                for (let i = 0; i< updateTableRows.length; i++) {
+                    if (updateTableRows[i] === x.parentElement.parentElement) {
+                        window.location.search += "http://localhost:8080/aloha/admin-bill.html";
+                        let url = "http://localhost:8080/aloha/admin-bill.html";            
+                        window.location.href= url + "?IdInvoice=" + updateTableCells[0].innerHTML;
+                        document.querySelector(".update-table").deleteRow(row);
+                        break;
+                    }
                 }
             }
-        }
-        function isCancel(select) {
             if(select.value === 'yes-cancel') {
                 find_pos((select.parentElement).parentElement.rowIndex, select);
             }
@@ -370,6 +288,27 @@
             window.location.href= url + "?InvoiceDate=" + input.value.slice(2,11) + "&id=" + $id;
         }
     </script>
+    
+    <script>
+    function openDetail(button) {
+        btnExitForm.style.display = "block";
+        updateRoomForm.style.display="block";
+        updateTab.classList.add('close');
+
+        function find_pos(row, x) {
+            var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
+            var updateTableRows = document.querySelector(".update-table").rows; 
+            for (let i = 0; i< updateTableRows.length; i++) {
+                if (updateTableRows[i] === x.parentElement.parentElement ) {
+                    
+                    break;
+                }
+            }
+        } 
+        find_pos((button.parentElement).parentElement.rowIndex, button);
+    } 
+    </script>
+
     <!-- SCRIPT bell -->
     <script src="./assets/javascript/notificationBell.js"></script>
 
@@ -378,45 +317,6 @@
 
     <script src="https://kit.fontawesome.com/c89546c2fd.js" crossorigin="anonymous"></script>
 
-    <!-- Kiểm tra điều kiện nhập đầy đủ thông tin -->
-    <script src="./assets/javascript/formValidation.js"></script>
-    <script>
-        Validator({
-            form: '#form-add',
-            formGroupSelector: '.room-container',
-            errorSelector: '.invalid-message',
-            rules: [
-                Validator.isRequired('#room-name', 'Vui lòng nhập tên dịch vụ'),
-                Validator.minLength('#room-name', 5), 
-                Validator.isRequired('#room-price', 'Vui lòng nhập đơn giá dịch vụ'),
-                Validator.isNumber('#room-price'),
-                Validator.isRequired('#file', 'Vui lòng chọn hình ảnh'),
-                Validator.isRequired('#room-des', 'Vui lòng nhập mô tả dịch vụ'),
-                Validator.minLength('#room-des', 20), 
-            ],
-            onSubmit: function(data) {
-
-            }
-        });
-
-        Validator({
-            form: '#form-update-room',
-            formGroupSelector: '.room-container',
-            errorSelector: '.invalid-message',
-            rules: [
-                Validator.isRequired('#room-name-update', 'Vui lòng nhập tên dịch vụ'),
-                Validator.minLength('#room-name-update', 5), 
-                Validator.isRequired('#room-price-update', 'Vui lòng nhập đơn giá dịch vụ'),
-                Validator.isNumber('#room-price-update'),
-                Validator.isRequired('#file-update', 'Vui lòng chọn hình ảnh'),
-                Validator.isRequired('#room-des-update', 'Vui lòng nhập mô tả dịch vụ'),
-                Validator.minLength('#room-des-update', 20), ,
-            ],
-            onSubmit: function(data) {
-
-            }
-        });
-    </script>
 
 </body>
 </html>
