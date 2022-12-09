@@ -1,4 +1,6 @@
     var scrollIcon = document.getElementById("scroll-head");
+    var navbar = document.getElementById("navbar");
+
     window.onscroll = function() {
         if (document.documentElement.scrollTop > 1600)
         {
@@ -6,7 +8,12 @@
         } else {
             scrollIcon.style.opacity= "0";
         }
-        scrollIcon.onclick = function() {
-            scrollTo(0,0);
+        if (window.pageYOffset >= document.getElementById("header").clientHeight) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
         }
     };
+    scrollIcon.onclick = function() {
+        scrollTo(0,0);
+    }

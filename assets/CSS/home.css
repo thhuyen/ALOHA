@@ -36,8 +36,6 @@
 
 /* Slider */
 .slider-container {
-    margin-top: var(--height-header);
-    /* margin-top: var(--height-header); */
     position: relative;
     height: 91vh;
     display: flex;

@@ -1,4 +1,30 @@
 /* Header */
+#header {
+    position: relative;
+    height: 30px;
+}
+#login-container {
+    display: flex;
+    height: inherit;
+    position: absolute;
+    /* top: -2px; */
+    right: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.icon-user {
+    margin-bottom: 10px !important;
+    margin-left: 5px;
+}
+#login {
+    font-family: UTM-Aptima;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    /* font-weight: 600; */
+}
+#login-container:hover {
+    color: rgb(196, 196, 196);
+}
 #navbar {
     height: var(--height-header);
     background-color: var(--black-color);
@@ -67,6 +93,14 @@
 #close-nav-icon {
     display: none;
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+  
+/* -------------------footer------------------- */
 #footer {
     padding: 0 !important;
 }

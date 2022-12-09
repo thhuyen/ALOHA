@@ -28,7 +28,6 @@
 
 #slider {
     position: relative;
-    margin-top: var(--height-header);
     display: flex;
     justify-content: center;
     height: 55vh;
