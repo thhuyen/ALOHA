@@ -1,6 +1,3 @@
-<?php
-    $name = "abc";
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -11,8 +8,8 @@
     <link rel="icon" href="./assets/img/logo/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="./assets/CSS/base.css">
     <link rel="stylesheet" href="./assets/CSS/home.css">
+    <link rel="stylesheet" href="./assets/CSS/header-footer.css">
     <link rel="stylesheet" href="./assets/CSS/responsiveHome.css">
-    <link rel="stylesheet" href="./assets/CSS/responsiveNav.css">
     <link rel="stylesheet" href="./form/css/registerRoom.css">
     <link rel="stylesheet" href="./form/css/paymentRoom.css">
     <link rel="stylesheet" href="./form/css/advertisement.css">
@@ -21,6 +18,7 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -288,42 +286,13 @@
 
     <!-- footer -->
     <?php
-        include './footer.html'
+        include './footer.html';
     ?>
     
-    <!-- form đăng nhập -->
-    <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header" style="background-color: none !important;">
-              <h5 class="modal-title">Đăng nhập để vào trang quản lý</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-body-content" style="text-align: center;">
-                    <p style="margin-top: 10px;">Kênh này chỉ dùng cho nhân viên khách sạn</p>
-                    <p style ="margin-bottom: 10px;">Mật khẩu đăng nhập</p>
-                    <input id="password" type="text" placeholder="Nhập code 6 số" style="border: 1px solid var(--subnav-hover); border-radius: 10px; padding: 5px 10px">
-                </div>
-            </div>
-            <div class="modal-footer" style="border:none">
-                <button id="btn-openadmin" style="background-color: var(--subnav-hover); outline: none; border: none; padding: 10px 20px;">Đăng nhập</button>
-              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-            </div>
-          </div>
-        </div>
-    </div>
-
     
-    <!-- icon kéo lên đầu trang -->
-    <div id="scroll-head">
-        <i class="ti-angle-up"></i>
-    </div>
-
+    
     <!-- form đặt phòng -->
-    <form class = "form-group" action="./assets/PHP/booking_room.php" method="post">
+    <form class = "form-group" action="./assets/PHP/booking_room.php" method="post" style="display: none;">
         <div class="modal-register">
             <div class="modal-register-container">
                 <div class="modal-header register">
@@ -426,7 +395,7 @@
                         <p class="title title-method"> 4. Phương thức thanh toán</p>
                         <div class="method-container">
                             <div class="method-item">
-                                <input type="radio" name="payment" id = "cash" class="input-method-item">
+                                <input type="radio" name="payment" id = "cash" class="input-method-item" checked>
                                 <label for="cash" class="label-method-item">
                                     <i class="icon-check fa-solid fa-circle-check"></i>
                                     <img src="./assets/img/cash-icon.png" alt="" id ="cash-img" class="icon-payment">
@@ -558,9 +527,6 @@
         // var cards = document.querySelectorAll(".card");
 
         window.onscroll = function() {
-            // var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;        
-            // console.log(scrollTop);
-            
             myScroll(introContent, 400, `fromLeftUp 0.7s forwards`);
             myScroll(introImgs, 400, `fromLeftDown  0.7s forwards`);
             myScroll(bodyRoom, 1100, `appearFade 0.4s forwards`);
@@ -612,7 +578,7 @@
     <script lang="javascript">
         $('#btn-openadmin').click(function() {
             var pass = JSON.parse('<?= get_password(); ?>');
-            if (($('#password').val()).localeCompare(pass) == 0) {
+            if ($('#password').val() === pass) {
                 window.location='admin.html';
             }
             else {
@@ -625,5 +591,5 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    
 </body>

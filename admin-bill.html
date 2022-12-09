@@ -289,6 +289,9 @@
         }
     </script>
     
+    <!-- script tab slider -->
+    <script src="./assets/javascript/tab-slider.js"></script>
+
     <script>
     function openDetail(button) {
         btnExitForm.style.display = "block";
@@ -300,20 +303,33 @@
             var updateTableRows = document.querySelector(".update-table").rows; 
             for (let i = 0; i< updateTableRows.length; i++) {
                 if (updateTableRows[i] === x.parentElement.parentElement ) {
-                    
-                    break;
+                    return updateTableCells[0].innerText;
                 }
             }
         } 
-        find_pos((button.parentElement).parentElement.rowIndex, button);
+        var id = find_pos((button.parentElement).parentElement.rowIndex, button);
+        document.cookie = "id" + "=" + id;
+        setCookie('id', id, 1); 
+        console.log(document.cookie);
+        // var DataTypeRoom = JSON.parse('<?= load_data_detail(); ?>'); 
+        // console.log(DataTypeRoom); 
     } 
+
     </script>
+
+    <?php
+    function load_data_detail() {
+        if(isset($_COOKIE["id"])) {
+            echo $_COOKIE["id"];
+            //return (json_encode($_COOKIE["id"],JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));                           
+        }
+    }
+    ?>
 
     <!-- SCRIPT bell -->
     <script src="./assets/javascript/notificationBell.js"></script>
 
-    <!-- script tab slider -->
-    <script src="./assets/javascript/tab-slider.js"></script>
+    
 
     <script src="https://kit.fontawesome.com/c89546c2fd.js" crossorigin="anonymous"></script>
 

@@ -1,4 +1,5 @@
     var formRegister = document.querySelector('.modal-register');
+    var formgroup = document.querySelector('.form-group');
     var formPayment = document.querySelector('.modal-payment');
     var btnCloseRegister = document.getElementById('icon-close-register');
     var btnClosePayment = document.getElementById('icon-close-payment');
@@ -26,6 +27,7 @@
     // hàm xử lí khi click button đặt ngay
     groupBtnBookNow.forEach(function(currentElement) {
         currentElement.onclick = function() {
+            formgroup.style.display = "flex";
             formRegister.classList.add('open');
         
             switch(currentElement.id) {

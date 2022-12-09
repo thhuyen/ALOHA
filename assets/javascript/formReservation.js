@@ -1,4 +1,5 @@
     var formRegister = document.querySelector('.modal-register');
+    var formgroup = document.querySelector('.form-group');
     var formPayment = document.querySelector('.modal-payment');
     var btnCloseRegister = document.getElementById('icon-close-register');
     var btnClosePayment = document.getElementById('icon-close-payment');
@@ -106,6 +107,7 @@
             alert('Số lượng người lớn và trẻ em tối đa là 4 người, bạn có thể đặt thêm phòng trong đơn đăng ký phòng');
             return;
         }
+        formgroup.style.display = "flex";
         formRegister.classList.add('open');
         checkinRegister.value = checkinHome.value;
         checkoutRegister.value = checkoutHome.value;

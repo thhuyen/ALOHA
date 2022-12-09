@@ -1,0 +1,319 @@
+/* Header */
+#navbar {
+    height: var(--height-header);
+    background-color: var(--black-color);
+    /* position: fixed; */
+    /* top: 0;
+    left: 0;
+    right: 0; */
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+}
+#img-logo{
+    list-style: none;
+    text-decoration: none;
+    height: 150px;
+    margin-top: -40px;
+}
+#open-nav-icon {
+    display: none;
+}
+#nav {
+    font-family: UTM-Aptima;
+}
+#nav > li {
+    display: inline-block;
+    position: relative;
+}
+#nav > li > a {
+    padding: 15px 20px;
+    line-height: 100px;
+    line-height: var(--height-header);
+    list-style: none;
+    text-decoration: none;
+    color: var(--white-color);
+    transition: all ease 0.5s;
+}
+
+#nav .icon-down {
+    margin-left: 5px;
+    
+}
+#nav > li:hover > a{
+    color: var(--subnav-hover);
+}
+#nav .subnav {
+    display: none;
+    position: absolute;
+    top: var(--height-header);
+    left: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+#nav .subnav li {
+    display: inline-block;
+    width: 145.5px;
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+}
+#nav .subnav a {
+    text-decoration: none;
+    color: var(--black-color);  
+}
+#nav li:hover .subnav {
+    display: block;
+}
+#close-nav-icon {
+    display: none;
+}
+#footer {
+    padding: 0 !important;
+}
+#footer .footer-content {
+    font-family: UTM-Aptima;
+    background: var(--black-color);
+    color: aliceblue;
+    max-width: 100%;
+    padding: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#footer .footer-container {
+    position: relative;
+}
+#footer #admin {
+    display: none;
+}
+#footer .follow-us {
+    display: inline-block;
+    width: 300px;
+    max-width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding-right: 30px;
+    line-height: 2.4;
+ 
+}
+#footer .follow-us h2 {
+    font-weight: 700;
+    font-size: 35px;
+}
+#footer .social-contact {
+    text-align: center;
+}
+#footer .follow-us .follow-us-social {
+    display: flex;
+    padding: 0 10px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#footer .follow-us .follow-us-social p {
+    margin: 0;
+    font-size: 20px;
+}
+#footer .icon-follow-us {
+    color: var(--color-pink);
+    font-size: 20px;
+}
+#footer .icon-follow-us:hover {
+    transform: translateY(-5px);
+    transition: all .5s;
+}
+#footer .infor-contact {
+    font-size: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    line-height: 2.4;
+    margin-bottom: 0;
+}
+#footer .infor-contact li {
+   list-style-type: none;
+}
+#footer .infor-contact li a {
+    text-decoration: none;
+    color: var(--background-color);
+}
+#footer .infor-contact li a:hover {
+    color: var(--color-pink);
+    text-decoration: underline;
+    transition: all .5s;
+    padding-left: 3px;
+}
+/* do 2 cái ko đồng đều nên phải tách nhỏ */
+#footer .icon-infor-contact1 {
+    padding-right: 14px;
+}
+#footer .icon-infor-contact {
+    padding-right: 10px;
+}
+
+/* Icon để kéo lên đầu trang */
+#scroll-head {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 0;
+    background-color: var(--color-blue);
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+}
+#scroll-head:hover {
+    color: #fff;
+}
+
+/* ---------------------responsive----------------- */
+@media (min-width: 1025px) {
+    #nav .subnav {
+        background-color: var(--white-color);
+    }
+    #nav .subnav li:hover ul {
+        opacity: 1;
+        z-index: 9;
+        padding: 30px 0;
+    }
+    #nav > li > a {
+        padding: 15px 30px;
+    }
+    #nav .subnav li:hover {
+        background-color: var(--subnav-hover);
+        padding-left: 15px;
+        transition: all ease 0.5s;
+    }
+    #footer #admin {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: -30px;
+        color: aliceblue;
+        font-family: nexa;
+        transform: rotate(-90deg);
+        cursor: pointer;
+    }
+    #footer #admin:hover {
+        color: var(--subnav-hover);
+    }
+}
+@media (max-width: 1024px) {
+    #nav {
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin-bottom: 0;
+        background-color: #000;
+        overflow: auto;
+        transition: 0.5s;
+        font-size: 16px;
+    }
+    
+    #open-nav-icon {
+        display: block;
+        font-size: 25px;
+        color: var(--white-color);
+        line-height: var(--height-header);
+        padding-right: 20px;
+        padding-left: 20px;
+        cursor: pointer;
+    }
+    #close-nav-icon {
+        height: fit-content;
+        font-size: 28px;
+        color: var(--white-color);
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        padding: 0 12px 5px 12px;
+        z-index: 60;
+        cursor: pointer;
+    }
+    #nav > li {
+        display: block;
+        height: 60px;
+        line-height: 60px;
+        list-style: none;
+        border-bottom: 1px solid #fff ;
+        transition: height 0.2s;
+    }
+    
+    #nav > li:first-child {
+       margin-top: 70px;
+    }
+    #nav li.showMenu .icon-down{
+        transform: rotate(-180deg);
+    }
+    /* note */
+    
+    #nav .subnav {
+        width: 100%;
+        top: 55px;
+        left: 20px;
+        padding-right: 20px;
+        z-index: 70;
+        line-height: 2.5;
+    }    
+    #nav li:hover .subnav {
+        display: none;
+    }
+    #nav .subnav li {
+        column-width: 74px;
+        color: #fff;
+        max-width: fit-content;
+        padding: 0 10px 0 8px;
+    }  
+    
+    #nav li.showMenu .subnav{
+        display: block;
+    }
+    .background-color-yellow {
+        background-color: #F9B456;
+        color: var(--black-color) !important;
+    }
+    
+    #overlay {
+        background-color: rgba(0,0,0,0.4);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+        z-index: 1;
+    }
+    #footer .follow-us h2 {
+        font-size: 30px;
+    }
+    #footer .icon-follow-us {
+        padding-top: 10px;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    #footer .infor-contact {
+        font-size: 16px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+@media (max-width: 740px) { 
+    #footer {
+        display: block;
+        padding: 30px;
+    }
+    #footer .follow-us {
+        padding: 0;
+    }
+    #footer .infor-contact {
+        padding-top: 30px;
+    }
+    #footer .footer-content {
+        display: block;
+    }
+}
