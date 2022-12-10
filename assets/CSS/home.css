@@ -125,7 +125,7 @@ video {
     animation: fromRight 2s;
 }
 .btn-search:hover{
-    color: #F8A64B;
+    color: var(--color-blue);
     font-weight: 1000;
 }
 /* Content */
@@ -205,7 +205,7 @@ video {
 .infor-body .group-icon-star{
     margin-top: -10px;
     font-size: 12px;
-    color: #F9B456;
+    color: var(--color-blue);
 }
 .infor-body h2 {
     width: fit-content;
@@ -223,13 +223,13 @@ video {
 }
 
 .infor-body .showmore-btn {
-    color:  #F9B456;
+    color:  var(--color-blue);
     font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
+    font-size: 1.2rem;
     background-color: var(--white-color);
     padding: 15px 20px;
     margin-top: 10px;
-    border: 1px solid #F8A64B;
+    border: 1px solid var(--color-blue);
     outline: none;
     box-shadow: 5px 5px #ccc;
     cursor: pointer;
@@ -237,71 +237,193 @@ video {
 .infor-body .showmore-btn:hover {
     color: var(--white-color);
     transition: all 0.3s ease-in-out;
-    background-color: #F8A64B;
+    background-color: var(--color-blue);
     box-shadow: none;
 
 }
 
-/* Review */
+/*----------------------- Review------------------------ */
 .review-container {
+    display: none;
+}
+/* ---------------review customer------------------- */
+.review-cus {
     display: flex;
-    justify-content: center;    
+    justify-content: center;
+    height: 350px;
+    margin-bottom: 100px;
+    padding: 0 30px;
+    /* margin-top: 50px; */
 }
-
-#review .pt-5, .py-5 {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-}
-#review .col-6 .mb-3 {
-    font-family: UTM-Aptima;
-    
-} 
-
-#review .btn-primary {
-    background-color: #7499a2;
-    border: none;
-}
-
-#review .card {
-    max-width: 300px;
-    max-height: fit-content;
+.review-cus-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #7499a2;
-    border-radius: 20px;
-    position: relative;
-}
-#review .img-fluid {
-    top: 30px;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    position: absolute;
-    object-fit: cover;
-}
-#review .card-body {
-    max-height: 200px;
-    font-family: nexa;
+    justify-content: center;
+    max-width: 400px;
     text-align: center;
-    padding-top: 48px;
-    margin-top: 120px;
-    border-radius: 10px 10px 20px 20px;
+    background: rgba(0,0,0, 0.8);
+    padding: 0px 30px;
+    font-family: UTM-Aptima;
+    border-radius: 5px;
+    flex-direction: column;
+    flex: 1;
+}
+.star-widget {
+    margin: 0 auto;  
+}
+.star-widget input{
+    display: none;
+}
+.star-widget label {
+    font-size: 1.3rem;
+    color: #444;
+    padding: 10px;  
+    margin: 0; 
+    float: right;
+    transition: all 0.2s ease;
+}
+.star-widget input:not(:checked) ~ label:hover,
+.star-widget input:not(:checked) ~ label:hover ~ label {
+    color: #fd4;
+}
+.star-widget input:checked ~ label {
+    color: #fd4;
+}
+input#rate-5:checked ~ label {
+    color: #fe7;
+    text-shadow: 0 0 20px #952;
+}
+#main-review {
+    width: 100%;
+    font-size: 1.1rem;
+    color: #fe7;
+    font-weight: 500;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+.detail-review {
+    width: 100%;
+    overflow: hidden;
+}
+.detail-review textarea {
+    height: 150px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #333;
+    background: #444;
+    padding: 10px;
+    font-size: 1rem;
+    color: #eee;
+    resize: none;
+}
+.btn-sendreview {
+    height: 45px;
+    width: 100%;
+    margin: 10px 0;
+}
+.btn-sendreview button {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #444;
+    outline: none;
+    background: #222;
+    color: #999;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.btn-sendreview button:hover {
+    background:  #1b1b1b;
+    color: #eee;
+}
+#rate-1:checked ~ #main-review:before {
+    content: "Mọi thứ rất tệ ☹️";
+}
+#rate-2:checked ~ #main-review:before {
+    content: "Thái độ phục vụ tệ 😕 ";
+}
+#rate-3:checked ~ #main-review:before {
+    content: "Mọi thứ đều ổn 😐";
+}
+#rate-4:checked ~ #main-review:before {
+    content: "Phòng tốt, giá tốt 🥰";
+}
+#rate-5:checked ~ #main-review:before {
+    content: "Mọi thứ trên cả tuyệt vời 🤩";
+}
+/* ---------cmt------- */
+.reviewers {
+    flex: 1;
+    max-width: 900px;
+    height: 500px;
+    position: relative;
+    margin: 0 0 0 30px;
     background-color: #fff;
+    overflow: auto;
+    border: 1px solid #1b1b1b; 
 }
-#review .card-body .card-title {
-    font-size: 20px;
-    font-weight: 700;
+.comments {
+    font-family: UTM-Aptima;
+    padding: 10px;
 }
-#review .card-body .card-text {
-    height: 200px;
-    font-size: 15px;
+.comments header {
+    display: flex;
+    align-items: center;
+    
+}
+.comments .quote-icon {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 3rem;
+    transform: rotate(5deg);
+}
+.comments .frame-icon {
+    border: 1px solid #000;
+    padding: 0px 7px 4px 7px;
+    border-radius: 50%;
+}
+.comments .username {
+    color: rgb(39, 2, 108);
+    font-size: 1.3rem;
     font-weight: 600;
-}  
+    margin-bottom: 7px;
+    padding-left: 10px;
+}
+.comments .rating {
+    width: fit-content;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgb(39, 2, 108);
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #000;
+}
+.allocution {
+    font-size: 1rem;
+    text-align: justify;
+    margin-bottom: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* map */
 #location {
     background: var(--background-color);
     text-align: center;
-    padding-bottom: 200px;
+    padding-top: 200px;
 }
