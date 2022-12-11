@@ -93,7 +93,7 @@
 #content .infor-room .title {
     display: flex;
     align-items: center;
-    color: #EFA24E;
+    color: var(--color-blue);
 }
 #content .title h3,
 #content .title h2 {
@@ -104,7 +104,7 @@
 #content .title1 {
     width: 350px;
     margin-top: 10px;
-    border-bottom: 1px solid #EFA24E;
+    border-bottom: 1px solid var(--color-blue);
 }
 #content .description {
     margin-top: 20px;
@@ -119,12 +119,12 @@
     padding-bottom: 5px;
 }
 #content .btn-booknow {
-    color:  #F9B456;
+    color:  var(--color-blue);
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
     background-color: var(--white-color);
     padding: 12px 30px;
-    border: 1px solid #F8A64B;
+    border: 1px solid var(--color-blue);
     outline: none;
     box-shadow: 5px 5px #ccc;
     cursor: pointer;
@@ -132,7 +132,7 @@
 #content .btn-booknow:hover {
     color: var(--white-color);
     transition: all 0.3s ease-in-out;
-    background-color: #F8A64B;
+    background-color: var(--color-blue);
     box-shadow: none;
 }
 #suggest .suggest-container {

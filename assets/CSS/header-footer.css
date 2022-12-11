@@ -235,7 +235,8 @@
         cursor: pointer;
     }
     #footer #admin:hover {
-        color: var(--subnav-hover);
+        color: var(--color-pink);
+        transition: all .5s;
     }
 }
 @media (max-width: 1024px) {
