@@ -1,17 +1,17 @@
 <?php
     session_start();
 
-    require_once 'vendor/autoload.php';
 
     $client = new Google\Client();
     $client->setClientId('814610287644-0rjtnqijppfs43g7lc8as6873790idri.apps.googleusercontent.com');
     $client->setClientSecret('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');
     $client->setRedirectUri('http://localhost:8080/aloha/home.html');
-    $client->addScope("bebe.yy99@gmail.com");
+    $client->addScope('email');
     $client->addScope('profile');
 
+    $check = 0;
         // authenticate code from Google OAuth Flow
-    if (isset($_GET['code'])) {
+    if (isset($_GET['code'])) {  // rồi nó check url coi có cái get đó k, có thì nó làm
         $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
         $client->setAccessToken($token['access_token']);
         
@@ -20,9 +20,11 @@
         $google_account_info = $google_oauth->userinfo->get();
         $email =  $google_account_info->email;
         $name =  $google_account_info->name;
-        
-        // now you can use this profile info to create account in your website and make user logged in.
+        echo $name; 
+        $check = 1; // hình như tui hiểu sai yêu cầu :vv
     } else {
-        echo "<a href='".$client->createAuthUrl()."'>Google Login</a>";
+        // $a = "<a href='".$client->createAuthUrl()."'>Google Login</a>"; // khó ỉa :v, cho nó chạy cả cái file 
+        $url = $client->createAuthUrl(); 
     }
+    // header("Location: ../../home.html"); 
 ?>

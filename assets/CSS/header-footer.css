@@ -75,6 +75,7 @@
     top: var(--height-header);
     left: 0;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 1000;
 }
 #nav .subnav li {
     display: inline-block;
@@ -87,9 +88,8 @@
     text-decoration: none;
     color: var(--black-color);  
 }
-#nav li:hover .subnav {
-    display: block;
-}
+
+
 #close-nav-icon {
     display: none;
 }
@@ -205,6 +205,9 @@
 
 /* ---------------------responsive----------------- */
 @media (min-width: 1025px) {
+    #nav li:hover .subnav {
+        display: block;
+    }
     #nav .subnav {
         background-color: var(--white-color);
     }

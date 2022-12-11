@@ -9,22 +9,29 @@
     <link rel="stylesheet" href="./assets/CSS/base.css">
     <link rel="stylesheet" href="./assets/CSS/header-footer.css">
     <link rel="stylesheet" href="./assets/CSS/home.css">
+    <link rel="stylesheet" href="./form/css/login.css">
     <link rel="stylesheet" href="./assets/CSS/responsiveHome.css">
     <link rel="stylesheet" href="./form/css/registerRoom.css">
     <link rel="stylesheet" href="./form/css/paymentRoom.css">
-    <link rel="stylesheet" href="./form/css/advertisement.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
-    
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <!-- Jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
+    <script>
+        function initMap() {
+            // your code
+        }
+    </script>
+
+    
     <?php
         include './header.html';
     ?>
@@ -329,7 +336,6 @@
                         </header>
                         <p class="rating">5/5 - Mọi thứ trên cả tuyệt vời 🤩</p>
                         <p class="allocution">
-                            Không gian ở đây rất đẹp, rất phù hợp với những kì nghỉ dài hạn hoặc ngắn hạn. ALOHA cung cấp một loạt các không gian sự kiện để đánh dấu những cột mốc đáng nhớ cho cuộc đời bạn. Một bữa tiệc xa hoa, hội thảo kinh doanh chính thức, một buổi hội nghị trang trọng, một buổi tiệc cocktail thân mật hay tiệc cưới. Có rất nhiều phong cách và xu hướng: Phương Tây quý pháp, Cổ đại bí ẩn, Trung đại độc đáo, Truyền thống Việt Nam
                         </p>
                     </div>
                     <div class="comments">
@@ -342,7 +348,7 @@
                         </header>
                         <p class="rating">5/5 - Mọi thứ trên cả tuyệt vời 🤩</p>
                         <p class="allocution">
-                            Không gian ở đây rất đẹp, rất phù hợp với những kì nghỉ dài hạn hoặc ngắn hạn. ALOHA cung cấp một loạt các không gian sự kiện để đánh dấu những cột mốc đáng nhớ cho cuộc đời bạn. Một bữa tiệc xa hoa, hội thảo kinh doanh chính thức, một buổi hội nghị trang trọng, một buổi tiệc cocktail thân mật hay tiệc cưới. Có rất nhiều phong cách và xu hướng: Phương Tây quý pháp, Cổ đại bí ẩn, Trung đại độc đáo, Truyền thống Việt Nam
+                            
                         </p>
                     </div>
                 </div>
@@ -558,31 +564,6 @@
         </div>
     </form>
 
-    <!-- form quảng cáo -->
-    <div class="advertisement">
-        <div class="advertisement-container">
-            <div id="carouselExampleCaptions" class="carousel" data-ride="carousel" data-interval="2000">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
-              </ol>
-              <div class="carousel-inner">
-                <a href="room.html" class="carousel-item active one"></a>
-                <a href="room.html" class="carousel-item two"></a>
-                <a href="room.html" class="carousel-item three"></a>
-                <a href="room.html" class="carousel-item four"></a>
-                <a href="service.html" class="carousel-item five"></a>
-                <a href="event.html" class="carousel-item six"></a>
-                <div class="close-adver"><i class="icon-close-adver ti-close" onclick="closeAdver()"></i></div>
-              </div>
-            </div>
-        </div>
-    </div>
-
     <!-- script for navbar tablet and mobile -->
     <script src="./assets/javascript/navbar.js"></script>
    
@@ -623,21 +604,6 @@
   
        
     </script>
-
-    <!-- hiện quảng cáo -->
-    <!-- <script>
-    setTimeout(function() {
-            document.querySelector(".advertisement").classList.add("open-ad");
-        },3000);
-        setTimeout(function() {
-            document.querySelector(".advertisement").classList.remove("open-ad");
-            // document.body.removeChild(audio);
-        },24000);
-
-        function closeAdver() {
-            document.querySelector(".advertisement").classList.remove("open-ad");
-        }
-    </scrip> -->
 
     <!-- cài điều kiện để vào trang admin -->
     <?php
