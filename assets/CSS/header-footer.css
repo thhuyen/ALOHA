@@ -67,7 +67,7 @@
     
 }
 #nav > li:hover > a{
-    color: var(--subnav-hover);
+    color: var(--color-pink);
 }
 #nav .subnav {
     display: none;
@@ -220,7 +220,7 @@
         padding: 15px 30px;
     }
     #nav .subnav li:hover {
-        background-color: var(--subnav-hover);
+        background-color: var(--color-pink);
         padding-left: 15px;
         transition: all ease 0.5s;
     }

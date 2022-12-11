@@ -163,7 +163,7 @@
 
     // style khi hết lỗi
     function normalStyle(currentElement) {
-        currentElement.style.border = '1px solid #F9B456';
+        currentElement.style.border = '1px solid #7499a2';
         currentElement.style.color = 'black';
     }
 

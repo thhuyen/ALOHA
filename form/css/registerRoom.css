@@ -26,7 +26,7 @@
 }
 .modal-header.register{
     position: relative;
-    background-color: var(--backgroundColor);
+    background-color: var(--color-blue);
     border-radius: 20px 20px 50px 0 !important;
     overflow: hidden;
     padding: 8px !important;
@@ -37,6 +37,7 @@
     font-size: 23px;
     font-family: uvn-bale;
     font-weight: 600;
+    color: var(--white-color);
 }
 .icon-close-modal {
     font-size: 25px;
@@ -45,12 +46,15 @@
     height: 26px;
     margin-top: 2px;
     margin-right: 10px;
-    border: 1px solid #000;
+    color: var(--white-color);
+    border: 1px solid var(--white-color);
     cursor: pointer;
 }
 .icon-close-modal:hover {
-    background-color: #ccc;
+    color: var(--color-blue);
+    background-color: var(--white-color) !important;
 }
+
 .modal-body .title {
     margin-left: 20px;
     font-family: nexa;
@@ -74,24 +78,24 @@
     font-family: nexa;
     padding-left: 10px;
     border-radius: 5px;
-    border: 1px solid var(--backgroundColor);
+    border: 1px solid var(--color-blue);
     margin-bottom: 0;
 }
 .button-next-form {
-    color:  var(--backgroundColor);
+    color:  var(--color-blue);
     font-family: 'Times New Roman', Times, serif;
     font-size: 15px;
     float: right;
     background-color: #fff;
     padding: 10px 15px;
-    border: 2px solid var(--backgroundColor);
+    border: 2px solid var(--color-blue);
     outline: none !important;
     cursor: pointer;
     margin-bottom: 20px;
 }
 
 .button-next-form:hover {
-    background-color: var(--backgroundColor);
+    background-color: var(--color-blue);
     color: #fff;
     transition: all 0.5s ease-out;
 }
