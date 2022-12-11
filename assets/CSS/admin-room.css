@@ -353,20 +353,23 @@ section {
 
 .container .two-container .right-container{
   display: grid;
-    grid-template-areas: "." ".";
-    width: 500px;
+  grid-template-areas:
+    "."
+    ".";
+  width: 500px;
 }
 .container .two-container .right-container .guest-infor{
-  margin: auto 0 ;
-  padding-top: 3px;
+  margin: auto 0;
+  /* padding-top: 3px; */
 }
 .container .two-container .right-container label{
   padding-right: 50px;
 }
 .container .two-container .right-container .guest-infor select{
-  padding: 10px;
+  padding: 8px;
   border: 1px solid #b4b4b4;
   border-radius: 5px;
+  height: 40px;
 }
 
 
@@ -439,4 +442,8 @@ section .popup-send-mail textarea {
   width: 100%;
   font-size: 16px;
   flex: 1;
+}
+
+.search-form {
+  text-align: center;
 }

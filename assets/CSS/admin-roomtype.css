@@ -214,6 +214,7 @@ section {
 
 .room-unit {
   text-align: right;
+  padding-top: 5px;
 }
 
 #room-price {
