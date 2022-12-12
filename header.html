@@ -1,7 +1,20 @@
 <div id="header">
-    <div id="login-container">
-        <p id="login">Đăng nhập</p>
-        <div><i class="ti-user icon-user"></i></div>
+    <div class="frame">
+        <div id="login-container">
+            <div><i class="ti-user icon-user"></i></div>
+            <p id="login">Đăng nhập</p>
+        </div>
+        <div class="logout-container">
+            <div class="history">
+                <i class="ti-time icon-history"></i>
+                <div id="history-text">Lịch sử đặt phòng</div>
+            </div>
+            <div class="logout">
+                <i class="fa-solid fa-arrow-right-from-bracket icon-logout"></i>
+                <div id="logout-text">Đăng xuất</div>
+
+            </div>
+        </div>
     </div>
 
     <!-- form đăng nhập client -->
@@ -33,7 +46,10 @@
                     <?php 
                         } else if ($check == 1){
                     ?>
-                        <script>window.history.pushState("", "Title", "/aloha/home.html");</script>
+                        <script>
+                        window.history.pushState("", "Title", "/aloha/home.html");
+                        document.getElementById('login').innerHTML = '<?php echo $name ?>';
+                        </script>
                     <?php
                         }
                     ?>
@@ -91,10 +107,18 @@
 
 <script>
     var modal = document.querySelector('.modal-login');
+    var name_account = document.querySelector('#login');
+    var dropdownLogout = document.querySelector('.logout-container');
     document.querySelector('#login-container').addEventListener('click', function() {
-        modal.classList.add('open');
+        if (name_account.innerText === "Đăng nhập") {
+            modal.classList.add('open');
+        }
+        else {
+            dropdownLogout.classList.toggle('open');
+        }
     });
     document.getElementById('icon-close-login').addEventListener('click', function() {
         modal.classList.remove('open');
-    })
+    });
+
 </script>

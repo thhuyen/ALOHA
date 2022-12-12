@@ -3,20 +3,23 @@
     position: relative;
     height: 30px;
 }
+.frame {
+    position: relative;
+}
 #login-container {
     display: flex;
     height: inherit;
     position: absolute;
     /* top: -2px; */
-    right: 10px;
+    right: 30px;
     align-items: center;
     cursor: pointer;
 }
 .icon-user {
     margin-bottom: 10px !important;
-    margin-left: 5px;
 }
 #login {
+    margin-left: 5px;
     font-family: UTM-Aptima;
     font-size: 1.2rem;
     margin-bottom: 5px;
@@ -24,6 +27,43 @@
 }
 #login-container:hover {
     color: rgb(196, 196, 196);
+}
+.logout-container.open {
+    display: block;
+}
+.logout-container {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    z-index: 20;
+    background: var(--white-color);
+    font-family: UTM-Aptima;
+    padding: 10px;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.history:hover,
+.logout:hover {
+    background: #eee;
+    border-radius: 5px;
+}
+.history,
+.logout {
+    height: 50px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icon-history,
+.icon-logout {
+    padding-right: 10px;
+}
+#history-text,
+#logout-text {
+    margin-bottom: 5px;
 }
 #navbar {
     height: var(--height-header);

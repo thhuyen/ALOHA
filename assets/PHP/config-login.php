@@ -20,8 +20,8 @@
         $google_account_info = $google_oauth->userinfo->get();
         $email =  $google_account_info->email;
         $name =  $google_account_info->name;
-        echo $name; 
-        $check = 1; // hình như tui hiểu sai yêu cầu :vv
+        // echo $name; 
+        $check = 1; 
     } else {
         // $a = "<a href='".$client->createAuthUrl()."'>Google Login</a>"; // khó ỉa :v, cho nó chạy cả cái file 
         $url = $client->createAuthUrl(); 
