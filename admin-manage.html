@@ -66,7 +66,7 @@
     <div class="tab-content">
         <div class="tab-pane add active">
             <div class='container' style="width:1330px;">
-                <table id="update-tab" class="update-table table-infor" width="1250" height="auto">
+                <table id="update-tab" class="update-table table-infor" width="1200" height="auto">
                     <tr>
                         <!-- <td class="head-table">STT</td> -->
                         <td class="head-table">Tên khách hàng</td>
@@ -93,7 +93,7 @@
                         <td><?php echo $reservation_rows['CustomerName'];?></td>
                         <td><?php echo $reservation_rows['CustomerPhone'];?></td>
                         <td>
-                            <p style="display: block;">
+                            <p style="display: block; margin-bottom: 0;">
                                 <?php echo $reservation_rows['CustomerEmail'];?>
                             </p>
                             <button class="mail-btn btn-table">Gửi mail</button>
@@ -136,40 +136,7 @@
         </div>
     </div>    
         
-    <!-- form email -->
-    <div class="popup-send-mail">
-        <div class="mail-content form">
-            <h2>Soạn Email</h2>
-            <form action="" id="form-email">
-
-                <div class="mail-container">
-                    <div class='mail-infor'>
-                        <label for='receiver'>Người nhận</label>
-                        <input id='receiver'  type='text' name="receiver" id="">
-                    </div>
-                    <span class="invalid-message"></span>
-                </div>
-
-                <div class="mail-container">
-                    <div class='mail-infor'>
-                        <label for='subject'>Chủ đề</label>
-                        <input id='subject'  type='text' name="subject" id="">
-                    </div>
-                    <span class="invalid-message"></span>
-                </div>
-
-                <div class="mail-container">
-                    <div class='mail-infor'>
-                        <textarea id='mail-des' class="form-control" type='radio' name="mail-des" id=""></textarea>
-                    </div>
-                    <span class="invalid-message"></span>
-                </div>
-
-                <button id="btn-send-update" class="btn btn-save-form">Lưu</button>
-            </form>
-            <button class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
-        </div>
-    </div>
+   
     </section>
 
     <!-- update phòng cho khách -->
