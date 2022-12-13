@@ -287,70 +287,64 @@
                 </section>
             </div>
             <div class="review-cus">
-                <div class="review-cus-container">
-                    <div class="star-widget">
-                        <input type="radio" name="rate" id="rate-5" checked>
-                        <label for="rate-5" class="fa-solid fa-star"></label>
-                        <input type="radio" name="rate" id="rate-4">
-                        <label for="rate-4" class="fa-solid fa-star"></label>
-                        <input type="radio" name="rate" id="rate-3">
-                        <label for="rate-3" class="fa-solid fa-star"></label>
-                        <input type="radio" name="rate" id="rate-2">
-                        <label for="rate-2" class="fa-solid fa-star"></label>
-                        <input type="radio" name="rate" id="rate-1">
-                        <label for="rate-1" class="fa-solid fa-star"></label>
-                        <br>
-                        <br>
-                        <header id="main-review"></header>
-                    </div>
-                    <form action="">
+                <form action="./assets/PHP/comment.php" method="post" id="rating-form">
+                    <div class="review-cus-container">
+                        <div class="star-widget">
+                            <input type="radio" name="rate" id="rate-5" checked value="5">
+                            <label for="rate-5" class="fa-solid fa-star"></label>
+                            <input type="radio" name="rate" id="rate-4" value="4">
+                            <label for="rate-4" class="fa-solid fa-star"></label>
+                            <input type="radio" name="rate" id="rate-3" value="3">
+                            <label for="rate-3" class="fa-solid fa-star"></label>
+                            <input type="radio" name="rate" id="rate-2" value="2">
+                            <label for="rate-2" class="fa-solid fa-star"></label>
+                            <input type="radio" name="rate" id="rate-1" value="1">
+                            <label for="rate-1" class="fa-solid fa-star"></label>
+                            <br>
+                            <br>
+                            <header id="main-review"></header>
+                        </div>
                         <div class="detail-review">
-                            <textarea cols="30" placeholder="Viết chi tiết đánh giá"></textarea>
+                            <textarea id="text-review" cols="30" placeholder="Viết chi tiết đánh giá" name="text-review"></textarea>
                         </div>
                         <div class="btn-sendreview">
-                            <button type="submit">Gửi đánh giá</button>
+                            <button id="send-review" name="send-review" type="submit">Gửi đánh giá</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
                 <div class="reviewers">
+                    <?php
+                    include './assets/PHP/connectdb.php';
+                    $get_cmts = mysqli_query($conn, "SELECT * FROM comment");
+                    while($cmt_rows = $get_cmts->fetch_assoc())
+                        {
+                    ?>
                     <div class="comments">
                         <header>
                             <div class="frame-icon">
                                 <i class="fa-solid fa-user"></i>
                             </div>
-                            <p class="username">John Abades</p>
+                            <p class="username"><?php echo $cmt_rows['UserName'] ?></p>
                             <i class="fa fa-quote-right quote-icon"></i>
                         </header>
-                        <p class="rating">5/5 - Mọi thứ trên cả tuyệt vời 🤩</p>
-                        <p class="allocution">
-                            Không gian ở đây rất đẹp, rất phù hợp với những kì nghỉ dài hạn hoặc ngắn hạn. ALOHA cung cấp một loạt các không gian sự kiện để đánh dấu những cột mốc đáng nhớ cho cuộc đời bạn. Một bữa tiệc xa hoa, hội thảo kinh doanh chính thức, một buổi hội nghị trang trọng, một buổi tiệc cocktail thân mật hay tiệc cưới. Có rất nhiều phong cách và xu hướng: Phương Tây quý pháp, Cổ đại bí ẩn, Trung đại độc đáo, Truyền thống Việt Nam
+                        <p class="rating">
+                            <?php
+                                switch($cmt_rows['Score']) {
+                                    case 1: echo "1/5 - Mọi thứ rất tệ ☹️";
+                                    break;
+                                    case 2: echo "2/5 - Thái độ phục vụ tệ 😕";
+                                    break;
+                                    case 3: echo "3/5 - Mọi thứ đều ổn 😐";
+                                    break;
+                                    case 4: echo "4/5 - Phòng tốt, giá tốt 🥰";
+                                    break;
+                                    default: echo "5/5 - Mọi thứ trên cả tuyệt vời 🤩";
+                                }
+                            ?>
                         </p>
+                        <p class="allocution"><?php echo $cmt_rows['Text']; ?></p>
                     </div>
-                    <div class="comments">
-                        <i class="fa fa-quote-right quote-icon"></i>
-                        <header>
-                            <div class="frame-icon">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-                            <p class="username">John Abades</p>
-                        </header>
-                        <p class="rating">5/5 - Mọi thứ trên cả tuyệt vời 🤩</p>
-                        <p class="allocution">
-                        </p>
-                    </div>
-                    <div class="comments">
-                        <header>
-                            <div class="frame-icon">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-                            <p class="username">John Abades</p>
-                            <i class="fa fa-quote-right quote-icon"></i>
-                        </header>
-                        <p class="rating">5/5 - Mọi thứ trên cả tuyệt vời 🤩</p>
-                        <p class="allocution">
-                            
-                        </p>
-                    </div>
+                   <?php } ?>
                 </div>
             </div>
         </div>
@@ -625,6 +619,25 @@
         })
     </script>
     
+    <!-- bắt sự kiện button gửi đánh giá -->
+    <script>
+        var btnRating = document.getElementById('send-review');
+        var radioRating = document.querySelector('input[name="rate"]:checked').value;
+        var text = document.getElementById('text-review').value;
+        var form =document.getElementById('rating-form');
+
+        form.onsubmit = function(e) {
+            e.preventDefault();
+            if (name_account.innerText === "Đăng nhập") {
+                modal.classList.add('open');  
+            }
+            else {
+                document.cookie = "name" + "=" + name_account.innerText;
+                form.submit();
+            }
+        }
+    </script>
+ 
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

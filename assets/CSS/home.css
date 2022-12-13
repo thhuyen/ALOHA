@@ -269,6 +269,7 @@ video {
     flex: 1;
 }
 .star-widget {
+    padding-top: 10px;
     margin: 0 auto;  
 }
 .star-widget input{
@@ -320,6 +321,7 @@ input#rate-5:checked ~ label {
     height: 45px;
     width: 100%;
     margin: 10px 0;
+    padding-bottom: 10px;
 }
 .btn-sendreview button {
     height: 100%;
@@ -341,7 +343,7 @@ input#rate-5:checked ~ label {
     content: "Mọi thứ rất tệ ☹️";
 }
 #rate-2:checked ~ #main-review:before {
-    content: "Thái độ phục vụ tệ 😕 ";
+    content: "Thái độ phục vụ tệ 😕";
 }
 #rate-3:checked ~ #main-review:before {
     content: "Mọi thứ đều ổn 😐";
@@ -386,7 +388,7 @@ input#rate-5:checked ~ label {
 }
 .comments .username {
     color: rgb(39, 2, 108);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 7px;
     padding-left: 10px;
@@ -394,7 +396,7 @@ input#rate-5:checked ~ label {
 .comments .rating {
     width: fit-content;
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: rgb(39, 2, 108);
     margin-bottom: 5px;
