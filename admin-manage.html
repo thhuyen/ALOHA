@@ -63,9 +63,9 @@
             <h1>QUẢN LÝ</h1>
         </div>
 <!-- FORM -->
-    <div class="tab-content">
+    <div class="tab-content" style="overflow-x: hidden;">
         <div class="tab-pane add active">
-            <div class='container' style="width:1330px;">
+            <div class='container' style="width: 100vw">
                 <table id="update-tab" class="update-table table-infor" width="1200" height="auto">
                     <tr>
                         <!-- <td class="head-table">STT</td> -->
@@ -96,7 +96,7 @@
                             <p style="display: block; margin-bottom: 0;">
                                 <?php echo $reservation_rows['CustomerEmail'];?>
                             </p>
-                            <button class="mail-btn btn-table">Gửi mail</button>
+                            <button class="mail-btn btn-table" onclick="openEmail(this)">Gửi mail</button>
                         </td>
                         <td><?php echo $reservation_rows['ReservationDate'];?></td>
                         <td><?php echo $reservation_rows['CheckinDate'];?></td>
@@ -134,11 +134,101 @@
                 </table>   
             </div>                  
         </div>
+
+        <!-- form email -->
+        <div class="modal-email">
+            <div class="popup-send-mail">
+                <div class="mail-content">
+                    <h4>Soạn Email</h4>
+                        <div class="mail-container">
+                            <div class='mail-infor'>
+                                <label for='receiver'>Người nhận</label>
+                                <input id='receiver' type='text' name="receiver">
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+        
+                        <div class="mail-container">
+                            <div class='mail-infor'>
+                                <label for='subject'>Chủ đề</label>
+                                <input id='subject' type='text' name="subject">
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+        
+                        <div class="mail-container">
+                            <div class='mail-infor'>
+                                <textarea id='mail-des' class="form-control" type='radio' name="mail-des"></textarea>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+        
+                        <a href="mailto:">
+                            <button id="btn-send-update" class="btn btn-save-form">Gửi</button>
+                        </a>
+                        <button class="btn btn-exit-form">Hủy</button>
+                </div>
+            </div>
+        </div>
     </div>    
         
    
     </section>
 
+    <!-- set content email -->
+    <script>
+        var modalEmail = document.querySelector('.modal-email');
+        var description = document.getElementById('mail-des');
+        var subject = document.getElementById('subject');
+        var receiver = document.getElementById('receiver');
+
+        let text = "Cảm ơn quý khách đã chọn ALOHA trong kì nghỉ dưỡng / du lịch. Chúng tôi đã nhận được yêu cầu đặt phòng của quý khách và xin xác nhận lại thông tin như sau: \n " +
+        "Anh/chị: "; 
+
+        function find_pos(row, x) {
+                var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
+                var updateTableRows = document.querySelector(".update-table").rows; 
+                for (let i = 0; i < updateTableRows.length; i++) {
+                    if (updateTableRows[i] === x.parentElement.parentElement) {
+                        if (updateTableCells[8].innerText.includes("Chọn phòng")) {
+                            alert("Vui lòng chọn phòng trước khi gửi email!");
+                            break;
+                        }
+                        else {
+                            modalEmail.classList.add('open');
+                            subject.value = "Thông tin đặt phòng từ ALOHA"
+                            receiver.value = updateTableCells[2].childNodes[1].innerText;
+                            description.value =  "Cảm ơn quý khách đã chọn ALOHA trong kì nghỉ dưỡng / du lịch. Chúng tôi đã nhận được yêu cầu đặt phòng của quý khách và xin xác nhận lại thông tin như sau:\n" +
+                            "Anh/chị: " + updateTableCells[0].innerText + "\n" + 
+                            "Số điện thoại: " + updateTableCells[1].innerText + "\n" + 
+                            "Loại phòng: " + updateTableCells[7].innerText + "\n" +
+                            "Ngày đặt: " + updateTableCells[3].innerText + "\n" + 
+                            "Ngày ở: " + updateTableCells[4].innerText + "\n" + 
+                            "Ngày trả: " + updateTableCells[5].innerText + "\n" +
+                            "Và chúng tôi đã sắp xếp phòng ở cho quý khách là: phòng " + updateTableCells[8].innerText + "\n" +
+                            "Một lần nữa, cảm ơn quý khách, chúc quý khách có những trải nghiệm tốt nhất tại ALOHA. 🥰"
+                            break;
+                        }
+                    }
+                }
+            } 
+            
+        function openEmail(button) {
+            find_pos((button.parentElement).parentElement.rowIndex, button);
+        }
+        document.querySelector('.popup-send-mail').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        document.querySelector('.btn-exit-form').addEventListener('click', function(){
+            modalEmail.classList.remove('open');
+        }); 
+        modalEmail.addEventListener('click', function() {
+            modalEmail.classList.remove('open');
+        });
+
+        
+
+    </script>
     <!-- update phòng cho khách -->
     <script>
         function ChooseRoom(select) {

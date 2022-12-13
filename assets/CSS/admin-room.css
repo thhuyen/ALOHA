@@ -199,7 +199,8 @@ section {
 }
 
 .btn-save-form {
-  background-color: var(--text) !important;
+  color: #fff !important;
+  background-color: var(--color-blue) !important;
 }
 .btn-save-form:hover {
   background: #171a2b !important;
@@ -278,10 +279,6 @@ section {
   background: #FF1616;
 } 
 
-.mail-btn {
-  background: #B2B2B2;
-}
-
 .notice-content {
   text-align: center;
 }
@@ -325,7 +322,7 @@ section {
 }
 .btn-exit-form:hover {
   background: #171a2b !important;
-  color: var(--white-color);
+  color: var(--white-color) !important;
 }
 
 .container.add.form {
