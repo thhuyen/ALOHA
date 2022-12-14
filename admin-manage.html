@@ -82,7 +82,6 @@
                     </tr>
 
                     <?php
-                        include './assets/PHP/connectdb.php';
                         $get_data_reservation = mysqli_query($conn, "SELECT * FROM invoice_room_detail id, customer c, invoice_room i
                                                 WHERE i.IdCustomer = c.IdCustomer AND id.IdInvoiceRoom = i.IdInvoiceRoom ORDER BY i.IdInvoiceRoom DESC");
                         

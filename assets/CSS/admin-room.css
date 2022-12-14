@@ -243,6 +243,7 @@ section {
   border: 1px solid #000;
   border-bottom: 0;
   border-right: 0;
+  padding: 0 5px;
 }
 
 .tab-pane .container .table-infor tr:first-child td {
@@ -254,7 +255,7 @@ section {
 }
 
 .tab-pane .container .table-infor .btn-table {
-  padding: 5px 15px;
+  padding: 0px 10px;
   border-radius: 5px;
   border: transparent;
   color: white;
@@ -263,7 +264,6 @@ section {
 }
 
 .tab-pane .container .table-infor .btn-table:hover {
-  padding: 5px 15px;
   border-radius: 5px;
   border: transparent;
   background: #171a2b;

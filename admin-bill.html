@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="./assets/CSS/base-admin.css">
     <link rel="stylesheet" href="./assets/CSS/admin-room.css">
     <link rel="stylesheet" href="./assets/CSS/admin.css">
+    <link rel="stylesheet" href="./assets/CSS/admin-bill.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
 
     <title>ALOHA Admin</title>
@@ -67,23 +68,28 @@
         <div class="tab-content">
             <!-- PHÒNG-->
             <div class="tab-pane add active">
-                <div class='container' style="width: 1336px;">
-                    <table id="update-tab" class="update-table table-infor" width="1000" max-height="1300">
+                <div class='container'>
+                    <table id="update-tab" class="update-table table-infor" width="max-content" style="font-size: 0.9rem;">
                         <tr>
                             <td class="head-table">Số hóa đơn</td>
                             <td class="head-table">Mã khách hàng</td>
                             <td class="head-table">Tên khách hàng</td>
                             <td class="head-table">Số điện thoại</td>
+                            <td class="head-table">Email</td>
                             <td class="head-table">Ngày lập hóa đơn</td>
+                            <td class="head-table">Ngày đặt</td>
+                            <td class="head-table">Ngày ở</td>
+                            <td class="head-table">Ngày trả</td>
+                            <td class="head-table">Loại phòng</td>
+                            <td class="head-table">Số lượng phòng</td>
                             <td class="head-table">Tổng tiền</td>
                             <td class="head-table">Tác vụ</td>
                             <td class="head-table">Hủy</td>
                         </tr>
 
                         <?php
-                            include './assets/PHP/connectdb.php';
-                            $get_data_bill = mysqli_query($conn, "SELECT * FROM invoice_room i, customer c 
-                                                        WHERE i.IdCustomer = c.IdCustomer ORDER BY IdInvoiceRoom DESC");
+                            
+                            $get_data_bill = mysqli_query($conn, "SELECT distinct i.IdInvoiceRoom, c.IdCustomer, CustomerName, CustomerPhone, CustomerEmail,InvoiceRoomDate, ReservationDate, CheckinDate,CheckoutDate,RoomTypeName,QuantityRoom, InvoiceRoomTotal FROM invoice_room i, customer c, invoice_room_detail id, notification n WHERE i.IdCustomer = c.IdCustomer AND i.IdInvoiceRoom = id.IdInvoiceRoom AND n.IdInvoiceRoom = i.IdInvoiceRoom ORDER BY i.IdInvoiceRoom DESC");
                             while($bill_rows = $get_data_bill->fetch_assoc())
                                 {
                             ?>
@@ -92,6 +98,7 @@
                                 <td><?php echo $bill_rows['IdCustomer'];?></td>
                                 <td><?php echo $bill_rows['CustomerName'];?></td>
                                 <td><?php echo $bill_rows['CustomerPhone'];?></td>
+                                <td><?php echo $bill_rows['CustomerEmail'];?></td>
                                 <td>
                                     <?php 
                                         if($bill_rows['InvoiceRoomDate'] === null)
@@ -105,9 +112,13 @@
 
                                     <?php } ?>
                                 </td>
+                                <td><?php echo $bill_rows['ReservationDate'];?></td>
+                                <td><?php echo $bill_rows['CheckinDate'];?></td>
+                                <td><?php echo $bill_rows['CheckoutDate'];?></td>
+                                <td><?php echo $bill_rows['RoomTypeName'];?></td>
+                                <td><?php echo $bill_rows['QuantityRoom'];?></td>
                                 <td><?php echo $bill_rows['InvoiceRoomTotal'];?></td>
                                 <td>
-                                    <button class="detail-btn btn-table" onclick="openDetail(this)">Chi tiết</button>                
                                     <button class="print-btn btn-table">In</button>
                                 </td>
                                 <td>
@@ -122,93 +133,6 @@
                     </table>                    
 
                 </div>                  
-            </div>
-
-            <!-- form chỉnh sửa -->
-            <div>
-                <div class='container add form'  style ="margin-top: 20px">
-                    <form id="form-update-room">
-        
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-code'>Mã hóa đơn phòng</label>
-                                <input id='guest-code'  type='text' name="guest-code" id="">
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='room-name'>Tên phòng</label>
-                                <input id='room-name'  type='text' name="room-name" id="">
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-                        
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-name'>Tên khách hàng</label>
-                                <input id='guest-name'  type='text' name="guest-name" id="">
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-phone'>Số điện thoại</label>
-                                <input id='guest-phone'  type='text' name="guest-phone" id="">
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-
-                        <div class="room-container">
-                            <div class='room-infor'>
-                                <label for='guest-mail'>Email</label>
-                                <input id='guest-mail'  type='text' name="guest-mail" id="">
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-
-                        <div class="two-container">
-                            <div class="left-container">
-                                <div class='bill-infor'>
-                                    <label for='book-time'>Ngày đặt</label>
-                                    <input id='book-time' type='date' name="book-time"></input>
-                                </div>
-                                <span class="invalid-message"></span>                           
-                            </div>
-
-                            <div class="right-container">
-                                <div class='bill-infor'>
-                                    <label for='return-time'>Ngày trả</label>
-                                    <input id='return-time' type='date' name="return-time"></input>
-                                </div>
-                                <span class="invalid-message"></span>                           
-                            </div>
-    
-                            <div class="left-container">
-                                <div class='bill-infor'>
-                                    <label for='stay-time'>Ngày  ở</label>
-                                    <input id='stay-time' type='date' name="stay-time"></input>
-                                </div>
-                                <span class="invalid-message"></span>  
-                            </div>   
-
-                            <div class="right-container">
-                                <div class='bill-infor'>
-                                    <label for='bill-price'>Đơn giá</label>
-                                    <input id='bill-price'  type='text' name="bill-price" id="">
-                                </div>
-                            </div>
-                            
-                        </div>
-                                         
-                              
-                        <button id="btn-save-update" class="btn btn-save-form">Lưu</button>
-                        <button class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>    
-                    </form>
-                </div>  
- 
             </div>
         </div> 
     </section>
@@ -239,14 +163,14 @@
     <script>
         $id = 0;
         function find_pos(row, x) {
-        var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
-        var updateTableRows = document.querySelector(".update-table").rows; 
-        for (let i = 0; i< updateTableRows.length; i++) {
-            if (updateTableRows[i] === x.parentElement.parentElement) {
-                $id = updateTableCells[0].innerHTML;
-                break;
+            var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
+            var updateTableRows = document.querySelector(".update-table").rows; 
+            for (let i = 0; i< updateTableRows.length; i++) {
+                if (updateTableRows[i] === x.parentElement.parentElement) {
+                    $id = updateTableCells[0].innerHTML;
+                    break;
+                }
             }
-        }
         }
         function SetDateInvoice(input) {    
             find_pos((input.parentElement).parentElement.rowIndex, input); 
@@ -258,45 +182,8 @@
     <!-- script tab slider -->
     <script src="./assets/javascript/tab-slider.js"></script>
 
-    <script>
-    function openDetail(button) {
-        btnExitForm.style.display = "block";
-        updateRoomForm.style.display="block";
-        updateTab.classList.add('close');
-
-        function find_pos(row, x) {
-            var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
-            var updateTableRows = document.querySelector(".update-table").rows; 
-            for (let i = 0; i< updateTableRows.length; i++) {
-                if (updateTableRows[i] === x.parentElement.parentElement ) {
-                    return updateTableCells[0].innerText;
-                }
-            }
-        } 
-        var id = find_pos((button.parentElement).parentElement.rowIndex, button);
-        document.cookie = "id" + "=" + id;
-        setCookie('id', id, 1); 
-        console.log(document.cookie);
-        // var DataTypeRoom = JSON.parse('<?= load_data_detail(); ?>'); 
-        // console.log(DataTypeRoom); 
-    } 
-
-    </script>
-
-    <?php
-    function load_data_detail() {
-        if(isset($_COOKIE["id"])) {
-            echo $_COOKIE["id"];
-            //return (json_encode($_COOKIE["id"],JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));                           
-        }
-    }
-    ?>
-
     <!-- SCRIPT bell -->
     <script src="./assets/javascript/notificationBell.js"></script>
-
-    
-
     <script src="https://kit.fontawesome.com/c89546c2fd.js" crossorigin="anonymous"></script>
 
 
