@@ -3,7 +3,8 @@
     $id;
     if(isset($_GET['IdInvoice'])) {
         $id = $_GET['IdInvoice'];
-        mysqli_query($conn, "DELETE FROM `invoice_room` WHERE IdInvoiceRoom = '".$id."'");      
+        mysqli_query($conn, "UPDATE `customer` c, `invoice_room` i SET AmountOfBooking = AmountOfBooking - 1 WHERE c.IdCustomer = i.IdCustomer AND i.IdInvoiceRoom = '".$id."'");  
+        mysqli_query($conn, "DELETE FROM `invoice_room` WHERE IdInvoiceRoom = '".$id."'");    
     }
 ?>
 <?php

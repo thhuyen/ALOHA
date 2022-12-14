@@ -108,10 +108,7 @@
                             <div class="right-container room-container">
                                 <div class='guest-infor'>
                                     <label for='guest-type'>Phân loại *</label>
-                                    <select name="guest-type" id="guest-type">
-                                        <option value="non-vip">Không thân thiết</option>
-                                        <option value="vip">Thân thiết</option>
-                                    </select>
+                                    <input type="text" readonly="readonly">
                                 </div>
                             </div>
                         </div>
@@ -231,26 +228,21 @@
                         <span class="invalid-message"></span>
                     </div>
 
-                    <div class="two-container">
-                        <div class="left-container">
-                            <div class='guest-infor'>
-                                <label for='guest-time'>Số lần đặt *</label>
-                                <input id='guest-time-upd' type='number' name="guest-time-upd" min="1"
-                                    max="1000"></input>
-                            </div>
-                            <span class="invalid-message"></span>
+                    <div class="room-container">
+                        <div class='room-infor'>
+                            <label for='guest-time'>Số lần đặt *</label>
+                            <input id='guest-time-upd' type='number' name="guest-time-upd" min="1" max="1000">
                         </div>
-
-                        <div class="right-container">
-                            <div class='guest-infor'>
-                                <label for='guest-type'>Phân loại *</label>
-                                <select name="guest-type-upd" id="guest-type-upd">
-                                    <option value="non-vip">Không thân thiết</option>
-                                    <option value="vip">Thân thiết</option>
-                                </select>
-                            </div>
-                        </div>
+                        <span class="invalid-message"></span>
                     </div>
+                    <div class="room-container">
+                        <div class='room-infor'>
+                            <label for='guest-type'>Phân loại *</label>
+                            <input name="guest-type-upd" id="guest-type-upd" readonly>
+                        </div>
+                        <span class="invalid-message"></span>
+                    </div>
+
                     <button type="submit" name="update-customer" id="btn-save-update"
                         class="btn btn-save-form">Lưu</button>
                     <button type="button" class="btn btn-exit-form" onclick="exitUpdate()">Thoát</button>
@@ -272,14 +264,12 @@
                 var updateTableRows = document.querySelector(".update-table").rows;
                 for (let i = 0; i < updateTableRows.length; i++) {
                     if (updateTableRows[i] === x.parentElement.parentElement) {
-                        document.getElementById('guest-code-upd').value = updateTableCells[0].innerText;
-                        document.getElementById('guest-name-upd').value = updateTableCells[1].innerText;
-                        document.getElementById('guest-phone-upd').value = updateTableCells[2].innerText;
-                        document.getElementById('guest-mail-upd').value = updateTableCells[3].innerText;
-                        document.getElementById('guest-time-upd').value = updateTableCells[4].innerText;
-                        if ((updateTableCells[5].innerText.trim().localeCompare("Không thân thiết")) == 0) {
-                            document.getElementById('guest-type-upd').value = "non-vip";
-                        } else { document.getElementById('guest-type-upd').value = "vip"; }
+                        document.getElementById('guest-code-upd').value = updateTableCells[0].innerText.trim();
+                        document.getElementById('guest-name-upd').value = updateTableCells[1].innerText.trim();
+                        document.getElementById('guest-phone-upd').value = updateTableCells[2].innerText.trim();
+                        document.getElementById('guest-mail-upd').value = updateTableCells[3].innerText.trim();
+                        document.getElementById('guest-time-upd').value = updateTableCells[4].innerText.trim();
+                        document.getElementById('guest-type-upd').value = updateTableCells[5].innerText.trim();
                         break;
                     }
                 }

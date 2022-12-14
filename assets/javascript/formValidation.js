@@ -188,13 +188,13 @@ Validator.isEmail = function(selector) {
         }
     };
 }
-Validator.isExisted = function(selector, arrName) {
+Validator.isExisted = function(selector, arrName, message) {
     return {
         selector: selector,
         test: function(value) {
-            for (let i = 0; i < arrName[i]; i++) {
+            for (let i = 0; i < arrName.length; i++) {
                 if ((arrName[i] === value)) {
-                    return `Phòng ${value} đã tồn tại`;
+                    return message;
                 }
             }
             return undefined;
