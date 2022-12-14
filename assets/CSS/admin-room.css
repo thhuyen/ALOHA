@@ -444,7 +444,3 @@ section .popup-send-mail textarea {
   font-size: 16px;
   flex: 1;
 }
-
-.search-form {
-  text-align: center;
-}

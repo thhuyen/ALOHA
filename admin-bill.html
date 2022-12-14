@@ -67,6 +67,15 @@
         <div class="tab-content">
             <!-- PHÒNG-->
             <div class="tab-pane add active">
+                <div class="search-container">
+                    <form action="" class="search-form" method="get">
+                        <input type="text" class="keyword" name="search" placeholder="Nhập từ khóa cần tìm"
+                            value="<?php if(isset($_GET[" search"])) { echo $_GET["search"]; } ?>">
+                        <button type="submit" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
                 <div class='container' style="width: 1336px;">
                     <table id="update-tab" class="update-table table-infor" width="1000" max-height="1300">
                         <tr>

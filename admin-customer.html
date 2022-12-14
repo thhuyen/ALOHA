@@ -126,12 +126,12 @@
 
         <!-- CHỈNH SỬA -->
         <div class="tab-pane">
-            <div class="search-form">
-                <form action="" class="" method="get">
-                    <input type="text" class="" name="search" placeholder="Nhập từ khóa cần tìm"
+            <div class="search-container">
+                <form action="" class="search-form" method="get">
+                    <input type="text" class="keyword" name="search" placeholder="Nhập từ khóa cần tìm"
                         value="<?php if(isset($_GET[" search"])) { echo $_GET["search"]; } ?>">
                     <button type="submit" class="searchButton">
-                        Tìm kiếm
+                        <i class="fa fa-search"></i>
                     </button>
                 </form>
             </div>

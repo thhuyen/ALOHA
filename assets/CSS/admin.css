@@ -229,3 +229,40 @@ section .content .title-sub-content {
     color: var(--text);
     font-family: 'Times New Roman', Times, serif;
 }
+
+.search-container {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.search-container .keyword {
+    border-top-left-radius: 45px;
+    border-bottom-left-radius: 45px;
+}
+
+.search-container button {
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background: #ccc;
+}
+
+.search-container input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+form {
+    display: flex !important;
+}
+  
