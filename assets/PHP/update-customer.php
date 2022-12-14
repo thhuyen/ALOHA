@@ -7,7 +7,7 @@
     $time = $_POST['guest-time-upd'];
     $type = $_POST['guest-type-upd'];
 
-    if ($type == "non-vip") {
+    if ($type === "Không thân thiết") {
         $type = 0;
     }
     else { $type = 1; }

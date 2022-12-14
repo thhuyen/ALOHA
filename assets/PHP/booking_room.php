@@ -33,8 +33,6 @@
         // Lưu dữ liệu xuống table notification
         $id_customer_row = mysqli_query($conn,"SELECT * FROM customer WHERE CustomerPhone = '".$phone."'");
         $row1 = $id_customer_row->fetch_assoc()["IdCustomer"]; // lấy ra IdCustomer để insert khóa ngoại cho dữ liệu của bảng noti
-        //mysqli_query($conn, "INSERT INTO `notification`(`Id`, `IdCustomer`, `Date`, `Status`) VALUES ('0','$row1', '$date',0)");
-        mysqli_query($conn,"INSERT INTO `notification`(`Id`, `IdCustomer`, `QuantityRoom`, `RoomType`, `Date`, `Status`) VALUES ('0','$row1','$quantity_room','$room_type','$date',0)");
 
         // Lưu dữ liệu xuống table invoice_room
         $roomtype_rows = mysqli_query($conn, "SELECT * FROM roomtype WHERE RoomTypeName = '".$room_type."'"); 
@@ -54,6 +52,10 @@
                                                     VALUES ('0','$last_idinvoiceroom','$temp_name','$room_type','$roomtype_price','$date', '$checkin_date','$checkout_date')");
             $temp = $temp + 1;
         }
+
+       
+        //mysqli_query($conn, "INSERT INTO `notification`(`Id`, `IdCustomer`, `Date`, `Status`) VALUES ('0','$row1', '$date',0)");
+        mysqli_query($conn,"INSERT INTO `notification`(`Id`, `IdCustomer`, `IdInvoiceRoom`, `QuantityRoom`, `RoomType`, `Date`, `Status`) VALUES ('0','$row1', ' $last_idinvoiceroom', '$quantity_room','$room_type','$date',0)");
         
     };
 

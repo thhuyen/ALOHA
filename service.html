@@ -33,6 +33,7 @@
 
     <!--HEADER-->
     <?php
+        include './assets/PHP/connectdb.php';
         include './header.html';
     ?>    
 
@@ -70,95 +71,23 @@
             </div>
 
         <div class="product-container">
+                <?php
+                    $get_service = mysqli_query($conn, "SELECT * FROM service");
+                    while($ser_rows = $get_service->fetch_assoc())
+                        {
+                ?>
             <!-- 1 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="./assets/img/service/GIAT UI.jpg" class="product-thumb" alt="">
+                    <img src="./assets/img/service/<?php echo $ser_rows['ServiceImage']?>" class="product-thumb" alt="">
                 </div>
                 <div class="product-info">
-                    <h2 class="product-brand">GIẶT ỦI</h2>
-                    <span class="price">300.000 VND/1kg</span>
+                    <h2 class="product-brand"><?php echo $ser_rows['ServiceName']?></h2>
+                    <span class="price"><?php echo $ser_rows['ServicePrice'] . ' VND/' . $ser_rows['Unit']?></span>
                 </div>
             </div>
-            <!-- 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <!-- <span class="discount-tag">50% off</span> -->
-                    <img src="./assets/img/service/SPA & FITNESS.jpg" class="product-thumb" alt="">                
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">SPA & FITNESS</h2>
-                    <span class="price">600.000 VND/1h</span>
-                </div>
-            </div>
-            <!-- 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <!-- <span class="discount-tag">50% off</span> -->
-                    <img src="./assets/img/service/SAN GOLF.jpg" class="product-thumb" alt="">
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">GOLF</h2>
-                    <span class="price">2.000.000 VND/1h</span>
-                </div>
-            </div>
-            <!-- 4 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <!-- <span class="discount-tag">50% off</span> -->
-                    <img src="./assets/img/service/DU THUYEN.jpg" class="product-thumb" alt="">
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">DU THUYỀN</h2>
-                    <span class="price">1.000.000 VND/1h</span>
-                </div>
-            </div>
-            <!-- 5 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <!-- <span class="discount-tag">50% off</span> -->
-                    <img src="./assets/img/service/BAR & KARAOKE.png" class="product-thumb" alt="">
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">BAR & KARAOKE</h2>
-                    <span class="price">600.000 VND/1h</span>
-                </div>
-            </div>
-            <!-- 6 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <!-- <span class="discount-tag">50% off</span> -->
-                    <img src="./assets/img/service/CA PHE BIEN.jpg" class="product-thumb" alt="">
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">BEACH COFFE</h2>
-                    <span class="price">600.000 VND/1h</span>
-                </div>
-            </div>
-            <!-- 7 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <!-- <span class="discount-tag">50% off</span> -->
-                    <img src="./assets/img/service/service.webp" class="product-thumb" alt="">
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">PHỤC VỤ 24/24</h2>
-                    <span class="price">400.000 VND/1h</span>
-                </div>
-            </div>
-            <!-- 8 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <!-- <span class="discount-tag">50% off</span> -->
-                    <img src="./assets/img/service/THU CUNG.jpg" class="product-thumb" alt="">
-                </div>
-                <div class="product-info">
-                    <h2 class="product-brand">THÚ CƯNG</h2>
-                    <span class="price">1.400.000 VND/1 bé</span>
-                </div>
-            </div>
-
-
+            <?php } ?>
+          
         </div>
     
 <!-- UPCOMING -->

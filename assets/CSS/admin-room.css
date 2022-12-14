@@ -120,10 +120,6 @@ section {
   margin-bottom: 20px;
 }
 
-#photo {
-  margin-bottom: 0px;
-}
-
 .room-container span {
   margin-left: 295px;
   padding-bottom: 10px;
@@ -199,7 +195,8 @@ section {
 }
 
 .btn-save-form {
-  background-color: var(--text) !important;
+  color: #fff !important;
+  background-color: var(--color-blue) !important;
 }
 .btn-save-form:hover {
   background: #171a2b !important;
@@ -242,6 +239,7 @@ section {
   border: 1px solid #000;
   border-bottom: 0;
   border-right: 0;
+  padding: 0 5px;
 }
 
 .tab-pane .container .table-infor tr:first-child td {
@@ -253,7 +251,7 @@ section {
 }
 
 .tab-pane .container .table-infor .btn-table {
-  padding: 5px 15px;
+  padding: 0px 10px;
   border-radius: 5px;
   border: transparent;
   color: white;
@@ -262,7 +260,6 @@ section {
 }
 
 .tab-pane .container .table-infor .btn-table:hover {
-  padding: 5px 15px;
   border-radius: 5px;
   border: transparent;
   background: #171a2b;
@@ -277,10 +274,6 @@ section {
 .print-btn {
   background: #FF1616;
 } 
-
-.mail-btn {
-  background: #B2B2B2;
-}
 
 .notice-content {
   text-align: center;
@@ -325,7 +318,7 @@ section {
 }
 .btn-exit-form:hover {
   background: #171a2b !important;
-  color: var(--white-color);
+  color: var(--white-color) !important;
 }
 
 .container.add.form {
@@ -444,3 +437,5 @@ section .popup-send-mail textarea {
   font-size: 16px;
   flex: 1;
 }
+
+
