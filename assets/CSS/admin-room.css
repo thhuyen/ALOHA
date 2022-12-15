@@ -291,7 +291,9 @@ section {
 .btn-outline-secondary {
   color: #6c757d !important;
 }
-
+.btn-outline-secondary:hover {
+  color: #fff !important;
+}
 /* --------chỉnh sửa phòng ------------*/
 .upd-btn {
   background: var(--green-color);

@@ -224,6 +224,7 @@
                         return false;
                     } 
                     roomname = find_pos((button.parentElement).parentElement.rowIndex, button);
+                    document.querySelector('.room-name-notice').innerText = "PHÒNG " + roomname.toUpperCase();
                     return roomname;
                 }
                 function DeleteRoom(button) {
