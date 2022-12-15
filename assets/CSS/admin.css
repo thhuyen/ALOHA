@@ -263,7 +263,4 @@ section .content .title-sub-content {
     font-size: 17px;
     border: none;
 }
-form {
-    display: flex !important;
-}
   
