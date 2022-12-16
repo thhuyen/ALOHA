@@ -123,7 +123,17 @@
                     </form>
                 </div>
             </div>
-           
+            <?php
+                function get_roomname() {
+                    include './assets/PHP/connectdb.php';
+                    $arr = array();
+                    $room_rows =  $conn->query("select * from room");
+                    while($get_data_room = $room_rows->fetch_assoc()) {
+                        array_push($arr, $get_data_room["RoomName"]);
+                    }
+                    return (json_encode($arr,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
+                }
+            ?>
             
 
             <!-- QUẢN LÝ PHÒNG -->
@@ -334,18 +344,6 @@
 
     <!-- script tab slider -->
     <script src="./assets/javascript/tab-slider.js"></script>
-    
-    <?php
-        function get_roomname() {
-            include './assets/PHP/connectdb.php';
-            $arr = array();
-            $room_rows =  $conn->query("select * from room");
-            while($get_data_room = $room_rows->fetch_assoc()) {
-                array_push($arr, $get_data_room["RoomName"]);
-            }
-            return (json_encode($arr,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
-        }
-    ?>
 
     <!-- Kiểm tra điều kiện nhập đầy đủ thông tin -->
     <script src="./assets/javascript/formValidation.js"></script>
