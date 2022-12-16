@@ -271,6 +271,7 @@ video {
 }
 
 #content .preview-half .text p{
+    line-height: 1.8;
     font-family: arimo;
     font-size: 1rem;
     padding-top: 20px;
@@ -439,6 +440,7 @@ video {
     text-align: justify;
     display: flex;
     flex-wrap: wrap;
+    line-height: 1.8;
 } 
 
 .room-event .col-lg-8{

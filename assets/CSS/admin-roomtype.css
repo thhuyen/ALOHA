@@ -102,7 +102,7 @@ section {
 
 /* -----------------------thêm phòng----------------------------- */
 .container.add {
-  margin-top: 50px;
+  /* margin-top: 50px; */
   display: flex;
   width: -moz-fit-content;
   width: fit-content;
@@ -112,14 +112,6 @@ section {
 
 #form-add {
   position: relative;
-}
-
-.room-container {
-  margin-bottom: 20px;
-}
-
-#photo {
-  margin-bottom: 0px;
 }
 
 .room-container span {
@@ -132,7 +124,6 @@ section {
 .container.add .room-photo {
   width: 900px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   margin-bottom: 5px;
 }
@@ -345,7 +336,9 @@ section {
 .btn-outline-secondary {
   color: #6c757d !important;
 }
-
+.btn-outline-secondary:hover {
+  color: #fff !important;
+}
 /* --------chỉnh sửa phòng ------------*/
 .upd-btn {
   background: var(--green-color);

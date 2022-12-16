@@ -30,15 +30,8 @@
             formgroup.style.display = "flex";
             formRegister.classList.add('open');
         
-            switch(currentElement.id) {
-                case 'btn-single':
-                    typeRoomRegister.options[0].text = "Phòng đơn";
-                    break;
-                case 'btn-double':
-                    typeRoomRegister.options[0].text = "Phòng đôi";
-                    break;
-                default:  typeRoomRegister.options[0].text = "Phòng bốn";
-            }
+            typeRoomRegister.options[0].text = currentElement.id;
+            
         }
     });
 

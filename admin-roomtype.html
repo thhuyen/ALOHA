@@ -23,7 +23,8 @@
     <!--Link Icon Awesome-->
     <script src="https://kit.fontawesome.com/c89546c2fd.js" crossorigin="anonymous"></script>
 
-
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -67,77 +68,56 @@
             <!-- THÊM LOẠI PHÒNG -->
             <div class="tab-pane add active">
                 <div class='container add'>
-                    <form id="form-add">
+                    <form id="form-add" enctype="multipart/form-data" method="post" action="./assets/PHP/insert_roomtype.php">
                         <div class="room-container">
-                            <label for='roomtype-name' class="form-label">Tên loại phòng *</label>
-                            <div class='room-infor'>
-                                <input id='roomtype-name' placeholder="Nhập tên loại phòng" type='text'
-                                    name="roomtype-name" id="">
+                            <div class="room-infor">
+                                <label for='roomtype-name' class="form-label">Tên loại phòng *</label>
+                                <input id='roomtype-name' placeholder="Nhập tên loại phòng" type='text' name="roomtype-name">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
 
                         <div id="photo" class="room-container">
-                            <label for='file' class="form-label">Ảnh phòng *</label>
+                            <div class="room-photo">
+                                <label for="roomtype-file" class="form-label">Ảnh phòng *</label>
+                                <input type="file" id="roomtype-file" class="form-control" name="roomtype-file[]" accept=".png, .jpg" multiple/>
+                            </div>
+                            <span class="invalid-message" id="invalid-message-imgs"></span>
+                        </div>
+
+                        <div id="photo" class="room-container">
                             <div class='room-photo'>
-                                <input type="file" id="file" class="form-control" name="file" accept=".png, .jpg" />
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>
-                        <img id="result"></img>
-
-                        <div class="room-container">
-                            <div class="row buttons_added">
-                                <div class="col">
-                                    <label for='room-qty' class="form-label">Số lượng *</label>
-                                    <input id="room-qty" aria-label="quantity" class="input-qty" max="10" min="0"
-                                        name="" type="number" value="1">
-                                </div>
-                                <div class="col room-unit">
-                                    <label for='room-unit' class="form-label">Đơn vị tính *</label>
-                                    <div class="form-check form-check-inline room-status">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio1" value="1" checked="checked">
-                                            <label class="form-check-label" for="inlineRadio1">Đêm</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio2" value="2">
-                                            <label class="form-check-label" for="inlineRadio2">Giờ</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="room-container">
-                            <label for='room-size' class="form-label">Kích thước *</label>
-                            <div class='room-infor'>
-                                <input id='room-size' placeholder="m^3" type='text' name="room-size" id=""></input>
+                                <label for='roomtype-quantity' class="form-label">Số lượng *</label>
+                                <input id='roomtype-quantity' type='text' name="roomtype-quantity" readonly style="background: #eee;" value="0">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
 
                         <div class="room-container">
-                            <label for='room-price' class="form-label">Đơn giá *</label>
                             <div class='room-infor'>
-                                <input id='room-price' class="form-control" placeholder="VND" type='text'
-                                    name="room-price" id=""></input>
+                                <label for="roomtype-size" class="form-label">Kích thước *</label>
+                                <input id="roomtype-size" placeholder="m^3" type='text' name="roomtype-size"></input>
                             </div>
                             <span class="invalid-message"></span>
                         </div>
 
-                        <div class="room-container des">
-                            <label for='room-des' class="form-label">Mô tả *</label>
-                            <div class='room-infor'>
-                                <textarea id='room-des' class="form-control" placeholder="Nhập mô tả" type='radio'
-                                    name="room-des" id=""></textarea>
+                        <div class="room-container">
+                            <div class="room-infor">
+                                <label for="roomtype-price" class="form-label">Đơn giá *</label>
+                                <input id="roomtype-price" class="form-control" placeholder="VND" type="text" name="roomtype-price"></input>
                             </div>
                             <span class="invalid-message"></span>
                         </div>
 
-                        <button id="btn-save" class="btn">Lưu</button>
+                        <div class="room-container">
+                            <div class='room-infor'>
+                                <label for="roomtype-des" class="form-label">Mô tả *</label>
+                                <textarea id="roomtype-des" class="form-control" placeholder="Nhập mô tả" name="roomtype-des" rows="5"></textarea>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
+
+                        <button type="submit" id="btn-save" class="btn">Lưu</button>
                     </form>
                 </div>
             </div>
@@ -153,15 +133,10 @@
                             <td class="head-table">Số lượng</td>
                             <td class="head-table">Kích thước</td>
                             <td class="head-table">Mô tả</td>
-                            <td class="head-table">Đơn vị tính</td>
                             <td class="head-table">Đơn giá</td>
                             <td class="head-table">Tác vụ</td>
                         </tr>
 
-                        <!-- <button class="upd-btn btn-table" onclick="openUpdate()">Sửa</button>
-                                <button type="button" class="del-btn btn-table" data-bs-toggle="modal"
-                                    data-bs-target="#delete-room">Xóa</button>
-                            -->
                         <?php
                         include './assets/PHP/connectdb.php';
                         $get_data_roomtype = mysqli_query($conn, "SELECT * FROM roomtype");
@@ -173,7 +148,7 @@
                                 <?php echo $client_rows['RoomTypeName'];?>
                             </td>
                             <td>
-                                <?php echo $client_rows['MaxRoomQuantity'];?>
+                                <?php echo $client_rows['RoomQuantity'];?>
                             </td>
                             <td>
                                 <?php echo $client_rows['RoomTypeSize'];?>
@@ -183,9 +158,6 @@
                             </td>
                             <td>
                                 <?php echo $client_rows['RoomTypePrice'];?>
-                            </td>
-                            <td>
-                                <?php echo $client_rows['Unit'];?>
                             </td>
                             <td>
                                 <button class="upd-btn btn-table" onclick="openUpdate(this)"
@@ -306,6 +278,7 @@
         </div>
     </section>
 
+
     <!-- Set data khi bấm button sửa -->
     <script>
         function openUpdate(button) {
@@ -334,28 +307,27 @@
         } 
     </script>
 
+    <!-- Set điều kiện phải chọn đúng 3 ảnh -->
+    <script>
+        var length = 0;
+        document.getElementById('roomtype-file').addEventListener('blur', function() {
+            length = this.files.length;
+        });
+        document.getElementById('btn-save').addEventListener('click', function(e) {
+            if (length != 3) {
+                e.preventDefault();
+                document.getElementById('invalid-message-imgs').innerText = "Vui lòng chọn đúng 3 ảnh";
+                document.getElementById('roomtype-file').classList.add('invalid');
+            }
+        });
+        
+    </script>
     <!-- SCRIPT bell -->
     <script src="./assets/javascript/notificationBell.js"></script>
 
     <!-- script tab slider -->
     <script src="./assets/javascript/tab-slider.js"></script>
 
-    <!-- script mô tả phòng -->
-    <!-- <script>
-        const tx = document.getElementsByTagName("textarea");
-    for (let i = 2; i < tx.length-1; i++) {
-    tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
-    tx[i].addEventListener("input", OnInput, false);
-    }
-
-    function OnInput() {
-    this.style.height = "40px";
-    this.style.height = (this.scrollHeight) + "px";
-    }
-    </script> -->
-
-    <!-- SCRIPT upload photo-->
-    <script src="./assets/javascript/upload-photo.js"></script>
     <!-- Kiểm tra điều kiện nhập đầy đủ thông tin -->
     <script src="./assets/javascript/formValidation.js"></script>
     <script>
@@ -365,38 +337,11 @@
             errorSelector: '.invalid-message',
             rules: [
                 Validator.isRequired('#roomtype-name', 'Vui lòng nhập tên loại phòng'),
-                Validator.minLength('#roomtype-name', 5),
-                Validator.isRequired('#room-price', 'Vui lòng nhập đơn giá phòng'),
-                Validator.isNumber('#room-price'),
-                Validator.isRequired('#file', 'Vui lòng chọn hình ảnh'),
-                Validator.isRequired('#room-des', 'Vui lòng nhập mô tả phòng'),
-                Validator.minLength('#room-des', 20),
-                Validator.isRequired('#room-size', 'Vui lòng nhập kích thước phòng'),
-                Validator.isNumber('#room-size'),
+                Validator.isRequired('#roomtype-price', 'Vui lòng nhập đơn giá phòng'),
+                Validator.isRequired('#roomtype-file', 'Vui lòng chọn hình ảnh'),
+                Validator.isRequired('#roomtype-des', 'Vui lòng nhập mô tả phòng'),
+                Validator.isRequired('#roomtype-size', 'Vui lòng nhập kích thước phòng'),
             ],
-            onSubmit: function (data) {
-
-            }
-        });
-
-        Validator({
-            form: '#form-update-room',
-            formGroupSelector: '.room-container',
-            errorSelector: '.invalid-message',
-            rules: [
-                Validator.isRequired('#roomtype-name-update', 'Vui lòng nhập tên phòng'),
-                Validator.minLength('#roomtype-name-update', 5),
-                Validator.isRequired('#room-price-update', 'Vui lòng nhập đơn giá phòng'),
-                Validator.isNumber('#room-price-update'),
-                Validator.isRequired('#file-update', 'Vui lòng chọn hình ảnh'),
-                Validator.isRequired('#room-des-update', 'Vui lòng nhập mô tả phòng'),
-                Validator.minLength('#room-des-update', 20),
-                Validator.isRequired('#room-size-update', 'Vui lòng nhập kích thước phòng'),
-                Validator.isNumber('#room-size-update'),
-            ],
-            onSubmit: function (data) {
-
-            }
         });
     </script>
 </body>

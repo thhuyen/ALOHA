@@ -234,7 +234,8 @@
     font-size: 20px;
     text-align: center;
     padding: 10px 0;
-    background-color: var(--color-blue);
+    background-color: var(--color-pink);
+    box-shadow: 0 0 10px #ccc;
     border-radius: 50%;
     cursor: pointer;
     opacity: 0;
@@ -352,7 +353,7 @@
         display: block;
     }
     .background-color-yellow {
-        background-color: #F9B456;
+        background-color: var(--color-pink);
         color: var(--black-color) !important;
     }
     
