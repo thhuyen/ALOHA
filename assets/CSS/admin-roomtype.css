@@ -276,6 +276,7 @@ section {
 }
 
 .tab-pane .container .table-infor tr td {
+  padding: 0 10px;
   height: 46px;
   text-align: center;
   border: 1px solid #000;

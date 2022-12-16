@@ -124,13 +124,13 @@
         else {
             typeRoomRegister.remove(1);
             if (total == 1) {
-                typeRoomRegister.options[0].text = "Phòng đơn";
+                typeRoomRegister.options[0].text = "phòng đơn";
             }
             else if (total == 2) {
-                typeRoomRegister.options[0].text = "Phòng đôi";
+                typeRoomRegister.options[0].text = "phòng đôi";
             }
             else if (total == 4) {
-                typeRoomRegister.options[0].text = "Phòng bốn";
+                typeRoomRegister.options[0].text = "phòng bốn";
             }
         }
     }

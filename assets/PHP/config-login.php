@@ -26,5 +26,4 @@
         // $a = "<a href='".$client->createAuthUrl()."'>Google Login</a>"; // khó ỉa :v, cho nó chạy cả cái file 
         $url = $client->createAuthUrl(); 
     }
-    // header("Location: ../../home.html"); 
 ?>

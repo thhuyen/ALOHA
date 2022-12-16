@@ -72,7 +72,7 @@
             $get_data_roomtype = mysqli_query($conn, "SELECT * FROM roomtype ORDER BY RoomTypeName DESC");
             while($roomtype_rows = $get_data_roomtype->fetch_assoc()) {
                 $arrImgs = explode(',', $roomtype_rows['RoomTypeImages']);
-                $arrDes = preg_split('/(?=[A-Z])/',$roomtype_rows['RoomDescription']);
+                $arrDes = preg_split("/\,/",$roomtype_rows['RoomDescription']);
                 $id_roomtype = vn_str_filter($roomtype_rows['RoomTypeName']);
 
         ?>
@@ -153,7 +153,7 @@
     ?>
 
     <!-- form đặt phòng -->
-    <form class = "form-group" action="./assets/PHP/booking_room.php" method="post" style="display: none;">
+    <form class = "form-group" action="./assets/PHP/booking_room.php" method="post" style="display: none; margin: 0;">
         <div class="modal-register">
             <div class="modal-register-container">
                 <div class="modal-header register">
