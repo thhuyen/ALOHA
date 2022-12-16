@@ -311,6 +311,10 @@
         margin-right: auto;
     }
 
+    .our-service .col-lg-4{
+        width: 50%;
+
+    }
     .room-event .container{
         max-width: 540px;
     }
@@ -335,6 +339,11 @@
     
 }
 @media (max-width: 620px) {
+
+    .our-service .col-lg-4{
+        width: 100%;
+
+    }
  
     #content .intro {
         padding-top: 250px;
