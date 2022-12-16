@@ -41,3 +41,11 @@ body {
     font-family: uvn-bale;
     src: url(../fonts/font-text/UVNBaLe.TTF);
 }
+@font-face {
+    font-family: arimo;
+    src: url(../fonts/font-text/Arimo-Regular.ttf);
+}
+@font-face {
+    font-family: play fair;
+    src: url(../fonts/font-text/PlayfairDisplay-Regular.ttf);
+}

@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Arimo&family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!--Link Icon Awesome-->
+    <script src="https://kit.fontawesome.com/9e120404ab.js" crossorigin="anonymous"></script>
+
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
@@ -25,16 +30,15 @@
 </head>
 
 <body>
-    <!-- <script>
+    <script>
         function initMap() {
             // your code
         }
-    </script> -->
+    </script>
 
     
     <?php
-        require_once './header.html';
-        include_once './header.html';
+        include './header.html';
     ?>
     <div id="overlay"></div>
 
@@ -74,7 +78,169 @@
 
     <!-- content -->
     <div id="content">
-        <div class="intro">
+
+        <div class="about-us">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="about-text">
+                            <div class="about-title">
+                                <span>About us</span>
+                                <h2>Welcome to
+                                    <br>Aloha Hotel
+                                </h2>
+                            </div>
+                            <p>Nơi lưu giữ những khoảnh khắc tuyệt vời trong những kỳ nghỉ của bạn. 
+                                Chúng tôi rất hân hạnh khi mang đến những trải nghiệm tuyệt vời nhất mỗi khi tìm đến đây. </p>
+                            <p>Khi tới ALOHA, mọi ưu phiền sẽ được loại bỏ, bạn sẽ được hòa mình vào 
+                                bầu không khí của biển cả, đón những cơn gió biển tràn đầy sức sống. 
+                                Bên cạnh đó là những dịch vụ, tiện ích tuyệt vời mà chúng tôi đang chờ 
+                                bạn khám phá.</p>
+                            <p class="thank">THANKYOU</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="about-pic">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <img src="./assets/img/home/about_us1.png" alt="">
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="./assets/img/home/about_us2.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="our-service">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="service-title">
+                            <span>WHAT WE DO</span>
+                            <h2>Discover Our Service</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <i class="fa-solid fa-dumbbell"></i>
+                            <h4>Fitness</h4>
+                            <p>Không gian phòng tập đjep, thoáng mắt và hiện đại,
+                                thiết bị tập chuyên nghiệp nhập khẩu 100%
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <i class="fa-solid fa-shirt"></i>
+                            <h4>Giặt ủi</h4>
+                            <p>Quần áo được phân loại và giặt riêng biệt theo chất liệu,
+                                 màu vải, loại quần áo, đảm bảo áo quần của cả bạn 
+                                luôn ở trạng thái tốt nhất.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <i class="fa-solid fa-martini-glass-citrus"></i>
+                            <h4>Bar & Karaoke</h4>
+                            <p>Với thiết kế kín đáo hệ thống cách âm độc đáo đem 
+                                lại cho khách hàng cảm giác thư giãn và đắm chìm trong 
+                                không gian bí ẩn thưởng thức âm nhạc và rượu cay.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <i class="fa-solid fa-sailboat"></i>
+                            <h4>Du thuyền</h4>
+                            <p>Thiết kế dành riêng cho thị trường Chu Á, sẽ mang lại cho du 
+                                khách những dịch vụ sang trọng và chu đáo nhất trong khu vực.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <i class="fa-solid fa-mug-hot"></i>
+                            <h4>Beach Coffee</h4>
+                            <p>Có thể thưởng thức hương vị tinh tế và hương thơm của tách cafe
+                                 bên cạnh cảnh biển tuyệt đẹp </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <i class="fa-solid fa-golf-ball-tee"></i>
+                            <h4>Golf</h4>
+                            <p>Toàn bộ sân gôn được trang bị những tiện nghi cao cấp, hàng loạt
+                                 hệ thống tưới tiêu hiện đại, giúp duy trì những thảm cở xanh tươi, 
+                                 mướt mát quanh năm.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <i class="fa-solid fa-paw"></i>
+                            <h4>Thú cưng</h4>
+                            <p>Có kiến thức, kỹ năng chăm sóc chuyên nghiệp, nhằm 
+                                giúp bạn chăm sóc thú cưng của mình một cách tốt nhất.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            <h4>24/7</h4>
+                            <p>Dịch vụ phòng của khách sạn luôn sẵn lòng phục vụ khách 
+                                hàng trong 24/7</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <i class="fa-solid fa-spa"></i>
+                            <h4>Spa</h4>
+                            <p>Nơi giúo bạn tìm lại sự thư thái cho cơ thể và tinh thần với 
+                                nhiều dịch vụ chăm sóc da, massage,...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        
+        
+        <div class="room-event">
+            <div class="single left-img">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="caption room-caption">
+                                <h3>ROOM</h3>
+                                <p>ALOHA luôn mang đến trải nghiệm tuyệt vời đối với giấc ngủ. Chúng tôi đảm bảo ALOHA sẽ là nơi lý tưởng để khách hàng có thể nghỉ ngơi thoải mái nhất trong những kỳ nghỉ của bạn. 
+                                    <br> ALOHA luôn trang bị đầy đủ các thiết bị và vật dụng hiện đại, tân tiến nhất cho phòng ốc.</p>
+                                <button type="button" onclick="location.href='room.html';" class="showmore-btn" >Xem thêm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single right-img">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="caption event-caption text-right">
+                                <h3>EVENT</h3>
+                                <p>ALOHA cung cấp một loạt các không gian sự kiện để đánh dấu những cột mốc đáng nhớ cho cuộc đời bạn. Một bữa tiệc xa hoa, hội thảo kinh doanh chính thức, một buổi hội nghị trang trọng, một buổi tiệc cocktail thân mật hay tiệc cưới.</p>
+                                <button type="button" onclick="location.href='event.html';" class="showmore-btn" >Xem thêm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+         <!-- <div class="intro">
             <div class="intro-content">
                 <h2>ALOHA</h2> 
                 <p>Nơi lưu giữ những khoảnh khắc tuyệt vời trong những kỳ nghỉ của bạn. Chúng tôi rất hân hạnh khi mang đến những trải nghiệm tuyệt vời nhất mỗi khi tìm đến đây. Khi tới ALOHA, mọi ưu phiền sẽ được loại bỏ, bạn sẽ được hòa mình vào bầu không khí của biển cả, đón những cơn gió biển tràn đầy sức sống. Bên cạnh đó là những dịch vụ, tiện ích tuyệt vời mà chúng tôi đang chờ bạn khám phá.</p>
@@ -83,10 +249,10 @@
             <div class="intro-background">
                 <img src="./assets/img/home/intro2.jpg" alt="Ảnh giới thiệu phòng" class="img-intro">
             </div>
-        </div>
+        </div> 
 
         <div id="main-content">
-            <!-- content room -->
+            content room 
 
             <div id="room" class="content-body room">
                 <div class="group-img-content">
@@ -106,7 +272,7 @@
                 </div>
             </div>
 
-            <!-- content service -->
+            <!-- content service 
             <div id="ser" class="content-body service">
                 <div class="infor-body body-service">
                     <div class="group-icon-star">
@@ -125,7 +291,7 @@
                 </div>    
             </div>
 
-            <!-- content event -->
+            <!-- content event 
             <div id="event" class="content-body event">
                 <div class="group-img-content">
                     <img src="./assets/img/home/event1.jpg" alt="" class="img-event">         
@@ -143,8 +309,19 @@
                     <button type="button" onclick="location.href='event.html';" class="showmore-btn" >Xem thêm</button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
+    <div class="preview-half">
+        <img src="./assets/img/home/banner2.png" alt="" class="image">
+        <div class="text">
+            <div class="container-text">
+                <h2>ENJOY</h2>
+                <p>Cùng Aloha tận hưởng những kì nghỉ tuyệt vời bên người thân và bạn bè.
+                    Hè này hãy chọn Aloha, Aloha đang có chương trình ưu đãi cực kì hấp dẫn luôn.</p>
+                <p>Cảm ơn quý khách đã luôn tin tưởng chúng tôi.</p>
+            </div>
+        </div>
+    </div>
         <!-- review -->
         <div id="review">
             <div class="review-container">
