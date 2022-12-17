@@ -160,8 +160,10 @@
                                 <?php echo $client_rows['RoomTypePrice'];?>
                             </td>
                             <td>
-                                <button class="upd-btn btn-table" onclick="openUpdate(this)"
-                                    style="margin: 5px;">Sửa</button>
+                                <?php echo $rows['RoomTypeImages'];?>
+                            </td>
+                            <td>
+                                <button class="upd-btn btn-table" onclick="openUpdate(this)" style="margin: 5px;">Sửa</button>
                                 <button type="button" class="del-btn btn-table" data-bs-toggle="modal"
                                     data-bs-target="#delete-room" style="margin-bottom: 5px;">Xóa</button>
                             </td>
@@ -177,26 +179,27 @@
         </div>
 
         <!-- form xóa -->
-        <div class="modal fade" id="delete-room" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Xóa loại phòng</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body notice-content">
-                        <p>Bạn muốn xóa <span class="room-name-notice">PHÒNG ĐƠN</span></p>
-                        <p><i class="fa-solid fa-circle-exclamation icon-exclamation"></i></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay
-                            lại</button>
-                        <button type="button" class="btn btn-danger">Xóa</button>
+        <form action="./assets/PHP/delete_roomtype.php" method="post">
+            <div class="modal fade" id="delete-room" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Xóa loại phòng</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body notice-content">
+                            <p>Bạn muốn xóa <span class="room-name-notice">PHÒNG ĐƠN</span></p>
+                            <p><i class="fa-solid fa-circle-exclamation icon-exclamation"></i></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay lại</button>
+                            <button type="submit" class="btn btn-danger" name="btn-del" onclick="DeleteType(this)">Xóa</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <!-- form chỉnh sửa -->
         <div>
             <div class='container add form'>
@@ -278,6 +281,27 @@
         </div>
     </section>
 
+
+      <!-- Set điều kiện phải chọn đúng 3 ảnh -->
+    <script>
+        function require_3files(selector, invalidMessage, event) {
+            if (selector.files.length != 3) {
+                event.preventDefault();
+                invalidMessage.innerText = "Vui lòng chọn đúng 3 ảnh";
+                selector.classList.add('invalid');
+                return false;
+            }
+            else {
+                invalidMessage.innerText = "";
+                selector.classList.remove('invalid');
+                return true;
+            }
+        }
+        document.getElementById('btn-save').addEventListener('click', function(e) {
+            require_3files(document.getElementById('roomtype-file'), document.getElementById('invalid-message-imgs'), e)
+        });
+        
+    </script>
 
     <!-- Set data khi bấm button sửa -->
     <script>
