@@ -271,7 +271,6 @@ video {
 }
 
 #content .preview-half .text p{
-    line-height: 1.8;
     font-family: arimo;
     font-size: 1rem;
     padding-top: 20px;
@@ -440,7 +439,6 @@ video {
     text-align: justify;
     display: flex;
     flex-wrap: wrap;
-    line-height: 1.8;
 } 
 
 .room-event .col-lg-8{
@@ -469,11 +467,21 @@ video {
     background: rgba(252, 252, 252, 0.95);
     padding: 100px 130px;
 }
-
 /*----------------------- Review------------------------ */
 .review-container {
     display: none;
 }
+.review-container .feedback-title span{
+    color: var(--color-pink);
+    font-weight: 600;
+   letter-spacing: 3px;
+   font-size: 14px; 
+   
+}
+.review-container .feedback-title h3{
+    font-weight: 500;
+}
+
 /* ---------------review customer------------------- */
 .review-cus {
     display: flex;
