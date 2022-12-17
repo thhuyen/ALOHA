@@ -165,8 +165,7 @@
                             </td>
                             <td>
                                 <button class="upd-btn btn-table" onclick="openUpdate(this)" style="margin: 5px;">Sửa</button>
-                                <button type="button" class="del-btn btn-table" data-bs-toggle="modal"
-                                    data-bs-target="#delete-room" style="margin-bottom: 5px;">Xóa</button>
+                                <button type="button" class="del-btn btn-table" data-bs-toggle="modal" data-bs-target="#delete-room" style="margin-bottom: 5px;" onclick="OpenModalDelete(this)">Xóa</button>
                             </td>
                         </tr>
                         <?php
@@ -180,27 +179,27 @@
         </div>
 
         <!-- form xóa -->
-        <div class="modal fade" id="delete-room" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Xóa loại phòng</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body notice-content">
-                        <p>Bạn muốn xóa <span class="room-name-notice">PHÒNG ĐƠN</span></p>
-                        <p><i class="fa-solid fa-circle-exclamation icon-exclamation"></i></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay
-                            lại</button>
-                        <button type="button" class="btn btn-danger">Xóa</button>
+        <form action="./assets/PHP/delete_roomtype.php" method="post">
+            <div class="modal fade" id="delete-room" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Xóa loại phòng</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body notice-content">
+                            <p>Bạn muốn xóa <span class="room-name-notice">PHÒNG ĐƠN</span></p>
+                            <p><i class="fa-solid fa-circle-exclamation icon-exclamation"></i></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay lại</button>
+                            <button type="submit" class="btn btn-danger" name="btn-del" onclick="DeleteType(this)">Xóa</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- // ròi nhưng làm sao để push tiếp, nó có trên trển rồi cứ làm thôi push chi, là giờ cứ làm tiếp thoi hả  -->
+        </form>
         <!-- form chỉnh sửa -->
         <div>
             <div class='container add form'>
@@ -281,6 +280,30 @@
             require_3files(document.getElementById('roomtype-file'), document.getElementById('invalid-message-imgs'), e)
         });
         
+    </script>
+
+    <!-- set sự kiện khi bấm button xóa -->
+    <script>
+        var name_of_type;
+        function find_pos(row, x) {
+            var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
+            var updateTableRows = document.querySelector(".update-table").rows; 
+            for (let i = 0; i< updateTableRows.length; i++) {
+                if (updateTableRows[i] === x.parentElement.parentElement ) {
+                    name_of_type = updateTableCells[0].innerText;
+                    break;
+                }
+            }
+        } 
+        // mở form xóa
+        function OpenModalDelete(button) {
+            find_pos((button.parentElement).parentElement.rowIndex, button);
+            document.querySelector('.room-name-notice').innerText = name_of_type.toUpperCase();
+        }
+        // xóa luôn
+        function DeleteType(button) {
+            document.cookie = "Type" + "=" + name_of_type;       
+        }
     </script>
 
     <!-- Set data khi bấm button sửa -->
