@@ -1,31 +1,3 @@
-:root {
-    --black-color: #000;
-    --white-color: #fff;    
-    --grey-color: #ccc;    
-    --title-color: rgb(8, 0, 77);
-    --height-header: 70px;
-    --subnav-hover: #F9B456;
-}
-
-/* font face */
-@font-face {
-    font-family: UTM-Aptima;
-    src: url(./assets/fonts/font-text/UTM\ Aptima.ttf);
-}
-@font-face {
-    font-family: utm-bell;
-    src: url(./assets/fonts/font-text/UTM\ Bell.ttf);
-}
-@font-face {
-    font-family: nexa;
-    src: url(./assets/fonts/font-text/SVN-Nexa\ Light.ttf);
-}
-@font-face {
-    font-family: uvn-bale;
-    src: url(./assets/fonts/font-text/UVNBaLe.TTF);
-}
-
-
 #slider {
     position: relative;
     display: flex;

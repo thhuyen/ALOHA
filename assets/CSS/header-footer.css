@@ -67,6 +67,7 @@
 }
 /* --------------------------navbar--------------------- */
 .navbar {
+    background: var(--black-color);
     z-index: 100;
     padding-top: 0 !important; 
     padding-bottom: 0 !important;
@@ -186,7 +187,7 @@
 #footer .footer-content {
     font-family: UTM-Aptima;
     background: var(--black-color);
-    color: aliceblue;
+    color: #fff;
     max-width: 100%;
     padding: 50px;
     display: flex;
