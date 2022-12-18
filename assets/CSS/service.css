@@ -124,6 +124,7 @@
   font-size: 2rem;
   background-color: transparent;
   cursor: pointer;
+  outline: none !important;
 }
 .slick-next{
   position: absolute;
@@ -135,6 +136,7 @@
   font-size: 2rem;
   background-color: transparent;
   cursor: pointer;
+  outline: none !important;
 }
 .slick-dots{
   position: absolute;
@@ -156,10 +158,12 @@
   height: 0.5rem;
   border: none;
   border-radius: 100rem;
+  background: #bbb;
   outline: none;
 }
 .slick-dots .slick-active button{
-  background-color: aqua;
+  outline: none;
+  background-color: var(--color-pink);
 }
   
   /* ----------------UPCOMING ------------ */

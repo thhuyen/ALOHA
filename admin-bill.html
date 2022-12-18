@@ -5,6 +5,12 @@
         $id = $_GET['IdInvoice'];
         mysqli_query($conn, "UPDATE `customer` c, `invoice_room` i SET AmountOfBooking = AmountOfBooking - 1 WHERE c.IdCustomer = i.IdCustomer AND i.IdInvoiceRoom = '".$id."'");  
         mysqli_query($conn, "DELETE FROM `invoice_room` WHERE IdInvoiceRoom = '".$id."'");    
+        $cus = mysqli_query($conn, "SELECT * FROM customer");
+        while ($row = $cus->fetch_assoc()) {
+            if ($row["AmountOfBooking"] === '0') {
+                mysqli_query($conn, "DELETE FROM `customer` WHERE IdCustomer = '".$row["IdCustomer"]."'");    
+            } 
+        }
     }
 ?>
 <?php
