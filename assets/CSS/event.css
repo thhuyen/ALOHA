@@ -88,3 +88,93 @@
 #main-content .showmore-btn {
     padding: 15px 30px;
 }
+
+/* -------------------------- */
+.about-food{
+    padding: 100px 0;
+}
+.container{
+    width: 100%;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.about-food .about-thumb{
+    display: flex;
+}
+.about-food .about-thumb img{
+    vertical-align: middle;
+    width: 100%;
+}
+.about-food .about-thumb .img_2 {
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.about-food .about-info span{
+    font-family: arimo;
+    color: var(--color-pink);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+.about-food .about-info h3{
+    font-family: play fair;
+    font-weight: 700;
+    margin: 20px 0;
+    line-height: 50px;
+}
+.about-food .about-info p {
+    font-size: 17px;
+    color: gray;
+    text-align: justify;
+}
+
+/* ---------------------- */
+.event-area{
+    position: relative;
+    z-index: 1;
+} 
+.event-area .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.event-area .col-12{
+    max-width: 100%;
+
+}
+.event-area .event-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.event-area .single-event {
+    position: relative;
+    z-index: 1;
+    background-color: #ffffff;
+    box-shadow: 0 2px 14px 5px rgb(20 20 20 / 5%);
+    border-radius: 3px;
+    padding: 30px;
+    text-align: center;
+    width: 15%;
+}
+.event-area .single-event img {
+    padding: 15px 0;
+}
+.event-area .single-event:hover {
+    color: var(--color-pink);
+    transition: all 0.3s;
+}
+.event-area .col-12 h2{
+    font-family: play fair;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+    border-bottom: 3px solid var(--color-pink);
+    width: fit-content;
+}
+.event-area .single-event h5{
+    font-family: arimo;
+}
