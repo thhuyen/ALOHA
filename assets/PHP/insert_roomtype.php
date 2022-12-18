@@ -1,7 +1,6 @@
 <?php
     include './connectdb.php';
     $name = $_POST['roomtype-name'];
-    $quantity = $_POST['roomtype-quantity'];
     $size = $_POST['roomtype-size'];
     $des = $_POST['roomtype-des'];
     $price = $_POST['roomtype-price'];
@@ -17,7 +16,7 @@
     }
     $listImgs = implode(",", $arr);
     mysqli_query($conn, "INSERT INTO `roomtype`(`RoomTypeName`, `RoomQuantity`, `RoomTypeSize`, `RoomDescription`, `RoomTypePrice`, `RoomTypeImages`) 
-                        VALUES ('$name','$quantity','$size','$des','$price','$listImgs')");
+                        VALUES ('$name',0,'$size','$des','$price','$listImgs')");
     header("Location: ../../admin-roomtype.html");
 
 ?>

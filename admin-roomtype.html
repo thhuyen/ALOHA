@@ -88,7 +88,7 @@
                         <div id="photo" class="room-container">
                             <div class='room-photo'>
                                 <label for='roomtype-quantity' class="form-label">Số lượng *</label>
-                                <input id='roomtype-quantity' type='text' name="roomtype-quantity" readonly style="background: #eee;" value="0">
+                                <input id='roomtype-quantity' type='text' name="roomtype-quantity" readonly style="background: #eee;" placeholder="0">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
@@ -166,7 +166,6 @@
                             <td>
                                 <button class="upd-btn btn-table" onclick="openUpdate(this)" style="margin: 5px;">Sửa</button>
                                 <button type="button" class="del-btn btn-table" data-bs-toggle="modal"
-                                    data-bs-target="#delete-room" style="margin-bottom: 5px;">Xóa</button>
                                 <button type="button" class="del-btn btn-table" data-bs-toggle="modal" data-bs-target="#delete-room" style="margin-bottom: 5px;" onclick="OpenModalDelete(this)">Xóa</button>
                             </td>
                         </tr>
@@ -195,16 +194,12 @@
                             <p><i class="fa-solid fa-circle-exclamation icon-exclamation"></i></p>
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay
-                            lại</button>
-                        <button type="button" class="btn btn-danger">Xóa</button>
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay lại</button>
                             <button type="submit" class="btn btn-danger" name="btn-del" onclick="DeleteType(this)">Xóa</button>
                         </div>
                     </div>
                 </div>
             </div>
-        <!-- // ròi nhưng làm sao để push tiếp, nó có trên trển rồi cứ làm thôi push chi, là giờ cứ làm tiếp thoi hả  -->
         </form>
         <!-- form chỉnh sửa -->
         <div>
