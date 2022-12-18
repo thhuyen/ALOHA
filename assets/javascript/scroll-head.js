@@ -1,5 +1,5 @@
     var scrollIcon = document.getElementById("scroll-head");
-    var navbar = document.getElementById("navbar");
+    var navbar = document.querySelector(".navbar");
 
     window.onscroll = function() {
         if (document.documentElement.scrollTop > 1600)

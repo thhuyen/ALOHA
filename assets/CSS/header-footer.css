@@ -65,81 +65,120 @@
 #logout-text {
     margin-bottom: 5px;
 }
-#navbar {
-    height: var(--height-header);
-    background-color: var(--black-color);
-    /* position: fixed; */
-    /* top: 0;
-    left: 0;
-    right: 0; */
-    z-index: 50;
-    display: flex;
-    justify-content: space-between;
+/* --------------------------navbar--------------------- */
+.navbar {
+    z-index: 100;
+    padding-top: 0 !important; 
+    padding-bottom: 0 !important;
 }
-#img-logo{
-    list-style: none;
-    text-decoration: none;
-    height: 150px;
-    margin-top: -40px;
+.nav-item {
+    text-transform: uppercase;
+    padding: 0 10px;
 }
-#open-nav-icon {
-    display: none;
+.icon-drop {
+    padding-left: 5px;
 }
-#nav {
-    font-family: UTM-Aptima;
-}
-#nav > li {
-    display: inline-block;
+/* thẻ a của thẻ li */
+.nav-item .nav-link {
+    padding-left: 20px;
+    transition: all 0.5s ease;
     position: relative;
 }
-#nav > li > a {
-    padding: 15px 20px;
-    line-height: 100px;
-    line-height: var(--height-header);
-    list-style: none;
-    text-decoration: none;
-    color: var(--white-color);
-    transition: all ease 0.5s;
-}
-
-#nav .icon-down {
-    margin-left: 5px;
-    
-}
-#nav > li:hover > a{
-    color: var(--color-pink);
-}
-#nav .subnav {
+.subnav {
     display: none;
-    position: absolute;
-    top: var(--height-header);
-    left: 0;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    list-style: none;
     z-index: 1000;
 }
-#nav .subnav li {
-    display: inline-block;
-    width: 145.5px;
-    list-style: none;
+.subnav-item {
     padding: 10px;
+    text-transform: none;
     cursor: pointer;
+    transition: 0.4s;
 }
-#nav .subnav a {
+.sub-event.show, 
+.sub-ser.show {
+    display: block;
+}
+.subnav-item a {
+    color: #fff;
     text-decoration: none;
-    color: var(--black-color);  
+    transition: 0.5s;
 }
-
-
-#close-nav-icon {
-    display: none;
-}
-
 .sticky {
     position: fixed;
     top: 0;
     width: 100%;
 }
-  
+@media (min-width: 998px) {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 0;
+    }
+     
+    /* underline item */
+    .nav-item:hover .nav-link::after {
+        width: 100%; 
+    }
+    .nav-item .nav-link:after {
+        content:"";
+        position: absolute;
+        left: 5px;
+        bottom: -13px;
+        background: #e29c89;
+        width: 0;
+        height: 3px;
+        transition: 0.3s;
+    }
+    .nav-item .nav-link:hover:after {
+        width: 100%;
+    }
+    .event,
+    .service {
+        position: relative;
+    }
+    .subnav {
+        width: 140px;
+        position: absolute;
+        top: 53px;
+        left: 15px;
+        background: #343a40;
+        list-style: none;
+        padding-left: 10px;
+        box-shadow: 0 0 5px #ccc;
+    }
+    /* hiện subnav */
+    .event:hover .subnav,
+    .service:hover .subnav {
+        display: block;
+    }
+    .subnav-item a:hover {
+        padding-left: 7px;
+    }
+ 
+}
+@media (max-width: 998px) {
+    .container {
+        margin-left: 10px;
+        margin-right: 0;
+    }
+    .navbar-nav {
+        padding-bottom: 10px;
+    }
+    .nav-item:hover .nav-link,
+    .subnav-item:hover{
+        color: #000 !important;
+        background: #e29c89;
+        border-radius: 5px;
+    }
+    .sub-ser, .sub-event {
+            margin-top: 10px;
+            columns: 2;
+    }
+    .subnav-item {
+        color: #fff;
+    }
+}
 /* -------------------footer------------------- */
 #footer {
     padding: 0 !important;
@@ -246,25 +285,6 @@
 
 /* ---------------------responsive----------------- */
 @media (min-width: 1025px) {
-    #nav li:hover .subnav {
-        display: block;
-    }
-    #nav .subnav {
-        background-color: var(--white-color);
-    }
-    #nav .subnav li:hover ul {
-        opacity: 1;
-        z-index: 9;
-        padding: 30px 0;
-    }
-    #nav > li > a {
-        padding: 15px 30px;
-    }
-    #nav .subnav li:hover {
-        background-color: var(--color-pink);
-        padding-left: 15px;
-        transition: all ease 0.5s;
-    }
     #footer #admin {
         display: block;
         position: absolute;
@@ -281,92 +301,6 @@
     }
 }
 @media (max-width: 1024px) {
-    #nav {
-        width: 0;
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        margin-bottom: 0;
-        background-color: #000;
-        overflow: auto;
-        transition: 0.5s;
-        font-size: 16px;
-    }
-    
-    #open-nav-icon {
-        display: block;
-        font-size: 25px;
-        color: var(--white-color);
-        line-height: var(--height-header);
-        padding-right: 20px;
-        padding-left: 20px;
-        cursor: pointer;
-    }
-    #close-nav-icon {
-        height: fit-content;
-        font-size: 28px;
-        color: var(--white-color);
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        padding: 0 12px 5px 12px;
-        z-index: 60;
-        cursor: pointer;
-    }
-    #nav > li {
-        display: block;
-        height: 60px;
-        line-height: 60px;
-        list-style: none;
-        border-bottom: 1px solid #fff ;
-        transition: height 0.2s;
-    }
-    
-    #nav > li:first-child {
-       margin-top: 70px;
-    }
-    #nav li.showMenu .icon-down{
-        transform: rotate(-180deg);
-    }
-    /* note */
-    
-    #nav .subnav {
-        width: 100%;
-        top: 55px;
-        left: 20px;
-        padding-right: 20px;
-        z-index: 70;
-        line-height: 2.5;
-    }    
-    #nav li:hover .subnav {
-        display: none;
-    }
-    #nav .subnav li {
-        column-width: 74px;
-        color: #fff;
-        max-width: fit-content;
-        padding: 0 10px 0 8px;
-    }  
-    
-    #nav li.showMenu .subnav{
-        display: block;
-    }
-    .background-color-yellow {
-        background-color: var(--color-pink);
-        color: var(--black-color) !important;
-    }
-    
-    #overlay {
-        background-color: rgba(0,0,0,0.4);
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: none;
-        z-index: 1;
-    }
     #footer .follow-us h2 {
         font-size: 30px;
     }

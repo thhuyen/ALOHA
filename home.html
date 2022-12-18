@@ -7,7 +7,6 @@
     <title>ALOHA</title>
     <link rel="icon" href="./assets/img/logo/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="./assets/CSS/base.css">
-    <link rel="stylesheet" href="./assets/CSS/header-footer.css">
     <link rel="stylesheet" href="./assets/CSS/home.css">
     <link rel="stylesheet" href="./form/css/login.css">
     <link rel="stylesheet" href="./assets/CSS/responsiveHome.css">
@@ -15,18 +14,14 @@
     <link rel="stylesheet" href="./form/css/paymentRoom.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Arimo&family=Playfair+Display&display=swap" rel="stylesheet">
-
-    <!--Link Icon Awesome-->
-    <script src="https://kit.fontawesome.com/9e120404ab.js" crossorigin="anonymous"></script>
 
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+    <!-- CSS header and footer -->
+    <link rel="stylesheet" href="./assets/CSS/header-footer.css">
 </head>
 
 <body>
@@ -471,7 +466,7 @@
     ?>
     
     <!-- form đặt phòng -->
-    <form class = "form-group" action="./assets/PHP/booking_room.php" method="post" style="display: none;">
+    <form class = "form-group" action="./assets/PHP/booking_room.php" method="post" style="display: none; margin-bottom: 0;">
         <div class="modal-register">
             <div class="modal-register-container">
                 <div class="modal-header register">
@@ -667,13 +662,11 @@
         </div>
     </form>
 
-    <!-- script for navbar tablet and mobile -->
-    <script src="./assets/javascript/navbar.js"></script>
    
     <!-- set animation khi cuộn trang -->
     <script>      
         var scrollIcon = document.getElementById("scroll-head");
-        var navbar = document.getElementById("navbar");
+        var navbar = document.querySelector(".navbar");
 
         window.onscroll = function() {
             if (document.body.scrollTop > 1861 || document.documentElement.scrollTop > 1861)
