@@ -116,21 +116,15 @@ section {
   position: relative;
 }
 
-.room-container {
-  margin-bottom: 20px;
-}
-
 .room-container span {
   margin-left: 295px;
   padding-bottom: 10px;
   color: var(--red-color);
 }
 
-.container.add .room-infor,
-.container.add .room-photo {
+.container.add .room-infor {
   width: 900px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   margin-bottom: 5px;
 }
@@ -141,7 +135,6 @@ section {
 
 .container.add input,
 .container.add textarea {
-  height: 40px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.8);

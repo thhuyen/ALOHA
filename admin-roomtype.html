@@ -86,7 +86,7 @@
                         </div>
 
                         <div id="photo" class="room-container">
-                            <div class='room-photo'>
+                            <div class='room-infor'>
                                 <label for='roomtype-quantity' class="form-label">Số lượng *</label>
                                 <input id='roomtype-quantity' type='text' name="roomtype-quantity" readonly style="background: #eee;" placeholder="0">
                             </div>
@@ -165,7 +165,6 @@
                             </td>
                             <td>
                                 <button class="upd-btn btn-table" onclick="openUpdate(this)" style="margin: 5px;">Sửa</button>
-                                <button type="button" class="del-btn btn-table" data-bs-toggle="modal"
                                 <button type="button" class="del-btn btn-table" data-bs-toggle="modal" data-bs-target="#delete-room" style="margin-bottom: 5px;" onclick="OpenModalDelete(this)">Xóa</button>
                             </td>
                         </tr>
@@ -203,12 +202,12 @@
         </form>
         <!-- form chỉnh sửa -->
         <div>
-            <div class='container add form'>
-                <form id="form-update-room" class='set' action="./assets/PHP/update_roomtype.php" method="post" enctype="multipart/form-data">
+            <div class="container add form">
+                <form id="form-update-room" class="set" action="./assets/PHP/update_roomtype.php" method="post" enctype="multipart/form-data">
                     <div class="room-container">
                         <div class="room-infor">
-                            <label for='roomtype-upd-name' class="form-label">Tên loại phòng *</label>
-                            <input id='roomtype-upd-name' placeholder="Nhập tên loại phòng" type='text' name="roomtype-upd-name">
+                            <label for="roomtype-upd-name" class="form-label">Tên loại phòng *</label>
+                            <input id="roomtype-upd-name" placeholder="Nhập tên loại phòng" type="text" name="roomtype-upd-name">
                         </div>
                         <span class="invalid-message"></span>
                     </div>
