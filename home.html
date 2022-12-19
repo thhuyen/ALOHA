@@ -76,7 +76,7 @@
         <div class="about-us">
             <div class="container">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-6 text-intro">
                         <div class="about-text">
                             <div class="about-title">
                                 <span>About us</span>
@@ -96,11 +96,11 @@
                     <div class="col-6">
                         <div class="about-pic">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <img src="./assets/img/home/about_us1.png" alt="">
+                                <div class="col-sm-6" id="img-intro1">
+                                    <img src="./assets/img/home/about_us1.png" alt="img-intro1">
                                 </div>
-                                <div class="col-sm-6">
-                                    <img src="./assets/img/home/about_us2.jpg" alt="">
+                                <div class="col-sm-6" id="img-intro2">
+                                    <img src="./assets/img/home/about_us2.jpg" alt="img-intro2">
                                 </div>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
 
 
         <div class="our-service">
-            <div class="container">
+            <div class="container-intro">
                 <div class="row">
                     <div class="col-12">
                         <div class="service-title">
@@ -205,7 +205,7 @@
         
         <div class="room-event">
             <div class="single left-img">
-                <div class="container">
+                <div class="container-context">
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="caption room-caption">
@@ -219,7 +219,7 @@
                 </div>
             </div>
             <div class="single right-img">
-                <div class="container">
+                <div class="container-context">
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="caption event-caption text-right">
@@ -667,8 +667,14 @@
     <script>      
         var scrollIcon = document.getElementById("scroll-head");
         var navbar = document.querySelector(".navbar");
+        var img1 = document.getElementById('img-intro1');
+        var img2 = document.getElementById('img-intro2');
+        var text_intro = document.querySelector('.text-intro');
 
         window.onscroll = function() {
+            myScroll(img1, 350, `dropdown 2s forwards`);
+            myScroll(img2, 350, `growup 2s forwards`);
+            myScroll(text_intro, 350, `fromLeftUp 2s forwards`);
             if (document.body.scrollTop > 1861 || document.documentElement.scrollTop > 1861)
             {
                 scrollIcon.style.opacity= "1";
@@ -683,7 +689,13 @@
         };
         scrollIcon.onclick = function() {
             scrollTo(0,0);
-        }       
+        } 
+        function myScroll(element, scrollTop, animation) {
+            if (document.body.scrollTop > scrollTop || document.documentElement.scrollTop > scrollTop) {
+
+                element.style.animation = animation;
+          } 
+        }   
     </script>
 
     <!-- cài điều kiện để vào trang admin -->
