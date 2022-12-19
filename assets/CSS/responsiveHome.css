@@ -237,7 +237,7 @@
     }
     
     #content .preview-half{
-        padding-top: 30px;
+        padding-top: 5%;
     }
     #content .preview-half .image{
         height:50%;
@@ -249,7 +249,7 @@
         float: left;
     }
 
-    .about-us .container{
+    .about-us .container-intro{
         max-width: 720px;
     }
   
@@ -332,15 +332,26 @@
         width: 50%;
 
     }
-    .room-event .container{
-        max-width: 540px;
+    .room-event .container-context{
+        width: 100%;
+        margin-top: 50%;
     }
     .room-event .single::before{
-        display: none;
+        display: block;
+        width: 100%;
+        margin-bottom: 100px;
+
+    }
+    .room-event .room-caption {
+        background: white;
     }
     .room-event .caption{
         width: 100%;
+<<<<<<< Updated upstream
         padding: 40px;
+=======
+        padding: 3% 10% ;
+>>>>>>> Stashed changes
     }
     .room-event .right-img p{
         text-align: left;
