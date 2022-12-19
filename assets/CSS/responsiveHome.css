@@ -340,7 +340,7 @@
     }
     .room-event .caption{
         width: 100%;
-        padding: 0;
+        padding: 40px;
     }
     .room-event .right-img p{
         text-align: left;
