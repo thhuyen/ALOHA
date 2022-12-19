@@ -14,6 +14,16 @@
         transform: translateY(0px);
     }
 }
+@keyframes growup {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
 @keyframes fromLeftDown {
     from {
         transform: translate(-10px, -20px);
@@ -295,10 +305,7 @@ video {
     align-items: center;
 }
 .about-us .col-6{
-    
     max-width: 100%;
-    /* padding-right: 15px;
-    padding-left: 15px; */
 }
 .about-us .col-6 .about-text {
     text-align: center;
@@ -351,6 +358,7 @@ video {
 /* ------------- */
 .our-service .row
 {
+    padding: 0 50px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -372,7 +380,7 @@ video {
 .our-service .service-item {
     text-align: center;
     padding: 30px 35px 18px;
-    transition: all 0.3s;
+    transition: all 0.4s ease;
 }
 .our-service .service-item:hover {
     background: var(--color-pink);

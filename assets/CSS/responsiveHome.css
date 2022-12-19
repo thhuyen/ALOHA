@@ -1,4 +1,8 @@
 @media (min-width: 1025px) {
+    #img-intro1,#img-intro2, .text-intro {
+        opacity: 0;
+    }
+ 
     .slider-container {
         /* background-color: rgba(0, 0, 0, 0.5); */
         background-color: #7499a2;
