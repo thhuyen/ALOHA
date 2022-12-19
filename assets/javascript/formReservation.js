@@ -117,7 +117,7 @@
             typeRoomRegister.options[0].text = "phòng đôi";
             if (typeRoomRegister.length < 2) {
                 var newOption = document.createElement("option");
-                newOption.text = "Phòng bốn";
+                newOption.text = "phòng bốn";
                 typeRoomRegister.add(newOption);
             }
         }

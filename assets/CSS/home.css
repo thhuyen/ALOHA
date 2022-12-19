@@ -47,7 +47,7 @@
 /* Slider */
 .slider-container {
     position: relative;
-    height: 91vh;
+    height: 87vh;
     display: flex;
     justify-content: center;
 }
@@ -604,10 +604,10 @@ input#rate-5:checked ~ label {
     height: 500px;
     position: relative;
     margin: 0 0 0 30px;
-    background-color: #fff;
+    background-color: #323232;
     overflow: auto;
-    border: 1px solid #1b1b1b; 
 }
+
 .comments {
     font-family: UTM-Aptima;
     padding: 10px;
@@ -623,14 +623,18 @@ input#rate-5:checked ~ label {
     right: 20px;
     font-size: 3rem;
     transform: rotate(5deg);
+    color: var(--color-pink);
+}
+.fa-user {
+    color: var(--color-pink);
 }
 .comments .frame-icon {
-    border: 1px solid #000;
+    border: 1px solid var(--color-pink);
     padding: 0px 7px 4px 7px;
     border-radius: 50%;
 }
 .comments .username {
-    color: rgb(39, 2, 108);
+    color: var(--color-pink);
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 7px;
@@ -641,17 +645,18 @@ input#rate-5:checked ~ label {
     margin: 0;
     font-size: 1.1rem;
     font-weight: 600;
-    color: rgb(39, 2, 108);
+    color: var(--color-pink);
     margin-bottom: 5px;
     margin-left: 10px;
     padding-right: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #fff;
 }
 .allocution {
     font-size: 1rem;
     text-align: justify;
     margin-bottom: 0;
+    color: #fff;
 }
 
 /* map */
