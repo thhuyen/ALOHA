@@ -347,11 +347,7 @@
     }
     .room-event .caption{
         width: 100%;
-<<<<<<< Updated upstream
-        padding: 40px;
-=======
         padding: 3% 10% ;
->>>>>>> Stashed changes
     }
     .room-event .right-img p{
         text-align: left;
