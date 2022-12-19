@@ -127,18 +127,4 @@
         max-width: 280px;
     }
 }
-@media (max-width: 991px){
-    .event-area .col-12{
-        max-width: 100%;
-    
-    }
-    
-element.style {
-}
-.event-area .event-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-}
+
