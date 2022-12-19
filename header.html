@@ -20,119 +20,127 @@
 
     <!-- form đăng nhập client -->
     <div class="modal-login">
-        <div class="modal-login-container">
-            <div class="close-login">
-                <i id="icon-close-login" class="fa-solid fa-xmark"></i>
-            </div>
-            <div class="img"></div>
-            <div class="login">
-                <div class="login-container">
-                    <div class="main">
-                        <div class="welcome">
-                            <p class="intro">WELCOME TO ALOHA</p>
-                            <p class="suggestion">Đăng nhập để sử dụng đầy đủ các tính năng</p>
-                            <i class="ti-unlock stapler-icon"></i>
-                        </div>
-                      
-                        <button class="btn-login">
-                            <div class="img-icon">
-                                <img src="./assets/img/icon-gg.png" alt="" width="30px">
-                            </div>
-                            <p class="text-login">Đăng nhập với Google</p>
-                        </button>
-                       
-                        <script>
-                            window.history.pushState("", "Title", "/aloha/home.html");
-                            document.getElementById('login').innerHTML = '<?php echo $name ?>';
-                        </script>
-                    
+      <div class="modal-login-container">
+          <div class="close-login">
+              <i id="icon-close-login" class="fa-solid fa-xmark"></i>
+          </div>
+          <div class="img"></div>
+          <div class="login">
+              <div class="login-container">
+                  <div class="main">
+                      <div class="welcome">
+                          <p class="intro">WELCOME TO ALOHA</p>
+                          <p class="suggestion">Đăng nhập để sử dụng đầy đủ các tính năng</p>
+                          <i class="ti-unlock stapler-icon"></i>
+                      </div>
+                      <?php
+                      require_once './vendor/autoload.php';
+                      include './assets/PHP/config-login.php'; 
+                      if ($check == 0) {
+                  ?>
+                      <button class="btn-login" onclick="location.href='<?php echo $url; ?>'">
+                          <div class="img-icon">
+                              <img src="./assets/img/icon-gg.png" alt="" width="30px">
+                          </div>
+                          <p class="text-login">Đăng nhập với Google</p>
+                      </button>
+                      <?php 
+                      } else if ($check == 1){
+                  ?>
+                      <script>
+                          window.history.pushState("", "Title", "/aloha/home.html");
+                          document.getElementById('login').innerHTML = '<?php echo $name ?>';
+                      </script>
+                      <?php
+                      }
+                  ?>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-dark p-md-3 shadow">
-    <a class="navbar-brand" href="home.html">
-      <img src="./assets/img/logo/logo.png" alt="logo" style="width: 150px; margin-bottom: 10px;">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="container">
+  <a class="navbar-brand" href="home.html">
+    <img src="./assets/img/logo/logo.png" alt="logo" style="width: 150px; margin-bottom: 10px;">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="container">
 
-      <div class="collapse navbar-collapse" id="navbar">
-        <div class="mx-auto"></div>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link text-white" href="home.html">Trang chủ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="room.html">Phòng</a>
-          </li>
-          <li class="nav-item service">
-            <a class="nav-link text-white" href="service.html">Dịch vụ
-              <i class="ti-arrow-circle-down icon-drop"></i>
-            </a>
-            <ul class="subnav sub-ser">
-              <li class="subnav-item"><a href="service.html#content">Sân golf</a></li>
-              <li class="subnav-item"><a href="service.html#content">Du thuyền</a></li>
-              <li class="subnav-item"><a href="service.html#content">Spa & fitness</a></li>
-              <li class="subnav-item"><a href="service.html#content">Bar & karaoke</a></li>
-              <li class="subnav-item"><a href="service.html#content">Beach coffee</a></li>
-              <li class="subnav-item"><a href="service.html#content">Thú cưng</a></li>
-              <li class="subnav-item"><a href="service.html#content">Giặt ủi</a></li>
-              <li class="subnav-item"><a href="service.html#content">Phục vụ 24/24</a></li>
-            </ul>
-          </li>
-          <li class="nav-item event">
-            <a class="nav-link text-white" href="event.html">Sự kiện
-              <i class="ti-arrow-circle-down icon-drop"></i>
-            </a>
-            <ul class="subnav sub-event">
-              <li class="subnav-item"><a href="event.html#main-content">Sinh nhật</a></li>
-              <li class="subnav-item"><a href="event.html#main-content">Kỷ niệm</a></li>
-              <li class="subnav-item"><a href="event.html#main-content">Đám cưới</a></li>
-              <li class="subnav-item"><a href="event.html#main-content">Tiệc prom</a></li>
-              <li class="subnav-item"><a href="event.html#main-content">Hội họp</a></li>
-              <li class="subnav-item"><a href="event.html#main-content">Hội nghị</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="home.html#review">Đánh giá</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="home.html#footer">Liên hệ</a>
-          </li>
-        </ul>
-      </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <div class="mx-auto"></div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="home.html">Trang chủ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="room.html">Phòng</a>
+        </li>
+        <li class="nav-item service">
+          <a class="nav-link text-white" href="javascript:void(0)"">Dịch vụ
+            <i class="ti-arrow-circle-down icon-drop"></i>
+          </a>
+          <ul class="subnav sub-ser">
+            <li class="subnav-item"><a href="service.html#content">Sân golf</a></li>
+            <li class="subnav-item"><a href="service.html#content">Du thuyền</a></li>
+            <li class="subnav-item"><a href="service.html#content">Spa & fitness</a></li>
+            <li class="subnav-item"><a href="service.html#content">Bar & karaoke</a></li>
+            <li class="subnav-item"><a href="service.html#content">Beach coffee</a></li>
+            <li class="subnav-item"><a href="service.html#content">Thú cưng</a></li>
+            <li class="subnav-item"><a href="service.html#content">Giặt ủi</a></li>
+            <li class="subnav-item"><a href="service.html#content">Phục vụ 24/24</a></li>
+          </ul>
+        </li>
+        <li class="nav-item event">
+          <a class="nav-link text-white" href="javascript:void(0)">Sự kiện
+            <i class="ti-arrow-circle-down icon-drop"></i>
+          </a>
+          <ul class="subnav sub-event">
+            <li class="subnav-item"><a href="event.html#main-content">Sinh nhật</a></li>
+            <li class="subnav-item"><a href="event.html#main-content">Kỷ niệm</a></li>
+            <li class="subnav-item"><a href="event.html#main-content">Đám cưới</a></li>
+            <li class="subnav-item"><a href="event.html#main-content">Tiệc prom</a></li>
+            <li class="subnav-item"><a href="event.html#main-content">Hội họp</a></li>
+            <li class="subnav-item"><a href="event.html#main-content">Hội nghị</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="home.html#review">Đánh giá</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="home.html#footer">Liên hệ</a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
 <script>
-    // login + logout
-    var modal = document.querySelector('.modal-login');
-    var name_account = document.querySelector('#login');
-    var dropdownLogout = document.querySelector('.logout-container');
-    document.querySelector('#login-container').addEventListener('click', function () {
-        if (name_account.innerText === "Đăng nhập") {
-            modal.classList.add('open');
-        }
-        else {
-            dropdownLogout.classList.toggle('open');
-        }
-    });
-    document.getElementById('icon-close-login').addEventListener('click', function () {
-        modal.classList.remove('open');
-    });
+  // login + logout
+  var modal = document.querySelector('.modal-login');
+  var name_account = document.querySelector('#login');
+  var dropdownLogout = document.querySelector('.logout-container');
+  document.querySelector('#login-container').addEventListener('click', function () {
+      if (name_account.innerText === "Đăng nhập") {
+          modal.classList.add('open');
+      }
+      else {
+          dropdownLogout.classList.toggle('open');
+      }
+  });
+  document.getElementById('icon-close-login').addEventListener('click', function () {
+      modal.classList.remove('open');
+  });
 
-    // mở subnav mobile
-    document.querySelector('.service').addEventListener('click', function() {
-        document.querySelector('.sub-ser').classList.toggle('show');
-    });
-    document.querySelector('.event').addEventListener('click', function() {
-        document.querySelector('.sub-event').classList.toggle('show');
-    });
+  // mở subnav mobile
+  document.querySelector('.service').addEventListener('click', function() {
+      document.querySelector('.sub-ser').classList.toggle('show');
+  });
+  document.querySelector('.event').addEventListener('click', function() {
+      document.querySelector('.sub-event').classList.toggle('show');
+  });
 </script>

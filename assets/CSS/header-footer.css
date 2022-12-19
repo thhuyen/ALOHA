@@ -76,6 +76,10 @@
     text-transform: uppercase;
     padding: 0 10px;
 }
+.nav-item a {
+    color: #fff;
+    text-decoration: none;
+}
 .icon-drop {
     padding-left: 5px;
 }
@@ -94,17 +98,13 @@
     padding: 10px;
     text-transform: none;
     cursor: pointer;
-    transition: 0.4s;
+    transition: all 0.4s ease;
 }
 .sub-event.show, 
 .sub-ser.show {
     display: block;
 }
-.subnav-item a {
-    color: #fff;
-    text-decoration: none;
-    transition: 0.5s;
-}
+
 .sticky {
     position: fixed;
     top: 0;
@@ -153,8 +153,8 @@
     .service:hover .subnav {
         display: block;
     }
-    .subnav-item a:hover {
-        padding-left: 7px;
+    .subnav-item:hover {
+        padding-left: 17px;
     }
  
 }

@@ -124,19 +124,19 @@ video {
     height: 60px;
     cursor: pointer;
     color: var(--black-color);
-    font-weight: 800;
+    font-weight: 600;
     font-size: 20px;
     background-color: var(--white-color);
     outline: none !important;
     border: none;
     margin: 0 0 0 10px;
-    font-family: nexa;
+    font-family: play fair;
     border: 2px solid var(--white-color);
     animation: fromRight 2s;
     transition: all 0.3s linear;
 }
 .btn-search:hover{
-    background: var(--color-pink);
+    background: var(--black-color);
     color: #fff;
 }
 /* Content */
