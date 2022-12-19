@@ -33,27 +33,19 @@
                             <p class="suggestion">Đăng nhập để sử dụng đầy đủ các tính năng</p>
                             <i class="ti-unlock stapler-icon"></i>
                         </div>
-                        <?php
-                        require_once './vendor/autoload.php';
-                        include './assets/PHP/config-login.php'; 
-                        if ($check == 0) {
-                    ?>
-                        <button class="btn-login" onclick="location.href='<?php echo $url; ?>'">
+                      
+                        <button class="btn-login">
                             <div class="img-icon">
                                 <img src="./assets/img/icon-gg.png" alt="" width="30px">
                             </div>
                             <p class="text-login">Đăng nhập với Google</p>
                         </button>
-                        <?php 
-                        } else if ($check == 1){
-                    ?>
+                       
                         <script>
                             window.history.pushState("", "Title", "/aloha/home.html");
                             document.getElementById('login').innerHTML = '<?php echo $name ?>';
                         </script>
-                        <?php
-                        }
-                    ?>
+                    
 
                     </div>
                 </div>

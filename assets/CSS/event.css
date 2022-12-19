@@ -65,15 +65,27 @@
 .about-food{
     padding: 100px 0;
 }
-.container{
-    width: 100%;
+.about-food .container{
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
-.row {
+.about-food .row {
     display: flex;
     flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.about-food .col-lg-7{
+    position: relative;
+    max-width: 60%;
+    padding:  0 20px;
 }
 .about-food .about-thumb{
     display: flex;
+    justify-content: center;
 }
 .about-food .about-thumb img{
     vertical-align: middle;
@@ -89,6 +101,7 @@
     font-weight: 700;
     font-size: 18px;
     letter-spacing: 2px;
+    
 }
 .about-food .about-info h3{
     font-family: play fair;
@@ -100,6 +113,7 @@
     font-size: 17px;
     color: gray;
     text-align: justify;
+    width: 80%;
 }
 
 /* ---------------------- */
@@ -122,6 +136,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .event-area .single-event {
     position: relative;
@@ -129,9 +144,10 @@
     background-color: #ffffff;
     box-shadow: 0 2px 14px 5px rgb(20 20 20 / 5%);
     border-radius: 3px;
-    padding: 30px;
+    padding: 40px;
     text-align: center;
-    width: 15%;
+    width: fit-content;
+    margin:0 auto ;
 }
 .event-area .single-event img {
     padding: 15px 0;
@@ -149,4 +165,118 @@
 }
 .event-area .single-event h5{
     font-family: arimo;
+    width: 100px;
+}
+/* -------------------- */
+.cover-bg{
+    background-size: auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 7em 0;
+    text-align: center !important;
+    display: block;
+    background-attachment: fixed;
+}
+.cover-bg:before {
+  background: black;
+  position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    opacity: .4;
+}
+.cover-bg .coming-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+  position: relative;
+}
+
+
+.cover-bg .row{
+  padding: 6em 0;
+  align-items: center;
+  justify-content: center ;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+    margin-left: -15px;
+    text-align: center
+}
+.order{
+  position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+.cover-bg .heading{
+  font-family: play fair;
+  font-size: 3.3rem;
+  color: white;
+  font-weight: 900;
+  margin-top: 20px;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+
+}
+.cover-bg .sub-heading{
+  color: var(--white-color);
+  margin: 0 auto;
+  float: none;
+  max-width: 500px;
+  font-weight: 200;
+  text-align: center;
+  font-size: 1rem;
+  font-family: arimo;
+}
+/* ------------------------ */
+.section-faci {
+    margin-top: 100px;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 50px 0;
+}
+.section-faci::before{
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    background: rgba(0, 0, 0, 0.1);
+
+}
+.section-faci .container {
+   
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+  
+}
+.section-faci .block-card{
+    transition: .3s all ease;
+    color: #fff;
+    border-radius: 4px;
+    background: transparent;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 70%;
+    margin:20px 0; 
+}
+.section-faci .wrap-icon {
+    margin: 20px 0;
 }

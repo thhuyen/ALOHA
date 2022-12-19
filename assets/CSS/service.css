@@ -168,11 +168,10 @@
   
   /* ----------------UPCOMING ------------ */
 .cover-bg{
-    background-size: auto;
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     position: relative;
-    padding: 7em 0;
     text-align: center !important;
     display: block;
     background-attachment: fixed;
@@ -222,7 +221,7 @@
 .cover-bg .heading{
   font-family: play fair;
   font-size: 3.3rem;
-  color: white;
+  color: black;
   font-weight: 900;
   margin-top: 20px;
   margin-bottom: 1rem;
