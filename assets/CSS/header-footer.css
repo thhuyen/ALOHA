@@ -69,8 +69,8 @@
 .navbar {
     background: var(--black-color);
     z-index: 100;
-    padding-top: 0 !important; 
-    padding-bottom: 0 !important;
+    padding-top: 10px !important; 
+    padding-bottom: 10px !important;
 }
 .nav-item {
     text-transform: uppercase;

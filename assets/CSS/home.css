@@ -422,7 +422,7 @@ video {
     content: "";
     top: 0;
     bottom: 0;
-    background-image: url(../img/home/room-home\ \(2\).jpg);
+    background-image: url(../img/home/room-home.jpeg);
     width: 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -433,7 +433,7 @@ video {
     content: "";
     top: 0;
     bottom: 0;
-    background-image: url(../img/home/event1.jpg);
+    background-image: url(../img/home/event-home.jpeg);
     width: 50%;
     background-size: cover;
     background-repeat: no-repeat;

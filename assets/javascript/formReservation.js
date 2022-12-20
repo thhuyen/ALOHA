@@ -163,7 +163,7 @@
 
     // style khi hết lỗi
     function normalStyle(currentElement) {
-        currentElement.style.border = '1px solid #7499a2';
+        currentElement.style.border = '1px solid #e29c89';
         currentElement.style.color = 'black';
     }
 
@@ -347,7 +347,7 @@
             fullnamePayment.innerHTML = 'Họ tên: ' + fullnameRegister.value;
             phonePayment.innerHTML = 'SĐT: '+ phoneRegister.value;
             emailPayment.innerHTML = 'Email: ' + emailRegister.value;
-            checkinPayment.innerHTML = 'Ngày đặt: ' + checkinRegister.value;
+            checkinPayment.innerHTML = 'Ngày ở: ' + checkinRegister.value;
             checkoutPayment.innerHTML = 'Ngày trả: ' + checkoutRegister.value;
             typeRoomPayment.innerHTML = 'Loại phòng: ' + typeRoomRegister.value;
             amountOfRoomPayment.innerHTML = 'Số lượng: ' + amountOfRoomRegister.value;
