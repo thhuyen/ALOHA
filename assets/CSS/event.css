@@ -267,6 +267,11 @@
         margin-left: auto;
   
 }
+.section-faci .container-pic .col-md-6 {
+    position: relative;
+    width: 100%;
+    padding-left: 10%;
+}
 .section-faci .block-card{
     transition: .3s all ease;
     color: #fff;
