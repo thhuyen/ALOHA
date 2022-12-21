@@ -1,3 +1,22 @@
+<?php 
+    if(isset($_GET['error'])) {
+        if($_GET['error'] === '0') {
+            echo '<script>alert("Chỉ khi đã từng ở khách sạn bạn mới có quyền đánh giá!")</script>';
+        } 
+        else {
+            echo '<script>alert("Mỗi khách hàng chỉ được đánh giá tối đa 3 lần!")</script>';
+        }
+    }
+?>
+<script>
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+}
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -109,7 +128,6 @@
             </div>
         </div>
 
-
         <div class="our-service">
             <div class="container-intro">
                 <div class="row">
@@ -201,8 +219,7 @@
                 </div>
             </div>
         </div>    
-        
-        
+          
         <div class="room-event">
             <div class="single left-img">
                 <div class="container-context">
@@ -246,136 +263,135 @@
         </div>
     </div>
         <!-- review -->
-        <div id="review">
-            <div class="review-container">
-                <section class="pt-5 pb-5">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="feedback-title">
-                                    <span>FEEDBACK</span>
-                                    <h3 class="mb-3 title-review">NGƯỜI NỔI TIẾNG</h3>
-                                </div>
+    <div id="review">
+        <div class="review-container">
+            <section class="pt-5 pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="feedback-title">
+                                <span>FEEDBACK</span>
+                                <h3 class="mb-3 title-review">NGƯỜI NỔI TIẾNG</h3>
                             </div>
-                            <div class="col-6 text-right">
-                                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                                    <i class="fa fa-arrow-left"></i>
-                                </a>
-                                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                                    <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </div>
-                            
-                            <div class="col-12 main">
-                                <div id="carouselExampleIndicators2" class="carousel slide home" data-ride="">
-                                    <div id="carousel-inner-review" class="carousel-inner home">
-                                        <div class="carousel-item active">
-                                            <div class="row">
-                
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="card">
-                                                        <div class="color-behind"></div>
-                                                        <img class="img-fluid" alt="100%x280" src="https://nld.mediacdn.vn/291774122806476800/2021/11/7/hoa-hau-tieu-vy-21-16362488390641936908568.jpg">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Tiểu Vy</h4>
-                                                            <p class="card-text">Chu đáo, set up phòng tốt, sạch sẽ, thoáng mát và đủ trang thiết bị nội thất. Đồ ăn vừa miệng, món ăn đa dạng và bắt mắt.</p>
-                
-                                                        </div>
-                
+                        </div>
+                        <div class="col-6 text-right">
+                            <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                                <i class="fa fa-arrow-left"></i>
+                            </a>
+                            <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="col-12 main">
+                            <div id="carouselExampleIndicators2" class="carousel slide home" data-ride="">
+                                <div id="carousel-inner-review" class="carousel-inner home">
+                                    <div class="carousel-item active">
+                                        <div class="row">
+            
+                                            <div class="col-md-4 mb-3">
+                                                <div class="card">
+                                                    <div class="color-behind"></div>
+                                                    <img class="img-fluid" alt="100%x280" src="https://nld.mediacdn.vn/291774122806476800/2021/11/7/hoa-hau-tieu-vy-21-16362488390641936908568.jpg">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Tiểu Vy</h4>
+                                                        <p class="card-text">Chu đáo, set up phòng tốt, sạch sẽ, thoáng mát và đủ trang thiết bị nội thất. Đồ ăn vừa miệng, món ăn đa dạng và bắt mắt.</p>
+            
                                                     </div>
+            
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="card">
-                                                        <img class="img-fluid" alt="100%x280" src="https://ss-images.saostar.vn/2020/03/01/7079543/page.jpg">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Quỳnh Lương</h4>
-                                                            <p class="card-text">Phòng đẹp với khung cảnh sân vườn, hồ bơi riêng và view toàn cảnh ra biển ấn tượng. Đặc biệt nhất là quầy bar về đêm.</p>
-                
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="card">
-                                                        <img class="img-fluid" alt="100%x280" src="https://nld.mediacdn.vn/2018/7/8/hat-6-15310139568281582745769.jpg">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Hà Anh Tuấn</h4>
-                                                            <p class="card-text">ALOHA luôn giữ vững phong độ của mình. Tôi rất thích các món ăn ở đây, ăn sáng buffet rất ngon với nhiều món ăn phong phú.</p>
-                
-                                                        </div>
-                                                    </div>
-                                                </div>
-                
                                             </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <div class="row">
-                
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="card">
-                                                        <img class="img-fluid" alt="100%x280" src="https://static2.yan.vn/YanNews/2167221/201908/10-bi-mat-bat-ngo-ve-my-nhan-baifern-pimchanok-5d393d8c.jpg">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Baifern Pimchanok </h4>
-                                                            <p class="card-text">Thoughtful, clean, airy and fully furnished room. Delicious food, diverse and eye-catching dishes.</p>
-                
-                                                        </div>
-                
+                                            <div class="col-md-4 mb-3">
+                                                <div class="card">
+                                                    <img class="img-fluid" alt="100%x280" src="https://ss-images.saostar.vn/2020/03/01/7079543/page.jpg">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Quỳnh Lương</h4>
+                                                        <p class="card-text">Phòng đẹp với khung cảnh sân vườn, hồ bơi riêng và view toàn cảnh ra biển ấn tượng. Đặc biệt nhất là quầy bar về đêm.</p>
+            
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="card">
-                                                        <img class="img-fluid" alt="100%x280" src="https://evan.vn/public/news-img-content-public/tieuthanh/images/1a(27).jpg">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Yaya Urassaya</h4>
-                                                            <p class="card-text">The hotel is convenient for walking to the beach. Facilities, the price is very reasonable.</p>
-                
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="card">
-                                                        <img class="img-fluid" alt="100%x280" src="https://photo-cms-anninhthudo.zadn.vn/w600/Uploaded/2022/lcjlcanwm/2020_12_15/mai-davika-8-625-5212.jpg">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Mai Davika</h4>
-                                                            <p class="card-text">Central location, nice, clean, fully equipped room, feels like I'm at home. Extremely attentive and attentive staff.</p>
-                
-                                                        </div>
-                                                    </div>
-                                                </div>
-                
                                             </div>
+                                            
+                                            <div class="col-md-4 mb-3">
+                                                <div class="card">
+                                                    <img class="img-fluid" alt="100%x280" src="https://nld.mediacdn.vn/2018/7/8/hat-6-15310139568281582745769.jpg">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Hà Anh Tuấn</h4>
+                                                        <p class="card-text">ALOHA luôn giữ vững phong độ của mình. Tôi rất thích các món ăn ở đây, ăn sáng buffet rất ngon với nhiều món ăn phong phú.</p>
+            
+                                                    </div>
+                                                </div>
+                                            </div>
+            
                                         </div>
-                                        <div class="carousel-item">
-                                            <div class="row">
-                
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="card">
-                                                        <img class="img-fluid" alt="100%x280" src="https://64.media.tumblr.com/5657125fa045d5fc4e2a09f9c9c9e090/3ce744540e944f94-f9/s1280x1920/f248371be764afdca32cd1d39bb1f447f695f85f.jpg">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Talay Sanguandikul</h4>
-                                                            <p class="card-text">All are too professional, the rooms are extremely clean and make me and my friends very satisfied.</p>
-                
-                                                        </div>
-                
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="row">
+            
+                                            <div class="col-md-4 mb-3">
+                                                <div class="card">
+                                                    <img class="img-fluid" alt="100%x280" src="https://static2.yan.vn/YanNews/2167221/201908/10-bi-mat-bat-ngo-ve-my-nhan-baifern-pimchanok-5d393d8c.jpg">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Baifern Pimchanok </h4>
+                                                        <p class="card-text">Thoughtful, clean, airy and fully furnished room. Delicious food, diverse and eye-catching dishes.</p>
+            
+                                                    </div>
+            
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <div class="card">
+                                                    <img class="img-fluid" alt="100%x280" src="https://evan.vn/public/news-img-content-public/tieuthanh/images/1a(27).jpg">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Yaya Urassaya</h4>
+                                                        <p class="card-text">The hotel is convenient for walking to the beach. Facilities, the price is very reasonable.</p>
+            
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="card">
-                                                        <img class="img-fluid" alt="100%x280" src="https://i.pinimg.com/736x/96/d9/9b/96d99b7d1ebe5df84351e788d2ecee11.jpg">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Vachirawit Chivaaree</h4>
-                                                            <p class="card-text">This is one of those hotels with great location, affordable price and best staff behavior.</p>
-                
-                                                        </div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <div class="card">
+                                                    <img class="img-fluid" alt="100%x280" src="https://photo-cms-anninhthudo.zadn.vn/w600/Uploaded/2022/lcjlcanwm/2020_12_15/mai-davika-8-625-5212.jpg">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Mai Davika</h4>
+                                                        <p class="card-text">Central location, nice, clean, fully equipped room, feels like I'm at home. Extremely attentive and attentive staff.</p>
+            
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <div class="card">
-                                                        <img class="img-fluid" alt="100%x280" src="https://static2.yan.vn/YanNews/202102/202102020407311232-ba3aa65e-2344-444f-ac41-a70756d0693e.jpeg">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Nadech Kugimiya</h4>
-                                                            <p class="card-text">Great location, has everything I need. Clean room, delicious and cheap food. The sea and nature are very beautiful.</p>
-                                                        </div>
+                                            </div>
+            
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="row">
+            
+                                            <div class="col-md-4 mb-3">
+                                                <div class="card">
+                                                    <img class="img-fluid" alt="100%x280" src="https://64.media.tumblr.com/5657125fa045d5fc4e2a09f9c9c9e090/3ce744540e944f94-f9/s1280x1920/f248371be764afdca32cd1d39bb1f447f695f85f.jpg">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Talay Sanguandikul</h4>
+                                                        <p class="card-text">All are too professional, the rooms are extremely clean and make me and my friends very satisfied.</p>
+            
+                                                    </div>
+            
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <div class="card">
+                                                    <img class="img-fluid" alt="100%x280" src="https://i.pinimg.com/736x/96/d9/9b/96d99b7d1ebe5df84351e788d2ecee11.jpg">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Vachirawit Chivaaree</h4>
+                                                        <p class="card-text">This is one of those hotels with great location, affordable price and best staff behavior.</p>
+            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <div class="card">
+                                                    <img class="img-fluid" alt="100%x280" src="https://static2.yan.vn/YanNews/202102/202102020407311232-ba3aa65e-2344-444f-ac41-a70756d0693e.jpeg">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Nadech Kugimiya</h4>
+                                                        <p class="card-text">Great location, has everything I need. Clean room, delicious and cheap food. The sea and nature are very beautiful.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -385,73 +401,75 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <h3 class="mb-3 title-review" style="margin-top: 50px;">Cảm nhận chân thực từ khách hàng</h3>
-                    </div>
-                </section>
-            </div>
-            <div class="review-cus">
-                <form action="./assets/PHP/comment.php" method="post" id="rating-form">
-                    <div class="review-cus-container">
-                        <div class="star-widget">
-                            <input type="radio" name="rate" id="rate-5" checked value="5">
-                            <label for="rate-5" class="fa-solid fa-star"></label>
-                            <input type="radio" name="rate" id="rate-4" value="4">
-                            <label for="rate-4" class="fa-solid fa-star"></label>
-                            <input type="radio" name="rate" id="rate-3" value="3">
-                            <label for="rate-3" class="fa-solid fa-star"></label>
-                            <input type="radio" name="rate" id="rate-2" value="2">
-                            <label for="rate-2" class="fa-solid fa-star"></label>
-                            <input type="radio" name="rate" id="rate-1" value="1">
-                            <label for="rate-1" class="fa-solid fa-star"></label>
-                            <br>
-                            <br>
-                            <header id="main-review"></header>
-                        </div>
-                        <div class="detail-review">
-                            <textarea id="text-review" cols="30" placeholder="Viết chi tiết đánh giá" name="text-review"></textarea>
-                        </div>
-                        <div class="btn-sendreview">
-                            <button id="send-review" name="send-review" type="submit">Gửi đánh giá</button>
-                        </div>
-                    </div>
-                </form>
-                <div class="reviewers">
-                    <?php
-                    include './assets/PHP/connectdb.php';
-                    $get_cmts = mysqli_query($conn, "SELECT * FROM comment");
-                    while($cmt_rows = $get_cmts->fetch_assoc())
-                        {
-                    ?>
-                    <div class="comments">
-                        <header>
-                            <div class="frame-icon">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-                            <p class="username"><?php echo $cmt_rows['UserName'] ?></p>
-                            <i class="fa fa-quote-right quote-icon"></i>
-                        </header>
-                        <p class="rating">
-                            <?php
-                                switch($cmt_rows['Score']) {
-                                    case 1: echo "1/5 - Mọi thứ rất tệ ☹️";
-                                    break;
-                                    case 2: echo "2/5 - Thái độ phục vụ tệ 😕";
-                                    break;
-                                    case 3: echo "3/5 - Mọi thứ đều ổn 😐";
-                                    break;
-                                    case 4: echo "4/5 - Phòng tốt, giá tốt 🥰";
-                                    break;
-                                    default: echo "5/5 - Mọi thứ trên cả tuyệt vời 🤩";
-                                }
-                            ?>
-                        </p>
-                        <p class="allocution"><?php echo $cmt_rows['Text']; ?></p>
-                    </div>
-                   <?php } ?>
                 </div>
+                <div class="col-6">
+                    <h3 class="mb-3 title-review" style="margin-top: 50px;">Cảm nhận chân thực từ khách hàng</h3>
+                </div>
+            </section>
+        </div>
+
+        <div class="review-cus">
+            <form action="./assets/PHP/comment.php" method="post" id="rating-form">
+                <div class="review-cus-container">
+                    <div class="star-widget">
+                        <input type="radio" name="rate" id="rate-5" checked value="5">
+                        <label for="rate-5" class="fa-solid fa-star"></label>
+                        <input type="radio" name="rate" id="rate-4" value="4">
+                        <label for="rate-4" class="fa-solid fa-star"></label>
+                        <input type="radio" name="rate" id="rate-3" value="3">
+                        <label for="rate-3" class="fa-solid fa-star"></label>
+                        <input type="radio" name="rate" id="rate-2" value="2">
+                        <label for="rate-2" class="fa-solid fa-star"></label>
+                        <input type="radio" name="rate" id="rate-1" value="1">
+                        <label for="rate-1" class="fa-solid fa-star"></label>
+                        <br>
+                        <br>
+                        <header id="main-review"></header>
+                    </div>
+                    <div class="detail-review">
+                        <textarea id="text-review" cols="30" placeholder="Viết chi tiết đánh giá" name="text-review"></textarea>
+                    </div>
+                    <div class="btn-sendreview">
+                        <button id="send-review" name="send-review" type="submit">Gửi đánh giá</button>
+                    </div>
+                </div>
+            </form>
+            <div class="reviewers">
+                <?php
+                include './assets/PHP/connectdb.php';
+                $get_cmts = mysqli_query($conn, "SELECT * FROM comment");
+                while($cmt_rows = $get_cmts->fetch_assoc())
+                    {
+                ?>
+                <div class="comments">
+                    <header>
+                        <div class="frame-icon">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <p class="username"><?php echo $cmt_rows['UserName'] ?></p>
+                        <i class="fa fa-quote-right quote-icon"></i>
+                    </header>
+                    <p class="rating">
+                        <?php
+                            switch($cmt_rows['Score']) {
+                                case 1: echo "1/5 - Mọi thứ rất tệ ☹️";
+                                break;
+                                case 2: echo "2/5 - Thái độ phục vụ tệ 😕";
+                                break;
+                                case 3: echo "3/5 - Mọi thứ đều ổn 😐";
+                                break;
+                                case 4: echo "4/5 - Phòng tốt, giá tốt 🥰";
+                                break;
+                                default: echo "5/5 - Mọi thứ trên cả tuyệt vời 🤩";
+                            }
+                        ?>
+                    </p>
+                    <p class="allocution"><?php echo $cmt_rows['Text']; ?></p>
+                </div>
+                <?php } ?>
             </div>
         </div>
+    </div>
 
     </div>
 
@@ -731,6 +749,8 @@
                 modal.classList.add('open');  
             }
             else {
+                var email = '<?php echo $email ?>';
+                document.cookie = "email" + "=" + email;
                 document.cookie = "name" + "=" + name_account.innerText;
                 form.submit();
             }

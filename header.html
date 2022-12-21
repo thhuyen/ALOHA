@@ -48,6 +48,7 @@
                       } else if ($check == 1){
                   ?>
                       <script>
+                          // var email = '<?php echo $email ?>';
                           window.history.pushState("", "Title", "/aloha/home.html");
                           document.getElementById('login').innerHTML = '<?php echo $name ?>';
                       </script>
@@ -64,7 +65,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark p-md-3 shadow">
   <a class="navbar-brand" href="home.html">
-    <img src="./assets/img/logo/logo.png" alt="logo" style="width: 150px; margin-bottom: 10px;">
+    <img src="./assets/img/logo/logo.png" alt="logo" style="width: 150px; margin-bottom: 0px;">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

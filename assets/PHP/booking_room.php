@@ -11,13 +11,15 @@
     $checkin_date = $_POST['checkin'];
     $checkout_date = $_POST['checkout'];
     $number = $_POST['number-room'];
-    $customer_rows = mysqli_query($conn, "SELECT * FROM CUSTOMER WHERE CustomerPhone = '".$phone."'"); 
+    $customer_rows = mysqli_query($conn, "SELECT AmountOfBooking FROM CUSTOMER WHERE CustomerPhone = '".$phone."'");  
+    $count_phone = mysqli_query($conn, "SELECT COUNT(CustomerPhone) as SL_Phone FROM `customer` WHERE CustomerPhone = '".$phone."'");
+    $count_email = mysqli_query($conn, "SELECT COUNT(CustomerPhone) as SL_Email FROM `customer` WHERE CustomerEmail = '".$email."'");
     
     if (isset($_POST['submit_room'])){
 
         // lưu dữ liệu xuống table Customer           
         // chưa có trong database
-        if ($customer_rows->num_rows == 0) {
+        if ((int)$count_phone->fetch_assoc()['SL_Phone']  < 1 || (int)$count_email->fetch_assoc()['SL_Email'] < 1) {
             mysqli_query($conn, "INSERT INTO `customer`(`IdCustomer`, `CustomerName`, `CustomerPhone`, `CustomerEmail`, `AmountOfBooking`, `CustomerType`) 
             VALUES ('0','$name','$phone','$email', 1 , 0)");
         }
@@ -27,7 +29,7 @@
             if($row["AmountOfBooking"] >= 4) {
                 mysqli_query($conn, "UPDATE customer SET CustomerType = 1 WHERE CustomerPhone = '".$phone."'");
             }
-            mysqli_query($conn, "UPDATE customer SET AmountOfBooking = AmountOfBooking + 1 WHERE CustomerPhone = '".$phone."'");
+            mysqli_query($conn, "UPDATE customer SET AmountOfBooking = AmountOfBooking + 1 WHERE CustomerPhone = '".$phone."' AND CustomerEmail = '".$email."'");
         }
 
         // Lưu dữ liệu xuống table notification

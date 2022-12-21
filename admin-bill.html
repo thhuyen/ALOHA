@@ -75,15 +75,8 @@
         <div class="tab-content">
             <!-- PHÒNG-->
             <div class="tab-pane add active">
-                <div class="search-container">
-                    <form action="" class="search-form" method="get">
-                        <input type="text" class="keyword" name="search" placeholder="Nhập từ khóa cần tìm"
-                            value="<?php if(isset($_GET[" search"])) { echo $_GET["search"]; } ?>">
-                        <button type="submit" class="searchButton">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </form>
-                </div>
+                <?php  include './searchbar.html';
+                ?>
                 <div class="container">
                     <table id="update-tab" class="update-table table-infor" width="1300" height="auto">
                         <tr>
@@ -209,6 +202,36 @@
     <script src="./assets/javascript/notificationBell.js"></script>
     <script src="https://kit.fontawesome.com/c89546c2fd.js" crossorigin="anonymous"></script>
 
-
+    <!-- SEARCH -->
+    <script>
+        function search_infor() {
+            var input, filter, table, tr, td, i, txtValue;
+            table = document.getElementById("update-tab");
+            tr = table.getElementsByTagName("tr");
+            for (i = 1; i < tr.length; i++) {
+                name_cus = tr[i].getElementsByTagName("td")[2].innerText.trim();
+                phone_cus = tr[i].getElementsByTagName("td")[3].innerText.trim();
+                email_cus = tr[i].getElementsByTagName("td")[4].innerText.trim();
+                // console.log(document.querySelector('input[name="filter"]:checked').id);
+                switch(document.querySelector('input[name="filter"]:checked').value) {
+                    case "name": find_keyword(name_cus, tr[i]);
+                    break;
+                    case "phone": find_keyword(phone_cus, tr[i]);
+                    break;
+                    default: find_keyword(email_cus, tr[i]);
+                }
+            }
+        }
+        function find_keyword(keyword, row) {
+            filter = document.getElementById("search").value.toUpperCase();
+            if (keyword.toUpperCase().indexOf(filter) > -1) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        }
+       document.getElementById("search").addEventListener('keyup', search_infor);
+       document.querySelector('.searchButton').addEventListener('click', search_infor);
+    </script>
 </body>
 </html>

@@ -6,9 +6,9 @@
     $status = $_POST['radio-status-add'];
     $note = $_POST['room-note'];
     
-    $insert_room = mysqli_query($conn,"INSERT INTO `room`(`RoomName`, `RoomTypeName`, `Status`, `RoomNote`) 
+    mysqli_query($conn,"INSERT INTO `room`(`RoomName`, `RoomTypeName`, `Status`, `RoomNote`) 
                                     VALUES ('$name','$type','$status','$note')");
-    
-   header("Location: ../../admin-room.html");    
-
+    mysqli_query($conn, "UPDATE `roomtype` SET RoomQuantity = RoomQuantity + 1 WHERE '".$type."' = `RoomTypeName`");
+   
+    header("Location: ../../admin-room.html");    
 ?>

@@ -1,3 +1,12 @@
+<script>
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+}
+</script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -210,13 +219,14 @@
 
             <!-- Bắt sự kiện khi bấm button xóa -->
             <script>
-                var roomname = '';
+                var roomname = '', roomtype = '';
                 function openModalDelete(button) {
                     function find_pos(row, x) {
                         var updateTableCells = document.querySelector(".update-table").rows[row].cells; // lấy ra các cell của 1 row
                         var updateTableRows = document.querySelector(".update-table").rows; 
                         for (let i = 0; i< updateTableRows.length; i++) {
                             if (updateTableRows[i] === x.parentElement.parentElement ) {
+                                roomtype = updateTableCells[1].innerText;
                                 return updateTableCells[0].innerText;
                                 break;
                             }
@@ -229,6 +239,7 @@
                 }
                 function DeleteRoom(button) {
                     document.cookie = "roomname" + "=" + roomname; 
+                    document.cookie = "roomtype" + "=" + roomtype; 
                 }   
             </script>
 

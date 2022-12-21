@@ -114,7 +114,9 @@ section {
 #form-add {
   position: relative;
 }
-
+.room-container {
+  margin-bottom: 20px;
+}
 .room-container span {
   margin-left: 295px;
   padding-bottom: 10px;
