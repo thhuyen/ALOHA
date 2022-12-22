@@ -115,7 +115,9 @@ section {
 #form-add {
   position: relative;
 }
-
+.room-container {
+  margin-bottom: 30px;
+}
 .room-container span {
   margin-left: 295px;
   padding-bottom: 10px;
@@ -324,62 +326,4 @@ section {
   border: 2px solid red !important;
 }
 
-/*----------customer----------*/
-.container .two-container{
-  display: grid;
-  grid-template-areas: "left right";
-  max-width: 900px;
-  padding-bottom: 20px;
-}
-
-.container .two-container .left-container {
-    width: 500px;
-}
-.container .two-container .left-container label{
-  padding-right: 185px;
-}
-
-.container .two-container .right-container{
-  display: grid;
-  grid-template-areas:
-    "."
-    ".";
-  width: 500px;
-  margin-bottom: 50px;
-}
-.container .two-container .right-container .guest-infor{
-  margin: auto 0;
-  /* padding-top: 3px; */
-}
-.container .two-container .right-container label{
-  padding-right: 50px;
-}
-.container .two-container .right-container .guest-infor select{
-  padding: 8px;
-  border: 1px solid #b4b4b4;
-  border-radius: 5px;
-  height: 40px;
-}
-
-
-/*---------------hóa đơn phòng-----------------*/
-.container .two-container .left-container .bill-infor {
-  width: 500px;
-  padding-bottom: 40px;
-}
-
-.container .two-container .left-container .bill-infor label {
-  padding-right: 50px;
-}
-
-.container .two-container .left-container .bill-infor input {
-  width: 150px;
-}
-
-.container .two-container .right-container .bill-infor label {
-  padding-right: 65px;
-}
-.container .two-container .right-container .bill-infor input {
-  width: 150px;
-}
 

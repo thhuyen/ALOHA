@@ -76,20 +76,20 @@
         <div class="tab-content">
             <!-- THÊM PHÒNG -->
             <div class="tab-pane add active">
-                <div class='container add'>
+                <div class="container add">
                     <form id="form-add" action="./assets/PHP/insert_room.php" method="POST"> 
                         <div class="room-container">
-                            <label for='room-name' class="form-label">Tên phòng *</label>
-                            <div class='room-infor'>
-                                <input id='room-name' class="form-control" placeholder="Nhập tên phòng" type='text' name="room-name">
+                            <div class="room-infor">
+                                <label for="room-name" class="form-label">Tên phòng *</label>
+                                <input id="room-name" class="form-control" placeholder="Nhập tên phòng" type="text" name="room-name">
                             </div>
                             <span class="invalid-message" id="message-roomname"></span>
                         </div>
 
                         <div class="room-container">
-                            <label for='room-type' class="form-label">Loại phòng *</label>
-                            <div class='room-infor'>
-                                <select class="form-select" id="room-type" name="room-type">
+                            <div class="room-infor">
+                                <label for="room-type" class="form-label" style="flex: 0.5;">Loại phòng *</label>
+                                <select class="form-select" id="room-type" name="room-type" style="flex: 1;  margin-left: 13px;">
                                     <option value="0">Chọn loại phòng...</option>
                                     <?php
                                         include './assets/PHP/connectdb.php';
@@ -107,24 +107,26 @@
                         </div>                        
 
                         <div class="room-container">
-                            <label for='file' class="form-label">Tình trạng *</label> <br>
-                            <div class="form-check form-check-inline room-status">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="radio-status-add" checked="checked" id="vacant-add" value="0">
-                                    <label class="form-check-label" for="vacant-add">Còn trống</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="radio-status-add" id="used-add" value="1">
-                                    <label class="form-check-label" for="used-add">Đang sử dụng</label>
+                            <div class="form-check-inline room-status room-infor">
+                                <label for="file" class="form-label">Tình trạng *</label> <br>
+                                <div style="flex: 0.6; margin-left: 30px;">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="radio-status-add" checked="checked" id="vacant-add" value="0">
+                                        <label class="form-check-label" for="vacant-add">Còn trống</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="radio-status-add" id="used-add" value="1">
+                                        <label class="form-check-label" for="used-add">Đang sử dụng</label>
+                                    </div>
                                 </div>
                                 <span class="invalid-message"></span>
                             </div>
                         </div>                                              
                         
                         <div class="room-container">
-                            <label for='room-note' class="form-label">Ghi chú</label>
-                            <div class='room-infor'>
-                                <input id='room-note' class="form-control" placeholder="Nhập ghi chú" type='text' name="room-note">
+                            <div class="room-infor">
+                                <label for="room-note" class="form-label">Ghi chú</label>
+                                <input id="room-note" class="form-control" placeholder="Nhập ghi chú" type="text" name="room-note">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
@@ -340,7 +342,6 @@
 
     <!-- Lưu value của input radio tình trạng khi bấm button lưu -->
     <script>
-        
         document.getElementById('btn-save-update').addEventListener('click', function() {
             if (document.querySelector('.room-status #vacant').checked == true) {
                 document.querySelector('.room-status #vacant').value = '0';

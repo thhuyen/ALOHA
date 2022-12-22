@@ -154,7 +154,14 @@ Validator.minLength = function(selector, min) {
         }
     };
 }
-
+Validator.maxNumber = function(selector, message) {
+    return {
+        selector: selector,
+        test: function(value) {
+            return value <= 100 ? undefined : message;
+        }
+    };
+}
 Validator.isNumber = function(selector) {
     return {
         selector: selector,
