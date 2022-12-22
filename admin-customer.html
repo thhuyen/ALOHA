@@ -71,7 +71,7 @@
             <!-- THÊM KHÁCH HÀNG-->
             <div class="tab-pane add active">
                 <div class="container add">
-                    <form id="form-add">
+                    <form id="form-add" method="post" action="./assets/PHP/insert_customer.php">
                         <div class="room-container">
                             <div class="room-infor">
                                 <label for="guest-name">Họ tên *</label>
@@ -96,24 +96,14 @@
                             <span class="invalid-message"></span>
                         </div>
 
-                        <div class="two-container">
-                            <div class="left-container room-container">
-                                <div class="guest-infor">
-                                    <label for="guest-time">Số lần đặt *</label>
-                                    <input id="guest-time" type="number" name="guest-time" min="1" max="1000">
-                                </div>
-                                <span class="invalid-message"></span>
+                        <div class="room-container">
+                            <div class="room-infor">
+                                <label for="guest-time">Số lần đặt *</label>
+                                <input id="guest-time" type="number" name="guest-time" min="1" max="1000">
                             </div>
-
-                            <div class="right-container room-container">
-                                <div class="guest-infor">
-                                    <label for="guest-type">Phân loại *</label>
-                                    <input type="text" readonly="readonly" style="background: #ddd;">
-                                </div>
-                            </div>
+                            <span class="invalid-message"></span>
                         </div>
-
-                        <button id="btn-save" class="btn">Lưu</button>
+                        <button name="insert-customer" type="submit" id="btn-save" class="btn">Lưu</button>
                     </form>
                 </div>
             </div>
@@ -127,7 +117,7 @@
                 include './searchbar.html'; 
             ?>
             <div class='container'>
-                <table id="update-tab" class="update-table table-infor" width="1000" height="auto" style="font-size: 1rem;">
+                <table id="update-tab" class="update-table table-infor">
                     <tr>
                         <td class="head-table">Mã KH</td>
                         <td class="head-table">Họ tên</td>
@@ -140,7 +130,7 @@
 
                     <?php
                         include './assets/PHP/connectdb.php';
-                        $get_data_client = mysqli_query($conn, "SELECT * FROM customer");
+                        $get_data_client = mysqli_query($conn, "SELECT * FROM customer ORDER BY IdCustomer DESC");
                         while($client_rows = $get_data_client->fetch_assoc())
                          {
                         ?>

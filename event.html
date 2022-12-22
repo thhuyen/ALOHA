@@ -251,8 +251,8 @@
         include './footer.html'
     ?>
 
-     <!-- đăng nhập vào admin -->
-     <?php
+    <!-- ĐĂNG NHẬP ĐỂ VÀO TRANG QUẢN LÝ -->
+    <?php
         function get_password() {
             include './assets/PHP/connectdb.php';
             $password =  $conn->query("select * from user")->fetch_assoc()["password"];
@@ -263,7 +263,7 @@
         $('#btn-openadmin').click(function() {
             var pass = JSON.parse('<?= get_password(); ?>');
             if (($('#password').val()).localeCompare(pass) == 0) {
-                window.location='admin.html';
+                window.location='admin-manage.html';
             }
             else {
                 alert('Sai mật khẩu!');

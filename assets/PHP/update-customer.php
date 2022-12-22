@@ -12,7 +12,7 @@
     }
     else { $type = 1; }
     if (isset($_POST['update-customer'])) {
-        $upd_customer = mysqli_query($conn, "UPDATE `customer` SET `CustomerName`='$name',`CustomerEmail`='$mail',`AmountOfBooking`='$time',`CustomerType`='$type'
+        mysqli_query($conn, "UPDATE `customer` SET `CustomerName`='$name',`CustomerEmail`='$mail',`AmountOfBooking`='$time',`CustomerType`='$type'
                                      WHERE '".$id."' = `IdCustomer`");
     }
     Header("Location: ../../admin-customer.html#update-tab");

@@ -630,7 +630,7 @@ input#rate-5:checked ~ label {
 }
 .comments .frame-icon {
     border: 1px solid var(--color-pink);
-    padding: 0px 7px 4px 7px;
+    padding: 5px 7px 4px 7px;
     border-radius: 50%;
 }
 .comments .username {

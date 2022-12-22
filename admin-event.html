@@ -70,13 +70,13 @@
                         <div class="room-container">
                             <div class="room-infor">
                                 <label for="event-file" class="form-label">Video sự kiện *</label>
-                                <input type="file" id="event-file" class="form-control" name="event" accept="video/mp4,video/x-m4v,video/*"/>
+                                <input type="file" id="event-file" class="form-control" name="event-file"/>
                             </div>
                             <span class="invalid-message" id="invalid-message-imgs"></span>
                         </div>
 
                         <div class="room-container">
-                            <div class='room-infor'>
+                            <div class="room-infor">
                                 <label for="event-price">Đơn giá *</label>
                                 <input id="event-price" placeholder="VND" type="text" name="event-price"></input>
                             </div>
@@ -84,7 +84,7 @@
                         </div>
     
                         <div class="room-container des">
-                            <div class='room-infor'>
+                            <div class="room-infor">
                                 <label for="event-des">Mô tả</label>
                                 <textarea id="event-des" placeholder="Nhập ghi chú" type="text" name="event-des" rows="5"></textarea>
                             </div>
@@ -94,7 +94,7 @@
                         <div class="room-container">
                             <div class="room-infor">
                                 <label for="event-note">Ghi chú *</label>
-                                <input id="event-note" placeholder="VND" type="text" name="event-price"></input>
+                                <input id="event-note" placeholder="VND" type="text" name="event-note"></input>
                             </div>
                             <span class="invalid-message"></span>
                         </div>                       
@@ -108,7 +108,7 @@
             <!-- CHỈNH SỬA -->
             <div class="tab-pane" >
                 <div class='container'>
-                    <table id="update-tab" class="update-table table-infor" width="1000" height="auto">
+                    <table id="update-tab" class="update-table table-infor" width="1000">
                         <tr>
                             <td class="head-table">Loại sự kiện</td>
                             <td class="head-table">Mô tả</td>
@@ -145,13 +145,12 @@
             </div>
             <!-- form chỉnh sửa -->
             <div>
-                <div class='container add form'  style ="margin-top: 20px">
+                <div class="container add form" style ="margin-top: 20px">
                     <form id="form-update-room">
-
                         <div class="room-container">
                             <div class="room-infor">
                                 <label for="event-name">Tên sự kiện *</label>
-                                <input id="event-name" placeholder="Nhập tên sự kiện" type="text" name="event-name">
+                                <input id="event-name" placeholder="Nhập tên sự kiện" type="text" name="event-upd-name">
                             </div>
                             <span class="invalid-message"></span>
                         </div>
@@ -159,7 +158,7 @@
                         <div class="room-container">
                             <div class="room-infor">
                                 <label for="event-upd-file" class="form-label">Video sự kiện *</label>
-                                <input type="file" id="event-upd-file" class="form-control" name="event-upd" accept="video/mp4,video/x-m4v,video/*"/>
+                                <input type="file" id="event-upd-file" class="form-control" name="event-upd-file" accept="video/mp4,video/x-m4v,video/*"/>
                             </div>
                             <span class="invalid-message" id="invalid-message-imgs"></span>
                         </div>
@@ -212,13 +211,11 @@
             formGroupSelector: '.room-container',
             errorSelector: '.invalid-message',
             rules: [
-                Validator.isRequired('#room-name', 'Vui lòng nhập tên sự kiện'),
-                Validator.minLength('#room-name', 5), 
-                Validator.isRequired('#room-price', 'Vui lòng nhập đơn giá sự kiện'),
-                Validator.isNumber('#room-price'),
-                Validator.isRequired('#file', 'Vui lòng chọn hình ảnh'),
-                Validator.isRequired('#room-des', 'Vui lòng nhập mô tả sự kiện'),
-                Validator.minLength('#room-des', 20), 
+                Validator.isRequired('#event-name', 'Vui lòng nhập tên sự kiện'),
+                Validator.isRequired('#event-price', 'Vui lòng nhập đơn giá sự kiện'),
+                Validator.isRequired('#event-file', 'Vui lòng chọn hình ảnh'),
+                Validator.isRequired('#event-des', 'Vui lòng nhập mô tả sự kiện'),
+                Validator.minLength('#event-des', 10),
             ],
         });
     </script>

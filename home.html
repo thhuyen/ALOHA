@@ -728,7 +728,7 @@
         $('#btn-openadmin').click(function() {
             var pass = JSON.parse('<?= get_password(); ?>');
             if ($('#password').val() === pass) {
-                window.location='admin.html';
+                window.location='admin-manage.html';
             }
             else {
                 alert('Sai mật khẩu!');
