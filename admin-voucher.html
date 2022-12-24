@@ -76,7 +76,7 @@
         <div class="tab-content">
             <!-- THÊM SỰ KIỆN-->
             <div class="tab-pane add active">
-                <div class='container add'>
+                <div class="container add">
                     <form id="form-add" method="post" action="./assets/PHP/insert_voucher.php">
                         <div class="room-container">
                             <div class="room-infor">
@@ -93,7 +93,32 @@
                             </div>
                             <span class="invalid-message"></span>
                         </div>
+                        <div class="room-container">
+                            <div class="room-infor">
+                                <label for="minprice">Giá trị đơn hàng tối thiểu *</label>
+                                <input id="minprice" placeholder="Nhập giá trị đơn hàng tối thiểu" type="text" name="minprice">
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>
     
+                        <div class="room-container">
+                            <div class="room-infor">
+                                <label for="voucher-note">Mô tả ngắn *</label>
+                                <input id="voucher-note" placeholder="Nhập mô tả ngắn" type="text" name="voucher-note"></input>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>  
+
+                        <div class="room-container">
+                            <div class="room-infor">
+                                <label for="quantity">Số lượng voucher *</label>
+                                <input id="quantity" placeholder="Nhập số lượng voucher" type="text" name="quantity"></input>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div>  
+
+                        
+
                         <div class="room-container">
                             <div class="form-check-inline room-status room-infor">
                                 <label for="">Trạng thái *</label>
@@ -111,13 +136,7 @@
                             <span class="invalid-message"></span>
                         </div>  
 
-                        <div class="room-container">
-                            <div class="room-infor">
-                                <label for="voucher-note">Mô tả ngắn *</label>
-                                <input id="voucher-note" placeholder="Nhập mô tả ngắn" type="text" name="voucher-note"></input>
-                            </div>
-                            <span class="invalid-message"></span>
-                        </div>                       
+                                             
                         <button type="submit" name="add-voucher" id="btn-save" class="btn">Lưu</button>
                     </form>
                     </div>                  
@@ -128,23 +147,27 @@
             <!-- CHỈNH SỬA -->
             <div class="tab-pane" >
                 <div class="container">
-                    <table id="update-tab" class="update-table table-infor" width="1100">
+                    <table id="update-tab" class="update-table table-infor">
                         <tr>
                             <td class="head-table">Mã voucher</td>
                             <td class="head-table">Số phần trăm giảm</td>
+                            <td class="head-table">Giá trị tối thiểu</td>
                             <td class="head-table">Trạng thái</td>
                             <td class="head-table">Ngày kích hoạt</td>
-                            <td class="head-table">Ghi chú</td>
+                            <td class="head-table">SL voucher</td>
+                            <td class="head-table">SL đã dùng</td>
+                            <td class="head-table">Mô tả ngắn</td>
                             <td class="head-table">Tác vụ</td>
                         </tr>
 
                         <?php
-                            $data = mysqli_query($conn,"SELECT * FROM voucher");
+                            $data = mysqli_query($conn,"SELECT * FROM voucher ORDER BY Percent ASC");
                             while ($row = $data->fetch_assoc()) {
                         ?>
                         <tr>
                             <td><?php echo $row['VoucherCode'] ?></td>
                             <td><?php echo $row['Percent'] ?></td>
+                            <td><?php echo $row['MinPrice'] ?></td>
                             <td>
                                 <select name="action" id="action" onchange="stopActive(this)" style="width: 150px;">
                                     <?php
@@ -160,6 +183,8 @@
                                 </select>
                             </td>
                             <td><?php echo $row['ActiveDate'] ?></td>
+                            <td><?php echo $row['Quantity'] ?></td>
+                            <td><?php echo $row['QuantityUsed'] ?></td>
                             <td><?php echo $row['VoucherNote'] ?></td>
                             <td>
                                 <button class="upd-btn btn-table" onclick="openUpdate(this)" style="margin: 5px;">Sửa</button>
@@ -192,23 +217,31 @@
                             </div>
                             <span class="invalid-message"></span>
                         </div>
-    
+
                         <div class="room-container">
                             <div class="room-infor">
-                                <label for="status-upd">Trạng thái *</label>
-                                <input id="status-upd" type="text" name="status-upd" readonly style="background: #ddd;"></input>
+                                <label for="minprice-upd">Giá trị đơn hàng tối thiểu *</label>
+                                <input id="minprice-upd" placeholder="Nhập giá trị đơn hàng tối thiểu" type="text" name="minprice-upd">
                             </div>
                             <span class="invalid-message"></span>
-                        </div>  
-
+                        </div>
+    
                         <div class="room-container">
                             <div class="room-infor">
                                 <label for="voucher-note-upd">Mô tả ngắn *</label>
                                 <input id="voucher-note-upd" placeholder="Nhập mô tả ngắn" type="text" name="voucher-note-upd"></input>
                             </div>
                             <span class="invalid-message"></span>
-                        </div>           
-                        
+                        </div>  
+
+                        <div class="room-container">
+                            <div class="room-infor">
+                                <label for="quantity-upd">Số lượng *</label>
+                                <input id="quantity-upd" placeholder="Nhập số lượng voucher" type="text" name="quantity-upd"></input>
+                            </div>
+                            <span class="invalid-message"></span>
+                        </div> 
+                                                      
                         <button type="submit" id="btn-save-update" class="btn btn-save-form">Lưu</button>
                         <button class="btn btn-exit-form" type="button" onclick="exitUpdate()">Thoát</button>
                     </form>
@@ -256,8 +289,9 @@
                     if (updateTableRows[i] === x.parentElement.parentElement ) {
                         document.getElementById('code-voucher-upd').value = updateTableCells[0].innerText.trim();
                         document.getElementById('percent-upd').value = updateTableCells[1].innerText.trim();
-                        document.getElementById('status-upd').value = updateTableCells[2].innerText.trim();
-                        document.getElementById('voucher-note-upd').value = updateTableCells[4].innerText.trim();
+                        document.getElementById('minprice-upd').value = updateTableCells[2].innerText.trim();
+                        document.getElementById('quantity-upd').value = updateTableCells[5].innerText.trim();
+                        document.getElementById('voucher-note-upd').value = updateTableCells[7].innerText.trim();
                         break;
                     }
                 }
@@ -345,7 +379,10 @@
                 Validator.isExisted('#code-voucher', arrName, 'Voucher đã tồn tại'),
                 Validator.isRequired('#percent', 'Vui lòng nhập số phần trăm giảm'),
                 Validator.maxNumber('#percent', "Vui lòng nhập bé hơn hoặc bằng 100"),
+                Validator.isRequired('#minprice', 'Vui lòng nhập giá trị đơn hàng tối thiểu'),
                 Validator.isRequired('#voucher-note', 'Vui lòng nhập mô tả ngắn'),
+                Validator.isRequired('#quantity', 'Vui lòng nhập tổng số lượng voucher'),
+                Validator.isNumber('#quantity'),
             ],
         });
         Validator({
@@ -354,7 +391,8 @@
             errorSelector: '.invalid-message',
             rules: [
                 Validator.isRequired('#percent-upd', 'Vui lòng nhập số phần trăm giảm'),
-                Validator.maxNumber('#percent', "Vui lòng nhập bé hơn hoặc bằng 100"),
+                Validator.maxNumber('#percent-upd', "Vui lòng nhập bé hơn hoặc bằng 100"),
+                Validator.isRequired('#minprice-upd', 'Vui lòng nhập giá trị đơn hàng tối thiểu'),
                 Validator.isRequired('#voucher-note-upd', 'Vui lòng nhập mô tả ngắn'),
             ],
         });

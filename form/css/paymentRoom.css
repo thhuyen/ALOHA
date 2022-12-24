@@ -100,26 +100,33 @@
     font-weight: 600;
     font-size: 15px;
 }
-.input-method-item {
+.input-voucher-item {
     -webkit-appearance: none;
 }
-.method-container {
+.list-voucher {
     display: inline-block;
     margin-left: 40px;
+    margin-bottom: 20px;
+    padding-right: 10px;
     cursor: pointer;
+    height: 150px;
+    overflow: auto;
 }
-.method-item {
+.voucher-item {
     display: flex;
 }
-.label-method-item {
+.label-voucher-item {
     display: flex;
-    width: 400px;
+    width: 450px;
     align-items: center;
     margin-bottom: 10px;
     border: 1px solid #dbcbb4;
     padding: 10px 30px 10px 10px;
     cursor: pointer;
     box-shadow: 3px 3px #ccc;
+}
+.icon-voucher {
+    margin-right: 5px;
 }
 @media (max-width: 470px) {
     .detail-payment-body  {
@@ -135,22 +142,16 @@
     .total-payment {
         font-size: 12px;
     }
-    .method-container {
+    .list-voucher {
         margin-left: 0;
     }
-    .label-method-item {
+    .label-voucher-item {
         font-size: 14px;
         width: 260px;
     }
     .icon-check {
         font-size: 15px;
         margin-right: 10px !important;
-    }
-    #cash-img,
-    #bank-img,
-    #momo-img {
-        width: 30px;
-        height: 30px;
     }
 }
 .icon-check {
@@ -162,13 +163,15 @@
 .icon-payment {
     margin-right: 10px;
 }
-.method-item p {
-    margin-bottom: 0
+.voucher-item p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    font-family: arimo;
 }
-.input-method-item:checked + .label-method-item {
+.input-voucher-item:checked + .label-voucher-item {
     border: 3px solid var(--color-pink);
 }
-.input-method-item:checked + .label-method-item > .icon-check {
+.input-voucher-item:checked + .label-voucher-item > .icon-check {
     opacity: 1;
 }
 .group-button {

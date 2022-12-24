@@ -89,22 +89,6 @@
     transition: all 0.5s ease;
     position: relative;
 }
-.subnav {
-    display: none;
-    list-style: none;
-    z-index: 1000;
-}
-.subnav-item {
-    padding: 10px;
-    text-transform: none;
-    cursor: pointer;
-    transition: all 0.4s ease;
-}
-.sub-event.show, 
-.sub-ser.show {
-    display: block;
-}
-
 .sticky {
     position: fixed;
     top: 0;
@@ -125,7 +109,7 @@
         content:"";
         position: absolute;
         left: 5px;
-        bottom: -13px;
+        bottom: -15px;
         background: #e29c89;
         width: 0;
         height: 3px;
@@ -133,30 +117,7 @@
     }
     .nav-item .nav-link:hover:after {
         width: 100%;
-    }
-    .event,
-    .service {
-        position: relative;
-    }
-    .subnav {
-        width: 140px;
-        position: absolute;
-        top: 53px;
-        left: 15px;
-        background: #343a40;
-        list-style: none;
-        padding-left: 10px;
-        box-shadow: 0 0 5px #ccc;
-    }
-    /* hiện subnav */
-    .event:hover .subnav,
-    .service:hover .subnav {
-        display: block;
-    }
-    .subnav-item:hover {
-        padding-left: 17px;
-    }
- 
+    } 
 }
 @media (max-width: 998px) {
     .container {

@@ -50,7 +50,9 @@
                       <script>
                           // var email = '<?php echo $email ?>';
                           window.history.pushState("", "Title", "/aloha/home.html");
-                          document.getElementById('login').innerHTML = '<?php echo $name ?>';
+                          document.cookie = "flagLogin = 1";
+                          document.cookie = "nameLogin" + "=" + '<?php echo $name ?>';
+                          document.cookie = "emailLogin" + "=" + '<?php echo $email ?>';
                       </script>
                       <?php
                       }
@@ -81,32 +83,11 @@
         <li class="nav-item">
           <a class="nav-link text-white" href="room.html">Phòng</a>
         </li>
-        <li class="nav-item service">
-          <a class="nav-link text-white" href="javascript:void(0)"">Dịch vụ
-            <i class="ti-arrow-circle-down icon-drop"></i>
-          </a>
-          <ul class="subnav sub-ser">
-            <a href="service.html"><li class="subnav-item">Sân golf</li></a>
-            <a href="service.html"><li class="subnav-item">Beach coffee</li></a>
-            <a href="service.html"><li class="subnav-item">Spa & fitness</li></a>
-            <a href="service.html"><li class="subnav-item">Bar & karaoke</li></a>
-            <a href="service.html"><li class="subnav-item">Thú cưng</li></a>
-            <a href="service.html"><li class="subnav-item">Giặt ủi</li></a>
-            <a href="service.html"><li class="subnav-item">Phục vụ 24/24</li></a>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="service.html">Dịch vụ</a>          
         </li>
-        <li class="nav-item event">
-          <a class="nav-link text-white" href="javascript:void(0)">Sự kiện
-            <i class="ti-arrow-circle-down icon-drop"></i>
-          </a>
-          <ul class="subnav sub-event">
-            <a href="event.html"><li class="subnav-item">Sinh nhật</li></a>
-            <a href="event.html"><li class="subnav-item">Kỷ niệm</li></a>
-            <a href="event.html"><li class="subnav-item">Đám cưới</li></a>
-            <a href="event.html"><li class="subnav-item">Tiệc prom</li></a>
-            <a href="event.html"><li class="subnav-item">Hội họp</li></a>
-            <a href="event.html"><li class="subnav-item">Hội nghị</li></a>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="event.html">Sự kiện</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="home.html#review">Đánh giá</a>
@@ -119,13 +100,35 @@
   </div>
 </nav>
 
+<!-------------DUY TRÌ ĐĂNG NHẬP------------->
+<script>
+      function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+      if(getCookie("nameLogin")) {
+          document.getElementById('login').innerHTML = getCookie("nameLogin");
+      }
+</script>
+
+<!---------------------LOGOUT-------------------------->
+<script>
+      document.querySelector('.logout').addEventListener('click', function() {
+        document.cookie = "flagLogin = 0";
+        document.cookie = "nameLogin" + "=" + "Đăng nhập";
+        window.location.href = "http://localhost:8080/aloha/home.html";
+      });
+</script>
+
+<!----------ĐĂNG NHẬP KHI MỚI VÀO WEB LẦN ĐẦU TIÊN + TẮT FORM ĐĂNG NHẬP + MỞ SUBNAV TRONG MOBILE----->
 <script>
   // login + logout
   var modal = document.querySelector('.modal-login');
-  var name_account = document.querySelector('#login');
+  // var name_account = document.querySelector('#login');
   var dropdownLogout = document.querySelector('.logout-container');
   document.querySelector('#login-container').addEventListener('click', function () {
-      if (name_account.innerText === "Đăng nhập") {
+      if (getCookie("flagLogin") === "0") {
           modal.classList.add('open');
       }
       else {
@@ -136,11 +139,4 @@
       modal.classList.remove('open');
   });
 
-  // mở subnav mobile
-  document.querySelector('.service').addEventListener('click', function() {
-      document.querySelector('.sub-ser').classList.toggle('show');
-  });
-  document.querySelector('.event').addEventListener('click', function() {
-      document.querySelector('.sub-event').classList.toggle('show');
-  });
 </script>

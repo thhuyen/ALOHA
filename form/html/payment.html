@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ALOHA</title>
     <link rel="icon" href="./assets/img/logo/logo - Copy.png" />
+    <link rel="icon" href="../../assets/CSS/base.css" />
     <link rel="stylesheet" href="../css/paymentRoom.css">
     <link rel="stylesheet" href="../../assets/fonts/fontawesome-free-6.1.1-web/css/all.min.css">
     
@@ -19,76 +20,83 @@
 </head>
 
 <body>
-    <div class="modal-payment">
-
+    <div class="modal-payment">   
         <div class="modal-payment-container">
-            <div class="modal-header">
+            <div class="modal-header payment">
                 <span>THANH TOÁN</span>
-                <div class=""close-modal>
+                <div class="close-modal">
                     <i id = "icon-close-payment" class="icon-close-modal fa-solid fa-xmark"></i>
                 </div>
             </div>
-            
+
             <div class="modal-body">
                 <div class="detail-payment">
                     <p class="title">3. Chi tiết hóa đơn</p>
                     <div class="detail-payment-body">
 
                         <div class="detail-payment-client">
-                            <p class="fullname-payment">Họ tên: Nguyễn Văn A</p>
-                            <p class="phone-payment">SĐT: 9374639123</p>
-                            <p class="type-room-payment">Loại phòng: Phòng bốn</p>
+                            <p class="fullname-payment">Nguyễn Văn A</p>
+                            <p class="phone-payment">0988111000</p>
+                            <p class="type-room-payment"></p>
                         </div>
                         
                         <div class="detail-payment-room">
-                            <p class="checkin-payment">Ngày đặt: 12-09-2022</p>
-                            <p class="checkout-payment">Ngày trả: 13-09-2022</p>
-                            <p class="amount-room-payment">Số lượng: 4</p>
+                            <p class="checkin-payment">2022-12-09</p>
+                            <p class="checkout-payment">2022-12-10</p>
+                            <p class="amount-room-payment">2</p>
                         </div>
                     </div> 
-                    <p class="email-payment">Email: 20520207@gm.uit.edu.vn</p>
-                    <p class="total-payment">Tổng cộng: 4000000</p>
+                    
+                    <p class="email-payment">a@gmail.com</p>
+                    <p class="total-payment">5000000</p>
                 </div>
 
-                <div class="method-payment">
-                    <p class="title title-method"> 4. Phương thức thanh toán</p>
-                    <div class="method-container">
-                        <div class="method-item">
-                            <input type="radio" name="payment" id = "cash" class="input-method-item">
-                            <label for="cash" class="label-method-item">
+                <div class="voucher">
+                    <p class="title"> 4. Áp dụng voucher</p>
+                    <div class="list-voucher">           
+                        <div class="voucher-item">
+                            <input type="radio" id = "" class="input-voucher-item" checked name="radio-voucher">
+                            <label for="" class="label-voucher-item">
                                 <i class="icon-check fa-solid fa-circle-check"></i>
-                                <img src="https://cdn-icons.flaticon.com/png/512/1052/premium/1052866.png?token=exp=1660440745~hmac=5caac0c9b9f311e2bacd73733782f659" alt="" id ="cash-img" class="icon-payment">
-                                <p>Tiền mặt</p>
-                            </label>
-
-                        </div>
-                        <div class="method-item">
-                            <input type="radio" name="payment" id = "momo" class="input-method-item">
-                            <label for="momo" class="label-method-item">
-                                <i class="icon-check fa-solid fa-circle-check"></i>
-                                <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="MoMo_Logo" id="momo-img" class="icon-payment">
-                                <p>Momo</p>
+                                <img src="../../assets/img/voucher-icon.png" alt="voucher-icon" class="icon-voucher">
+                                <p>GIAM20</p>
                             </label>
                         </div>
-                        <div class="method-item" class="label-method-item">
-                            <input type="radio" name="payment" id = "bank" class="input-method-item">
-                            <label for="bank" class="label-method-item">
+                        
+                        <div class="voucher-item">
+                            <input type="radio" id = "" class="input-voucher-item" name="radio-voucher">
+                            <label for="" class="label-voucher-item">
                                 <i class="icon-check fa-solid fa-circle-check"></i>
-                                <img src="https://cdn-icons-png.flaticon.com/512/3029/3029373.png" alt="" class="icon-payment" id="bank-img">
-                                <p>Chuyển khoản</p>
+                                <img src="../../assets/img/voucher-icon.png" alt="voucher-icon" class="icon-voucher">
+                                <p>GIAM20</p>
+                            </label>
+                        </div>
+                        <div class="voucher-item">
+                            <input type="radio" id = "" class="input-voucher-item" name="radio-voucher">
+                            <label for="" class="label-voucher-item">
+                                <i class="icon-check fa-solid fa-circle-check"></i>
+                                <img src="../../assets/img/voucher-icon.png" alt="voucher-icon" class="icon-voucher">
+                                <p>GIAM20</p>
+                            </label>
+                        </div>
+                        <div class="voucher-item">
+                            <input type="radio" id = "" class="input-voucher-item" name="radio-voucher">
+                            <label for="" class="label-voucher-item">
+                                <i class="icon-check fa-solid fa-circle-check"></i>
+                                <img src="../../assets/img/voucher-icon.png" alt="voucher-icon" class="icon-voucher">
+                                <p>GIAM20</p>
                             </label>
                         </div>
                     </div>
                 </div>
                     
                 <div class="group-button">
-                    <button class="btn-payment button-back">Quay lại</button>
-                    <button class="btn-payment button-finish">Hoàn tất</button>
-
+                    <button type ="button" class="btn-payment button-back">Quay lại</button>
+                    <button type="submit" name="submit_room" class="btn-payment button-finish">Hoàn tất</button>
                 </div>
+                
             </div>
         </div>
-
     </div>
 
     <script src="../../assets/javascript/formRoomPayment.js"></script>

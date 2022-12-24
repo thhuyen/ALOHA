@@ -309,9 +309,17 @@
             find_pos((button.parentElement).parentElement.rowIndex, button);
             document.querySelector('.room-name-notice').innerText = name_of_type.toUpperCase();
         }
+        // HÀM SET COOKIE HẾT HẠN TRONG N GIÂY
+        function createCookie(name, value, second) {
+            var date = new Date();
+            date.setTime(date.getTime()+(second*1000));
+            var expires = "; expires="+date.toGMTString();
+            document.cookie = name+"="+value+expires+"; path=/";
+        }
         // xóa luôn
+        
         function DeleteType(button) {
-            document.cookie = "Type" + "=" + name_of_type;       
+            createCookie("Type", name_of_type, 60);
         }
     </script>
 

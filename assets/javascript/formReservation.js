@@ -356,6 +356,12 @@
     }
    
     btnBack.onclick = function() {
+        radio = document.querySelectorAll('input[name="radio-voucher"]');
+        radio.forEach(function(element) {
+            if (element.checked === true) {
+                element.checked = false;
+            }
+        });
         formPayment.classList.remove('open');
         formRegister.classList.add('open');
     }

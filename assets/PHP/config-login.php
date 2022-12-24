@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    include './connectdb.php';
 
     $client = new Google\Client();
     $client->setClientId('814610287644-0rjtnqijppfs43g7lc8as6873790idri.apps.googleusercontent.com');
@@ -24,5 +24,4 @@
     } else {
         $url = $client->createAuthUrl(); 
     }
-    // header("Location: ../../home.html"); 
 ?>

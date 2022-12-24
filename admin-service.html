@@ -248,8 +248,14 @@
         }
 
         // xóa luôn
+        function createCookie(name, value, second) {
+            var date = new Date();
+            date.setTime(date.getTime()+(second*1000));
+            var expires = "; expires="+date.toGMTString();
+            document.cookie = name+"="+value+expires+"; path=/";
+        }
         function DeleteService(button) {
-            document.cookie = "ServiceName" + "=" + name_of_service;       
+            createCookie("ServiceName", name_of_service, 5);
         }
     </script>
     <?php

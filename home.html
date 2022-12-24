@@ -1,22 +1,19 @@
 <?php 
     if(isset($_GET['error'])) {
         if($_GET['error'] === '0') {
-            echo '<script>alert("Chỉ khi đã từng ở khách sạn bạn mới có quyền đánh giá!")</script>';
+            echo '<script>
+                alert("Chỉ khi đã từng ở khách sạn bạn mới có quyền đánh giá!");
+                window.location.href = "http://localhost:8080/aloha/home.html";
+                </script>';
         } 
         else {
-            echo '<script>alert("Mỗi khách hàng chỉ được đánh giá tối đa 3 lần!")</script>';
+            echo '<script>
+                alert("Mỗi khách hàng chỉ được đánh giá tối đa 3 lần!");
+                window.location.href = "http://localhost:8080/aloha/home.html";
+                </script>';
         }
     }
 ?>
-<script>
-    const cookies = document.cookie.split(";");
-    for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i];
-        const eqPos = cookie.indexOf("=");
-        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-}
-</script>
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -569,48 +566,39 @@
                             <div class="detail-payment-client">
                                 <p class="fullname-payment"></p>
                                 <p class="phone-payment"></p>
-                                <p class="type-room-payment"></p>
+                                <p class="email-payment"></p>
                             </div>
                             
                             <div class="detail-payment-room">
                                 <p class="checkin-payment"></p>
                                 <p class="checkout-payment"></p>
+                                <p class="type-room-payment"></p>
                                 <p class="amount-room-payment"></p>
                             </div>
                         </div> 
                         
-                        <p class="email-payment"></p>
                         <p class="total-payment"></p>
                     </div>
     
-                    <div class="method-payment">
-                        <p class="title title-method"> 4. Phương thức thanh toán</p>
-                        <div class="method-container">
-                            <div class="method-item">
-                                <input type="radio" name="payment" id = "cash" class="input-method-item" checked>
-                                <label for="cash" class="label-method-item">
+                    <div class="voucher">
+                        <p class="title"> 4. Áp dụng voucher</p>
+                        <div class="list-voucher">     
+                            <?php
+                                $data = mysqli_query($conn,"SELECT VoucherCode, Percent, VoucherNote, MinPrice, Quantity, QuantityUsed FROM voucher WHERE Status = 1 ORDER BY Percent ASC");
+                            
+                                while($row = $data->fetch_assoc()) {
+                                    $a = $row['Quantity']; $b = $row['QuantityUsed'];
+                                    if ((int)$b < (int)$a) {
+                            ?>
+                            <div class="voucher-item">
+                                <input type="radio" id = "<?php echo $row['VoucherCode'] ?>" class="input-voucher-item" name="radio-voucher" value="<?php echo $row['VoucherCode'] ?>" onchange="ChooseVoucher(this)">
+                                <label for="<?php echo $row['VoucherCode'] ?>" class="label-voucher-item">
                                     <i class="icon-check fa-solid fa-circle-check"></i>
-                                    <img src="./assets/img/cash-icon.png" alt="" id ="cash-img" class="icon-payment">
-                                    <p>Tiền mặt</p>
+                                    <img src="./assets/img/voucher-icon.png" alt="voucher-icon" class="icon-voucher">
+                                    <p><?php echo $row['VoucherCode'] . " (Giảm giá " . $row['Percent'] . " cho đơn từ " . number_format((int)$row['MinPrice'], 0, ',', '.') ."VND)"?></p>
                                 </label>
-    
-                            </div>
-                            <div class="method-item">
-                                <input type="radio" name="payment" id = "momo" class="input-method-item">
-                                <label for="momo" class="label-method-item">
-                                    <i class="icon-check fa-solid fa-circle-check"></i>
-                                    <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="MoMo_Logo" id="momo-img" class="icon-payment">
-                                    <p>Momo</p>
-                                </label>
-                            </div>
-                            <div class="method-item" class="label-method-item">
-                                <input type="radio" name="payment" id = "bank" class="input-method-item">
-                                <label for="bank" class="label-method-item">
-                                    <i class="icon-check fa-solid fa-circle-check"></i>
-                                    <img src="https://cdn-icons-png.flaticon.com/512/3029/3029373.png" alt="" class="icon-payment" id="bank-img">
-                                    <p>Chuyển khoản</p>
-                                </label>
-                            </div>
+                            </div>                
+                            <?php }} ?>
                         </div>
                     </div>
                         
@@ -618,70 +606,155 @@
                         <button type ="button" class="btn-payment button-back">Quay lại</button>
                         <button type="submit" name="submit_room" class="btn-payment button-finish">Hoàn tất</button>
                     </div>
-                    <!-- hiện đơn đặt phòng -->
-                    <script src="./assets/javascript/formReservation.js">                    
-                    </script>
-                    
-                    <script type="module">
-                        var DataTypeRoom = JSON.parse('<?= load_data_typerom(); ?>'); // kdl: object 
-                        // var type_room_selected = $('#type-room-register').find(":selected").text();
 
-                        function setPrice(obj) {
-                            let type_room_selected = $('#type-room-register').find(":selected").text();
-                            for (let i = 0; i < obj.length; i++) {
-                                if((obj[i].name) === type_room_selected) {
-                                    return obj[i].price;
-                                    // break;
-                                }
-                            }
-                        }
-                        $('.btn-search').click(function() {
-                            $('#price').val(setPrice(DataTypeRoom));
-                        })          
-                        $('#type-room-register').change(function() {
-                            $('#price').val(setPrice(DataTypeRoom));                            
-                        });
-                        var countDay;
-                        function calculateDate() { 
-                            const startDate  = $('#checkin-day-register').val();
-                            const endDate    = $('#checkout-day-register').val();
 
-                            const diffInMs   = new Date(endDate) - new Date(startDate)
-                            const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-                            countDay = Math.floor(diffInDays);
-                            return countDay;
-                        }
-
-                        $(".button-next-form").click(function(){
-                            var countday = calculateDate();
-                            $('.total-payment').text("Tổng cộng: " + setPrice(DataTypeRoom) * parseInt($('#number-room-register').val()) * countday + " VND");
-                        });
-                        
-                    </script>
-                    <?php
-                    function load_data_typerom() {
-                        include './assets/PHP/connectdb.php';
-                        $arr = array();
-                        $typerom_rows =  $conn->query("select * from roomtype");
-                        
-                        while($get_data_roomtype = $typerom_rows->fetch_assoc()) {
-                        array_push($arr, (object)[
-                            'name' => $get_data_roomtype["RoomTypeName"],
-                            'price' => $get_data_roomtype["RoomTypePrice"],
-                            ]);
-                        }
-                        
-                        return (json_encode($arr,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));                           
-                    }
-                    ?>                  
                 </div>
             </div>
-    
         </div>
     </form>
 
+
+    <!------------HIỆN ĐƠN ĐẶT PHÒNG ---------------------------------->
+    <script src="./assets/javascript/formReservation.js">                    
+    </script>
+    
+    <!--------------HÀM SET COOKIE HẾT HẠN TRONG N GIÂY---------------->
+    <script>
+    function createCookie(name, value, second) {
+        var date = new Date();
+        date.setTime(date.getTime()+(second*1000));
+        var expires = "; expires="+date.toGMTString();
+        document.cookie = name+"="+value+expires+"; path=/";
+    }
+    </script>
+
+    <!-- ----- SET TẤT CẢ CÁC RÀNG BUỘC LIÊN QUAN TỚI FORM ĐẶT PHÒNG------------------- -->
+    <script>
+        var DataTypeRoom = JSON.parse('<?= load_data_typerom(); ?>'); 
+        var DataVoucher = JSON.parse('<?= load_voucher(); ?>'); // kdl: object 
+        
+        // set giá khi bấm select chọn loại phòng trong form
+        function setPrice(obj) {
+            let type_room_selected = $('#type-room-register').find(":selected").text();
+            for (let i = 0; i < obj.length; i++) {
+                if((obj[i].name) === type_room_selected) {
+                    return obj[i].price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                }
+            }
+        }
+        $('.btn-search').click(function() {
+            $('#price').val(setPrice(DataTypeRoom));
+        })          
+        $('#type-room-register').change(function() {
+            $('#price').val(setPrice(DataTypeRoom));                            
+        });
+        var countDay;
+        function calculateDate() { 
+            const startDate  = $('#checkin-day-register').val();
+            const endDate    = $('#checkout-day-register').val();
+
+            const diffInMs   = new Date(endDate) - new Date(startDate)
+            const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+            countDay = Math.floor(diffInDays);
+            return countDay;
+        }
+
+        // set tổng tiền khi qua form thanh toán
+        let price, total; // lưu giá tiền origin
+        $(".button-next-form").click(function(){
+            var countday = calculateDate();
+            price = setPrice(DataTypeRoom).split('.').join("") * parseInt($('#number-room-register').val()) * countday;
+            total = price;
+            price = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            $('.total-payment').text("Tổng cộng: " + price + " VND");
+        });
+
+        // update giá khi chọn voucher
+        function updateDiscount(obj, type) {
+            let code = document.querySelector('input[name="radio-voucher"]:checked').value;
+            for(let i = 0; i < obj.length; i++) {
+                if((obj[i].code) === code) {
+                    if (type === "percent") {
+                        return obj[i].percent;
+                    } 
+                    else if (type === "minprice") {
+                        return obj[i].minprice;
+                    } 
+                }
+            } 
+        }
+
+        // set điều kiện khi chọn voucher
+        isChecked = '0';
+        function ChooseVoucher(input) {
+            if (getCookie("flagLogin") === "0") {
+                isChecked = '0';
+                input.checked = false;
+                modal.classList.add('open'); 
+            } 
+            else {
+                minprice = parseInt(updateDiscount(DataVoucher, "minprice"));
+                percent = parseInt(updateDiscount(DataVoucher, "percent"))/100;
+                if (parseInt(price.split('.').join("")) >= minprice) {
+                    isChecked = '1';
+                    total = parseInt(price.split('.').join(""))*(1-percent);
+                    document.querySelector('.total-payment').innerHTML = "Tổng cộng: " + (parseInt(price.split('.').join(""))*(1-percent)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " VND";
+                } else {
+                    isChecked = '0';
+                    total = parseInt(price.split('.').join(""));
+                    document.querySelector('.total-payment').innerHTML = "Tổng cộng: " + price + " VND";
+                    input.checked = false;
+                    alert("Đơn đặt phòng chưa đạt giá trị tối thiểu của voucher!");
+                }
+            }
+        }
+
+        // lưu giá tiền khi đặt phòng
+        document.querySelector('.button-finish').addEventListener('click', function() {
+            createCookie("total", total, 10);
+            createCookie("isChecked", isChecked, 100000);
+        });
+    </script>
+
+    <!--------------HÀM LẤY GIÁ TRỊ CỦA LOẠI PHÒNG TỪ DATABASE------------------>
+    <?php
+    function load_data_typerom() {
+        include './assets/PHP/connectdb.php';
+        $arr = array();
+        $typerom_rows =  $conn->query("SELECT RoomTypeName, RoomTypePrice FROM roomtype");
+        
+        while($get_data_roomtype = $typerom_rows->fetch_assoc()) {
+        array_push($arr, (object)[
+            'name' => $get_data_roomtype["RoomTypeName"],
+            'price' => $get_data_roomtype["RoomTypePrice"],
+            ]);
+        }
+        return (json_encode($arr,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));                           
+    }
+    ?>    
+    <!--------------HÀM LẤY GIÁ TRỊ CỦA VOUCHER TỪ DATABASE------------------>
+    <?php
+        function load_voucher() {
+            include './assets/PHP/connectdb.php';
+            $arr = array();
+            $typerom_rows =  $conn->query("SELECT VoucherCode, Percent, MinPrice FROM voucher WHERE Status = 1");
+            
+            while($get_data_roomtype = $typerom_rows->fetch_assoc()) {
+            array_push($arr, (object)[
+                'code' => $get_data_roomtype["VoucherCode"],
+                'percent' => $get_data_roomtype["Percent"],
+                'minprice' => $get_data_roomtype["MinPrice"],
+                ]);
+            }
+            return (json_encode($arr,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));                           
+        }
+    ?>    
+
+
+
+
    
-    <!-- set animation khi cuộn trang -->
+    <!------------SET ANIMATION KHI CUỘN TRANG----------------------->
     <script>      
         var scrollIcon = document.getElementById("scroll-head");
         var navbar = document.querySelector(".navbar");
@@ -716,7 +789,7 @@
         }   
     </script>
 
-    <!-- cài điều kiện để vào trang admin -->
+    <!------------SET ĐIỀU KIỆN ĐỂ VÀO TRANG QUẢN LÝ------------------->
     <?php
         function get_password() {
             include './assets/PHP/connectdb.php';
@@ -736,7 +809,7 @@
         })
     </script>
     
-    <!-- bắt sự kiện button gửi đánh giá -->
+    <!-------------SET SỰ KIỆN KHI GỬI BUTTON ĐÁNH GIÁ----------------->
     <script>
         var btnRating = document.getElementById('send-review');
         var radioRating = document.querySelector('input[name="rate"]:checked').value;
@@ -745,19 +818,16 @@
 
         form.onsubmit = function(e) {
             e.preventDefault();
-            if (name_account.innerText === "Đăng nhập") {
+            if (getCookie("flagLogin") === "0") {
                 modal.classList.add('open');  
             }
             else {
-                var email = '<?php echo $email ?>';
-                document.cookie = "email" + "=" + email;
-                document.cookie = "name" + "=" + name_account.innerText;
                 form.submit();
             }
         }
     </script>
  
-    
+    <!-------------CÁC LINK BOOTSTRAP, MAP GOOGLE---------------------->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

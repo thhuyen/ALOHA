@@ -126,7 +126,7 @@
                       </div>
                       <div class="title title1">
                           <i class="fa-solid fa-hotel"></i>
-                          <h3><?php echo $roomtype_rows['RoomTypePrice'] . "/phòng/đêm" ?></h3>
+                          <h3><?php echo number_format((int)$roomtype_rows['RoomTypePrice'] , 0, ',', '.') . "/phòng/đêm" ?></h3>
                       </div>
                   </div>
                   <ul class = "description">
