@@ -64,7 +64,7 @@
                 <div class="container">
                     <div action="" class="form grid">
                         <div class="input-group">
-                            <label for="check-in" class="input-label">Ngày đặt</label>
+                            <label for="check-in" class="input-label">Ngày ở</label>
                             <input type="date" class="input" id="check-in"/>
                         </div>
                         <div class="input-group">
@@ -595,7 +595,7 @@
                                 <label for="<?php echo $row['VoucherCode'] ?>" class="label-voucher-item">
                                     <i class="icon-check fa-solid fa-circle-check"></i>
                                     <img src="./assets/img/voucher-icon.png" alt="voucher-icon" class="icon-voucher">
-                                    <p><?php echo $row['VoucherCode'] . " (Giảm giá " . $row['Percent'] . " cho đơn từ " . number_format((int)$row['MinPrice'], 0, ',', '.') ."VND)"?></p>
+                                    <p><?php echo $row['VoucherCode'] . " (Giảm giá " . $row['Percent'] . "% cho đơn từ " . number_format((int)$row['MinPrice'], 0, ',', '.') ."VND)"?></p>
                                 </label>
                             </div>                
                             <?php }} ?>
