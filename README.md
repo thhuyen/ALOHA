@@ -17,11 +17,11 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## <h2>Mục tiêu của đồ án</h2>
+## Mục tiêu của đồ án
 
 Đây là project của môn học Phát triển ứng dụng web - UIT. Nội dung: 1 website giúp khách hàng đặt phòng nhanh, xem giá cả và thông tin của khách sạn, để lại cảm nhận sau khi họ sử dụng dịch vụ,...
 
-## <h2>Yêu cầu công nghệ</h2>
+## Yêu cầu công nghệ
 Composer, API google, MySQL, xampp, visual studio code đã cài đặt PHP + Javascript.
 
 
