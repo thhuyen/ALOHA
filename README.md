@@ -38,7 +38,7 @@ Composer, API google, MySQL, xampp, visual studio code đã cài đặt PHP + Ja
 
 ## Các chức năng của khách hàng
 
-  ### Xem thông tin chung của khách sạn.
+  #### Xem thông tin chung của khách sạn.
 ![image](https://user-images.githubusercontent.com/97439051/209602261-560c5e94-d42c-415c-8a8e-d69bd1306ef4.png)
 ![image](https://user-images.githubusercontent.com/97439051/209602390-3dba95f6-37d9-4df3-9172-974428200311.png)
 ![image](https://user-images.githubusercontent.com/97439051/209602332-beb4b6b7-d633-43cb-99ff-b1abfa249049.png)
@@ -51,7 +51,7 @@ Composer, API google, MySQL, xampp, visual studio code đã cài đặt PHP + Ja
 ![image](https://user-images.githubusercontent.com/97439051/209602642-40bac7c2-a61e-44db-9860-dce81429c623.png)
 ![image](https://user-images.githubusercontent.com/97439051/209602710-2b207c5a-b469-4c28-96ea-109cda7c1718.png)
 
-  ### Đặt phòng nhanh: Không cần đăng nhập, nhưng khôn thể áp dụng voucher giảm giá.
+  #### Đặt phòng nhanh: Không cần đăng nhập, nhưng không thể áp dụng voucher giảm giá.
 ![image](https://user-images.githubusercontent.com/97439051/209602883-7ce62c9e-17b8-4870-908a-b46ae2a626d0.png)
 ![image](https://user-images.githubusercontent.com/97439051/209602937-2985b97f-4907-4676-9940-392709faaf75.png)
 ![image](https://user-images.githubusercontent.com/97439051/209603127-b2d5ebf6-e944-4a01-9011-0942bda04db0.png)
