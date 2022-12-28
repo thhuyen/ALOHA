@@ -25,7 +25,7 @@
 Composer, API google, MySQL, xampp, visual studio code đã cài đặt PHP + Javascript.
 
 
-## THÀNH VIÊN NHÓM
+## Thành viên nhóm
 
 | STT | Họ tên                   | MSSV     |
 | :-: | ------------------       | -------- |
@@ -36,7 +36,8 @@ Composer, API google, MySQL, xampp, visual studio code đã cài đặt PHP + Ja
 
 
 
-### Các chức năng của khách hàng
+## Các chức năng của khách hàng
+
   - Xem thông tin chung của khách sạn.
 ![image](https://user-images.githubusercontent.com/97439051/209602261-560c5e94-d42c-415c-8a8e-d69bd1306ef4.png)
 ![image](https://user-images.githubusercontent.com/97439051/209602390-3dba95f6-37d9-4df3-9172-974428200311.png)
