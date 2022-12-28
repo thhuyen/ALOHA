@@ -1,4 +1,6 @@
 # Website đặt phòng khách sạn
+![image](https://user-images.githubusercontent.com/97439051/209748493-343fe844-bc83-4c33-9ac2-3847433bfc57.png)
+
 Đây là đồ án môn học Phát triển ứng dụng web (mã môn: IS207 của khoa Hệ thống Thông tin). 
 - Yêu cầu công nghệ để chạy đồ án: Composer, API google, xampp, visual studio code đã cài đặt PHP + Javascript.
 
@@ -30,18 +32,25 @@
 
 - Các chức năng nhân viên có thể sử dụng bao gồm:
   - Chuông thông báo: Xem thông báo mới đặt phòng
+  
   - Xem thông tin khách hàng: có thể tìm kiếm theo bộ lọc
   ![image](https://user-images.githubusercontent.com/97439051/209747519-78103700-8d4e-4a6a-ad3f-7e66a9607015.png)
+  
   - Thêm, xóa, sửa loại phòng: tác động trực tiếp đến giao diện của customer
   ![image](https://user-images.githubusercontent.com/97439051/209747580-2c4ce5db-35f3-4322-b836-aa8a645f7783.png)
   ![image](https://user-images.githubusercontent.com/97439051/209747607-4c9db41f-f861-4798-8008-1eb2e43aef44.png)   
+  
   - Thêm xóa sửa phòng
   ![image](https://user-images.githubusercontent.com/97439051/209747647-370ea63c-50b7-4353-931a-9d0a7dcd7e94.png)
+  
   - Thêm xóa sửa dịch vụ: tác động trực tiếp đến giao diện của customer
   ![image](https://user-images.githubusercontent.com/97439051/209747751-571fdb0b-538f-40ee-918f-ad7ba67ba463.png)
+  
   - Hóa đơn: khi đặt phòng sẽ lập tức hiện hóa đơn, nhưng bỏ trống ngày, nếu employee chọn ngày lập hóa đơn có nghĩa hóa đơn mới hoàn thành, nếu khách hàng hủy, trên cột Hủy chọn có để tiến hành hủy đặt phòng. Có thể tìm kiếm theo bộ lọc
   ![image](https://user-images.githubusercontent.com/97439051/209747926-d52abbdd-b6e4-4400-9072-59d7ed029bf8.png)
+  
   - Thêm, xóa, sửa voucher: tạo voucher giảm giá cho khách ở form đặt phòng, có thể thêm, xóa, sửa, kích hoạt / ngưng kích hoạt tùy ý
   ![image](https://user-images.githubusercontent.com/97439051/209747958-6d84f989-0b41-4e07-aa9c-5c0a0bc5a2a9.png)
-  - Quản lý đặt phòng: chọn phòng cho khách thông qua danh sách phòng còn trống trên cột Số phòng, sau đó Gửi email, có thể tìm kiếm theo bộ lọc
+ 
+ - Quản lý đặt phòng: chọn phòng cho khách thông qua danh sách phòng còn trống trên cột Số phòng, sau đó Gửi email, có thể tìm kiếm theo bộ lọc
   ![image](https://user-images.githubusercontent.com/97439051/209748144-77a70bab-dd9e-4985-9b93-28e00ed260c3.png)
