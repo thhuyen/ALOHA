@@ -1,15 +1,15 @@
 # Phát triển ứng dụng web - IS207.N12
-# Website đặt phòng khách sạn 
-![image](https://user-images.githubusercontent.com/97439051/209748493-343fe844-bc83-4c33-9ac2-3847433bfc57.png)           
-## Đại học Công nghệ Thông tin - ĐHQG TPHCM                                                                                                                                                                                                                                                                                                                                                                                                         
+                                       ![image](https://user-images.githubusercontent.com/97439051/209748493-343fe844-bc83-4c33-9ac2-3847433bfc57.png)           
+                                                              ## Đại học Công nghệ Thông tin - ĐHQG TPHCM                                                                ### Giới thiệu môn học                                                                                                                                          
 - Tên môn học: Phát triển ứng dụng web
 - Mã môn học: IS207
 - Mã lớp: IS207.N12
 - Năm học: HK1 (2022 - 2023)
 - Giảng viên hướng dẫn: ThS. Mai Xuân Hùng
-- Yêu cầu công nghệ để chạy đồ án: Composer, API google, xampp, visual studio code đã cài đặt PHP + Javascript.
+### Yêu cầu công nghệ
+Composer, API google, MySQL, xampp, visual studio code đã cài đặt PHP + Javascript.
 
-- Các chức năng khách hàng có thể sử dụng bao gồm: 
+### Các chức năng của khách hàng
   - Xem thông tin chung của khách sạn.
 ![image](https://user-images.githubusercontent.com/97439051/209602261-560c5e94-d42c-415c-8a8e-d69bd1306ef4.png)
 ![image](https://user-images.githubusercontent.com/97439051/209602390-3dba95f6-37d9-4df3-9172-974428200311.png)
@@ -35,7 +35,7 @@
   - Đánh giá khách sạn: Yêu cầu đăng nhập và đã từng đặt phòng mới có thể đánh giá.
   ![image](https://user-images.githubusercontent.com/97439051/209746995-9c71f94b-97bd-4727-95dd-771df26ec790.png)
 
-- Các chức năng nhân viên có thể sử dụng bao gồm:
+### Các chức năng của nhân viên
   - Chuông thông báo: Xem thông báo mới đặt phòng
   
   - Xem thông tin khách hàng: có thể tìm kiếm theo bộ lọc
