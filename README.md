@@ -1,9 +1,6 @@
 # Website đặt phòng khách sạn - IS207.N12
 ![image](https://user-images.githubusercontent.com/97439051/209748493-343fe844-bc83-4c33-9ac2-3847433bfc57.png)           
-Đại học Công nghệ Thông tin - ĐHQG TPHCM
-
-
-
+### Đại học Công nghệ Thông tin - ĐHQG TPHCM                                                                                                                                                                                                                                                                                                                                                                                                         
 - Tên môn học: Phát triển ứng dụng web
 - Mã môn học: IS207
 - Mã lớp: IS207.N12
@@ -25,7 +22,7 @@
 ![image](https://user-images.githubusercontent.com/97439051/209602642-40bac7c2-a61e-44db-9860-dce81429c623.png)
 ![image](https://user-images.githubusercontent.com/97439051/209602710-2b207c5a-b469-4c28-96ea-109cda7c1718.png)
 
-- Đặt phòng nhanh: Không cần đăng nhập, nhưng khôn thể áp dụng voucher giảm giá.
+  - Đặt phòng nhanh: Không cần đăng nhập, nhưng khôn thể áp dụng voucher giảm giá.
 ![image](https://user-images.githubusercontent.com/97439051/209602883-7ce62c9e-17b8-4870-908a-b46ae2a626d0.png)
 ![image](https://user-images.githubusercontent.com/97439051/209602937-2985b97f-4907-4676-9940-392709faaf75.png)
 ![image](https://user-images.githubusercontent.com/97439051/209603127-b2d5ebf6-e944-4a01-9011-0942bda04db0.png)
