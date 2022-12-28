@@ -1,6 +1,7 @@
-# Website đặt phòng khách sạn - IS207.N12
+# Phát triển ứng dụng web - IS207.N12
+# Website đặt phòng khách sạn 
 ![image](https://user-images.githubusercontent.com/97439051/209748493-343fe844-bc83-4c33-9ac2-3847433bfc57.png)           
-### Đại học Công nghệ Thông tin - ĐHQG TPHCM                                                                                                                                                                                                                                                                                                                                                                                                         
+## Đại học Công nghệ Thông tin - ĐHQG TPHCM                                                                                                                                                                                                                                                                                                                                                                                                         
 - Tên môn học: Phát triển ứng dụng web
 - Mã môn học: IS207
 - Mã lớp: IS207.N12
