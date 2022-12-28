@@ -1,14 +1,14 @@
 # Website đặt phòng khách sạn - IS207.N12
-![image](https://user-images.githubusercontent.com/97439051/209748493-343fe844-bc83-4c33-9ac2-3847433bfc57.png)
+![image](https://user-images.githubusercontent.com/97439051/209748493-343fe844-bc83-4c33-9ac2-3847433bfc57.png)           
+Đại học Công nghệ Thông tin - ĐHQG TPHCM
 
 
 
-Tên môn học: Phát triển ứng dụng web
-Mã môn học: IS207
-Mã lớp: IS207.N12
-Năm học: HK1 (2022 - 2023)
-Giảng viên: ThS Mai Xuân Hùng
-
+- Tên môn học: Phát triển ứng dụng web
+- Mã môn học: IS207
+- Mã lớp: IS207.N12
+- Năm học: HK1 (2022 - 2023)
+- Giảng viên hướng dẫn: ThS. Mai Xuân Hùng
 - Yêu cầu công nghệ để chạy đồ án: Composer, API google, xampp, visual studio code đã cài đặt PHP + Javascript.
 
 - Các chức năng khách hàng có thể sử dụng bao gồm: 
