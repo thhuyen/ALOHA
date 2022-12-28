@@ -1,13 +1,40 @@
-# Phát triển ứng dụng web - IS207.N12
-                                       ![image](https://user-images.githubusercontent.com/97439051/209748493-343fe844-bc83-4c33-9ac2-3847433bfc57.png)           
-                                                              ## Đại học Công nghệ Thông tin - ĐHQG TPHCM                                                                ### Giới thiệu môn học                                                                                                                                          
-- Tên môn học: Phát triển ứng dụng web
-- Mã môn học: IS207
-- Mã lớp: IS207.N12
-- Năm học: HK1 (2022 - 2023)
-- Giảng viên hướng dẫn: ThS. Mai Xuân Hùng
-### Yêu cầu công nghệ
+<!-- Banner -->
+<p align="center">
+  <a href="https://www.uit.edu.vn/" title="Trường Đại học Công nghệ Thông tin" style="border: none;">
+    <img src="https://i.imgur.com/WmMnSRt.png" alt="Trường Đại học Công nghệ Thông tin | University of Information Technology">
+  </a>
+</p>
+
+<h1 align="center"><b>Phát triển ứng dụng web - IS207.N12</b></h>
+
+## GIỚI THIỆU MÔN HỌC
+
+- **Tên môn học:** Phát triển ứng dụng web
+- **Mã môn học:** IS207
+- **Mã lớp:** IS207.N12
+- **Năm học:** HK1 (2022 - 2023)
+- **Giảng viên**: ThS Mai Xuân Hùng
+
+<!-- ABOUT THE PROJECT -->
+
+## <h2>Mục tiêu của đồ án</h2>
+
+Đây là project của môn học Phát triển ứng dụng web - UIT. Nội dung: 1 website giúp khách hàng đặt phòng nhanh, xem giá cả và thông tin của khách sạn, để lại cảm nhận sau khi họ sử dụng dịch vụ,...
+
+## <h2>Yêu cầu công nghệ</h2>
 Composer, API google, MySQL, xampp, visual studio code đã cài đặt PHP + Javascript.
+
+
+## THÀNH VIÊN NHÓM
+
+| STT | Họ tên                   | MSSV     |
+| :-: | ------------------       | -------- |
+|  1  | Nguyễn Thị Thanh Huyền   | 20520769 |
+|  2  | Nguyễn Thanh Thảo        | 20522043 |
+|  3  | Trần Tùng Linh           | 20520679 |
+|  4  | Phan Thanh Bách          | 20521013 |
+
+
 
 ### Các chức năng của khách hàng
   - Xem thông tin chung của khách sạn.
