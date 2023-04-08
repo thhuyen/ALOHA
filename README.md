@@ -32,7 +32,7 @@ Composer, API google, MySQL, xampp, visual studio code đã cài đặt PHP + Ja
 |  1  | Nguyễn Thị Thanh Huyền   | 20520769 |
 |  2  | Nguyễn Thanh Thảo        | 20522043 |
 |  3  | Trần Tùng Linh           | 20520679 |
-|  4  | Phan Thanh Bách          | 20521013 |
+|
 
 
 
