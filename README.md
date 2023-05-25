@@ -29,9 +29,9 @@ Composer, API google, MySQL, xampp, visual studio code đã cài đặt PHP + Ja
 
 | STT | Họ tên                   | MSSV     |
 | :-: | ------------------       | -------- |
-|  1  | Nguyễn Thị Thanh Huyền   | 20520769 |
-|  2  | Nguyễn Thanh Thảo        | 20522043 |
-|  3  | Trần Tùng Linh           | 20520679 |
+|  1  | Nguyễn Thị Thanh Huyền   | 20520207|
+|  2  | Nguyễn Thanh Thảo        | 20521934 |
+|  3  | Trần Tùng Linh           | 20520616 |
 |
 
 
